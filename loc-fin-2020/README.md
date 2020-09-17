@@ -6,7 +6,7 @@ Where2Eat React
 Schedule
 
   Tag 1
-    - Projekt Aufsetzen mit TS und Bs4
+    x- Projekt Aufsetzen mit TS und Bs4
     - FakeApi
     - FApi darstellen
     - Pages erstellen (Landing, List) incl Routing ohne register user

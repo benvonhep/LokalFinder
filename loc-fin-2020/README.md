@@ -7,10 +7,10 @@ Schedule
 
   Tag 1
     x- Projekt Aufsetzen mit TS und Bs4
-    - FakeApi
-    - FApi darstellen
+    x - FakeApi
+    x- FApi darstellen
     - Pages erstellen (Landing, List) incl Routing ohne register user
-    - Pagination?? eher lazy loading
+        - Pagination?? eher lazy loading
 
   Tag 2
     - AddModule

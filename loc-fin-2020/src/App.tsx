@@ -3,8 +3,8 @@ import Nav from 'react-bootstrap/esm/Nav';
 import Navbar from 'react-bootstrap/esm/Navbar';
 import { Route, Switch } from 'react-router-dom';
 import './App.scss';
-import Home from './components/Home';
-import List from './components/List';
+import Home from './_components/Home';
+import List from './_components/List';
 
 function App() {
   return (

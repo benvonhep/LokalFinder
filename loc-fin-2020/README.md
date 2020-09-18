@@ -11,14 +11,14 @@ Schedule
     x- FApi darstellen
     - Pages erstellen
       (
-        Landing:
-          Hintergrundbild,
-          Text Beschreibung,
-          Button zur Liste "Los gehts"
+        x Landing:
+        x Hintergrundbild,
+        - Text Beschreibung,
+        x Button zur Liste "Los gehts"
         List:
-          Cards,
-          Mehr Details,
-          Foto in db.json
+          x Cards,
+          - Mehr Details,
+          x Foto in db.json
         )
       x incl Routing ohne register user
 

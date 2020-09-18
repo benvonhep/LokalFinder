@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import CardGroup from 'react-bootstrap/CardGroup';
 import Card from 'react-bootstrap/Card';
 // import useApiService from '../hooks/apiService';
-import ILocation from '../interfaces/ILocation'
+import ILocation from '../_interfaces/ILocation'
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
 

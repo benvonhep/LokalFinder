@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import ILocation from '../interfaces/ILocation'
+import ILocation from '../_interfaces/ILocation'
 type DataFromServer = ILocation[]
 
 

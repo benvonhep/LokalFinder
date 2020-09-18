@@ -1,10 +1,10 @@
 {
-  "locations":  [
+  "locations": [
     {
       "id": 1,
       "userId": 1,
       "name": "Schachtelwirt",
-      "photo": "tbd",
+      "photo": "https://source.unsplash.com/user/impatrickt/600x400",
       "description": "Nice place for a quick and delicious meal",
       "openingTime": "12-23",
       "phone": "01589384",
@@ -17,7 +17,7 @@
       "id": 2,
       "userId": 2,
       "name": "Zur goldenen Möwe",
-      "photo": "tbd",
+      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
       "description": "Nice place for a quick and delicious meal",
       "openingTime": "12-23",
       "phone": "01589384",
@@ -30,7 +30,7 @@
       "id": 3,
       "userId": 1,
       "name": "McDelicious",
-      "photo": "tbd",
+      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
       "description": "Nice place for a quick and delicious meal",
       "openingTime": "12-23",
       "phone": "01589384",

@@ -1,0 +1,78 @@
+
+.App {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.home-class {
+  background-image: url('../src/assets/homebackground.jpeg');
+  width: 100vw;
+  height: calc(100vh - 56px);
+  margin: 0 !important;
+}
+
+/* .homeActionButton {
+  display: flex;
+
+} */
+
+.aboutText {
+  color: aquamarine;
+  text-align: center;
+  padding-top: 33vw;
+}
+
+
+
+.navbar {
+  background-color: #103dde;
+  display: flex;
+
+  /* align-items: center; */
+}
+
+.basic-navbar-nav {
+  text-align: right;
+}
+
+/* .pageMain {
+  width: 100vw;
+  height: auto;
+} */
+
+.app-card-list {
+  display: flex;
+  width:100%;
+  // float:right;
+  margin:0;
+  // min-height: 75vh;
+  white-space:normal;
+  // overflow-x: scroll;
+  // margin-top:-70px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media(min-width:768px) {
+      width:80%;
+      white-space:nowrap;
+      margin-top: 0;
+  }
+
+  .cardColumninRow {
+    max-width: 575px;
+    min-width: 574px;
+  }
+
+  .card {
+    margin: 80px 30px;
+
+    display: inline-block;
+
+    .card-body {
+        white-space: normal;
+    }
+  }
+}

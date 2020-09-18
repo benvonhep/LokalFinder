@@ -9,8 +9,18 @@ Schedule
     x- Projekt Aufsetzen mit TS und Bs4
     x - FakeApi
     x- FApi darstellen
-    - Pages erstellen (Landing, List) incl Routing ohne register user
-        - Pagination?? eher lazy loading
+    - Pages erstellen
+      (
+        Landing:
+          Hintergrundbild,
+          Text Beschreibung,
+          Button zur Liste "Los gehts"
+        List:
+          Cards,
+          Mehr Details,
+          Foto in db.json
+        )
+      x incl Routing ohne register user
 
   Tag 2
     - AddModule
@@ -30,6 +40,7 @@ Schedule
     - Karte leaflet
     - Koordinatenfinden gm
 
+        - Pagination?? eher lazy loading
 ########################################################################################################################
 
 React

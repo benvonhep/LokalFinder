@@ -1,0 +1,102 @@
+
+.App {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.home-class {
+  background-image: url('../src/assets/homebackground.jpeg');
+  width: 100vw;
+  height: calc(100vh - 56px);
+  margin: 0 !important;
+}
+
+/* .homeActionButton {
+  display: flex;
+
+} */
+
+.aboutText {
+  color: aquamarine;
+  text-align: center;
+  padding-top: 33vw;
+}
+
+
+
+.navbar {
+  background-color: #36edd8;
+  // display: flex;
+  // justify-content: center;
+
+  /* align-items: center; */
+}
+
+// .navbar-container {
+//   display: flex;
+//   justify-content: center;
+// }
+
+.navbar-collapse {
+  max-width: 100px;
+}
+
+.basic-navbar-nav {
+  text-align: right;
+}
+
+/* .pageMain {
+  width: 100vw;
+  height: auto;
+} */
+
+.app-card-list {
+  display: flex;
+  width:100%;
+  // float:right;
+  margin:0;
+  // min-height: 75vh;
+  white-space:normal;
+  // overflow-x: scroll;
+  // margin-top:-70px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media(min-width:768px) {
+      width:80%;
+      white-space:nowrap;
+      margin-top: 0;
+  }
+
+  .cardColumninRow {
+    margin: 10px;
+    padding: 0;
+    max-width: 375px;
+    min-width: 374px;
+  }
+
+  .cardRow {
+    min-width: 100vw;
+  }
+
+  .card {
+    margin: 10px 10px;
+    max-width: 375px;
+    min-width: 374px;
+    display: inline-block;
+
+    .card-body {
+        white-space: normal;
+    }
+
+    .card-image {
+      max-height: 275px;
+      min-height: 274px;
+      max-width: 375px;
+      min-width: 374px;
+    }
+  }
+}

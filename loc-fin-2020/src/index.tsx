@@ -5,10 +5,8 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
+import store from './store/store';
 
-const store = createStore(reducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <React.StrictMode>

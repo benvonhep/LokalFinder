@@ -26,10 +26,20 @@
 
 
 .navbar {
-  background-color: #103dde;
-  display: flex;
+  background-color: #36edd8;
+  // display: flex;
+  // justify-content: center;
 
   /* align-items: center; */
+}
+
+// .navbar-container {
+//   display: flex;
+//   justify-content: center;
+// }
+
+.navbar-collapse {
+  max-width: 100px;
 }
 
 .basic-navbar-nav {
@@ -62,17 +72,31 @@
   }
 
   .cardColumninRow {
-    max-width: 575px;
-    min-width: 574px;
+    margin: 10px;
+    padding: 0;
+    max-width: 375px;
+    min-width: 374px;
+  }
+
+  .cardRow {
+    min-width: 100vw;
   }
 
   .card {
-    margin: 80px 30px;
-
+    margin: 10px 10px;
+    max-width: 375px;
+    min-width: 374px;
     display: inline-block;
 
     .card-body {
         white-space: normal;
+    }
+
+    .card-image {
+      max-height: 275px;
+      min-height: 274px;
+      max-width: 375px;
+      min-width: 374px;
     }
   }
 }

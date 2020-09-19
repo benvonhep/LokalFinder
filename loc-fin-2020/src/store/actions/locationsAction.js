@@ -1,4 +1,4 @@
-import { GET_LOCATIONS, LOCATIONS_ERROR } from '../types'
+import { GET_LOCATIONS, LOCATIONS_ERROR } from '../actionTypes'
 import { get } from 'axios'
 
 

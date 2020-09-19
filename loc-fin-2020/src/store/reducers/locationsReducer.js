@@ -1,4 +1,4 @@
-import { GET_LOCATIONS } from '../types'
+import { GET_LOCATIONS } from '../actionTypes'
 
 const initialState = {
   locations: [],

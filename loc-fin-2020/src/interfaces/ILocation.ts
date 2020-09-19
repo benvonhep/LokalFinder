@@ -11,3 +11,7 @@ export default interface ILocation {
   country?: string
   food?: string
 }
+
+export default interface IModal {
+  modal: boolean
+}

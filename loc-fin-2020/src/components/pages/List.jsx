@@ -5,13 +5,12 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './List.scss';
-
 // import ILocation from '../interfaces/ILocation'
-
 
 function List() {
   const locations = useSelector(state => state.locations)
   const loading = useSelector(state => state.loading)
+
   return (
     <div>
       <CardGroup className="app-card-list">

@@ -5,16 +5,12 @@ const initialState = {
   loading: true
 }
 
-export default function (state = initialState, action) {
-
+export default function locationsReducer(state = initialState, action) {
   switch (action.type) {
-
     case GET_LOCATIONS:
       return {
-        ...state,
-        locations: action.payload,
+        locations: action.locations,
         loading: false
-
       }
     default: return state
   }

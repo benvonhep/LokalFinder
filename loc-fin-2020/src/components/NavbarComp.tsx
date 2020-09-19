@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
+import './NavbarComp.scss';
+
 
 export default function NavbarComp() {
   return (

@@ -1,0 +1,25 @@
+.navbar {
+  background-color: #172a28;
+
+  .navbar-brand {
+    color: rgb(237, 221, 221) !important;
+
+  }
+
+  .nav-link {
+    color: rgb(237, 221, 221) !important;
+
+  }
+}
+
+.menu-buttons {
+  display: inline-block;
+}
+
+.navbar-collapse {
+  max-width: 100px;
+}
+
+.basic-navbar-nav {
+  text-align: right;
+}

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import Button from 'react-bootstrap/esm/Button'
+import './Home.scss';
 
 export default function Home() {
   return (

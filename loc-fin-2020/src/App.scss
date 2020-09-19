@@ -23,14 +23,30 @@
   padding-top: 33vw;
 }
 
+// .add-button {
+//
+// }
+
 
 
 .navbar {
-  background-color: #36edd8;
+  background-color: #172a28;
   // display: flex;
   // justify-content: center;
+  .navbar-brand {
+    color: rgb(237, 221, 221) !important;
 
+  }
+
+  .nav-link {
+    color: rgb(237, 221, 221) !important;
+
+  }
   /* align-items: center; */
+}
+
+.menu-buttons {
+  display: inline-block;
 }
 
 // .navbar-container {

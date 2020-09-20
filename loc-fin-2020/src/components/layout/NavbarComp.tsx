@@ -8,11 +8,19 @@ import AddLocationModal from './AddLocationModal';
 // import {hideModal, showModal} from '../../store/actions/modalActions';
 
 export default function NavbarComp() {
-  const [modalShow, setModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(true);
+
+  // function submitLocation(e: any) {
+  //   e.preventDefault();
+  //   return console.log('submitted');
+  // }
 
   return (
     <>
-      <Navbar className="navbar navbar-dark" sticky="top" expand="sm">
+      <Navbar
+        className="navbar navbar-dark"
+        sticky="top"
+        expand="sm">
         <>
           <Navbar.Brand>Restaurant Finder</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
@@ -31,7 +39,11 @@ export default function NavbarComp() {
           Add Restaurant
           </Button>
       </Navbar>
-      <AddLocationModal show={modalShow} onHide={() => setModalShow(false)} />
+      <AddLocationModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      // onSubmit={() => submitLocation(e)}
+      />
     </>
 
   )

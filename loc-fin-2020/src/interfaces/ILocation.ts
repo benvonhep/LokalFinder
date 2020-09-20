@@ -8,7 +8,6 @@ export default interface ILocation {
   phone?: number
   street?: string
   city?: string
-  country?: string
   food?: string
 }
 

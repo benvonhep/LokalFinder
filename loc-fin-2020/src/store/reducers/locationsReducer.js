@@ -14,7 +14,7 @@ export default function locationsReducer(state = initialState, action) {
       }
     case ADD_LOCATION:
       return {
-        locations: action.location
+        locations: [...state.locations, action.location]
       }
     default: return state
   }

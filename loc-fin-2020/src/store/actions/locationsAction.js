@@ -28,7 +28,7 @@ export const addLocation = (newLocation) => async dispatch => {
 
     dispatch({
       type: ADD_LOCATION,
-      locations: res.data
+      location: res.data
     });
   } catch (err) {
     dispatch({

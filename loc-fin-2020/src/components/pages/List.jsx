@@ -5,12 +5,14 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './List.scss';
-import Spinner from '../layout/Spinner';
+// import Spinner from '../layout/Spinner';
 // import ILocation from '../interfaces/ILocation'
 
 function List() {
   const locations = useSelector(state => state.locations)
   const loading = useSelector(state => state.loading)
+
+  // const dispatch = useDispatch();
 
   return (
     <div>

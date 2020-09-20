@@ -1,27 +1,59 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
-import { HIDE_MODAL } from '../../store/actionTypes';
-import './AddLocationModal.scss'
-// import {hideModal, showModal} from '../../store/actions/modalActions';
+import { addLocation } from '../../store/actions/locationsAction';
+import './AddLocationModal.scss';
 import { useDispatch } from 'react-redux';
+// import ILocation from '../../interfaces/ILocation';
 
-function AddLocationModal(props: any) {
+function AddLocationModal(props) {
   const [validated, setValidated] = useState(false);
-  // const [newLocation, setNewLocation] = useState(null);
+  const [formData, setFormData] = useState({
+    id: '',
+    name: '',
+    photo: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
+    description: '',
+    openingTime: '',
+    phone: '',
+    street: '',
+    city: '',
+    food: ''
+  });
+
+  // const { id, name, photo, description, openingTime, phone, street, city, food } = formData;
+
+  const onChange = (e) => {
+    return setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  }
 
 
-  const submitLocation = (event: any) => {
+
+
+  const dispatch = useDispatch();
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.stopPropagation();
     }
-    event.preventDefault();
+
     setValidated(true);
-    if (form.checkValidity() === true) {
-      form.reset()
-      setValidated(false);
-      props.onHide()
+    const newLocation = {
+      ...formData
     }
+    if (form.checkValidity() === true) {
+      // addLocation(newLocation)
+      console.log(formData, 'withID');
+
+      dispatch(addLocation(newLocation))
+      form.reset()
+      props.onHide();
+      setValidated(false);
+    }
+
   }
 
 
@@ -38,59 +70,59 @@ function AddLocationModal(props: any) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form noValidate validated={validated} onSubmit={submitLocation}>
+        <Form noValidate validated={validated} onSubmit={onSubmit}>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
-            <Form.Control required type="text" placeholder="Enter name" />
+            <Form.Control required type="text" name="name" onChange={onChange} placeholder="Enter name" />
             <Form.Control.Feedback type="invalid">
               Please enter a name
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="photoUrl">
+          <Form.Group controlId="photo">
             <Form.Label>Photo Url</Form.Label>
-            <Form.Control required type="text" placeholder="Enter photo url" />
+            <Form.Control required type="text" name="photo" onChange={onChange} value={'https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80'} placeholder="Enter photo url" />
             <Form.Control.Feedback type="invalid">
               Please enter the photo url
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="description">
             <Form.Label>Description</Form.Label>
-            <Form.Control required type="text" placeholder="Enter description" />
+            <Form.Control required type="text" name="description" onChange={onChange} placeholder="Enter description" />
             <Form.Control.Feedback type="invalid">
               Please enter a description
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="openingTime">
             <Form.Label>Opening Times</Form.Label>
-            <Form.Control required type="text" placeholder="Enter opening times" />
+            <Form.Control required type="text" name="openingTime" onChange={onChange} placeholder="Enter opening times" />
             <Form.Control.Feedback type="invalid">
               Please enter the opening times
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="phone">
             <Form.Label>Phone</Form.Label>
-            <Form.Control required type="text" placeholder="Enter phone number" />
+            <Form.Control required type="text" name="phone" onChange={onChange} placeholder="Enter phone number" />
             <Form.Control.Feedback type="invalid">
               Please enter the phone number
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="street">
             <Form.Label>Street</Form.Label>
-            <Form.Control required type="text" placeholder="Enter street" />
+            <Form.Control required type="text" name="street" onChange={onChange} placeholder="Enter street" />
             <Form.Control.Feedback type="invalid">
               Please enter the street
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="city">
             <Form.Label>City</Form.Label>
-            <Form.Control required type="text" placeholder="Enter city" />
+            <Form.Control required type="text" name="city" onChange={onChange} placeholder="Enter city" />
             <Form.Control.Feedback type="invalid">
               Please enter the city
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="food">
             <Form.Label>Food</Form.Label>
-            <Form.Control required type="text" placeholder="Enter kind of food" />
+            <Form.Control required type="text" name="food" onChange={onChange} placeholder="Enter kind of food" />
             <Form.Control.Feedback type="invalid">
               Please enter the kind of food served
             </Form.Control.Feedback>

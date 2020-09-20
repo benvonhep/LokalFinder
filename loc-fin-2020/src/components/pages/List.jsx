@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './List.scss';
+import Spinner from '../layout/Spinner';
 // import ILocation from '../interfaces/ILocation'
 
 function List() {
@@ -16,7 +17,7 @@ function List() {
       <CardGroup className="app-card-list">
         <Row className="d-flex justify-content-center cardRow">
           {loading &&
-            <p>it's loading ...---...</p>
+            <h1>loading ....</h1>
           }
           {!loading &&
             <>

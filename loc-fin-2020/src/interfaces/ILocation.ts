@@ -1,6 +1,6 @@
 export default interface ILocation {
   id?: number
-  userId?: number
+  // userId?: number
   name?: string
   photo?: any
   description?: string

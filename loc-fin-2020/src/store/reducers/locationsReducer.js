@@ -1,4 +1,4 @@
-import { GET_LOCATIONS } from '../actionTypes'
+import { GET_LOCATIONS, ADD_LOCATION } from '../actionTypes'
 
 const initialState = {
   locations: [],
@@ -11,6 +11,10 @@ export default function locationsReducer(state = initialState, action) {
       return {
         locations: action.locations,
         loading: false
+      }
+    case ADD_LOCATION:
+      return {
+        locations: action.location
       }
     default: return state
   }

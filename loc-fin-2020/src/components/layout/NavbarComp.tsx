@@ -1,14 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux'
 import React, { useState } from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
-import { SHOW_MODAL } from '../../store/actionTypes'
-import IModal from '../../interfaces/ILocation'
+
 import './NavbarComp.scss';
 import AddLocationModal from './AddLocationModal';
 // import {hideModal, showModal} from '../../store/actions/modalActions';
 
 export default function NavbarComp() {
-  const [modalShow, setModalShow] = useState(true);
+  const [modalShow, setModalShow] = useState(false);
 
   // function submitLocation(e: any) {
   //   e.preventDefault();

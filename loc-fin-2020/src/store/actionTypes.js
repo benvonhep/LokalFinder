@@ -1,4 +1,6 @@
 export const GET_LOCATIONS = 'GET_LOCATIONS';
 export const LOCATIONS_ERROR = 'LOCATIONS_ERROR';
-export const SHOW_MODAL = 'SHOW_MODAL';
-export const HIDE_MODAL = 'HIDE_MODAL';
+// export const SHOW_MODAL = 'SHOW_MODAL';
+// export const HIDE_MODAL = 'HIDE_MODAL';
+export const ADD_LOCATION = 'ADD_LOCATION';
+export const ADD_LOCATION_ERROR = 'ADD_LOCATION_ERROR';

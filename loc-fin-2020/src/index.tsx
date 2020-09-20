@@ -7,13 +7,14 @@ import { BrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './store/store';
 import { getLocations } from './store/actions/locationsAction';
+import ErrorBoundary from './components/layout/ErrorBoundary';
 
 store.dispatch(getLocations());
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}><BrowserRouter> <App /></BrowserRouter></Provider>
+    <ErrorBoundary><Provider store={store}><BrowserRouter> <App /></BrowserRouter></Provider></ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -2,7 +2,6 @@
   "locations": [
     {
       "id": 1,
-      "userId": 1,
       "name": "Schachtelwirt",
       "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
       "description": "Nice place for a quick and delicious meal",
@@ -10,12 +9,10 @@
       "phone": "01589384",
       "street": "Schwedenplatz 1",
       "city": "Vienna",
-      "country": "Austria",
       "food": "American"
     },
     {
       "id": 2,
-      "userId": 2,
       "name": "Zur goldenen Möwe",
       "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
       "description": "Nice place for a quick and delicious meal",
@@ -23,12 +20,10 @@
       "phone": "01589384",
       "street": "Schwedenplatz 2",
       "city": "Vienna",
-      "country": "Austria",
       "food": "American"
     },
     {
       "id": 3,
-      "userId": 1,
       "name": "McDelicious",
       "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
       "description": "Nice place for a quick and delicious meal",
@@ -36,8 +31,62 @@
       "phone": "01589384",
       "street": "Schwedenplatz 2",
       "city": "Vienna",
-      "country": "Austria",
       "food": "American"
+    },
+    {
+      "id": 4,
+      "name": "asd",
+      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80ö",
+      "description": "klö",
+      "openingTime": "klö",
+      "phone": "klö",
+      "street": "klö",
+      "city": "klö",
+      "food": "klö"
+    },
+    {
+      "id": 5,
+      "name": "hjk",
+      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80k",
+      "description": "hjk",
+      "openingTime": "hjk",
+      "phone": "hjk",
+      "street": "jkjhk",
+      "city": "hjk",
+      "food": "hjk"
+    },
+    {
+      "id": 6,
+      "name": "ghjhg",
+      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+      "description": "sdfsfds",
+      "openingTime": "asdas",
+      "phone": "sdfsdfs",
+      "street": "dfadsa",
+      "city": "sdfsfd",
+      "food": "dfgdf"
+    },
+    {
+      "id": 7,
+      "name": "jkl",
+      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+      "description": "jkl",
+      "openingTime": "jkl",
+      "phone": "jkl",
+      "street": "jkl",
+      "city": "jkl",
+      "food": "jkl"
+    },
+    {
+      "id": 8,
+      "name": "jkl",
+      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80l",
+      "description": "jk",
+      "openingTime": "jkl",
+      "phone": "jkl",
+      "street": "jkl",
+      "city": "jkl",
+      "food": "jkl"
     }
   ]
 }

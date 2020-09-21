@@ -35,7 +35,7 @@ function List() {
               {locations.locations.map((location) => (
 
                 <Col xs={true} sm={true} lg={true} key={location.id} className="cardColumninRow" >
-                  <Card className="card">
+                  <Card className="card shadow-lg rounded">
                     <Card.Img className="card-image" variant="top" src={location.photo} />
                     <Card.Body className="card-body">
                       <Card.Title>{location.name}</Card.Title>

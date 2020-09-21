@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { editLocation } from '../../store/actions/locationsAction';
 import { setEditForm } from '../../store/actions/formActions';
-import './AddLocationModal.scss';
+import './EditLocationModal.scss';
 import { useDispatch, useSelector } from 'react-redux';
 // import ILocation from '../../interfaces/ILocation';
 
@@ -64,13 +64,13 @@ function EditLocationModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header closeButton className="modalHeader">
         <Modal.Title id="contained-modal-title-vcenter">
           Edit Restaurant
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <Form noValidate validated={validated} onSubmit={onSubmit}>
+      <Form noValidate validated={validated} onSubmit={onSubmit}>
+        <Modal.Body>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control required type="text" name="name" defaultValue={location.name || ''} onChange={onChange} placeholder="Enter name" />
@@ -128,17 +128,24 @@ function EditLocationModal(props) {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Button variant="success" type="submit">
+          {/* <div className="submitCancelButtonDiv">
+            <Button variant="outline-success" type="submit">
+              Submit
+            </Button>
+            <Button variant="outline-secondary" onClick={props.onHide} className="ml-2">
+              Cancel
+            </Button>
+          </div> */}
+        </Modal.Body>
+        <Modal.Footer className="modalFooter">
+          <Button variant="outline-success" type="submit">
             Submit
-          </Button>
-          <Button variant="secondary" onClick={props.onHide} className="ml-2">
+            </Button>
+          <Button variant="outline-secondary" onClick={props.onHide} className="ml-2">
             Cancel
-          </Button>
-        </Form>
-      </Modal.Body>
-      {/* <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer> */}
+            </Button>
+        </Modal.Footer>
+      </Form>
     </Modal>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import './NavbarComp.scss';
 import AddLocationModal from './AddLocationModal';
@@ -24,8 +25,8 @@ export default function NavbarComp() {
           <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav" className="navbar-collapse">
             <Nav>
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/list">List</Nav.Link>
+              <LinkContainer to="/"><Nav.Link>Home</Nav.Link></LinkContainer>
+              <LinkContainer to="/list"><Nav.Link >List</Nav.Link></LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </>

@@ -55,13 +55,13 @@ function AddLocationModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header closeButton className="modalHeader">
         <Modal.Title id="contained-modal-title-vcenter">
           Add a new Restaurant
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <Form noValidate validated={validated} onSubmit={onSubmit}>
+      <Form noValidate validated={validated} onSubmit={onSubmit}>
+        <Modal.Body>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
             <Form.Control required type="text" name="name" value={formData.name} onChange={onChange} placeholder="Enter name" />
@@ -119,17 +119,16 @@ function AddLocationModal(props) {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Button variant="success" type="submit">
+        </Modal.Body>
+        <Modal.Footer className="modalFooter">
+          <Button variant="outline-success" type="submit">
             Submit
           </Button>
-          <Button variant="secondary" onClick={props.onHide} className="ml-2">
+          <Button variant="outline-secondary" onClick={props.onHide} className="ml-2">
             Cancel
           </Button>
-        </Form>
-      </Modal.Body>
-      {/* <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer> */}
+        </Modal.Footer>
+      </Form>
     </Modal>
   );
 }

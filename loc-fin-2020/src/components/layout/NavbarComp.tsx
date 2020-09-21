@@ -4,15 +4,9 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 import './NavbarComp.scss';
 import AddLocationModal from './AddLocationModal';
-// import {hideModal, showModal} from '../../store/actions/modalActions';
 
 export default function NavbarComp() {
   const [modalShow, setModalShow] = useState(false);
-
-  // function submitLocation(e: any) {
-  //   e.preventDefault();
-  //   return console.log('submitted');
-  // }
 
   return (
     <>
@@ -41,7 +35,6 @@ export default function NavbarComp() {
       <AddLocationModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-      // onSubmit={() => submitLocation(e)}
       />
     </>
 

@@ -8,5 +8,5 @@ import modalReducer from './modalReducer'
 export default combineReducers({
   locations: locationsReducer,
   modal: modalReducer,
-  location: FormReducer
+  // location: FormReducer
 })

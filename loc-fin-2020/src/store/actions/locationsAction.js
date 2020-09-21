@@ -1,5 +1,6 @@
-import { GET_LOCATIONS, LOCATIONS_ERROR, ADD_LOCATION, ADD_LOCATION_ERROR, GET_LOCATION, GET_LOCATION_ERROR, EDIT_LOCATION, EDIT_LOCATION_ERROR } from '../actionTypes'
+import { GET_LOCATIONS, LOCATIONS_ERROR, ADD_LOCATION, ADD_LOCATION_ERROR, GET_LOCATION, GET_LOCATION_ERROR, EDIT_LOCATION, EDIT_LOCATION_ERROR, DELETE_LOCATION, DELETE_LOCATION_ERROR, RESET_LOCATION, RESET_LOCATION_ERROR } from '../actionTypes'
 import { get, post, put } from 'axios'
+import axios from 'axios'
 
 
 
@@ -33,11 +34,9 @@ export const addLocation = (newLocation) => async dispatch => {
     });
   }
 };
-export const getLocationFromSelect = (location) => async dispatch => {
+export const getLocationFromSelect = (id) => async dispatch => {
   try {
-    const id = location.id
     const res = await get('/locations/' + id)
-    console.log(res.data, 'DATA');
     dispatch({
       type: GET_LOCATION,
       location: res.data
@@ -52,7 +51,7 @@ export const getLocationFromSelect = (location) => async dispatch => {
 export const editLocation = (newLocation, id) => async dispatch => {
   try {
     const res = await put('/locations/' + id, newLocation);
-
+    console.log(res, 'RES');
     dispatch({
       type: EDIT_LOCATION,
       location: res.data
@@ -64,3 +63,32 @@ export const editLocation = (newLocation, id) => async dispatch => {
     });
   }
 };
+export const deleteLocation = (id) => async dispatch => {
+  try {
+    const res = axios.delete('/locations/' + id);
+    console.log(res, 'RES');
+    dispatch({
+      type: DELETE_LOCATION,
+      id: id
+    });
+  } catch (err) {
+    dispatch({
+      type: DELETE_LOCATION_ERROR,
+      err
+    });
+  }
+};
+
+export const resetLocation = () => async dispatch => {
+  try {
+    dispatch({
+      type: RESET_LOCATION,
+      location: ''
+    });
+  } catch (err) {
+    dispatch({
+      type: RESET_LOCATION_ERROR,
+      err
+    });
+  }
+}

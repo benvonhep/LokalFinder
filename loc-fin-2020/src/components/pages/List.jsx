@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { getLocationFromSelect } from '../../store/actions/locationsAction';
+import { deleteLocation, getLocationFromSelect } from '../../store/actions/locationsAction';
 import EditLocationModal from '../layout/EditLocationModal';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Card from 'react-bootstrap/Card';
@@ -14,13 +14,17 @@ import './List.scss';
 function List() {
   const [editmodalShow, setEditModalShow] = useState(false);
   const locations = useSelector(state => state.locations)
-  const location = useSelector(state => state.location)
+  // const location = useSelector(state => state.location)
   const loading = useSelector(state => state.loading)
   const dispatch = useDispatch();
 
-  const onItemClicked = (location) => {
-    dispatch(getLocationFromSelect(location))
+  const onItemClicked = (id) => {
     setEditModalShow(true)
+    dispatch(getLocationFromSelect(id))
+  }
+
+  const deleteItem = (id) => {
+    dispatch(deleteLocation(id))
   }
 
   return (
@@ -46,8 +50,8 @@ function List() {
                     <Card.Footer className="footer">
                       <small className="address">{location.street}, {location.city}</small>
                       <div className="buttonGroup">
-                        <Button size="sm" onClick={() => { onItemClicked(location) }} variant="outline-warning">Edit</Button>
-                        <Button size="sm" onClick={() => console.log('delete')} variant="outline-danger ml-2">Delete</Button>
+                        <Button size="sm" onClick={() => { onItemClicked(location.id) }} variant="outline-warning">Edit</Button>
+                        <Button size="sm" onClick={() => { deleteItem(location.id) }} variant="outline-danger ml-2">Delete</Button>
                       </div>
                     </Card.Footer>
                   </Card>

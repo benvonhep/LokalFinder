@@ -12,19 +12,8 @@
       "food": "American"
     },
     {
-      "id": 2,
-      "name": "zui",
-      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80i",
-      "description": "zui",
-      "openingTime": "uzi",
-      "phone": "zui",
-      "street": "zui",
-      "city": "zui",
-      "food": "zui"
-    },
-    {
       "id": 3,
-      "name": "ert",
+      "name": "MCShitty deluxe ult",
       "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80i",
       "description": "ert",
       "openingTime": "ert",
@@ -32,39 +21,6 @@
       "street": "ert",
       "city": "ert",
       "food": "ert"
-    },
-    {
-      "id": 4,
-      "name": "dfgdfg",
-      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-      "description": "iop",
-      "openingTime": "iop",
-      "phone": "opi",
-      "street": "iop",
-      "city": "poi",
-      "food": "iop"
-    },
-    {
-      "id": 5,
-      "name": "sdf",
-      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-      "description": "sdfsfds",
-      "openingTime": "sdfsdf",
-      "phone": "uuuuuu",
-      "street": "uuuuu",
-      "city": "uuuuu",
-      "food": "uuuuu"
-    },
-    {
-      "id": 6,
-      "name": "zzz",
-      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-      "description": "zzz",
-      "openingTime": "z",
-      "phone": "z",
-      "street": "z",
-      "city": "z",
-      "food": "z"
     }
   ]
 }

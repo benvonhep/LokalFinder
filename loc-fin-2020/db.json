@@ -14,30 +14,30 @@
       "longitude": 16.35
     },
     {
-      "id": 3,
-      "name": "Goldene Möwe",
-      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80i",
-      "description": "ert",
-      "openingTime": "ert",
-      "phone": "ert",
-      "street": "ert",
-      "city": "ert",
-      "food": "ert",
+      "id": 2,
+      "name": "Schachtelwirt",
+      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+      "description": "Nice place for a quick and delicious meal",
+      "openingTime": "12-23",
+      "phone": "01589384",
+      "street": "Schwedenplatz 1",
+      "city": "Vienna",
+      "food": "American",
       "latitude": 48.22,
-      "longitude": 16.36
+      "longitude": 16.33
     },
     {
-      "id": 4,
-      "name": "coordinatestest",
+      "id": 3,
+      "name": "Schachtelwirt",
       "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-      "description": "hjkhkj",
-      "openingTime": "kjhkjh",
-      "phone": "kjhkjh",
-      "street": "kjhkjh",
-      "city": "kjhkjh",
-      "food": "kjhkjh",
-      "latitude": 48.23,
-      "longitude": 16.37
+      "description": "Nice place for a quick and delicious meal",
+      "openingTime": "12-23",
+      "phone": "01589384",
+      "street": "Schwedenplatz 1",
+      "city": "Vienna",
+      "food": "American",
+      "latitude": 48.24,
+      "longitude": 16.32
     }
   ]
 }

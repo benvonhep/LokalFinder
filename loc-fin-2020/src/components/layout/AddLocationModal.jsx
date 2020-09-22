@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
-import { addLocation } from '../../store/actions/locationsAction';
+import { addLocation, resetLocation } from '../../store/actions/locationsAction';
 import './AddLocationModal.scss';
 import { useDispatch } from 'react-redux';
 // import ILocation from '../../interfaces/ILocation';
@@ -51,9 +51,10 @@ function AddLocationModal(props) {
     }
   }
 
-  const cancel = () => {
+  const onCancel = async () => {
     props.onHide()
     setFormData(initialFormData)
+    dispatch(resetLocation())
   }
 
 
@@ -68,6 +69,8 @@ function AddLocationModal(props) {
         <Modal.Title id="contained-modal-title-vcenter">
           Add a new Restaurant
         </Modal.Title>
+        <Button size="sm" variant="outline-secondary" onClick={onCancel}>Close</Button>
+
       </Modal.Header>
       <Form noValidate validated={validated} onSubmit={onSubmit}>
         <Modal.Body>
@@ -207,7 +210,7 @@ function AddLocationModal(props) {
           <Button variant="outline-success" type="submit">
             Submit
           </Button>
-          <Button variant="outline-secondary" onClick={cancel} className="ml-2">
+          <Button variant="outline-secondary" onClick={onCancel} className="ml-2">
             Cancel
           </Button>
         </Modal.Footer>

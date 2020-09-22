@@ -23,7 +23,7 @@ export default function LeafletMap() {
       {!loading &&
         <>
           {locations.locations.map((location) => (
-            <Marker position={[location.latitude, location.longitude]}>
+            <Marker key={location.id} position={[location.latitude, location.longitude]}>
               <Popup>
                 A pretty CSS3 popup. <br /> Easily customizable.
                 </Popup>

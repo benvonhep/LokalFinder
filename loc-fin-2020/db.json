@@ -9,7 +9,9 @@
       "phone": "01589384",
       "street": "Schwedenplatz 1",
       "city": "Vienna",
-      "food": "American"
+      "food": "American",
+      "latitude": 48.21,
+      "longitude": 16.35
     },
     {
       "id": 3,
@@ -20,7 +22,22 @@
       "phone": "ert",
       "street": "ert",
       "city": "ert",
-      "food": "ert"
+      "food": "ert",
+      "latitude": 48.22,
+      "longitude": 16.36
+    },
+    {
+      "id": 4,
+      "name": "coordinatestest",
+      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+      "description": "hjkhkj",
+      "openingTime": "kjhkjh",
+      "phone": "kjhkjh",
+      "street": "kjhkjh",
+      "city": "kjhkjh",
+      "food": "kjhkjh",
+      "latitude": 48.23,
+      "longitude": 16.37
     }
   ]
 }

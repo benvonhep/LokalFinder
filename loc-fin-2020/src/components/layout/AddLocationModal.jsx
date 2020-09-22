@@ -14,7 +14,9 @@ const initialFormData = {
   phone: '',
   street: '',
   city: '',
-  food: ''
+  food: '',
+  latitude: '',
+  longitude: ''
 }
 
 function AddLocationModal(props) {
@@ -169,6 +171,32 @@ function AddLocationModal(props) {
               value={formData.food}
               onChange={onChange}
               placeholder="Enter kind of food" />
+            <Form.Control.Feedback type="invalid">
+              Please enter the kind of food served
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="latitude">
+            <Form.Label>Locations Latitude</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="latitude"
+              value={formData.latitude}
+              onChange={onChange}
+              placeholder="Enter locations latitude" />
+            <Form.Control.Feedback type="invalid">
+              Please enter the kind of food served
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="longitude">
+            <Form.Label>Longitude</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="longitude"
+              value={formData.longitude}
+              onChange={onChange}
+              placeholder="Enter kind of longitude" />
             <Form.Control.Feedback type="invalid">
               Please enter the kind of food served
             </Form.Control.Feedback>

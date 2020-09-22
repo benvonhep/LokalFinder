@@ -1,0 +1,70 @@
+.app-card-list {
+  display: flex;
+  min-width:100%;
+  // float:right;
+  margin: 0;
+  // min-height: 75vh;
+  white-space:normal;
+  // overflow-x: scroll;
+  // margin-top:-70px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media(min-width:768px) {
+      width:80%;
+      white-space:nowrap;
+      margin-top: 0;
+  }
+
+  .cardColumninRow {
+    margin: 7px;
+    padding: 0;
+    max-width: 364px;
+    min-width: 364px;
+  }
+
+  .cardRow {
+    min-width: 100vw;
+  }
+
+  .card {
+    margin: 7px;
+    max-width: 344px;
+    min-width: 344px;
+    display: inline-block;
+
+    .card-body {
+        white-space: normal;
+        height: 124px;
+    }
+
+    .card-image {
+      max-height: 275px;
+      min-height: 274px;
+      max-width: 344px;
+      min-width: 344px;
+    }
+
+    .footer {
+      background-color: #172a28;
+      color: white;
+      display: flex;
+    }
+
+    .address {
+      vertical-align: bottom !important;
+    }
+
+
+
+    .buttonGroup {
+      margin-left: auto;
+    }
+
+    .button .btn {
+      height: 20px !important;
+    }
+  }
+}

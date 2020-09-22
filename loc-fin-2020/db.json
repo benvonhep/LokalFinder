@@ -2,7 +2,6 @@
   "locations": [
     {
       "id": 1,
-      "userId": 1,
       "name": "Schachtelwirt",
       "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
       "description": "Nice place for a quick and delicious meal",
@@ -10,34 +9,18 @@
       "phone": "01589384",
       "street": "Schwedenplatz 1",
       "city": "Vienna",
-      "country": "Austria",
-      "food": "American"
-    },
-    {
-      "id": 2,
-      "userId": 2,
-      "name": "Zur goldenen Möwe",
-      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-      "description": "Nice place for a quick and delicious meal",
-      "openingTime": "12-23",
-      "phone": "01589384",
-      "street": "Schwedenplatz 2",
-      "city": "Vienna",
-      "country": "Austria",
       "food": "American"
     },
     {
       "id": 3,
-      "userId": 1,
-      "name": "McDelicious",
-      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-      "description": "Nice place for a quick and delicious meal",
-      "openingTime": "12-23",
-      "phone": "01589384",
-      "street": "Schwedenplatz 2",
-      "city": "Vienna",
-      "country": "Austria",
-      "food": "American"
+      "name": "Goldene Möwe",
+      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80i",
+      "description": "ert",
+      "openingTime": "ert",
+      "phone": "ert",
+      "street": "ert",
+      "city": "ert",
+      "food": "ert"
     }
   ]
 }

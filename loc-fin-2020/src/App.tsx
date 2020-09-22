@@ -1,12 +1,9 @@
-import React, { Fragment } from 'react';
-import Nav from 'react-bootstrap/esm/Nav';
-import Navbar from 'react-bootstrap/esm/Navbar';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.scss';
-import Home from './components/Home';
-import List from './components/List';
-import NavbarComp from './components/NavbarComp'
-
+import Home from './components/pages/Home';
+import List from './components/pages/List';
+import NavbarComp from './components/layout/NavbarComp'
 
 function App() {
   return (
@@ -23,7 +20,5 @@ function App() {
     </div>
   )
 }
-
-
 
 export default App;

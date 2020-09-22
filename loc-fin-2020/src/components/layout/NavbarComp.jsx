@@ -12,7 +12,7 @@ export default function NavbarComp() {
   return (
     <>
       <Navbar
-        className="navbar navbar-dark"
+        className="navbar navbar-dark shadow-lg"
         sticky="top"
         collapseOnSelect
         expand="sm">

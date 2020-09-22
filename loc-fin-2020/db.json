@@ -2,7 +2,7 @@
   "locations": [
     {
       "id": 1,
-      "name": "Schachtelwirt",
+      "name": "Schachtelwirt 2",
       "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
       "description": "Nice place for a quick and delicious meal",
       "openingTime": "12-23",
@@ -15,7 +15,7 @@
     },
     {
       "id": 2,
-      "name": "Schachtelwirt",
+      "name": "Zur goldenen Möwe",
       "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
       "description": "Nice place for a quick and delicious meal",
       "openingTime": "12-23",
@@ -41,7 +41,7 @@
     },
     {
       "id": 4,
-      "name": "Zur goldenen Möwe",
+      "name": "Zur goldenen Möwe 2",
       "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
       "description": "langsam und fettig",
       "openingTime": "24/7",

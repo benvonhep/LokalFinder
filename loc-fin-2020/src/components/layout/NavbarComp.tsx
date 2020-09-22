@@ -21,6 +21,7 @@ export default function NavbarComp() {
             <Nav>
               <LinkContainer to="/"><Nav.Link>Home</Nav.Link></LinkContainer>
               <LinkContainer to="/list"><Nav.Link >List</Nav.Link></LinkContainer>
+              <LinkContainer to="/map"><Nav.Link >Map</Nav.Link></LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </>

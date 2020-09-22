@@ -30,9 +30,15 @@ export default function locationsReducer(state = initialState, action) {
       }
 
     case EDIT_LOCATION:
-      const stateCopy = [...state];
-      const updatedList = stateCopy[action.location.id] = action.location;
-      return updatedList;
+      const locations = [
+        ...state.locations.filter(location => location.id !== action.location.id),
+        action.location
+      ];
+
+      return {
+        ...state,
+        locations
+      }
 
     case DELETE_LOCATION:
       console.log(action.id, 'ID');

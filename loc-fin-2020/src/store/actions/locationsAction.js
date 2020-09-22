@@ -51,7 +51,7 @@ export const getLocationFromSelect = (id) => async dispatch => {
 export const editLocation = (newLocation, id) => async dispatch => {
   try {
     const res = await put('/locations/' + id, newLocation);
-    console.log(res, 'RES');
+    console.log(res.data, 'RES');
     dispatch({
       type: EDIT_LOCATION,
       location: res.data

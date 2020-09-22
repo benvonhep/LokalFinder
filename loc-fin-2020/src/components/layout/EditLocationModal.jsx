@@ -48,7 +48,9 @@ function EditLocationModal(props) {
     }
     if (form.checkValidity() === true) {
       dispatch(editLocation(newLocation, newLocation.id))
-      form.reset()
+      // form.reset()
+      dispatch(resetLocation())
+
       props.onHide();
       setValidated(false);
     }

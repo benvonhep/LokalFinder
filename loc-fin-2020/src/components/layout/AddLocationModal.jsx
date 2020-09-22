@@ -3,7 +3,6 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import { addLocation, resetLocation } from '../../store/actions/locationsAction';
 import './AddLocationModal.scss';
 import { useDispatch } from 'react-redux';
-// import ILocation from '../../interfaces/ILocation';
 
 const initialFormData = {
   id: '',
@@ -15,8 +14,8 @@ const initialFormData = {
   street: '',
   city: '',
   food: '',
-  latitude: '',
-  longitude: ''
+  latitude: 48.23,
+  longitude: 16.35
 }
 
 function AddLocationModal(props) {

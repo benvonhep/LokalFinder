@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { editLocation, resetLocation } from '../../store/actions/locationsAction';
 import './EditLocationModal.scss';
-// import CloseButton from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-// import ILocation from '../../interfaces/ILocation';
 
 const initialFormData = {
   id: '',
@@ -51,7 +49,6 @@ function EditLocationModal(props) {
     }
     if (form.checkValidity() === true) {
       dispatch(editLocation(newLocation, newLocation.id))
-      // form.reset()
       dispatch(resetLocation())
 
       props.onHide();
@@ -79,11 +76,6 @@ function EditLocationModal(props) {
           Edit Restaurant
         </Modal.Title>
         <Button size="sm" variant="outline-secondary" onClick={onCancel}>Close</Button>
-
-        {/* <Button onClick={onCancel}>Close</Button> */}
-        {/* <Button>
-          <CloseButton />
-        </Button> */}
       </Modal.Header>
       <Form noValidate validated={validated} onSubmit={onSubmit}>
         <Modal.Body>

@@ -9,7 +9,8 @@ export default interface ILocation {
   street?: string
   city?: string
   food?: string,
-  price?: string
+  casual?: boolean,
+  fancy?: boolean,
 }
 
 export default interface IModal {

@@ -137,12 +137,27 @@ function EditLocationModal(props) {
               Please enter the kind of food served
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="price">
-            <Form.Label>Price</Form.Label>
-            <Form.Control required type="text" name="price" defaultValue={props.location.price || ''} onChange={onChange} placeholder="Enter the fancyness" />
-            <Form.Control.Feedback type="invalid">
-              Is it expensive or casual?
-            </Form.Control.Feedback>
+          <Form.Group controlId="casual">
+            <Form.Label>Casual</Form.Label>
+            <Form.Check
+              inline
+              type="checkbox"
+              name="casual"
+              checked={formData.casual}
+              onChange={onChange}
+              placeholder="Enter the fancyness">
+            </Form.Check>
+          </Form.Group>
+          <Form.Group controlId="fancy">
+            <Form.Label>Fancy</Form.Label>
+            <Form.Check
+              inline
+              type="checkbox"
+              name="fancy"
+              checked={formData.fancy}
+              onChange={onChange}
+              placeholder="Enter the fancyness">
+            </Form.Check>
           </Form.Group>
           <Form.Group controlId="latitude">
             <Form.Label>Locations Latitude</Form.Label>

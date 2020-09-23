@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { addLocation, resetLocation } from '../../store/actions/locationsAction';
 import './AddLocationModal.scss';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import { useDispatch } from 'react-redux';
 
 const initialFormData = {
@@ -14,7 +16,8 @@ const initialFormData = {
   street: '',
   city: '',
   food: '',
-  price: '',
+  casual: '',
+  fancy: '',
   latitude: 48.23,
   longitude: 16.35
 }
@@ -178,18 +181,27 @@ function AddLocationModal(props) {
               Please enter the kind of food served
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="price">
-            <Form.Label>Price</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              name="price"
-              value={formData.price}
+          <Form.Group controlId="casual">
+            <Form.Label>Casual</Form.Label>
+            <Form.Check
+              inline
+              type="checkbox"
+              name="casual"
+              checked={formData.casual}
               onChange={onChange}
-              placeholder="Enter the fancyness" />
-            <Form.Control.Feedback type="invalid">
-              Is it expensive or casual?
-            </Form.Control.Feedback>
+              placeholder="Enter the fancyness">
+            </Form.Check>
+          </Form.Group>
+          <Form.Group controlId="fancy">
+            <Form.Label>Fancy</Form.Label>
+            <Form.Check
+              inline
+              type="checkbox"
+              name="fancy"
+              checked={formData.fancy}
+              onChange={onChange}
+              placeholder="Enter the fancyness">
+            </Form.Check>
           </Form.Group>
           <Form.Group controlId="latitude">
             <Form.Label>Locations Latitude</Form.Label>
@@ -227,8 +239,8 @@ function AddLocationModal(props) {
             Cancel
           </Button>
         </Modal.Footer>
-      </Form>
-    </Modal>
+      </Form >
+    </Modal >
   );
 }
 

@@ -10,7 +10,8 @@
       "street": "Schwedenplatz 1",
       "city": "Vienna",
       "food": "American",
-      "price": "casual",
+      "casual": "casual",
+      "fancy": "fancy",
       "latitude": 48.21,
       "longitude": 16.35
     },
@@ -24,7 +25,8 @@
       "street": "Schwedenplatz 1",
       "city": "Vienna",
       "food": "American",
-      "price": "fancy",
+      "casual": "casual",
+      "fancy": "",
       "latitude": 48.22,
       "longitude": 16.33
     },
@@ -38,9 +40,25 @@
       "street": "Schwedenplatz 1",
       "city": "Vienna",
       "food": "American",
-      "price": "casual",
+      "casual": "",
+      "fancy": "fancy",
       "latitude": 48.24,
       "longitude": 16.32
+    },
+    {
+      "id": 4,
+      "name": "hjk",
+      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+      "description": "hjkhjk",
+      "occasion": "hjkhhj",
+      "phone": "khjhk",
+      "street": "kjhkjh",
+      "city": "jkhkj",
+      "food": "kjhk",
+      "casual": "on",
+      "fancy": "",
+      "latitude": "48.2311",
+      "longitude": "16.3511"
     }
   ]
 }

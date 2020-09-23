@@ -14,13 +14,15 @@ import './List.scss';
 function List() {
   const [editmodalShow, setEditModalShow] = useState(false);
   const locations = useSelector(state => state.locations)
-  // const location = useSelector(state => state.location)
+  const [location, setLocation] = useState(null)
   const loading = useSelector(state => state.loading)
   const dispatch = useDispatch();
 
   const onItemClicked = (id) => {
     setEditModalShow(true)
-    dispatch(getLocationFromSelect(id))
+    const location = locations.locations.find((location) => location.id === id)
+    setLocation(location)
+    // dispatch(getLocationFromSelect(id))
   }
 
   const deleteItem = (id) => {
@@ -61,9 +63,11 @@ function List() {
           }
         </Row>
       </CardGroup>
-      <EditLocationModal
-        show={editmodalShow}
-        onHide={() => setEditModalShow(false)} />
+      {location &&
+        <EditLocationModal
+          show={editmodalShow}
+          location={location}
+          onHide={() => setEditModalShow(false)} />}
     </div>
   )
 }

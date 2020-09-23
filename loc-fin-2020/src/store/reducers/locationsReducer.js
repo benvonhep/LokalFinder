@@ -30,9 +30,11 @@ export default function locationsReducer(state = initialState, action) {
       }
 
     case EDIT_LOCATION:
+      const editLocationIndex = state.locations.findIndex(location => location.id === action.location.id)
       const locations = [
-        ...state.locations.filter(location => location.id !== action.location.id),
-        action.location
+        ...state.locations.slice(0, editLocationIndex),
+        action.location,
+        ...state.locations.slice(editLocationIndex + 1)
       ];
 
       return {

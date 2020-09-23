@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getLocationFromSelect } from '../../store/actions/locationsAction';
+import { useSelector } from 'react-redux';
 import { Map, TileLayer, Marker, CircleMarker } from 'react-leaflet';
-import { distance } from 'leaflet'
 import { usePosition } from '../hooks/usePosition';
 import './LeafletMap.scss'
 import MapLocationModal from '../layout/MapLocationModal';
@@ -12,32 +10,18 @@ const zoom = 13;
 
 export default function LeafletMap() {
   const locations = useSelector(state => state.locations);
-  // const location = useSelector(state => state.location);
   const [smShow, setSmShow] = useState(false);
   const loading = useSelector(state => state.loading);
   const [location, setLocation] = useState(null)
-
   const { latitude, longitude, error } = usePosition();
-  // const dispatch = useDispatch();
 
   const markerClick = (id) => {
     setSmShow(true)
     const location = locations.locations.find((location) => location.id === id)
-
-    // dispatch(getLocationFromSelect(id))
     setLocation(location)
   }
 
 
-  //   useEffect(() => {
-  //
-  //   })
-  //   const distanceToLocation = (lat, lng) => {
-  //     const currentPosition = [latitude, longitude]
-  //     const locationPosition = [lat, lng]
-  //     const calculatedDistance = distance(currentPosition, locationPosition)
-  //     return calculatedDistance;
-  //   }
 
   return (
     <>
@@ -70,11 +54,11 @@ export default function LeafletMap() {
         }
       </Map>
       <MapLocationModal
-
         show={smShow}
         location={location}
+        latitude={latitude}
+        longitude={longitude}
         onHide={() => setSmShow(false)} />
     </>
-    // distanceToLocation={distanceToLocation(lat, lng)}
   )
 }

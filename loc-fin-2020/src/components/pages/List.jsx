@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteLocation, getLocationFromSelect } from '../../store/actions/locationsAction';
 import { usePosition } from '../hooks/usePosition';
-import { distanceTo, latLng } from 'leaflet';
+import { latLng } from 'leaflet';
 import EditLocationModal from '../layout/EditLocationModal';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Card from 'react-bootstrap/Card';
@@ -27,7 +27,6 @@ function List() {
     setEditModalShow(true)
     const location = locations.locations.find((location) => location.id === id)
     setLocation(location)
-    // dispatch(getLocationFromSelect(id))
   }
 
   const deleteItem = (id) => {
@@ -39,17 +38,8 @@ function List() {
     const latlngLocationPosition = latLng(location.latitude, location.longitude)
     const userLocationDistanceMeter = latlngCurrentUserPosition.distanceTo(latlngLocationPosition);
     const userLocationDistanceKm = (userLocationDistanceMeter / 1000).toFixed(1)
-    console.log(userLocationDistanceKm, 'DIST');
-
-    // return userLocationDistanceKm;
     return <span>approximately {userLocationDistanceKm}km</span>
-
-
   }
-
-  //   const getDistance = (location) => {
-  //
-  //   }
 
   return (
     <div>

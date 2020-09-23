@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetLocation } from '../../store/actions/locationsAction';
+import { latLng } from 'leaflet'
+
 import { Modal } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
@@ -8,7 +10,6 @@ import './MapLocationModal.scss'
 
 export default function MapLocationModal(props) {
   const loading = useSelector(state => state.loading)
-  // const location = useSelector(state => state.location)
   const dispatch = useDispatch();
 
   const onCancel = async () => {
@@ -17,6 +18,13 @@ export default function MapLocationModal(props) {
   }
 
 
+  const getDistance = (location) => {
+    const latlngCurrentUserPosition = latLng(props.latitude, props.longitude)
+    const latlngLocationPosition = latLng(location.latitude, location.longitude)
+    const userLocationDistanceMeter = latlngCurrentUserPosition.distanceTo(latlngLocationPosition);
+    const userLocationDistanceKm = (userLocationDistanceMeter / 1000).toFixed(1)
+    return <span>approximately {userLocationDistanceKm}km</span>
+  }
 
   return (
     <Modal
@@ -35,6 +43,12 @@ export default function MapLocationModal(props) {
             <Card.Title>{props.location.name}</Card.Title>
             <Card.Text className="body-content">
               {props.location.description}
+              <br></br>
+              {props.latitude &&
+                <span>
+                  {getDistance(props.location)}
+                </span>
+              }
             </Card.Text>
           </Card.Body>
           <Card.Footer className="footer">

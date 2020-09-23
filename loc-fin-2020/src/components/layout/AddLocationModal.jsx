@@ -9,11 +9,12 @@ const initialFormData = {
   name: '',
   photo: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
   description: '',
-  openingTime: '',
+  occasion: '',
   phone: '',
   street: '',
   city: '',
   food: '',
+  price: '',
   latitude: 48.23,
   longitude: 16.35
 }
@@ -81,7 +82,7 @@ function AddLocationModal(props) {
               name="name"
               value={formData.name}
               onChange={onChange}
-              placeholder="Enter name" />
+              placeholder="Enter the name" />
             <Form.Control.Feedback type="invalid">
               Please enter a name
             </Form.Control.Feedback>
@@ -94,7 +95,7 @@ function AddLocationModal(props) {
               name="photo"
               value={formData.photo}
               onChange={onChange}
-              placeholder="Enter photo url" />
+              placeholder="Enter the photo url" />
             <Form.Control.Feedback type="invalid">
               Please enter the photo url
             </Form.Control.Feedback>
@@ -107,20 +108,20 @@ function AddLocationModal(props) {
               name="description"
               value={formData.description}
               onChange={onChange}
-              placeholder="Enter description" />
+              placeholder="Enter the description" />
             <Form.Control.Feedback type="invalid">
               Please enter a description
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="openingTime">
-            <Form.Label>Opening Times</Form.Label>
+          <Form.Group controlId="occasion">
+            <Form.Label>Occasion</Form.Label>
             <Form.Control
               required
               type="text"
-              name="openingTime"
-              value={formData.openingTime}
+              name="occasion"
+              value={formData.occasion}
               onChange={onChange}
-              placeholder="Enter opening times" />
+              placeholder="Enter the occasion" />
             <Form.Control.Feedback type="invalid">
               Please enter the opening times
             </Form.Control.Feedback>
@@ -133,7 +134,7 @@ function AddLocationModal(props) {
               name="phone"
               value={formData.phone}
               onChange={onChange}
-              placeholder="Enter phone number" />
+              placeholder="Enter the phone number" />
             <Form.Control.Feedback type="invalid">
               Please enter the phone number
             </Form.Control.Feedback>
@@ -146,7 +147,7 @@ function AddLocationModal(props) {
               name="street"
               value={formData.street}
               onChange={onChange}
-              placeholder="Enter street" />
+              placeholder="Enter the street" />
             <Form.Control.Feedback type="invalid">
               Please enter the street
             </Form.Control.Feedback>
@@ -159,7 +160,7 @@ function AddLocationModal(props) {
               name="city"
               value={formData.city}
               onChange={onChange}
-              placeholder="Enter city" />
+              placeholder="Enter the city" />
             <Form.Control.Feedback type="invalid">
               Please enter the city
             </Form.Control.Feedback>
@@ -172,9 +173,22 @@ function AddLocationModal(props) {
               name="food"
               value={formData.food}
               onChange={onChange}
-              placeholder="Enter kind of food" />
+              placeholder="Select the cuisine" />
             <Form.Control.Feedback type="invalid">
               Please enter the kind of food served
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="price">
+            <Form.Label>Price</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="price"
+              value={formData.price}
+              onChange={onChange}
+              placeholder="Enter the fancyness" />
+            <Form.Control.Feedback type="invalid">
+              Is it expensive or casual?
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="latitude">
@@ -185,9 +199,9 @@ function AddLocationModal(props) {
               name="latitude"
               value={formData.latitude}
               onChange={onChange}
-              placeholder="Enter locations latitude" />
+              placeholder="Enter the locations latitude" />
             <Form.Control.Feedback type="invalid">
-              Please enter the kind of food served
+              Please enter the latitude
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="longitude">
@@ -198,9 +212,9 @@ function AddLocationModal(props) {
               name="longitude"
               value={formData.longitude}
               onChange={onChange}
-              placeholder="Enter kind of longitude" />
+              placeholder="Enter the locations longitude" />
             <Form.Control.Feedback type="invalid">
-              Please enter the kind of food served
+              Please enter the longitude
             </Form.Control.Feedback>
           </Form.Group>
 

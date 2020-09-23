@@ -9,11 +9,12 @@ const initialFormData = {
   name: '',
   photo: '',
   description: '',
-  openingTime: '',
+  occasion: '',
   phone: '',
   street: '',
   city: '',
   food: '',
+  price: '',
   latitude: '',
   longitude: ''
 }
@@ -82,30 +83,30 @@ function EditLocationModal(props) {
         <Modal.Body>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
-            <Form.Control required type="text" name="name" defaultValue={props.location.name || ''} onChange={onChange} placeholder="Enter name" />
+            <Form.Control required type="text" name="name" defaultValue={props.location.name || ''} onChange={onChange} placeholder="Enter a name" />
             <Form.Control.Feedback type="invalid">
-              Please enter a name
+              Please enter the name
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="photo">
             <Form.Label>Photo Url</Form.Label>
-            <Form.Control required type="text" name="photo" defaultValue={props.location.photo || ''} onChange={onChange} placeholder="Enter photo url" />
+            <Form.Control required type="text" name="photo" defaultValue={props.location.photo || ''} onChange={onChange} placeholder="Enter a photo url" />
             <Form.Control.Feedback type="invalid">
               Please enter the photo url
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="description">
             <Form.Label>Description</Form.Label>
-            <Form.Control required type="text" name="description" defaultValue={props.location.description || ''} onChange={onChange} placeholder="Enter description" />
+            <Form.Control required type="text" name="description" defaultValue={props.location.description || ''} onChange={onChange} placeholder="Enter a description" />
             <Form.Control.Feedback type="invalid">
-              Please enter a description
+              Please enter the description
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="openingTime">
-            <Form.Label>Opening Times</Form.Label>
-            <Form.Control required type="text" name="openingTime" defaultValue={props.location.openingTime || ''} onChange={onChange} placeholder="Enter opening times" />
+          <Form.Group controlId="occasion">
+            <Form.Label>Occasion</Form.Label>
+            <Form.Control required type="text" name="occasion" defaultValue={props.location.occasion || ''} onChange={onChange} placeholder="Enter the occasion" />
             <Form.Control.Feedback type="invalid">
-              Please enter the opening times
+              Please enter the occation
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="phone">
@@ -131,9 +132,16 @@ function EditLocationModal(props) {
           </Form.Group>
           <Form.Group controlId="food">
             <Form.Label>Food</Form.Label>
-            <Form.Control required type="text" name="food" defaultValue={props.location.food || ''} onChange={onChange} placeholder="Enter kind of food" />
+            <Form.Control required type="text" name="food" defaultValue={props.location.food || ''} onChange={onChange} placeholder="Select the cuisine" />
             <Form.Control.Feedback type="invalid">
               Please enter the kind of food served
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="price">
+            <Form.Label>Price</Form.Label>
+            <Form.Control required type="text" name="price" defaultValue={props.location.price || ''} onChange={onChange} placeholder="Enter the fancyness" />
+            <Form.Control.Feedback type="invalid">
+              Is it expensive or casual?
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="latitude">
@@ -146,7 +154,7 @@ function EditLocationModal(props) {
               onChange={onChange}
               placeholder="Enter locations latitude" />
             <Form.Control.Feedback type="invalid">
-              Please enter the kind of food served
+              Please enter the latitude
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="longitude">
@@ -157,9 +165,9 @@ function EditLocationModal(props) {
               name="longitude"
               defaultValue={props.location.longitude || ''}
               onChange={onChange}
-              placeholder="Enter kind of longitude" />
+              placeholder="Enter the locations longitude" />
             <Form.Control.Feedback type="invalid">
-              Please enter the kind of food served
+              Please enter the longitude
             </Form.Control.Feedback>
           </Form.Group>
         </Modal.Body>

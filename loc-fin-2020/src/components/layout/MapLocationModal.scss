@@ -1,0 +1,54 @@
+
+
+.cardRow {
+  min-width: 100vw;
+}
+
+.card {
+  max-width: 344px;
+  min-width: 344px;
+  display: inline-block;
+  border: none !important;
+
+  .card-body {
+      white-space: normal;
+      height: 252px;
+  }
+
+  .card-image {
+    max-height: 242px;
+    min-height: 242px;
+    max-width: 344px;
+    min-width: 344px;
+  }
+
+  .footer {
+    background-color: #172a28;
+    color: white;
+    display: flex;
+  }
+
+  .address {
+    vertical-align: bottom !important;
+  }
+
+
+
+  .buttonGroup {
+    margin-left: auto;
+  }
+
+  .button .btn {
+    height: 20px !important;
+  }
+}
+
+.modal-content {
+  max-width: 364px;
+  border: 0 !important;
+}
+
+.modal-dialog {
+  max-width: 344px;
+  min-width: 344px;
+}

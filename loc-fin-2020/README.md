@@ -9,7 +9,7 @@ Schedule
     x- Projekt Aufsetzen mit TS und Bs4
     x - FakeApi
     x- FApi darstellen
-    - Pages erstellen
+    x Pages erstellen
       (
         x Landing:
         x Hintergrundbild,
@@ -23,10 +23,14 @@ Schedule
       x incl Routing ohne register user
 
   Tag 2
-    - AddModule
-    - EditModule
-    - DeleteItem
-    - Redux and functionality add/edit/delete (incl redux thunk?)
+    x AddModule
+    x EditModule
+    x DeleteItem
+    x Redux and functionality add/edit/delete (incl redux thunk?)
+
+  Tag 5 + 6
+    - Karte leaflet
+      - Koordinatenfinden gm
 
   Tag 3
     - Modal_Filter (&sort?)
@@ -36,9 +40,6 @@ Schedule
     - Auth0 (vielleicht contextapi?)
     - register user (vielleicht contextapi?)
 
-  Tag 5 + 6
-    - Karte leaflet
-    - Koordinatenfinden gm
 
         - Pagination?? eher lazy loading
 ########################################################################################################################

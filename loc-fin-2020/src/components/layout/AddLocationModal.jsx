@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
-import { addLocation } from '../../store/actions/locationsAction';
+import { addLocation, resetLocation } from '../../store/actions/locationsAction';
 import './AddLocationModal.scss';
 import { useDispatch } from 'react-redux';
-// import ILocation from '../../interfaces/ILocation';
 
 const initialFormData = {
   id: '',
@@ -14,7 +13,9 @@ const initialFormData = {
   phone: '',
   street: '',
   city: '',
-  food: ''
+  food: '',
+  latitude: 48.23,
+  longitude: 16.35
 }
 
 function AddLocationModal(props) {
@@ -49,9 +50,10 @@ function AddLocationModal(props) {
     }
   }
 
-  const cancel = () => {
+  const onCancel = async () => {
     props.onHide()
     setFormData(initialFormData)
+    dispatch(resetLocation())
   }
 
 
@@ -66,6 +68,8 @@ function AddLocationModal(props) {
         <Modal.Title id="contained-modal-title-vcenter">
           Add a new Restaurant
         </Modal.Title>
+        <Button size="sm" variant="outline-secondary" onClick={onCancel}>Close</Button>
+
       </Modal.Header>
       <Form noValidate validated={validated} onSubmit={onSubmit}>
         <Modal.Body>
@@ -173,13 +177,39 @@ function AddLocationModal(props) {
               Please enter the kind of food served
             </Form.Control.Feedback>
           </Form.Group>
+          <Form.Group controlId="latitude">
+            <Form.Label>Locations Latitude</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="latitude"
+              value={formData.latitude}
+              onChange={onChange}
+              placeholder="Enter locations latitude" />
+            <Form.Control.Feedback type="invalid">
+              Please enter the kind of food served
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="longitude">
+            <Form.Label>Longitude</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="longitude"
+              value={formData.longitude}
+              onChange={onChange}
+              placeholder="Enter kind of longitude" />
+            <Form.Control.Feedback type="invalid">
+              Please enter the kind of food served
+            </Form.Control.Feedback>
+          </Form.Group>
 
         </Modal.Body>
         <Modal.Footer className="modalFooter">
           <Button variant="outline-success" type="submit">
             Submit
           </Button>
-          <Button variant="outline-secondary" onClick={cancel} className="ml-2">
+          <Button variant="outline-secondary" onClick={onCancel} className="ml-2">
             Cancel
           </Button>
         </Modal.Footer>

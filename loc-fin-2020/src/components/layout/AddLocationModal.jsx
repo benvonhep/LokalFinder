@@ -81,6 +81,7 @@ function AddLocationModal(props) {
             <Form.Label>Name</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="name"
               value={formData.name}
@@ -94,6 +95,7 @@ function AddLocationModal(props) {
             <Form.Label>Photo Url</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="photo"
               value={formData.photo}
@@ -107,6 +109,7 @@ function AddLocationModal(props) {
             <Form.Label>Description</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="description"
               value={formData.description}
@@ -120,6 +123,7 @@ function AddLocationModal(props) {
             <Form.Label>Occasion</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="occasion"
               value={formData.occasion}
@@ -133,6 +137,7 @@ function AddLocationModal(props) {
             <Form.Label>Phone</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="phone"
               value={formData.phone}
@@ -146,6 +151,7 @@ function AddLocationModal(props) {
             <Form.Label>Street</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="street"
               value={formData.street}
@@ -159,6 +165,7 @@ function AddLocationModal(props) {
             <Form.Label>City</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="city"
               value={formData.city}
@@ -172,6 +179,7 @@ function AddLocationModal(props) {
             <Form.Label>Food</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="food"
               value={formData.food}
@@ -207,6 +215,7 @@ function AddLocationModal(props) {
             <Form.Label>Locations Latitude</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="latitude"
               value={formData.latitude}
@@ -220,6 +229,7 @@ function AddLocationModal(props) {
             <Form.Label>Longitude</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="longitude"
               value={formData.longitude}

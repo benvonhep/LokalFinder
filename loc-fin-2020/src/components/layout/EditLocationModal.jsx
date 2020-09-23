@@ -83,56 +83,112 @@ function EditLocationModal(props) {
         <Modal.Body>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
-            <Form.Control required type="text" name="name" defaultValue={props.location.name || ''} onChange={onChange} placeholder="Enter a name" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="name"
+              defaultValue={props.location.name || ''}
+              onChange={onChange}
+              placeholder="Enter a name" />
             <Form.Control.Feedback type="invalid">
               Please enter the name
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="photo">
             <Form.Label>Photo Url</Form.Label>
-            <Form.Control required type="text" name="photo" defaultValue={props.location.photo || ''} onChange={onChange} placeholder="Enter a photo url" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="photo"
+              defaultValue={props.location.photo || ''}
+              onChange={onChange}
+              placeholder="Enter a photo url" />
             <Form.Control.Feedback type="invalid">
               Please enter the photo url
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="description">
             <Form.Label>Description</Form.Label>
-            <Form.Control required type="text" name="description" defaultValue={props.location.description || ''} onChange={onChange} placeholder="Enter a description" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="description"
+              defaultValue={props.location.description || ''}
+              onChange={onChange}
+              placeholder="Enter a description" />
             <Form.Control.Feedback type="invalid">
               Please enter the description
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="occasion">
             <Form.Label>Occasion</Form.Label>
-            <Form.Control required type="text" name="occasion" defaultValue={props.location.occasion || ''} onChange={onChange} placeholder="Enter the occasion" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="occasion"
+              defaultValue={props.location.occasion || ''}
+              onChange={onChange}
+              placeholder="Enter the occasion" />
             <Form.Control.Feedback type="invalid">
               Please enter the occation
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="phone">
             <Form.Label>Phone</Form.Label>
-            <Form.Control required type="text" name="phone" defaultValue={props.location.phone || ''} onChange={onChange} placeholder="Enter phone number" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="phone"
+              defaultValue={props.location.phone || ''}
+              onChange={onChange}
+              placeholder="Enter phone number" />
             <Form.Control.Feedback type="invalid">
               Please enter the phone number
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="street">
             <Form.Label>Street</Form.Label>
-            <Form.Control required type="text" name="street" defaultValue={props.location.street || ''} onChange={onChange} placeholder="Enter street" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="street"
+              defaultValue={props.location.street || ''}
+              onChange={onChange}
+              placeholder="Enter street" />
             <Form.Control.Feedback type="invalid">
               Please enter the street
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="city">
             <Form.Label>City</Form.Label>
-            <Form.Control required type="text" name="city" defaultValue={props.location.city || ''} onChange={onChange} placeholder="Enter city" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="city"
+              defaultValue={props.location.city || ''}
+              onChange={onChange}
+              placeholder="Enter city" />
             <Form.Control.Feedback type="invalid">
               Please enter the city
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="food">
             <Form.Label>Food</Form.Label>
-            <Form.Control required type="text" name="food" defaultValue={props.location.food || ''} onChange={onChange} placeholder="Select the cuisine" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="food"
+              defaultValue={props.location.food || ''}
+              onChange={onChange}
+              placeholder="Select the cuisine" />
             <Form.Control.Feedback type="invalid">
               Please enter the kind of food served
             </Form.Control.Feedback>
@@ -163,6 +219,7 @@ function EditLocationModal(props) {
             <Form.Label>Locations Latitude</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="latitude"
               defaultValue={props.location.latitude || ''}
@@ -176,6 +233,7 @@ function EditLocationModal(props) {
             <Form.Label>Longitude</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="longitude"
               defaultValue={props.location.longitude || ''}

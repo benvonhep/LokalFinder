@@ -8,12 +8,15 @@ import './MapLocationModal.scss'
 
 export default function MapLocationModal(props) {
   const loading = useSelector(state => state.loading)
+  // const location = useSelector(state => state.location)
   const dispatch = useDispatch();
 
   const onCancel = async () => {
     props.onHide()
     dispatch(resetLocation())
   }
+
+
 
   return (
     <Modal
@@ -25,17 +28,17 @@ export default function MapLocationModal(props) {
       {loading &&
         <h1>loading ....</h1>
       }
-      {!loading &&
+      {props.location &&
         <Card className="card shadow-lg rounded">
-          <Card.Img className="card-image" variant="top" src='https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80' />
+          <Card.Img className="card-image" variant="top" src={props.location.photo} />
           <Card.Body className="card-body">
-            <Card.Title>name</Card.Title>
+            <Card.Title>{props.location.name}</Card.Title>
             <Card.Text className="body-content">
-              descr
+              {props.location.description}
             </Card.Text>
           </Card.Body>
           <Card.Footer className="footer">
-            <small className="address">street and city</small>
+            <small className="address">{props.location.address, props.location.city}</small>
             <div className="buttonGroup">
               <Button size="sm" variant="outline-info" onClick={() => onCancel()}>Close</Button>
             </div>

@@ -11,6 +11,8 @@ export default interface ILocation {
   food?: string,
   casual?: boolean,
   fancy?: boolean,
+  latitude?: number,
+  longitude?: number
 }
 
 export default interface IModal {

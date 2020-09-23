@@ -124,17 +124,20 @@ function EditLocationModal(props) {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="occasion">
-            <Form.Label>Occasion</Form.Label>
-            <Form.Control
-              required
-              size="sm"
-              type="text"
-              name="occasion"
-              defaultValue={props.location.occasion || ''}
-              onChange={onChange}
-              placeholder="Enter the occasion" />
+            <Form.Label>Choose Occasion</Form.Label>
+            <Form.Control as="select" size="sm" required name="occasion" value={props.location.occasion}
+              onChange={onChange}>
+              <option>Breakfast</option>
+              <option>Lunch</option>
+              <option>Dinner</option>
+              <option>Breakfast-Lunch</option>
+              <option>Breakfast-Dinner</option>
+              <option>Lunch-Dinner</option>
+              <option>Lunch-Dinner-Night</option>
+              <option>Breakfast-Lunch-Dinner-Night</option>
+            </Form.Control>
             <Form.Control.Feedback type="invalid">
-              Please enter the occation
+              Please enter the occasion
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="phone">
@@ -180,15 +183,16 @@ function EditLocationModal(props) {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="food">
-            <Form.Label>Food</Form.Label>
-            <Form.Control
-              required
-              size="sm"
-              type="text"
-              name="food"
-              defaultValue={props.location.food || ''}
-              onChange={onChange}
-              placeholder="Select the cuisine" />
+            <Form.Label>Choose Occasion</Form.Label>
+            <Form.Control as="select" size="sm" required name="food" value={props.location.food}
+              onChange={onChange}>
+              <option>African</option>
+              <option>American</option>
+              <option>Asian</option>
+              <option>Arabic</option>
+              <option>European</option>
+              <option>Other</option>
+            </Form.Control>
             <Form.Control.Feedback type="invalid">
               Please enter the kind of food served
             </Form.Control.Feedback>
@@ -199,7 +203,7 @@ function EditLocationModal(props) {
               inline
               type="checkbox"
               name="casual"
-              checked={formData.casual}
+              checked={props.location.casual}
               onChange={onChange}
               placeholder="Enter the fancyness">
             </Form.Check>
@@ -210,7 +214,7 @@ function EditLocationModal(props) {
               inline
               type="checkbox"
               name="fancy"
-              checked={formData.fancy}
+              checked={props.location.fancy}
               onChange={onChange}
               placeholder="Enter the fancyness">
             </Form.Check>

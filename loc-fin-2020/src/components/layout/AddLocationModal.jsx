@@ -126,11 +126,11 @@ function AddLocationModal(props) {
               <option>Breakfast</option>
               <option>Lunch</option>
               <option>Dinner</option>
-              <option>Breakfast-Lunch</option>
-              <option>Breakfast-Dinner</option>
-              <option>Lunch-Dinner</option>
-              <option>Lunch-Dinner-Night</option>
-              <option>Breakfast-Lunch-Dinner-Night</option>
+              <option>Breakfast | Lunch</option>
+              <option>Breakfast | Dinner</option>
+              <option>Lunch | Dinner</option>
+              <option>Lunch | Dinner-Night</option>
+              <option>Breakfast | Lunch |Dinner | Night</option>
             </Form.Control>
             <Form.Control.Feedback type="invalid">
               Please enter the occasion

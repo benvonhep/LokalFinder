@@ -35,6 +35,7 @@
     .card-body {
         white-space: normal;
         height: 272px;
+        padding: 0;
     }
 
     .card-image {
@@ -42,26 +43,73 @@
       min-height: 274px;
       max-width: 344px;
       min-width: 344px;
+      z-index: -1 !important;
     }
 
-    .footer {
+    .distance {
+      position: absolute;
+      top: 242px;
+      left: 10px;
+      color: #ffc107;
+      font-size: larger;
+      font-weight: bold;
+    }
+
+    .card-title {
+      margin-bottom: 0;
+      text-align: center;
+      padding-top: 5px;
+      background-color: #172a28;
+      color: #ffc107;
+
+    }
+
+
+
+
+    .description {
+      margin: 9px;
+      overflow-wrap: break-word;
+      font-size: 14px;
+    }
+
+    .location-details {
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      height: 22px;
+      text-transform:capitalize;
+      font-size: 11.5px;
+      color: #ffc107;
+      background-color: #172a28;
+
+    }
+
+
+
+    .card-footer {
       background-color: #172a28;
       color: white;
+      height: 55px;
       display: flex;
-    }
+      flex-direction: row;
+      padding: 6px, 9px;
+      font-size: 11.5px;
 
-    .address {
-      vertical-align: bottom !important;
-    }
+      .contactGroup {
+        display: flex;
+        flex-direction: column;
+        height: 44px;
+      }
 
+      .buttonGroup {
+        display: inline;
+        margin-left: auto;
+      }
 
-
-    .buttonGroup {
-      margin-left: auto;
-    }
-
-    .button .btn {
-      height: 20px !important;
+      .button .btn {
+        height: 20px !important;
+      }
     }
   }
 }

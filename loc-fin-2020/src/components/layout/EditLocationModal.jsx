@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { editLocation, resetLocation } from '../../store/actions/locationsAction';
 import './EditLocationModal.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const initialFormData = {
   id: '',

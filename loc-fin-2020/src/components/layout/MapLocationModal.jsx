@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetLocation } from '../../store/actions/locationsAction';
+import { latLng } from 'leaflet'
+
 import { Modal } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
@@ -15,6 +17,15 @@ export default function MapLocationModal(props) {
     dispatch(resetLocation())
   }
 
+
+  const getDistance = (location) => {
+    const latlngCurrentUserPosition = latLng(props.latitude, props.longitude)
+    const latlngLocationPosition = latLng(location.latitude, location.longitude)
+    const userLocationDistanceMeter = latlngCurrentUserPosition.distanceTo(latlngLocationPosition);
+    const userLocationDistanceKm = (userLocationDistanceMeter / 1000).toFixed(1)
+    return <span>approximately {userLocationDistanceKm}km</span>
+  }
+
   return (
     <Modal
       {...props}
@@ -25,17 +36,23 @@ export default function MapLocationModal(props) {
       {loading &&
         <h1>loading ....</h1>
       }
-      {!loading &&
+      {props.location &&
         <Card className="card shadow-lg rounded">
-          <Card.Img className="card-image" variant="top" src='https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80' />
+          <Card.Img className="card-image" variant="top" src={props.location.photo} />
           <Card.Body className="card-body">
-            <Card.Title>name</Card.Title>
+            <Card.Title>{props.location.name}</Card.Title>
             <Card.Text className="body-content">
-              descr
+              {props.location.description}
+              <br></br>
+              {props.latitude &&
+                <span>
+                  {getDistance(props.location)}
+                </span>
+              }
             </Card.Text>
           </Card.Body>
           <Card.Footer className="footer">
-            <small className="address">street and city</small>
+            <small className="address">{props.location.address, props.location.city}</small>
             <div className="buttonGroup">
               <Button size="sm" variant="outline-info" onClick={() => onCancel()}>Close</Button>
             </div>

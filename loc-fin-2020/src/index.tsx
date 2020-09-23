@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './store/store';
-import { getLocationFromSelect, getLocations } from './store/actions/locationsAction';
+import { getLocations } from './store/actions/locationsAction';
 import ErrorBoundary from './components/layout/ErrorBoundary';
 
 store.dispatch(getLocations());

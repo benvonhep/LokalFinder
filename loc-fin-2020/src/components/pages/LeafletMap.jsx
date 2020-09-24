@@ -13,15 +13,13 @@ function LeafletMap() {
   const [cardModalShow, setCardModalShow] = useState(false);
   const loading = useSelector(state => state.loading);
   const [location, setLocation] = useState(null)
-  const { latitude, longitude, error } = usePosition();
+  const { latitude, longitude } = usePosition();
 
   const markerClick = (id) => {
     setCardModalShow(true)
     const location = locations.locations.find((location) => location.id === id)
     setLocation(location)
   }
-
-
 
   return (
     <>
@@ -32,7 +30,9 @@ function LeafletMap() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {!latitude && !longitude &&
-          <h3 className="nogps-h3">Still thinking of where you are... {error}</h3>
+
+          <h3 className="nogps-h3">No Gps ... still thinking of where you are...</h3>
+
         }
         {latitude && longitude &&
           <CircleMarker
@@ -42,11 +42,6 @@ function LeafletMap() {
           >
           </CircleMarker>
         }
-        {/* {!latitude && !longitude &&
-          <Popup>
-            <span className="no-gps-position">no gps position</span>
-          </Popup>
-        } */}
         {!loading &&
           <>
             {locations.locations.map((location) => (

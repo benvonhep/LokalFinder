@@ -23,7 +23,6 @@ const initialFormData = {
 function EditLocationModal(props) {
   const [validated, setValidated] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
-  // const location = useSelector(state => state.locations.location)
 
 
   useEffect(() => {
@@ -52,7 +51,6 @@ function EditLocationModal(props) {
     }
     if (form.checkValidity() === true) {
       dispatch(editLocation(newLocation, newLocation.id))
-      // dispatch(resetLocation())
       setFormData(initialFormData)
 
       props.onHide();
@@ -74,6 +72,8 @@ function EditLocationModal(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+    // onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
+
     >
       <Modal.Header className="modalHeader">
         <Modal.Title id="contained-modal-title-vcenter">

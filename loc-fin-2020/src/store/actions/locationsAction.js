@@ -2,8 +2,6 @@ import { GET_LOCATIONS, LOCATIONS_ERROR, ADD_LOCATION, ADD_LOCATION_ERROR, GET_L
 import { get, post, put } from 'axios'
 import axios from 'axios'
 
-
-
 export const getLocations = () => async dispatch => {
   try {
     const res = await get('/locations');
@@ -78,7 +76,6 @@ export const deleteLocation = (id) => async dispatch => {
     });
   }
 };
-
 export const resetLocation = () => async dispatch => {
   try {
     dispatch({

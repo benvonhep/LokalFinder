@@ -70,13 +70,15 @@ function MapLocationModal(props) {
             <div className="body-content">
               <div className="location-details">
                 {props.location.casual && !props.location.fancy &&
-                  <>{props.location.casual}</>
+                  <>casual</>
                 }
-                {props.location.fancy && !props.location.casual && <>{props.location.fancy}</>}
+                {props.location.fancy && !props.location.casual &&
+                  <>fancy</>
+                }
                 {props.location.fancy && props.location.casual &&
                   <>
-                    {props.location.casual} | {props.location.fancy}
-                  </>
+                    fancy | casual
+                </>
                 } | {props.location.food} | {props.location.occasion}
               </div>
               <div className="description">{props.location.description}</div>

@@ -8,8 +8,6 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './List.scss';
 import ListLocationCard from '../layout/ListLocationCard';
-// import Spinner from '../layout/Spinner';
-// import ILocation from '../interfaces/ILocation'
 
 function List() {
   const locations = useSelector(state => state.locations)
@@ -17,7 +15,6 @@ function List() {
   const loading = useSelector(state => state.loading)
   const [location, setLocation] = useState(null)
   const { latitude, longitude } = usePosition();
-  // "error" from useposition
   const dispatch = useDispatch();
 
   const onItemClicked = (id) => {
@@ -30,8 +27,6 @@ function List() {
     dispatch(deleteLocation(id))
   }
 
-
-
   return (
     <div>
       <CardGroup className="app-card-list">
@@ -42,7 +37,6 @@ function List() {
           {!loading &&
             <>
               {locations.locations.map((location) => (
-
                 <Col xs={true} sm={true} lg={true} key={location.id} className="cardColumninRow" >
                   <ListLocationCard
                     location={location}

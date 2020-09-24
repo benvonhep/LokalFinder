@@ -3,14 +3,15 @@
   }
 
   .card {
-    margin: 7px;
+    margin: 0 !important;
     max-width: 342px;
     min-width: 342px;
     display: inline-block;
 
     .card-body {
         white-space: normal;
-        height: 272px;
+        min-height: 56px;
+        max-height: 233px;
         padding: 0;
     }
 
@@ -49,13 +50,17 @@
 
     .location-details {
       display: flex;
-      text-align: center;
+      // text-align: center;
+      align-items: center;
       flex-direction: column;
-      height: 22px;
+      height: 10px;
       text-transform:capitalize;
-      font-size: 11.5px;
+      font-size: 10.5px !important;
       color: #ffc107;
       background-color: #172a28;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
     }
 
     .card-footer {

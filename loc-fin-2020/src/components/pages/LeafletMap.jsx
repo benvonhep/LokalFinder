@@ -8,7 +8,7 @@ import MapLocationModal from '../layout/MapLocationModal';
 const defaultLatLng = [48.22034, 16.35157];
 const zoom = 13;
 
-export default function LeafletMap() {
+function LeafletMap() {
   const locations = useSelector(state => state.locations);
   const [smShow, setSmShow] = useState(false);
   const loading = useSelector(state => state.loading);
@@ -62,3 +62,4 @@ export default function LeafletMap() {
     </>
   )
 }
+export default LeafletMap;

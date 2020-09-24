@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { addLocation, resetLocation } from '../../store/actions/locationsAction';
 import './AddLocationModal.scss';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import { useDispatch } from 'react-redux';
 
 const initialFormData = {
@@ -9,11 +11,13 @@ const initialFormData = {
   name: '',
   photo: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
   description: '',
-  openingTime: '',
+  occasion: '',
   phone: '',
   street: '',
   city: '',
   food: '',
+  casual: '',
+  fancy: '',
   latitude: 48.23,
   longitude: 16.35
 }
@@ -77,11 +81,12 @@ function AddLocationModal(props) {
             <Form.Label>Name</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="name"
               value={formData.name}
               onChange={onChange}
-              placeholder="Enter name" />
+              placeholder="Enter the name" />
             <Form.Control.Feedback type="invalid">
               Please enter a name
             </Form.Control.Feedback>
@@ -90,11 +95,12 @@ function AddLocationModal(props) {
             <Form.Label>Photo Url</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="photo"
               value={formData.photo}
               onChange={onChange}
-              placeholder="Enter photo url" />
+              placeholder="Enter the photo url" />
             <Form.Control.Feedback type="invalid">
               Please enter the photo url
             </Form.Control.Feedback>
@@ -103,37 +109,43 @@ function AddLocationModal(props) {
             <Form.Label>Description</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="description"
               value={formData.description}
               onChange={onChange}
-              placeholder="Enter description" />
+              placeholder="Enter the description" />
             <Form.Control.Feedback type="invalid">
               Please enter a description
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="openingTime">
-            <Form.Label>Opening Times</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              name="openingTime"
-              value={formData.openingTime}
-              onChange={onChange}
-              placeholder="Enter opening times" />
+          <Form.Group controlId="occasion">
+            <Form.Label>Choose Occasion</Form.Label>
+            <Form.Control as="select" size="sm" required name="occasion" value={formData.occasion}
+              onChange={onChange}>
+              <option>Breakfast</option>
+              <option>Lunch</option>
+              <option>Dinner</option>
+              <option>Breakfast | Lunch</option>
+              <option>Breakfast | Dinner</option>
+              <option>Lunch | Dinner</option>
+              <option>Lunch | Dinner-Night</option>
+              <option>Breakfast | Lunch |Dinner | Night</option>
+            </Form.Control>
             <Form.Control.Feedback type="invalid">
-              Please enter the opening times
+              Please enter the occasion
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="phone">
             <Form.Label>Phone</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="phone"
               value={formData.phone}
               onChange={onChange}
-              placeholder="Enter phone number" />
+              placeholder="Enter the phone number" />
             <Form.Control.Feedback type="invalid">
               Please enter the phone number
             </Form.Control.Feedback>
@@ -142,11 +154,12 @@ function AddLocationModal(props) {
             <Form.Label>Street</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="street"
               value={formData.street}
               onChange={onChange}
-              placeholder="Enter street" />
+              placeholder="Enter the street" />
             <Form.Control.Feedback type="invalid">
               Please enter the street
             </Form.Control.Feedback>
@@ -155,52 +168,79 @@ function AddLocationModal(props) {
             <Form.Label>City</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="city"
               value={formData.city}
               onChange={onChange}
-              placeholder="Enter city" />
+              placeholder="Enter the city" />
             <Form.Control.Feedback type="invalid">
               Please enter the city
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="food">
-            <Form.Label>Food</Form.Label>
-            <Form.Control
-              required
-              type="text"
-              name="food"
-              value={formData.food}
-              onChange={onChange}
-              placeholder="Enter kind of food" />
+            <Form.Label>Choose Occasion</Form.Label>
+            <Form.Control as="select" size="sm" required name="food" value={formData.food}
+              onChange={onChange}>
+              <option>African</option>
+              <option>American</option>
+              <option>Asian</option>
+              <option>Arabic</option>
+              <option>European</option>
+              <option>Other</option>
+            </Form.Control>
             <Form.Control.Feedback type="invalid">
               Please enter the kind of food served
             </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="casual">
+            <Form.Label>Casual</Form.Label>
+            <Form.Check
+              inline
+              type="checkbox"
+              name="casual"
+              checked={formData.casual}
+              onChange={onChange}
+              placeholder="Enter the fancyness">
+            </Form.Check>
+          </Form.Group>
+          <Form.Group controlId="fancy">
+            <Form.Label>Fancy</Form.Label>
+            <Form.Check
+              inline
+              type="checkbox"
+              name="fancy"
+              checked={formData.fancy}
+              onChange={onChange}
+              placeholder="Enter the fancyness">
+            </Form.Check>
           </Form.Group>
           <Form.Group controlId="latitude">
             <Form.Label>Locations Latitude</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="latitude"
               value={formData.latitude}
               onChange={onChange}
-              placeholder="Enter locations latitude" />
+              placeholder="Enter the locations latitude" />
             <Form.Control.Feedback type="invalid">
-              Please enter the kind of food served
+              Please enter the latitude
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="longitude">
             <Form.Label>Longitude</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="longitude"
               value={formData.longitude}
               onChange={onChange}
-              placeholder="Enter kind of longitude" />
+              placeholder="Enter the locations longitude" />
             <Form.Control.Feedback type="invalid">
-              Please enter the kind of food served
+              Please enter the longitude
             </Form.Control.Feedback>
           </Form.Group>
 
@@ -213,8 +253,8 @@ function AddLocationModal(props) {
             Cancel
           </Button>
         </Modal.Footer>
-      </Form>
-    </Modal>
+      </Form >
+    </Modal >
   );
 }
 

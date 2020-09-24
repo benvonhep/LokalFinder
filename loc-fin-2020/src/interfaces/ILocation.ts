@@ -3,12 +3,16 @@ export default interface ILocation {
   // userId?: number
   name?: string
   photo?: any
-  description?: string
-  openingTime?: string
+  description?: string,
+  occasion?: string,
   phone?: number
   street?: string
   city?: string
-  food?: string
+  food?: string,
+  casual?: boolean,
+  fancy?: boolean,
+  latitude?: number,
+  longitude?: number
 }
 
 export default interface IModal {

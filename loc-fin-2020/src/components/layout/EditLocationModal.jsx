@@ -9,11 +9,12 @@ const initialFormData = {
   name: '',
   photo: '',
   description: '',
-  openingTime: '',
+  occasion: '',
   phone: '',
   street: '',
   city: '',
   food: '',
+  price: '',
   latitude: '',
   longitude: ''
 }
@@ -82,84 +83,168 @@ function EditLocationModal(props) {
         <Modal.Body>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
-            <Form.Control required type="text" name="name" defaultValue={props.location.name || ''} onChange={onChange} placeholder="Enter name" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="name"
+              defaultValue={props.location.name || ''}
+              onChange={onChange}
+              placeholder="Enter a name" />
             <Form.Control.Feedback type="invalid">
-              Please enter a name
+              Please enter the name
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="photo">
             <Form.Label>Photo Url</Form.Label>
-            <Form.Control required type="text" name="photo" defaultValue={props.location.photo || ''} onChange={onChange} placeholder="Enter photo url" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="photo"
+              defaultValue={props.location.photo || ''}
+              onChange={onChange}
+              placeholder="Enter a photo url" />
             <Form.Control.Feedback type="invalid">
               Please enter the photo url
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="description">
             <Form.Label>Description</Form.Label>
-            <Form.Control required type="text" name="description" defaultValue={props.location.description || ''} onChange={onChange} placeholder="Enter description" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="description"
+              defaultValue={props.location.description || ''}
+              onChange={onChange}
+              placeholder="Enter a description" />
             <Form.Control.Feedback type="invalid">
-              Please enter a description
+              Please enter the description
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="openingTime">
-            <Form.Label>Opening Times</Form.Label>
-            <Form.Control required type="text" name="openingTime" defaultValue={props.location.openingTime || ''} onChange={onChange} placeholder="Enter opening times" />
+          <Form.Group controlId="occasion">
+            <Form.Label>Choose Occasion</Form.Label>
+            <Form.Control as="select" size="sm" required name="occasion" value={props.location.occasion}
+              onChange={onChange}>
+              <option>Breakfast</option>
+              <option>Lunch</option>
+              <option>Dinner</option>
+              <option>Breakfast | Lunch</option>
+              <option>Breakfast | Dinner</option>
+              <option>Lunch | Dinner</option>
+              <option>Lunch | Dinner-Night</option>
+              <option>Breakfast | Lunch |Dinner | Night</option>
+            </Form.Control>
             <Form.Control.Feedback type="invalid">
-              Please enter the opening times
+              Please enter the occasion
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="phone">
             <Form.Label>Phone</Form.Label>
-            <Form.Control required type="text" name="phone" defaultValue={props.location.phone || ''} onChange={onChange} placeholder="Enter phone number" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="phone"
+              defaultValue={props.location.phone || ''}
+              onChange={onChange}
+              placeholder="Enter phone number" />
             <Form.Control.Feedback type="invalid">
               Please enter the phone number
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="street">
             <Form.Label>Street</Form.Label>
-            <Form.Control required type="text" name="street" defaultValue={props.location.street || ''} onChange={onChange} placeholder="Enter street" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="street"
+              defaultValue={props.location.street || ''}
+              onChange={onChange}
+              placeholder="Enter street" />
             <Form.Control.Feedback type="invalid">
               Please enter the street
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="city">
             <Form.Label>City</Form.Label>
-            <Form.Control required type="text" name="city" defaultValue={props.location.city || ''} onChange={onChange} placeholder="Enter city" />
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="city"
+              defaultValue={props.location.city || ''}
+              onChange={onChange}
+              placeholder="Enter city" />
             <Form.Control.Feedback type="invalid">
               Please enter the city
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="food">
-            <Form.Label>Food</Form.Label>
-            <Form.Control required type="text" name="food" defaultValue={props.location.food || ''} onChange={onChange} placeholder="Enter kind of food" />
+            <Form.Label>Choose Occasion</Form.Label>
+            <Form.Control as="select" size="sm" required name="food" value={props.location.food}
+              onChange={onChange}>
+              <option>African</option>
+              <option>American</option>
+              <option>Asian</option>
+              <option>Arabic</option>
+              <option>European</option>
+              <option>Other</option>
+            </Form.Control>
             <Form.Control.Feedback type="invalid">
               Please enter the kind of food served
             </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="casual">
+            <Form.Label>Casual</Form.Label>
+            <Form.Check
+              inline
+              type="checkbox"
+              name="casual"
+              checked={props.location.casual}
+              onChange={onChange}
+              placeholder="Enter the fancyness">
+            </Form.Check>
+          </Form.Group>
+          <Form.Group controlId="fancy">
+            <Form.Label>Fancy</Form.Label>
+            <Form.Check
+              inline
+              type="checkbox"
+              name="fancy"
+              checked={props.location.fancy}
+              onChange={onChange}
+              placeholder="Enter the fancyness">
+            </Form.Check>
           </Form.Group>
           <Form.Group controlId="latitude">
             <Form.Label>Locations Latitude</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="latitude"
               defaultValue={props.location.latitude || ''}
               onChange={onChange}
               placeholder="Enter locations latitude" />
             <Form.Control.Feedback type="invalid">
-              Please enter the kind of food served
+              Please enter the latitude
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="longitude">
             <Form.Label>Longitude</Form.Label>
             <Form.Control
               required
+              size="sm"
               type="text"
               name="longitude"
               defaultValue={props.location.longitude || ''}
               onChange={onChange}
-              placeholder="Enter kind of longitude" />
+              placeholder="Enter the locations longitude" />
             <Form.Control.Feedback type="invalid">
-              Please enter the kind of food served
+              Please enter the longitude
             </Form.Control.Feedback>
           </Form.Group>
         </Modal.Body>

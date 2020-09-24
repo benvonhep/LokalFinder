@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteLocation, getLocationFromSelect } from '../../store/actions/locationsAction';
 import { usePosition } from '../hooks/usePosition';
@@ -38,7 +38,7 @@ function List() {
     const latlngLocationPosition = latLng(location.latitude, location.longitude)
     const userLocationDistanceMeter = latlngCurrentUserPosition.distanceTo(latlngLocationPosition);
     const userLocationDistanceKm = (userLocationDistanceMeter / 1000).toFixed(1)
-    return <span>approximately {userLocationDistanceKm}km</span>
+    return <span>{userLocationDistanceKm}km</span>
   }
 
   return (
@@ -54,25 +54,45 @@ function List() {
 
                 <Col xs={true} sm={true} lg={true} key={location.id} className="cardColumninRow" >
                   <Card className="card shadow-lg rounded">
-                    <Card.Img className="card-image" variant="top" src={location.photo} />
+                    <Card.Img className="card-image" variant="top" src={location.photo}>
+                    </Card.Img>
+                    <div className="distance">
+                      {latitude &&
+                        <>
+                          {getDistance(location)}
+                        </>
+                      }</div>
                     <Card.Body className="card-body">
                       <Card.Title>{location.name}</Card.Title>
                       <Card.Text className="body-content">
-                        {location.description}
-                        <br></br>
-                        {latitude &&
-                          <span>
-                            {getDistance(location)}
-                          </span>
-                        }
+                        <div className="location-details">
+                          {location.casual && !location.fancy &&
+                            <>{location.casual}</>
+                          }
+                          {location.fancy && !location.casual && <>{location.fancy}</>}
+                          {location.fancy && location.casual &&
+                            <>
+                              {location.casual} | {location.fancy}
+                            </>
+                          } | {location.food} | {location.occasion}
+                        </div>
+
+                        <div className="description">{location.description}</div>
+
                       </Card.Text>
                     </Card.Body>
-                    <Card.Footer className="footer">
-                      <small className="address">{location.street}, {location.city}</small>
+                    <Card.Footer>
+
+                      <div className="contactGroup">
+                        <span>{location.phone}</span>
+                        <span>{location.street}, {location.city}</span>
+                      </div>
+
                       <div className="buttonGroup">
                         <Button size="sm" onClick={() => { onItemClicked(location.id) }} variant="outline-warning">Edit</Button>
                         <Button size="sm" onClick={() => { deleteItem(location.id) }} variant="outline-danger ml-2">Delete</Button>
                       </div>
+
                     </Card.Footer>
                   </Card>
                 </Col>

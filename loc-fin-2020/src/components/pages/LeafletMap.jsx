@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Map, TileLayer, Marker, CircleMarker } from 'react-leaflet';
+import { Map, TileLayer, Marker, CircleMarker, ZoomControl } from 'react-leaflet';
 import { usePosition } from '../hooks/usePosition';
 import './LeafletMap.scss'
 import MapLocationModal from '../layout/MapLocationModal';
@@ -25,7 +25,8 @@ function LeafletMap() {
 
   return (
     <>
-      <Map center={defaultLatLng} id="mapId" zoom={zoom}>
+      <Map center={defaultLatLng} id="mapId" zoom={zoom} zoomControl={false}>
+        <ZoomControl position="bottomleft" />
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -41,6 +42,11 @@ function LeafletMap() {
           >
           </CircleMarker>
         }
+        {/* {!latitude && !longitude &&
+          <Popup>
+            <span className="no-gps-position">no gps position</span>
+          </Popup>
+        } */}
         {!loading &&
           <>
             {locations.locations.map((location) => (
@@ -53,6 +59,7 @@ function LeafletMap() {
           </>
         }
       </Map>
+
       {cardModalShow && location &&
         <MapLocationModal
           show={cardModalShow}

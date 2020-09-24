@@ -29,6 +29,7 @@ function MapLocationModal(props) {
     <Modal
       {...props}
       aria-labelledby="example-modal-sizes-title-sm"
+      className="map-location-modal"
       centered
     >
       {loading &&

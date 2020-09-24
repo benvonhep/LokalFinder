@@ -50,6 +50,19 @@ export default function ListLocationCard(props) {
           <div className="body-content">
             <div className="location-details">
               {props.location.casual && !props.location.fancy &&
+                <>casual</>
+              }
+              {props.location.fancy && !props.location.casual &&
+                <>fancy</>
+              }
+              {props.location.fancy && props.location.casual &&
+                <>
+                  fancy | casual
+                </>
+              } | {props.location.food} | {props.location.occasion}
+            </div>
+            {/* <div className="location-details">
+              {props.location.casual && !props.location.fancy &&
                 <>{props.location.casual}</>
               }
               {props.location.fancy && !props.location.casual && <>{props.location.fancy}</>}
@@ -58,7 +71,7 @@ export default function ListLocationCard(props) {
                   {props.location.casual} | {props.location.fancy}
                 </>
               } | {props.location.food} | {props.location.occasion}
-            </div>
+            </div> */}
 
             <div className="description">{props.location.description}</div>
 

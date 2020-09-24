@@ -14,7 +14,8 @@ const initialFormData = {
   street: '',
   city: '',
   food: '',
-  price: '',
+  casual: '',
+  fancy: '',
   latitude: '',
   longitude: ''
 }
@@ -51,7 +52,8 @@ function EditLocationModal(props) {
     }
     if (form.checkValidity() === true) {
       dispatch(editLocation(newLocation, newLocation.id))
-      dispatch(resetLocation())
+      // dispatch(resetLocation())
+      setFormData(initialFormData)
 
       props.onHide();
       setValidated(false);
@@ -88,7 +90,7 @@ function EditLocationModal(props) {
               size="sm"
               type="text"
               name="name"
-              defaultValue={props.location.name || ''}
+              defaultValue={formData.name || ''}
               onChange={onChange}
               placeholder="Enter a name" />
             <Form.Control.Feedback type="invalid">
@@ -102,7 +104,7 @@ function EditLocationModal(props) {
               size="sm"
               type="text"
               name="photo"
-              defaultValue={props.location.photo || ''}
+              defaultValue={formData.photo || ''}
               onChange={onChange}
               placeholder="Enter a photo url" />
             <Form.Control.Feedback type="invalid">
@@ -116,7 +118,7 @@ function EditLocationModal(props) {
               size="sm"
               type="text"
               name="description"
-              defaultValue={props.location.description || ''}
+              defaultValue={formData.description || ''}
               onChange={onChange}
               placeholder="Enter a description" />
             <Form.Control.Feedback type="invalid">
@@ -125,7 +127,8 @@ function EditLocationModal(props) {
           </Form.Group>
           <Form.Group controlId="occasion">
             <Form.Label>Choose Occasion</Form.Label>
-            <Form.Control as="select" size="sm" required name="occasion" value={props.location.occasion}
+            <Form.Control as="select" size="sm" required name="occasion"
+              defaultValue={formData.occasion}
               onChange={onChange}>
               <option>Breakfast</option>
               <option>Lunch</option>
@@ -147,7 +150,7 @@ function EditLocationModal(props) {
               size="sm"
               type="text"
               name="phone"
-              defaultValue={props.location.phone || ''}
+              defaultValue={formData.phone || ''}
               onChange={onChange}
               placeholder="Enter phone number" />
             <Form.Control.Feedback type="invalid">
@@ -161,7 +164,7 @@ function EditLocationModal(props) {
               size="sm"
               type="text"
               name="street"
-              defaultValue={props.location.street || ''}
+              defaultValue={formData.street || ''}
               onChange={onChange}
               placeholder="Enter street" />
             <Form.Control.Feedback type="invalid">
@@ -175,7 +178,7 @@ function EditLocationModal(props) {
               size="sm"
               type="text"
               name="city"
-              defaultValue={props.location.city || ''}
+              defaultValue={formData.city || ''}
               onChange={onChange}
               placeholder="Enter city" />
             <Form.Control.Feedback type="invalid">
@@ -183,8 +186,9 @@ function EditLocationModal(props) {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="food">
-            <Form.Label>Choose Occasion</Form.Label>
-            <Form.Control as="select" size="sm" required name="food" value={props.location.food}
+            <Form.Label>Choose Cuisine</Form.Label>
+            <Form.Control as="select" size="sm" required name="food"
+              defaultValue={formData.food}
               onChange={onChange}>
               <option>African</option>
               <option>American</option>
@@ -203,8 +207,10 @@ function EditLocationModal(props) {
               inline
               type="checkbox"
               name="casual"
-              checked={props.location.casual}
-              onChange={onChange}
+              checked={formData.casual}
+              // checked={formData.casual}
+              onChange={() => setFormData({ ...formData, casual: !formData.casual })}
+
               placeholder="Enter the fancyness">
             </Form.Check>
           </Form.Group>
@@ -214,8 +220,10 @@ function EditLocationModal(props) {
               inline
               type="checkbox"
               name="fancy"
-              checked={props.location.fancy}
-              onChange={onChange}
+              checked={formData.fancy}
+
+              // checked={formData.fancy}
+              onChange={() => setFormData({ ...formData, fancy: !formData.fancy })}
               placeholder="Enter the fancyness">
             </Form.Check>
           </Form.Group>
@@ -226,7 +234,7 @@ function EditLocationModal(props) {
               size="sm"
               type="text"
               name="latitude"
-              defaultValue={props.location.latitude || ''}
+              defaultValue={formData.latitude || ''}
               onChange={onChange}
               placeholder="Enter locations latitude" />
             <Form.Control.Feedback type="invalid">
@@ -240,7 +248,7 @@ function EditLocationModal(props) {
               size="sm"
               type="text"
               name="longitude"
-              defaultValue={props.location.longitude || ''}
+              defaultValue={formData.longitude || ''}
               onChange={onChange}
               placeholder="Enter the locations longitude" />
             <Form.Control.Feedback type="invalid">
@@ -256,8 +264,8 @@ function EditLocationModal(props) {
             Cancel
             </Button>
         </Modal.Footer>
-      </Form>
-    </Modal>
+      </Form >
+    </Modal >
   );
 }
 

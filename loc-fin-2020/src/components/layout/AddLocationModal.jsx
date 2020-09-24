@@ -183,7 +183,7 @@ function AddLocationModal(props) {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="food">
-            <Form.Label>Choose Occasion</Form.Label>
+            <Form.Label>Choose Cuisine</Form.Label>
             <Form.Control as="select" size="sm" required name="food" value={formData.food}
               onChange={onChange}>
               <option>African</option>
@@ -205,8 +205,6 @@ function AddLocationModal(props) {
               name="casual"
               checked={formData.casual}
               onChange={() => setFormData({ ...formData, casual: !formData.casual })}
-
-              // onChange={onChange}
               placeholder="Enter the fancyness">
             </Form.Check>
           </Form.Group>
@@ -218,7 +216,6 @@ function AddLocationModal(props) {
               name="fancy"
               checked={formData.fancy}
               onChange={() => setFormData({ ...formData, fancy: !formData.fancy })}
-              // onChange={onChange}
               placeholder="Enter the fancyness">
             </Form.Check>
           </Form.Group>

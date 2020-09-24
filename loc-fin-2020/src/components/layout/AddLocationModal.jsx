@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { addLocation, resetLocation } from '../../store/actions/locationsAction';
 import './AddLocationModal.scss';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import { useDispatch } from 'react-redux';
 
 const initialFormData = {

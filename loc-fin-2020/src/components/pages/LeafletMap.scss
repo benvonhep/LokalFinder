@@ -1,6 +1,7 @@
 #mapId {
   width: 100vw;
   height: calc(100vh - 56px);
+  // z-index: -1 !important;
 }
 
 .popup-location-card {
@@ -8,4 +9,24 @@
     min-height: 274px;
     max-width: 344px;
     min-width: 344px;
+}
+
+// .distance {
+//   // position: absolute;
+//   // top: 242px;
+//   // left: 10px;
+//   color: #ffc107;
+//   // font-size: larger;
+//   font-size: 50px;
+//   font-weight: bold;
+// }
+
+.nogps-h3 {
+  position: absolute;
+  left: 30vw;
+  color: #ffc107 !important;
+  font-size: 14px;
+  z-index: 1000;
+  background-color: #172a28;
+
 }

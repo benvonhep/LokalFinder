@@ -10,13 +10,13 @@ const zoom = 13;
 
 function LeafletMap() {
   const locations = useSelector(state => state.locations);
-  const [smShow, setSmShow] = useState(false);
+  const [cardModalShow, setCardModalShow] = useState(false);
   const loading = useSelector(state => state.loading);
   const [location, setLocation] = useState(null)
   const { latitude, longitude, error } = usePosition();
 
   const markerClick = (id) => {
-    setSmShow(true)
+    setCardModalShow(true)
     const location = locations.locations.find((location) => location.id === id)
     setLocation(location)
   }
@@ -53,12 +53,14 @@ function LeafletMap() {
           </>
         }
       </Map>
-      <MapLocationModal
-        show={smShow}
-        location={location}
-        latitude={latitude}
-        longitude={longitude}
-        onHide={() => setSmShow(false)} />
+      {cardModalShow && location &&
+        <MapLocationModal
+          show={cardModalShow}
+          location={location}
+          latitude={latitude}
+          longitude={longitude}
+          onHide={() => setCardModalShow(false)} />
+      }
     </>
   )
 }

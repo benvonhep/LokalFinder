@@ -51,7 +51,7 @@ export default function ListLocationCard(props) {
         <Card.Title
         >
           <div onClick={() => setOpen(!open)} aria-controls="example-collapse-text"
-            aria-expanded={open}>
+            aria-expanded={open} className="collapse-button-div">
 
             {props.location.name}
             <div className="location-details">

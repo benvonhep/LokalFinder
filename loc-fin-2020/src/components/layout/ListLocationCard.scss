@@ -18,15 +18,17 @@
     .card-image {
       max-height: 275px;
       min-height: 274px;
-      max-width: 344px!important;
-      min-width: 344px!important;
+      max-width: 342px!important;
+      min-width: 342px!important;
+    }
+
+    #example-collapse-text {
+      min-width: 342px !important;
     }
 
     .collapse-button-div {
       cursor: pointer;
     }
-
-
 
     .distance {
       position: absolute;
@@ -40,6 +42,7 @@
     .card-title {
       margin-bottom: 0;
       text-align: center;
+      height: 61px;
       padding-top: 5px;
       background-color: #172a28;
       color: #ffc107;

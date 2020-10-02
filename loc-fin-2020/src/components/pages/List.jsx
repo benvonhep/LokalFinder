@@ -28,15 +28,15 @@ function List() {
   }
 
   return (
-    <div className="listDiv container">
+    <div className="card-grid-container">
 
       {loading &&
         <h1>loading ....</h1>
       }
       {!loading &&
-        <div className="c-card__container">
+        <div className="card-grid">
           {locations.locations.map((location) => (
-            <div className="c-card" key={location.id}>
+            <div className="card-Grid-Item" key={location.id}>
 
               <ListLocationCard
 

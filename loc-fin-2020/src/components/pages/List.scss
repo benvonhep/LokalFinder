@@ -1,47 +1,74 @@
-.listDiv {
-  display: flex;
-  justify-content: center;
-  align-content: center;
+.card-grid-container {
+  // margin-left: auto;
+
+  // display: flex;
   // flex-direction: column;
-  grid-auto-flow: column;
+  // justify-content: center;
+  // align-items: center;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 342px);
+  grid-template-rows: 335px;
+  gap: 5px;
+  justify-content: center;
+//  justify-items: center;
+//  align-items: center;
+ margin-top: 6px;
 }
 
 
-.c-card {
-  overflow: auto;
-  // position: relative;
-  // overflow: hidden;
-  // -webkit-row-break-inside: avoid;
-// page-break-inside: avoid;
-  break-inside: avoid;
 
-  margin: 0  0 5px 0!important;
-  max-width: 342px !important;
-  min-width: 342px !important;
+.card-Grid-Item {
 
-
-  &__container {
-    // columns: 3;
-    // justify-content: center;
-    // align-content: center;
-    // margin: 5px auto;
-    // min-height: 10000px !important;
-    // grid-auto-flow: column;
-
-    // overflow-y: visible;
-
-
-    @media(min-width:768px) {
-      columns: 2;
-        // width: 80%;
-        // white-space:nowrap;
-        margin-top: 5px;
-      }
-      @media (min-width: 1060px) {
-      columns: 3;
-    }
-  }
-  &::-webkit-scrollbar {
-    display: none;
-  }
 }
+
+
+// .listDiv {
+//   display: flex;
+//   justify-content: center;
+//   align-content: center;
+//   // flex-direction: column;
+//   grid-auto-flow: row;
+// }
+//
+//
+// .c-card {
+//   overflow: auto;
+//   // position: relative;
+//   // overflow: hidden;
+//   // -webkit-row-break-inside: avoid;
+// // page-break-inside: avoid;
+//   break-inside: avoid;
+//
+//   margin: 0  0 5px 0!important;
+//   max-width: 342px !important;
+//   min-width: 342px !important;
+//
+//
+//   &__container {
+//     // columns: 3;
+//     // justify-content: center;
+//     // align-content: center;
+//     // margin: 5px auto;
+//     // min-height: 10000px !important;
+//     // grid-auto-flow: column;
+//
+//     // overflow-y: visible;
+//
+//
+//     @media(min-width:768px) {
+//       columns: 2;
+//         // width: 80%;
+//         // white-space:nowrap;
+//         margin-top: 5px;
+//       }
+//       @media (min-width: 1060px) {
+//       columns: 3;
+//     }
+//   }
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+// }

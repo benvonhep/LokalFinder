@@ -33,8 +33,10 @@ export default function ListLocationCard(props) {
   return (
     <>
       <Card className="card shadow-lg rounded">
-        <Card.Img className="card-image" variant="top" src={props.location.photo}>
-        </Card.Img>
+        <div className="cardImage">
+          <Card.Img className="card-image" variant="top" src={props.location.photo}>
+          </Card.Img>
+        </div>
         <p className="distance">
           {props.latitude &&
             <>
@@ -47,7 +49,6 @@ export default function ListLocationCard(props) {
             </>
           }
         </p>
-        {/* <div className="card-body"> */}
         <Card.Title
         >
           <div onClick={() => setOpen(!open)} aria-controls="example-collapse-text"
@@ -91,7 +92,6 @@ export default function ListLocationCard(props) {
           </div>
 
         </Collapse>
-        {/* </div> */}
 
 
       </Card>

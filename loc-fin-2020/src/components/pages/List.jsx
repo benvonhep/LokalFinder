@@ -3,9 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteLocation } from '../../store/actions/locationsAction';
 import { usePosition } from '../hooks/usePosition';
 import EditLocationModal from '../layout/EditLocationModal';
-import CardGroup from 'react-bootstrap/CardGroup';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import './List.scss';
 import ListLocationCard from '../layout/ListLocationCard';
 

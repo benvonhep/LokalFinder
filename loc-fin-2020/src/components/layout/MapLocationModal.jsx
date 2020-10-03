@@ -43,17 +43,18 @@ function MapLocationModal(props) {
     <Modal
       {...props}
       aria-labelledby="example-modal-sizes-title-sm"
-      className="map-location-modal"
       centered
     >
       {loading &&
         <h1>loading ....</h1>
       }
       {props.location &&
-        <Card className="card shadow-lg rounded">
-          <Card.Img className="card-image" variant="top" src={props.location.photo}>
-          </Card.Img>
-          <p className="distance">
+        <Card className="map-location-card shadow-lg rounded">
+          <div>
+            <Card.Img className="map-location-card-image" variant="top" src={props.location.photo}>
+            </Card.Img>
+          </div>
+          <p className="map-location-card-distance">
             {props.latitude &&
               <>
                 <span>{distanceValue}km</span>
@@ -65,31 +66,33 @@ function MapLocationModal(props) {
               </>
             }
           </p>
-          <Card.Body className="card-body">
-            <Card.Title>{props.location.name}</Card.Title>
-            <div className="body-content">
-              <div className="location-details">
-                {props.location.casual && !props.location.fancy &&
-                  <>casual</>
-                }
-                {props.location.fancy && !props.location.casual &&
-                  <>fancy</>
-                }
-                {props.location.fancy && props.location.casual &&
-                  <>
-                    fancy | casual
+          <Card.Title className="map-location-card-title">
+            {props.location.name}
+
+            <div className="map-location-location-details">
+              {props.location.casual && !props.location.fancy &&
+                <>casual</>
+              }
+              {props.location.fancy && !props.location.casual &&
+                <>fancy</>
+              }
+              {props.location.fancy && props.location.casual &&
+                <>
+                  fancy | casual
                 </>
-                } | {props.location.food} | {props.location.occasion}
-              </div>
-              <div className="description">{props.location.description}</div>
+              } | {props.location.food} | {props.location.occasion}
+
             </div>
-          </Card.Body>
-          <Card.Footer>
-            <div className="contactGroup">
+          </Card.Title>
+          <div className="map-location-card-body">
+            <p className="map-location-card-text">{props.location.description}</p>
+          </div>
+          <Card.Footer className="map-location-card-footer">
+            <div className="map-location-contactGroup">
               <span>{props.location.phone}</span>
               <span>{props.location.street}, {props.location.city}</span>
             </div>
-            <div className="buttonGroup">
+            <div className="map-location-button-group">
               <Button size="sm" variant="outline-info" onClick={() => onCancel()}>Close</Button>
             </div>
           </Card.Footer>

@@ -1,21 +1,6 @@
 {
   "locations": [
     {
-      "id": 1,
-      "name": "Schachtelwirt",
-      "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-      "description": "Brunch ugh beard fam tbh man bun. Sriracha etsy everyday carry quinoa authentic pug shoreditch prism polaroid pour-over lyft scenester squid blog. Portland freegan chia, microdosing tumblr 90's ennui mlkshk migas pop-up pabst etsy. Gluten-free artisan air plant hot chicken bushwick vice cronut health goth yr occupy affogato offal master cleanse.",
-      "occasion": "Breakfast | Lunch | Dinner | Night",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
-      "city": "Vienna",
-      "food": "American",
-      "casual": true,
-      "fancy": false,
-      "latitude": 48.21,
-      "longitude": 16.35
-    },
-    {
       "id": 2,
       "name": "Zur goldenen Möwe",
       "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
@@ -44,7 +29,8 @@
       "fancy": true,
       "latitude": 48.24,
       "longitude": 16.32
-    },{
+    },
+    {
       "id": 4,
       "name": "Schachtelwirt",
       "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
@@ -88,7 +74,8 @@
       "fancy": true,
       "latitude": 48.25,
       "longitude": 16.37
-    },{
+    },
+    {
       "id": 7,
       "name": "Schachtelwirt",
       "photo": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",

@@ -28,28 +28,27 @@ function List() {
   }
 
   return (
-    <div>
-      <CardGroup className="app-card-list">
-        <Row className="d-flex justify-content-center cardRow">
-          {loading &&
-            <h1>loading ....</h1>
-          }
-          {!loading &&
-            <>
-              {locations.locations.map((location) => (
-                <Col xs={true} sm={true} lg={true} key={location.id} className="cardColumninRow" >
-                  <ListLocationCard
-                    location={location}
-                    onDelete={() => deleteItem(location.id)}
-                    onEdit={() => onItemClicked(location.id)}
-                    latitude={latitude}
-                    longitude={longitude} />
-                </Col>
-              ))}
-            </>
-          }
-        </Row>
-      </CardGroup>
+    <div className="card-grid-container">
+
+      {loading &&
+        <h1>loading ....</h1>
+      }
+      {!loading &&
+        <div className="card-grid">
+          {locations.locations.map((location) => (
+            <div className="card-Grid-Item" key={location.id}>
+
+              <ListLocationCard
+
+                location={location}
+                onDelete={() => deleteItem(location.id)}
+                onEdit={() => onItemClicked(location.id)}
+                latitude={latitude}
+                longitude={longitude} />
+            </div>
+          ))}
+        </div>
+      }
       {location &&
         <EditLocationModal
           show={editmodalShow}

@@ -1,94 +1,163 @@
-  .cardRow {
-    min-width: 100vw;
+.card {
+margin: 0 !important;
+max-width: 342px;
+min-width: 342px;
+max-height: 335px;
+display: inline-block;
+position: relative;
+overflow: hidden;
+
+  .card-image {
+    min-height: 274px;
+    max-width: 342px!important;
+    min-width: 342px!important;
+    z-index: -10
   }
 
-  .card {
-    margin: 0 !important;
+  .no-gps-position {
+    position: absolute;
+    top: 242px;
+    left: 10px;
+    color: #ffc107 !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+  }
+
+  .gps-distance-closed {
+    position: relative;
+    left: 5px;
+    float: left;
+    color: #ffc107 !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+  }
+  .gps-distance-open {
+    position: relative;
+    left: 5px;
+    top: 44px;
+    float: left;
+    color: #ffc107 !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+  }
+
+  .card-title {
+    position: relative;
+    margin-bottom: 0;
+    text-align: center;
+    height: 61px;
+    padding-top: 5px;
+    background-color: #172a28;
+    color: #ffc107;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .slider-closed {
+    position: relative;
+    overflow:hidden;
+    bottom: 0px;
+    transition: all 0.2s ease-out;
+  }
+  .slider-open {
+    position: relative;
+    bottom: 274px;
+    min-height: 335px;
+    transition: all 0.2s ease-in;
+    z-index: 1;
+    overflow:hidden;
+
+  }
+  .info-collapse-closed {
+    position: relative;
+    bottom: 0px;
+    transition: all 0.2s ease-out;
+    overflow:hidden;
+  }
+  .info-collapse-open {
+    position: absolute;
+    bottom: 0px;
+    height: 274px;
+    transition: all 0.3s ease-in;
+    z-index: 1;
+    overflow:hidden;
+    background-color: white;
+
+  }
+
+  .arrow-closed {
+    position: relative;
+    bottom: 58px;
+    left: 160px;
+    transform: rotate(0deg);
+    transition: all 0.2s ease-in-out;
+
+  }
+  .arrow-open {
+    position: relative;
+    bottom: 13px;
+    left: 160px;
+    transform: rotate(180deg);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .card-body {
+    position: relative;
+    max-height: 219px;
     max-width: 342px;
-    min-width: 342px;
-    display: inline-block;
+    z-index: 1;
+  }
 
-    .card-body {
-        white-space: normal;
-        min-height: 56px;
-        max-height: 233px;
-        padding: 0;
-    }
+  .location-name {
+    padding: 0 44px;
+  }
 
-    .card-image {
-      max-height: 275px;
-      min-height: 274px;
-      max-width: 344px!important;
-      min-width: 344px!important;
-    }
+  .location-text {
+    font-size: 11px;
+    overflow-wrap: break-word;
+    margin: 0 5px;
+  }
 
-    .collapse-button-div {
-      cursor: pointer;
-    }
+  .location-details {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 10px;
+    text-transform:capitalize;
+    font-size: 10.5px !important;
+    // color: #ffc107;
+    color: white !important;
+    background-color: #172a28;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 
+  .card-footer {
+    background-color: #172a28;
+    color: white;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    padding: 6px, 9px;
+    font-size: 11.5px;
 
-
-    .distance {
-      position: absolute;
-      top: 242px;
-      left: 10px;
-      color: #ffc107 !important;
-      font-size: 12px !important;
-      font-weight: bold !important;;
-    }
-
-    .card-title {
-      margin-bottom: 0;
-      text-align: center;
-      padding-top: 5px;
-      background-color: #172a28;
-      color: #ffc107;
-
-    }
-
-    .description {
-      margin: 9px;
-      overflow-wrap: break-word;
-      font-size: 14px;
-    }
-
-    .location-details {
+    .contactGroup {
       display: flex;
-      // text-align: center;
-      align-items: center;
       flex-direction: column;
-      height: 10px;
-      text-transform:capitalize;
-      font-size: 10.5px !important;
-      color: #ffc107;
-      background-color: #172a28;
-      padding-top: 5px;
-      padding-bottom: 5px;
-
+      height: 44px;
     }
 
-    .card-footer {
-      background-color: #172a28;
-      color: white;
-      height: 55px;
-      display: flex;
-      flex-direction: row;
-      padding: 6px, 9px;
-      font-size: 11.5px;
+    .buttonGroup {
+      display: inline;
+      margin-left: auto;
+    }
 
-      .contactGroup {
-        display: flex;
-        flex-direction: column;
-        height: 44px;
-      }
-
-      .buttonGroup {
-        display: inline;
-        margin-left: auto;
-      }
-
-      .button .btn {
-        height: 20px !important;
-      }
+    .button .btn {
+      height: 20px;
     }
   }
+}

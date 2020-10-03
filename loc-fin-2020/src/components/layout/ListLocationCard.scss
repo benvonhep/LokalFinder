@@ -7,10 +7,7 @@ display: inline-block;
 position: relative;
 overflow: hidden;
 
-
-
   .card-image {
-    // max-height: 275px;
     min-height: 274px;
     max-width: 342px!important;
     min-width: 342px!important;
@@ -28,12 +25,12 @@ overflow: hidden;
 
   .gps-distance {
     position: relative;
-    // top: 100px;
     left: 5px;
     float: left;
     color: #ffc107 !important;
     font-size: 12px !important;
     font-weight: bold !important;
+    z-index: 10;
   }
 
   .card-title {
@@ -78,7 +75,6 @@ overflow: hidden;
     overflow:hidden;
     background-color: white;
 
-
   }
 
   .arrow-closed {
@@ -99,11 +95,13 @@ overflow: hidden;
 
   .card-body {
     position: relative;
-    // white-space: normal;
-    // background-color: white;
     max-height: 219px;
     max-width: 342px;
     z-index: 1;
+  }
+
+  .location-name {
+    padding: 0 44px;
   }
 
   .location-text {
@@ -123,7 +121,6 @@ overflow: hidden;
     background-color: #172a28;
     padding-top: 5px;
     padding-bottom: 5px;
-
   }
 
   .card-footer {

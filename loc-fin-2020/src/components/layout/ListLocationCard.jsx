@@ -46,14 +46,14 @@ export default function ListLocationCard(props) {
         </p>
 
         <div className={`${open ? 'slider-open' : 'slider-closed'}`} >
+          {props.latitude &&
+            <span className="gps-distance">{distanceValue}km</span>
+          }
           <Card.Title
             onClick={() => { setOpen(!open); console.log(open); }}
           >
-            {props.latitude &&
-              <span className="gps-distance">{distanceValue}km</span>
-            }
 
-            <div>{props.location.name}</div>
+            <div className="location-name">{props.location.name}</div>
             <div className="location-details">
               {props.location.casual && !props.location.fancy &&
                 <>casual</>

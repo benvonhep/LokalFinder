@@ -32,12 +32,14 @@ export default function ListLocationCard(props) {
 
   return (
     <>
-      <Card className="card shadow-lg rounded">
-        <div className="cardImage">
-          <Card.Img className="card-image" variant="top" src={props.location.photo}>
+      <Card className="location-card shadow-lg rounded">
+        <div>
+
+          <Card.Img className="location-card-image" className={`${open ? 'location-card-image image-hide' : 'location-card-image'}`} variant="top" src={props.location.photo}>
           </Card.Img>
+
         </div>
-        <p className="no-gps-position">
+        <p className="location-card-no-gps-position">
           {!props.latitude &&
             <>
               <span>no gps position</span>
@@ -45,16 +47,17 @@ export default function ListLocationCard(props) {
           }
         </p>
 
-        <div className={`${open ? 'slider-open' : 'slider-closed'}`} >
+        <div className={`${open ? 'location-card-slider-open' : 'location-card-slider-closed'}`} >
           {props.latitude &&
-            <span className={`${open ? 'gps-distance-open' : 'gps-distance-closed'}`}>{distanceValue}km</span>
+            <span className={`${open ? 'location-card-gps-distance-open' : 'location-card-gps-distance-closed'}`}>{distanceValue}km</span>
           }
           <Card.Title
+            className="location-card-title"
             onClick={() => { setOpen(!open); console.log(open); }}
           >
 
-            <div className="location-name">{props.location.name}</div>
-            <div className="location-details">
+            <div className="location-card-location-name">{props.location.name}</div>
+            <div className="location-card-details">
               {props.location.casual && !props.location.fancy &&
                 <>casual</>
               }
@@ -67,21 +70,21 @@ export default function ListLocationCard(props) {
                       </>
               } | {props.location.food} | {props.location.occasion}
             </div>
-            <MdKeyboardArrowUp className={`${open ? 'arrow-open' : 'arrow-closed'}`} />
+            <MdKeyboardArrowUp className={`${open ? 'location-card-arrow-open' : 'location-card-arrow-closed'}`} />
           </Card.Title>
 
-          <div className={`${open ? 'info-collapse-open' : 'info-collapse-closed'}`}>
-            <div className="card-body">
-              <p className="location-text">{props.location.description}</p>
+          <div className={`${open ? 'location-card-info-collapse-open' : 'location-card-info-collapse-closed'}`}>
+            <div className="location-card-body">
+              <p className="location-card-location-text">{props.location.description}</p>
             </div>
 
-            <Card.Footer>
-              <div className="contactGroup">
+            <Card.Footer className="location-card-footer">
+              <div className="location-card-contactGroup">
                 <span>{props.location.phone}</span>
                 <span>{props.location.street}, {props.location.city}</span>
               </div>
 
-              <div className="buttonGroup">
+              <div className="location-card-buttonGroup">
                 <Button size="sm" onClick={props.onEdit} variant="outline-warning">Edit</Button>
                 <Button size="sm" onClick={props.onDelete} variant="outline-danger ml-2">Delete</Button>
               </div>

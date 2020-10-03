@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button'
 import { MdKeyboardArrowUp } from 'react-icons/md';
 import './ListLocationCard.scss';
 
-
 export default function ListLocationCard(props) {
   const [distanceValue, setDistanceValue] = useState()
   const [open, setOpen] = useState(false)
@@ -48,8 +47,6 @@ export default function ListLocationCard(props) {
 
         <div className={`${open ? 'slider-open' : 'slider-closed'}`} >
           <Card.Title
-            // className="title-closed title-open"
-            // className={`${open ? 'title-open' : 'title-closed'}`}
             onClick={() => { setOpen(!open); console.log(open); }}
           >
             {props.latitude &&
@@ -73,8 +70,6 @@ export default function ListLocationCard(props) {
             <MdKeyboardArrowUp className={`${open ? 'arrow-open' : 'arrow-closed'}`} />
           </Card.Title>
 
-
-
           <div className={`${open ? 'info-collapse-open' : 'info-collapse-closed'}`}>
             <div className="card-body">
               <p className="location-text">{props.location.description}</p>
@@ -93,8 +88,6 @@ export default function ListLocationCard(props) {
             </Card.Footer>
           </div>
         </div>
-
-
 
       </Card>
     </>

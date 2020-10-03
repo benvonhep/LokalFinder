@@ -38,12 +38,7 @@ export default function ListLocationCard(props) {
           <Card.Img className="card-image" variant="top" src={props.location.photo}>
           </Card.Img>
         </div>
-        <p className="distance">
-          {props.latitude &&
-            <>
-              <span>{distanceValue}km</span>
-            </>
-          }
+        <p className="no-gps-position">
           {!props.latitude &&
             <>
               <span>no gps position</span>
@@ -57,6 +52,10 @@ export default function ListLocationCard(props) {
             // className={`${open ? 'title-open' : 'title-closed'}`}
             onClick={() => { setOpen(!open); console.log(open); }}
           >
+            {props.latitude &&
+              <span className="gps-distance">{distanceValue}km</span>
+            }
+
             <div>{props.location.name}</div>
             <div className="location-details">
               {props.location.casual && !props.location.fancy &&

@@ -35,8 +35,14 @@ export default function ListLocationCard(props) {
       <Card className="location-card shadow-lg rounded">
         <div>
 
-          <Card.Img className="location-card-image" className={`${open ? 'location-card-image image-hide' : 'location-card-image'}`} variant="top" src={props.location.photo}>
-          </Card.Img>
+          <Card.Img
+            className={`${open ?
+              'location-card-image image-hide' :
+              'location-card-image'
+              }`}
+            variant="top"
+            src={props.location.photos[0].url}
+            alt="sorry - there should be a picture here" />
 
         </div>
         <p className="location-card-no-gps-position">

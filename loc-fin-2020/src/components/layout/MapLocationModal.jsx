@@ -51,8 +51,11 @@ function MapLocationModal(props) {
       {props.location &&
         <Card className="map-location-card shadow-lg rounded">
           <div>
-            <Card.Img className="map-location-card-image" variant="top" src={props.location.photo}>
-            </Card.Img>
+            <Card.Img
+              className="map-location-card-image"
+              variant="top"
+              src={props.location.photos[0].url}
+              alt="sorry - there should be a picture here" />
           </div>
           <p className="map-location-card-distance">
             {props.latitude &&

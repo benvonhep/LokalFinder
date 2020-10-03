@@ -47,7 +47,7 @@ export default function ListLocationCard(props) {
 
         <div className={`${open ? 'slider-open' : 'slider-closed'}`} >
           {props.latitude &&
-            <span className="gps-distance">{distanceValue}km</span>
+            <span className={`${open ? 'gps-distance-open' : 'gps-distance-closed'}`}>{distanceValue}km</span>
           }
           <Card.Title
             onClick={() => { setOpen(!open); console.log(open); }}

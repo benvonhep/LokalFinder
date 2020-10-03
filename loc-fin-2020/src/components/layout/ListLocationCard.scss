@@ -23,13 +23,25 @@ overflow: hidden;
     font-weight: bold !important;
   }
 
-  .gps-distance {
+  .gps-distance-closed {
     position: relative;
     left: 5px;
     float: left;
     color: #ffc107 !important;
     font-size: 12px !important;
     font-weight: bold !important;
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+  }
+  .gps-distance-open {
+    position: relative;
+    left: 5px;
+    top: 44px;
+    float: left;
+    color: #ffc107 !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    transition: all 0.2s ease-in-out;
     z-index: 10;
   }
 
@@ -117,7 +129,8 @@ overflow: hidden;
     height: 10px;
     text-transform:capitalize;
     font-size: 10.5px !important;
-    color: #ffc107;
+    // color: #ffc107;
+    color: white !important;
     background-color: #172a28;
     padding-top: 5px;
     padding-bottom: 5px;

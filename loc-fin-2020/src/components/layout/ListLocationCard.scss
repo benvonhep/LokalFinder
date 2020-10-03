@@ -20,21 +20,6 @@ box-sizing: unset !important;
     transition-delay: 0.2s;
   }
 
-
-  .carousel-control {
-    color: #ffc107 !important;
-
-  }
-//   .carousel-control-prev-icon {
-//     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffc107' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
-// }
-//
-// .carousel-control-next-icon {
-//     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffc107' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
-// }
-
-
-
   .location-card-no-gps-position {
     position: absolute;
     top: 255px;
@@ -117,7 +102,6 @@ box-sizing: unset !important;
     left: 160px;
     transform: rotate(0deg);
     transition: all 0.2s ease-in-out;
-
   }
   .location-card-arrow-open {
     position: relative;

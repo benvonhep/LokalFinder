@@ -6,12 +6,18 @@ import { latLng } from 'leaflet'
 import { Modal } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
+import Carousel from 'react-bootstrap/Carousel';
 import './MapLocationModal.scss'
 
 function MapLocationModal(props) {
   const loading = useSelector(state => state.loading)
   const [distanceValue, setDistanceValue] = useState()
   const dispatch = useDispatch();
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
 
   const onCancel = () => {
     props.onHide()
@@ -50,13 +56,17 @@ function MapLocationModal(props) {
       }
       {props.location &&
         <Card className="map-location-card shadow-lg rounded">
-          <div>
-            <Card.Img
-              className="map-location-card-image"
-              variant="top"
-              src={props.location.photos[0].url}
-              alt="sorry - there should be a picture here" />
-          </div>
+          <Carousel activeIndex={index} onSelect={handleSelect} interval="10000000" wrap={false}>
+            {props.location.photos.map(photo => (
+              <Carousel.Item key={photo.id}>
+                <Card.Img
+                  className="map-location-card-image"
+                  variant="top"
+                  src={photo.url}
+                  alt="sorry - there should be a picture here" />
+              </Carousel.Item>
+            ))}
+          </Carousel>
           <p className="map-location-card-distance">
             {props.latitude &&
               <>
@@ -65,7 +75,7 @@ function MapLocationModal(props) {
             }
             {!props.latitude &&
               <>
-                <span>no gps position</span>
+                <span className="map-location-card-no-gps-position">no gps position</span>
               </>
             }
           </p>
@@ -84,7 +94,6 @@ function MapLocationModal(props) {
                   fancy | casual
                 </>
               } | {props.location.food} | {props.location.occasion}
-
             </div>
           </Card.Title>
           <div className="map-location-card-body">

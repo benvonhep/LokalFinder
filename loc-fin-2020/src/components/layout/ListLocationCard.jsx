@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { latLng } from 'leaflet';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button'
-import Carousel, { Item } from 'react-bootstrap/Carousel'
+import Button from 'react-bootstrap/Button';
+import Carousel from 'react-bootstrap/Carousel';
 import { MdKeyboardArrowUp } from 'react-icons/md';
 import './ListLocationCard.scss';
 
@@ -39,22 +39,20 @@ export default function ListLocationCard(props) {
   return (
     <>
       <Card className="location-card shadow-lg rounded">
-        <div>
-          <Carousel activeIndex={index} onSelect={handleSelect} interval="10000000" wrap={false}>
-            {props.location.photos.map(photo => (
-              <Carousel.Item key={photo.id}>
-                <Card.Img
-                  className={`${open ?
-                    'location-card-image image-hide' :
-                    'location-card-image d-block w-100'
-                    }`}
-                  variant="top"
-                  src={photo.url}
-                  alt="sorry - there should be a picture here" />
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </div>
+        <Carousel activeIndex={index} onSelect={handleSelect} interval="10000000" wrap={false}>
+          {props.location.photos.map(photo => (
+            <Carousel.Item key={photo.id}>
+              <Card.Img
+                className={`${open ?
+                  'location-card-image image-hide' :
+                  'location-card-image d-block w-100'
+                  }`}
+                variant="top"
+                src={photo.url}
+                alt="sorry - there should be a picture here" />
+            </Carousel.Item>
+          ))}
+        </Carousel>
         <p className="location-card-no-gps-position">
           {!props.latitude &&
             <>

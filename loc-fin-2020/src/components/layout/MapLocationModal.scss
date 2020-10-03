@@ -19,7 +19,6 @@
       height: 219px;
       padding: 0;
     min-width: 342px !important;
-
   }
 
   .map-location-card-image {
@@ -27,6 +26,12 @@
     min-height: 274px;
     max-width: 342px;
     min-width: 342px;
+  }
+
+  .map-location-card-no-gps-position {
+    color: #ffc107 !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
   }
 
   .map-location-card-title {

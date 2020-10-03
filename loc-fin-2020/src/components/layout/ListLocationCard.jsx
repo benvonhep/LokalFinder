@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { latLng } from 'leaflet';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
-import Collapse from 'react-bootstrap/Collapse'
+import { MdKeyboardArrowUp } from 'react-icons/md';
 import './ListLocationCard.scss';
 
 
@@ -30,6 +30,7 @@ export default function ListLocationCard(props) {
   useEffect(() => {
     distance(props.location)
   }, [distance, props.location]);
+
   return (
     <>
       <Card className="card shadow-lg rounded">
@@ -49,12 +50,14 @@ export default function ListLocationCard(props) {
             </>
           }
         </p>
-        <Card.Title
-        >
-          <div onClick={() => setOpen(!open)} aria-controls="example-collapse-text"
-            aria-expanded={open} className="collapse-button-div">
 
-            {props.location.name}
+        <div className={`${open ? 'slider-open' : 'slider-closed'}`} >
+          <Card.Title
+            // className="title-closed title-open"
+            // className={`${open ? 'title-open' : 'title-closed'}`}
+            onClick={() => { setOpen(!open); console.log(open); }}
+          >
+            <div>{props.location.name}</div>
             <div className="location-details">
               {props.location.casual && !props.location.fancy &&
                 <>casual</>
@@ -65,19 +68,20 @@ export default function ListLocationCard(props) {
               {props.location.fancy && props.location.casual &&
                 <>
                   fancy | casual
-                  </>
+                      </>
               } | {props.location.food} | {props.location.occasion}
             </div>
-          </div>
-        </Card.Title>
-        <Collapse in={open}>
-          <div id="example-collapse-text">
-            <div className="body-content card-body">
-              <div className="description">{props.location.description}</div>
+            <MdKeyboardArrowUp className={`${open ? 'arrow-open' : 'arrow-closed'}`} />
+          </Card.Title>
+
+
+
+          <div className={`${open ? 'info-collapse-open' : 'info-collapse-closed'}`}>
+            <div className="card-body">
+              <p className="location-text">{props.location.description}</p>
             </div>
 
             <Card.Footer>
-
               <div className="contactGroup">
                 <span>{props.location.phone}</span>
                 <span>{props.location.street}, {props.location.city}</span>
@@ -87,11 +91,10 @@ export default function ListLocationCard(props) {
                 <Button size="sm" onClick={props.onEdit} variant="outline-warning">Edit</Button>
                 <Button size="sm" onClick={props.onDelete} variant="outline-danger ml-2">Delete</Button>
               </div>
-
             </Card.Footer>
           </div>
+        </div>
 
-        </Collapse>
 
 
       </Card>

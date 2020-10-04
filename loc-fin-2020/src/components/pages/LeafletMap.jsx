@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Map, TileLayer, Marker, CircleMarker, ZoomControl } from 'react-leaflet';
 import { usePosition } from '../hooks/usePosition';
 import './LeafletMap.scss'
-import MapLocationModal from '../layout/MapLocationModal';
+import { MapLocationModal } from '../layout';
 
 const defaultLatLng = [48.22034, 16.35157];
 const zoom = 13;
@@ -24,7 +24,7 @@ function LeafletMap() {
   return (
     <>
       <Map center={defaultLatLng} id="mapId" zoom={zoom} zoomControl={false}>
-        <ZoomControl position="bottomleft" />
+        <ZoomControl />
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -39,7 +39,7 @@ export default function ListLocationCard(props) {
   return (
     <>
       <Card className="location-card shadow-lg rounded">
-        <Carousel activeIndex={index} onSelect={handleSelect} interval="10000000" wrap={false}>
+        <Carousel activeIndex={index} onSelect={handleSelect} interval={10000000} wrap={false}>
           {props.location.photos.map(photo => (
             <Carousel.Item key={photo.id}>
               <Card.Img

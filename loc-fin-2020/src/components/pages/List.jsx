@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteLocation } from '../../store/actions/locationsAction';
 import { usePosition } from '../hooks/usePosition';
-import EditLocationModal from '../layout/EditLocationModal';
+import { ListLocationCard, EditLocationModal } from '../layout';
 import './List.scss';
-import ListLocationCard from '../layout/ListLocationCard';
 
 function List() {
   const locations = useSelector(state => state.locations)

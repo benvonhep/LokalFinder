@@ -67,7 +67,7 @@ export default function ListLocationCard(props) {
           }
           <Card.Title
             className="location-card-title"
-            onClick={() => { setOpen(!open); console.log(open); }}
+            onClick={() => { setOpen(!open) }}
           >
 
             <div className="location-card-location-name">{props.location.name}</div>

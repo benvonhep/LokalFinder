@@ -43,10 +43,10 @@ box-sizing: unset !important;
   .location-card-gps-distance-open {
     position: relative;
     left: 5px;
-    top: 46px;
+    top: 45px;
     float: left;
     color: #ffc107 !important;
-    font-size: 10px !important;
+    font-size: 11px !important;
     font-weight: bold !important;
     transition: all 0.2s ease-in-out;
     z-index: 10;
@@ -126,7 +126,7 @@ box-sizing: unset !important;
   }
 
   .location-card-location-text {
-    font-size: 11px;
+    font-size: 13px;
     overflow-wrap: break-word;
     margin: 0 5px;
   }

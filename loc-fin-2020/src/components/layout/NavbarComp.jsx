@@ -60,6 +60,7 @@ export default function NavbarComp() {
             <LinkContainer to="/list"><Nav.Link >List</Nav.Link></LinkContainer>
             <LinkContainer to="/profile"><Nav.Link >Filter</Nav.Link></LinkContainer>
             <LinkContainer to="/map"><Nav.Link >Map</Nav.Link></LinkContainer>
+            <LinkContainer to="/user"><Nav.Link >User</Nav.Link></LinkContainer>
           </Nav>
 
         </>

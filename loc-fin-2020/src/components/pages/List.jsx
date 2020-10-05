@@ -13,7 +13,7 @@ function List() {
   const { latitude, longitude } = usePosition();
   const dispatch = useDispatch();
 
-  const onItemClicked = (id) => {
+  const onItemEditClicked = (id) => {
     setEditModalShow(true)
     const location = locations.locations.find((location) => location.id === id)
     setLocation(location)
@@ -24,13 +24,13 @@ function List() {
   }
 
   return (
-    <div className="card-grid-container">
+    <div>
 
       {loading &&
         <h1>loading ....</h1>
       }
       {!loading &&
-        <div className="card-grid">
+        <div className="location-card-grid">
           {locations.locations.map((location) => (
             <div className="card-Grid-Item" key={location.id}>
 
@@ -38,7 +38,7 @@ function List() {
 
                 location={location}
                 onDelete={() => deleteItem(location.id)}
-                onEdit={() => onItemClicked(location.id)}
+                onEdit={() => onItemEditClicked(location.id)}
                 latitude={latitude}
                 longitude={longitude} />
             </div>

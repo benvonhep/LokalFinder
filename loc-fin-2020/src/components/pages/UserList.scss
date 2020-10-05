@@ -1,0 +1,8 @@
+.user-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 342px);
+  grid-template-rows: 335px;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 6px;
+}

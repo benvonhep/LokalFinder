@@ -44,7 +44,7 @@ export default function ListLocationCard(props) {
             <Carousel.Item key={photo.id}>
               <Card.Img
                 className={`${open ?
-                  'location-card-image image-hide' :
+                  'location-card-image location-image-hide' :
                   'location-card-image d-block w-100'
                   }`}
                 variant="top"

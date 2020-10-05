@@ -16,7 +16,7 @@ export default function UserList() {
         <h1>loading ....</h1>
       }
       {!loading &&
-        <div className="card-grid">
+        <div className="user-card-grid">
           {users.users.map((user) => (
             <div className="card-Grid-Item" key={user.id}>
               <UserCard

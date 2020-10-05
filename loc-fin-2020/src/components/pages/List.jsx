@@ -13,7 +13,7 @@ function List() {
   const { latitude, longitude } = usePosition();
   const dispatch = useDispatch();
 
-  const onItemClicked = (id) => {
+  const onItemEditClicked = (id) => {
     setEditModalShow(true)
     const location = locations.locations.find((location) => location.id === id)
     setLocation(location)
@@ -38,7 +38,7 @@ function List() {
 
                 location={location}
                 onDelete={() => deleteItem(location.id)}
-                onEdit={() => onItemClicked(location.id)}
+                onEdit={() => onItemEditClicked(location.id)}
                 latitude={latitude}
                 longitude={longitude} />
             </div>

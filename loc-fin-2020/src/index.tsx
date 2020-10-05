@@ -7,10 +7,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './store/store';
 import { getLocations } from './store/actions/locationsAction';
+import { getUsers } from './store/actions/usersAction';
 import ErrorBoundary from './components/layout/ErrorBoundary';
 import Auth0ProviderWithHistory from './auth0-provider-with-history';
 
 store.dispatch(getLocations());
+store.dispatch(getUsers());
 
 ReactDOM.render(
   <React.StrictMode>

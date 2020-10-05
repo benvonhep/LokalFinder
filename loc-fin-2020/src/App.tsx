@@ -9,6 +9,7 @@ import NavbarComp from './components/layout/NavbarComp'
 // import Spinner from './components/layout/Spinner';
 import Profile from './components/pages/Profile';
 import { PrivateRoute } from './components/layout';
+import UserList from './components/pages/UserList';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           // route abchecken dass redirected wird ###########################
           <Route exact path="/list" component={List} />
           <Route exact path="/map" component={LeafletMap} />
+          <Route exact path="/user" component={UserList} />
           <PrivateRoute path="/profile" component={Profile} />
           <Route exact path="/" component={Home} />
           <Redirect to="/" />

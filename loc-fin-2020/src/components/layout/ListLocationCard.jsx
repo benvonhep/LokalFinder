@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback } from 'react';
 import { latLng } from 'leaflet';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';

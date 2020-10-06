@@ -24,7 +24,7 @@ export default function NavbarComp() {
         sticky="top"
       >
         <>
-          <Nav>
+          <Nav className="usermenulogin">
             {isLoading ? '' :
               <>
                 {isAuthenticated ? <UserMenu /> : <LoginButton />}

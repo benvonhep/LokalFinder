@@ -4,10 +4,12 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 import { useAuth0 } from "@auth0/auth0-react";
 
+import { FiPlus } from 'react-icons/fi'
 import AddLocationModal from './AddLocationModal';
 import LogoutButton from './LogoutButton';
 import LoginButton from './LoginButton';
 import './NavbarComp.scss';
+import UserMenu from './UserMenu';
 
 export default function NavbarComp() {
   const [modalShow, setModalShow] = useState(false);
@@ -25,7 +27,7 @@ export default function NavbarComp() {
           <Nav>
             {isLoading ? '' :
               <>
-                {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+                {isAuthenticated ? <UserMenu /> : <LoginButton />}
               </>
 
             }
@@ -39,8 +41,8 @@ export default function NavbarComp() {
               className="add-button ml-1"
               size="sm"
               onClick={() => setModalShow(true)}>
-              Add New
-          </Button>
+              <FiPlus />
+            </Button>
             : ''}
         </>
       </Navbar>

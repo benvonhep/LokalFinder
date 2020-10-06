@@ -33,7 +33,7 @@ export default function NavbarComp() {
             }
           </Nav>
           <Nav className="logo-center">
-            <Navbar.Brand href="/home">Lokal Finder</Navbar.Brand>
+            <LinkContainer to="/home"><Navbar.Brand href="/home">Lokal Finder</Navbar.Brand></LinkContainer>
           </Nav>
           {isAuthenticated ?
             <Button

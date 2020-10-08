@@ -5,14 +5,14 @@ import { Button } from "react-bootstrap";
 const LogoutButton = () => {
   const { logout } = useAuth0();
 
-  const style = {
-    position: 'absolute',
-    left: '5px',
-    bottom: '15px',
-    height: '25px',
-    margin: '0',
-    padding: '0 8px',
-  }
+  // const style = {
+  //   position: 'absolute',
+  //   left: '5px',
+  //   bottom: '15px',
+  //   height: '25px',
+  //   margin: '0',
+  //   padding: '0 8px',
+  // }
 
   return (
     <Button

@@ -72,7 +72,6 @@ function EditLocationModal(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-    // onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
 
     >
       <Modal.Header className="modalHeader">

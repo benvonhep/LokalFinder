@@ -33,7 +33,7 @@ export default function UserCard(props) {
             <Card.Title
               className="user-card-title"
               onClick={() => { setOpen(!open) }}>
-              <div className="user-card-user-name">{props.user.name}</div>
+              <div className="user-card-user-name">{props.user.username}</div>
               <MdKeyboardArrowUp className={`${open ? 'user-card-arrow-open' : 'user-card-arrow-closed'}`} />
 
             </Card.Title>

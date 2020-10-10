@@ -24,8 +24,8 @@ export default function UserCard(props) {
                 'user-card-image d-block w-100'
                 }`}
               variant="top"
-              src={props.user.picture}
-              alt="sorry - there should be a picture here">
+              src={props.user.photo}
+              alt="sorry - there should be a photo here">
             </Card.Img>
           </div>
           <div className={`${open ? 'user-card-slider-open' : 'user-card-slider-closed'}`} >

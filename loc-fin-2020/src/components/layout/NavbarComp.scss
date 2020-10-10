@@ -1,7 +1,7 @@
 .navbar {
   color: red;
   background-color: #172a28;
-  padding: 8px 8px 8px 16px !important;
+  padding: 8px 8px 8px 2px !important;
   width: 100%;
   height: 56px;
   display: flex;
@@ -14,14 +14,20 @@
   display: inline-block;
 }
 
-.basic-navbar-nav {
-  text-align: right;
+.navbar-nav {
+  text-align: center;
+}
+
+.usermenulogin {
+  display: flex;
+  justify-content: left;
 }
 
 
 
 .navbar-brand {
   margin-right: 7px !important;
+  padding-right: 45px;
 }
 
 .navbar-footer {

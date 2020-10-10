@@ -19,3 +19,5 @@ export const GET_USER = 'GET_USER';
 export const GET_USER_ERROR = 'GET_USER_ERROR';
 export const EDIT_USER = 'EDIT_USER';
 export const EDIT_USER_ERROR = 'EDIT_USER_ERROR';
+export const RESET_USER = 'EDIT_USER';
+export const RESET_USER_ERROR = 'EDIT_USER_ERROR';

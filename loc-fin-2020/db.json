@@ -2,19 +2,27 @@
   "users": [
     {
       "id": 1,
-      "name": "Benno",
+      "username": "Bennosdfsdfsdfsdf",
       "email": "benvonhep@gmail.com",
-      "picture": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+      "photo": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
       "description": "Hi I am Benno and want to save locations I like",
       "city": "Vienna"
     },
     {
       "id": 2,
-      "name": "Ben",
+      "username": "Ben",
       "email": "benvonhep@outlook.com",
-      "picture": "https://images.unsplash.com/photo-1594289833187-264ae284a0b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60",
+      "photo": "https://images.unsplash.com/photo-1594289833187-264ae284a0b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60",
       "description": "Hi I am Ben and I like to share my favourite places in town",
       "city": "Vienna"
+    },
+    {
+      "id": 3,
+      "username": "Benno ||",
+      "email": "bennohepperger@yahoo.de",
+      "photo": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+      "description": "Hi I am Benno ||",
+      "city": "Vienna "
     }
   ],
   "locations": [

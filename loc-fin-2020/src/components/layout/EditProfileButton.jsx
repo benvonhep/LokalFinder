@@ -1,9 +1,7 @@
 import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "react-bootstrap";
 
-const LogoutButton = () => {
-  const { logout } = useAuth0();
+const EditProfileButton = () => {
 
   // const style = {
   //   position: 'absolute',
@@ -13,22 +11,18 @@ const LogoutButton = () => {
   //   margin: '0',
   //   padding: '0 8px',
   // }
-
   return (
     <Button
       // style={style}
-      onClick={() =>
-        logout({
-          returnTo: window.location.origin,
-        })
-      }
-      variant="outline-warning"
-      className="btn-margin"
+      href="/profile"
+      // onClick={() => loginWithRedirect()}
+      variant="outline-secondary"
+      className=""
       size="sm"
     >
-      Log Out
+      Edit Profile
     </Button>
   );
 };
 
-export default LogoutButton;
+export default EditProfileButton;

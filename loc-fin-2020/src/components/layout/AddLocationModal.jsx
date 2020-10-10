@@ -16,6 +16,7 @@ const initialFormData = {
   food: '',
   casual: false,
   fancy: false,
+  // coordinates need to be generated from the adress
   latitude: 48.23,
   longitude: 16.35
 }
@@ -250,7 +251,7 @@ function AddLocationModal(props) {
 
         </Modal.Body>
         <Modal.Footer className="modalFooter">
-          <Button variant="outline-success" type="submit">
+          <Button variant="outline-success" disabled={!validated} type="submit">
             Submit
           </Button>
           <Button variant="outline-secondary" onClick={onCancel} className="ml-2">

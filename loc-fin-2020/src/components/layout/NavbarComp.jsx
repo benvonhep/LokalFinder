@@ -1,19 +1,40 @@
 import React, { useState } from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-
+// import { useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 
+import { FiPlus } from 'react-icons/fi'
 import AddLocationModal from './AddLocationModal';
-import LogoutButton from './LogoutButton';
 import LoginButton from './LoginButton';
 import './NavbarComp.scss';
+import UserMenu from './UserMenu';
+
 
 export default function NavbarComp() {
   const [modalShow, setModalShow] = useState(false);
-  const { isAuthenticated } = useAuth0();
-  const { isLoading } = useAuth0();
+  // const [enabledToAdd, setEnabledToAdd] = useState(false);
+  // const { isAuthenticated, user, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
+  // const [userProfile, setUserProfile] = useState()
+  // const users = useSelector(state => state.users)
 
+  //   useEffect(() => {
+  //     const userProf = users.users.find((item) => user.email === item.email)
+  //     setUserProfile(userProf)
+  //
+  //
+  //   }, [users])
+  //
+  //   useEffect(() => {
+  //     if (userProfile.username) {
+  //       setEnabledToAdd(true)
+  //
+  //     } else {
+  //       setEnabledToAdd(false)
+  //
+  //     }
+  //   }, [userProfile])
 
   return (
     <>
@@ -22,25 +43,27 @@ export default function NavbarComp() {
         sticky="top"
       >
         <>
-          <Nav>
+          <Nav className="usermenulogin">
             {isLoading ? '' :
               <>
-                {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+                {isAuthenticated ? <UserMenu /> : <LoginButton />}
               </>
 
             }
           </Nav>
           <Nav className="logo-center">
-            <Navbar.Brand href="/home">Lokal Finder</Navbar.Brand>
+            <LinkContainer to="/home"><Navbar.Brand href="/home">Lokal Finder</Navbar.Brand></LinkContainer>
           </Nav>
           {isAuthenticated ?
             <Button
               variant="outline-warning"
               className="add-button ml-1"
               size="sm"
-              onClick={() => setModalShow(true)}>
-              Add New
-          </Button>
+              onClick={() => setModalShow(true)}
+            // disabled={!enabledToAdd}
+            >
+              <FiPlus />
+            </Button>
             : ''}
         </>
       </Navbar>

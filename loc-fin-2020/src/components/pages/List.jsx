@@ -24,7 +24,7 @@ function List() {
   }
 
   return (
-    <div>
+    <div className="container listcontainer">
 
       {loading &&
         <h1>loading ....</h1>

@@ -13,6 +13,8 @@ box-sizing: unset !important;
     max-height: 274px;
     max-width: 342px !important;
     min-width: 342px !important;
+    object-fit: cover;
+
     z-index: -10
   }
   .location-image-hide {

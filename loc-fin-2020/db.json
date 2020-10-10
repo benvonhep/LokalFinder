@@ -2,9 +2,9 @@
   "users": [
     {
       "id": 1,
-      "username": "Bennosdfsdfsdfsdf",
+      "username": "Lisa",
       "email": "benvonhep@gmail.com",
-      "photo": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+      "photo": "https://randomuser.me/api/portraits/women/3.jpg",
       "description": "Hi I am Benno and want to save locations I like",
       "city": "Vienna"
     },
@@ -61,7 +61,7 @@
     },
     {
       "id": 3,
-      "name": "Schnellessen",
+      "name": "Zur stimmigen Chemie",
       "photos": [
         {
           "id": "2",
@@ -157,7 +157,7 @@
     },
     {
       "id": 6,
-      "name": "Schnellessen",
+      "name": "Zur stimmigen Chemie",
       "photos": [
         {
           "id": "1",
@@ -253,7 +253,7 @@
     },
     {
       "id": 9,
-      "name": "Schnellessen",
+      "name": "Zur stimmigen Chemie",
       "photos": [
         {
           "id": "1",

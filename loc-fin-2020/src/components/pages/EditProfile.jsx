@@ -89,6 +89,7 @@ const EditProfile = () => {
   }
 
   const onCancel = async () => {
+    push('/user')
     setFormData(initialFormData)
   }
 

@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 const initialFormData = {
   id: '',
   name: '',
-  photo: '',
+  photos: [{ id: '', url: '' }, { id: '', url: '' }],
   description: '',
   occasion: '',
   phone: '',
@@ -47,7 +47,8 @@ function EditLocationModal(props) {
 
     setValidated(true);
     const newLocation = {
-      ...formData
+      ...formData,
+      createdBy: props.location.createdBy
     }
     if (form.checkValidity() === true) {
       dispatch(editLocation(newLocation, newLocation.id))
@@ -96,14 +97,28 @@ function EditLocationModal(props) {
               Please enter the name
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="photo">
+          <Form.Group controlId="photo1">
             <Form.Label>Photo Url</Form.Label>
             <Form.Control
               required
               size="sm"
               type="text"
-              name="photo"
-              defaultValue={formData.photo || ''}
+              name="photo1"
+              defaultValue={formData.photos[0].url || ''}
+              onChange={onChange}
+              placeholder="Enter a photo url" />
+            <Form.Control.Feedback type="invalid">
+              Please enter the photo url
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="photo2">
+            <Form.Label>Photo Url</Form.Label>
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="photo2"
+              defaultValue={formData.photos[1].url || ''}
               onChange={onChange}
               placeholder="Enter a photo url" />
             <Form.Control.Feedback type="invalid">

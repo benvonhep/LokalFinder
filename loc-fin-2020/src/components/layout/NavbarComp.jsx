@@ -13,10 +13,10 @@ import UserMenu from './UserMenu';
 
 
 
-export default function NavbarComp() {
+const NavbarComp = () => {
   const users = useSelector(state => state.users);
   const { user, isAuthenticated, isLoading } = useAuth0();
-
+  // const { email } = user;
   const [modalShow, setModalShow] = useState(false);
   const [loadingData, setLoadingData] = useState(true)
   const [userProfile, setUserProfile] = useState()
@@ -24,17 +24,15 @@ export default function NavbarComp() {
 
 
   useEffect(() => {
-    if (user && users) {
+    if (!isLoading && users && user) {
       const findUserProfile = users.users.find((foundUser) => user.email === foundUser.email)
       setUserProfile(findUserProfile)
       setLoadingData(false)
-      console.log(findUserProfile, 'USER');
     } else {
       return
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [users, loadingData])
-
+  }, [users, loadingData, user, isLoading])
 
   return (
     <>
@@ -51,10 +49,11 @@ export default function NavbarComp() {
 
             }
           </Nav>
+
           <Nav className="logo-center">
             <LinkContainer to="/home"><Navbar.Brand href="/home">Lokal Finder</Navbar.Brand></LinkContainer>
           </Nav>
-          {isAuthenticated ?
+          {isAuthenticated && userProfile ?
             <Button
               variant="outline-warning"
               className="add-button ml-1"
@@ -66,12 +65,13 @@ export default function NavbarComp() {
             : ''}
         </>
       </Navbar>
-
-      <AddLocationModal
-        show={modalShow}
-        username={username => userProfile.username}
-        onHide={() => setModalShow(false)}
-      />
+      {userProfile &&
+        <AddLocationModal
+          show={modalShow}
+          username={userProfile}
+          onHide={() => setModalShow(false)}
+        />
+      }
 
       <Navbar
         className="navbar-footer navbar-dark shadow-lg"
@@ -91,6 +91,8 @@ export default function NavbarComp() {
     </>
   )
 }
+
+export default NavbarComp;
 
 // disabled={!enabledToAdd}
 

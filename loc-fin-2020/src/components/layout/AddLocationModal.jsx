@@ -9,40 +9,37 @@ const initialFormData = {
   id: '',
   createdBy: '',
   name: '',
-  photos: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+  photos: [
+    {
+      id: 1,
+      url: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+    },
+    {
+      id: 2,
+      url: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+    }],
   description: '',
   occasion: '',
   phone: '',
   street: '',
   city: '',
   food: '',
-  casual: false,
+  casual: true,
   fancy: false,
   // coordinates need to be generated from the adress
   latitude: 48.23,
   longitude: 16.35
 }
 
-function AddLocationModal(props) {
+const AddLocationModal = (props) => {
   const users = useSelector(state => state.users);
-  const { user } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
   const [userProfile, setUserProfile] = useState()
 
   const [validated, setValidated] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
   const [loadingData, setLoadingData] = useState(true)
-
-
-  // useEffect(() => {
-  //   if (loadingData) {
-  //     const findUserProfile = users.users.find((foundUser) => user.email === foundUser.email)
-  //     setUserProfile(findUserProfile)
-  //     setLoadingData(false)
-  //   } else {
-  //     return
-  //   }
-  // }, [user, loadingData])
-
 
   const onChange = (e) => {
     return setFormData({
@@ -61,8 +58,6 @@ function AddLocationModal(props) {
     }
 
     setValidated(true);
-    console.log();
-    console.log('break');
     const newLocation = {
       ...formData,
       createdBy: props.username
@@ -95,10 +90,8 @@ function AddLocationModal(props) {
           Add a new Restaurant
         </Modal.Title>
         <Button size="sm" variant="outline-secondary" onClick={onCancel}>Close</Button>
-
       </Modal.Header>
       <Form noValidate validated={validated} onSubmit={onSubmit}>
-        <p>created by {props.username}</p>
         <Modal.Body>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
@@ -114,14 +107,28 @@ function AddLocationModal(props) {
               Please enter a name
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="photos">
+          <Form.Group controlId="photo1">
             <Form.Label>Photo Url</Form.Label>
             <Form.Control
               required
               size="sm"
               type="text"
-              name="photos"
-              value={formData.photos || ''}
+              name="photo1"
+              value={formData.photos[0].url}
+              onChange={onChange}
+              placeholder="Enter the photos url" />
+            <Form.Control.Feedback type="invalid">
+              Please enter the photos url
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="photo2">
+            <Form.Label>Photo Url</Form.Label>
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="photo2"
+              value={formData.photos[1].url}
               onChange={onChange}
               placeholder="Enter the photos url" />
             <Form.Control.Feedback type="invalid">
@@ -151,6 +158,7 @@ function AddLocationModal(props) {
               name="occasion"
               value={formData.occasion}
               onChange={onChange}>
+              <option></option>
               <option>Breakfast</option>
               <option>Lunch</option>
               <option>Dinner</option>
@@ -210,6 +218,7 @@ function AddLocationModal(props) {
             <Form.Label>Choose Cuisine</Form.Label>
             <Form.Control as="select" size="sm" required name="food" value={formData.food}
               onChange={onChange}>
+              <option></option>
               <option>African</option>
               <option>American</option>
               <option>Asian</option>

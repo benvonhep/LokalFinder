@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { addLocation, resetLocation } from '../../store/actions/locationsAction';
-import { useAuth0 } from "@auth0/auth0-react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './AddLocationModal.scss';
 
 const initialFormData = {
@@ -32,14 +31,8 @@ const initialFormData = {
 }
 
 const AddLocationModal = (props) => {
-  const users = useSelector(state => state.users);
-  const { user, isAuthenticated, isLoading } = useAuth0();
-
-  const [userProfile, setUserProfile] = useState()
-
   const [validated, setValidated] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
-  const [loadingData, setLoadingData] = useState(true)
 
   const onChange = (e) => {
     return setFormData({

@@ -30,7 +30,6 @@ export default function ListLocationCard(props) {
     if (isAuthenticated && loadingData) {
       const findUserProfile = users.users.find((userProfile) => user.email === userProfile.email)
       setUserProfile(findUserProfile)
-      // console.log(findUserProfile, 'listUSER');
       setLoadingData(false)
     } else {
       return

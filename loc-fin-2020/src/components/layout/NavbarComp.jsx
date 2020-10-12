@@ -16,7 +16,6 @@ import UserMenu from './UserMenu';
 const NavbarComp = () => {
   const users = useSelector(state => state.users);
   const { user, isAuthenticated, isLoading } = useAuth0();
-  // const { email } = user;
   const [modalShow, setModalShow] = useState(false);
   const [loadingData, setLoadingData] = useState(true)
   const [userProfile, setUserProfile] = useState()
@@ -93,27 +92,3 @@ const NavbarComp = () => {
 }
 
 export default NavbarComp;
-
-// disabled={!enabledToAdd}
-
-// const [enabledToAdd, setEnabledToAdd] = useState(false);
-// const { isAuthenticated, user, isLoading } = useAuth0();
-  // const [userProfile, setUserProfile] = useState()
-  // const users = useSelector(state => state.users)
-
-  //   useEffect(() => {
-  //     const userProf = users.users.find((item) => user.email === item.email)
-  //     setUserProfile(userProf)
-  //
-  //
-  //   }, [users])
-  //
-  //   useEffect(() => {
-  //     if (userProfile.username) {
-  //       setEnabledToAdd(true)
-  //
-  //     } else {
-  //       setEnabledToAdd(false)
-  //
-  //     }
-  //   }, [userProfile])

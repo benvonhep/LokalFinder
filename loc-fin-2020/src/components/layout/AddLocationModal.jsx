@@ -1,29 +1,45 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { addLocation, resetLocation } from '../../store/actions/locationsAction';
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch, useSelector } from 'react-redux';
 import './AddLocationModal.scss';
-import { useDispatch } from 'react-redux';
 
 const initialFormData = {
   id: '',
+  createdBy: '',
   name: '',
-  photo: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
+  photos: [
+    {
+      id: 1,
+      url: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+    },
+    {
+      id: 2,
+      url: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
+    }],
   description: '',
   occasion: '',
   phone: '',
   street: '',
   city: '',
   food: '',
-  casual: false,
+  casual: true,
   fancy: false,
   // coordinates need to be generated from the adress
   latitude: 48.23,
   longitude: 16.35
 }
 
-function AddLocationModal(props) {
+const AddLocationModal = (props) => {
+  const users = useSelector(state => state.users);
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
+  const [userProfile, setUserProfile] = useState()
+
   const [validated, setValidated] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
+  const [loadingData, setLoadingData] = useState(true)
 
   const onChange = (e) => {
     return setFormData({
@@ -43,7 +59,8 @@ function AddLocationModal(props) {
 
     setValidated(true);
     const newLocation = {
-      ...formData
+      ...formData,
+      createdBy: props.username
     }
     if (form.checkValidity() === true) {
       dispatch(addLocation(newLocation))
@@ -73,7 +90,6 @@ function AddLocationModal(props) {
           Add a new Restaurant
         </Modal.Title>
         <Button size="sm" variant="outline-secondary" onClick={onCancel}>Close</Button>
-
       </Modal.Header>
       <Form noValidate validated={validated} onSubmit={onSubmit}>
         <Modal.Body>
@@ -91,18 +107,32 @@ function AddLocationModal(props) {
               Please enter a name
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="photo">
+          <Form.Group controlId="photo1">
             <Form.Label>Photo Url</Form.Label>
             <Form.Control
               required
               size="sm"
               type="text"
-              name="photo"
-              value={formData.photo}
+              name="photo1"
+              value={formData.photos[0].url}
               onChange={onChange}
-              placeholder="Enter the photo url" />
+              placeholder="Enter the photos url" />
             <Form.Control.Feedback type="invalid">
-              Please enter the photo url
+              Please enter the photos url
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="photo2">
+            <Form.Label>Photo Url</Form.Label>
+            <Form.Control
+              required
+              size="sm"
+              type="text"
+              name="photo2"
+              value={formData.photos[1].url}
+              onChange={onChange}
+              placeholder="Enter the photos url" />
+            <Form.Control.Feedback type="invalid">
+              Please enter the photos url
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="description">
@@ -128,6 +158,7 @@ function AddLocationModal(props) {
               name="occasion"
               value={formData.occasion}
               onChange={onChange}>
+              <option></option>
               <option>Breakfast</option>
               <option>Lunch</option>
               <option>Dinner</option>
@@ -187,6 +218,7 @@ function AddLocationModal(props) {
             <Form.Label>Choose Cuisine</Form.Label>
             <Form.Control as="select" size="sm" required name="food" value={formData.food}
               onChange={onChange}>
+              <option></option>
               <option>African</option>
               <option>American</option>
               <option>Asian</option>
@@ -251,7 +283,7 @@ function AddLocationModal(props) {
 
         </Modal.Body>
         <Modal.Footer className="modalFooter">
-          <Button variant="outline-success" disabled={!validated} type="submit">
+          <Button variant="outline-success" type="submit">
             Submit
           </Button>
           <Button variant="outline-secondary" onClick={onCancel} className="ml-2">

@@ -2,7 +2,7 @@ Where2Eat React
 
 ########################################################################################################################
 
-The project is still under construction, some functionality like filter, alert, etc are currently under development.
+The project is still under construction, some functionality like filter, alert, geocoding for the coordinate-generation etc are currently under development.
 
 ########################################################################################################################
 

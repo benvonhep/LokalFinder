@@ -2,33 +2,25 @@
   "users": [
     {
       "id": 1,
-      "username": "Lisa",
+      "username": "Benno",
       "email": "benvonhep@gmail.com",
-      "photo": "https://randomuser.me/api/portraits/women/3.jpg",
+      "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
       "description": "Hi I am Benno and want to save locations I like",
       "city": "Vienna"
     },
     {
       "id": 2,
-      "username": "Ben",
+      "username": "Fox",
       "email": "benvonhep@outlook.com",
-      "photo": "https://images.unsplash.com/photo-1594289833187-264ae284a0b5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60",
-      "description": "Hi I am Ben and I like to share my favourite places in town",
+      "photo": "https://images.unsplash.com/photo-1516934024742-b461fba47600?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60",
+      "description": "Hi I am Fox and I like to share my favourite places in town",
       "city": "Vienna"
-    },
-    {
-      "id": 3,
-      "username": "Benno ||",
-      "email": "bennohepperger@yahoo.de",
-      "photo": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-      "description": "Hi I am Benno ||",
-      "city": "Vienna "
     }
   ],
   "locations": [
     {
       "id": 2,
-      "createdBy": 1,
+      "createdBy": "Benno",
       "name": "Zur goldenen Möwe",
       "photos": [
         {
@@ -51,7 +43,7 @@
       "description": "Umami tousled 3 wolf moon succulents, truffaut listicle pork belly meggings post-ironic yr. Craft beer dreamcatcher coloring book adaptogen fingerstache, hoodie man braid scenester drinking vinegar mustache. Kombucha chambray whatever direct trade, lo-fi prism beard organic food truck hot chicken chicharrones synth meditation.",
       "occasion": "Breakfast | Lunch",
       "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "street": "Schwedenplatz 2",
       "city": "Vienna",
       "food": "Asian",
       "casual": false,
@@ -61,6 +53,7 @@
     },
     {
       "id": 3,
+      "createdBy": "Benno",
       "name": "Zur stimmigen Chemie",
       "photos": [
         {
@@ -93,6 +86,7 @@
     },
     {
       "id": 4,
+      "createdBy": "Benno",
       "name": "Schachtelwirt",
       "photos": [
         {
@@ -125,6 +119,7 @@
     },
     {
       "id": 5,
+      "createdBy": "Benno",
       "name": "Zur goldenen Möwe",
       "photos": [
         {
@@ -157,6 +152,7 @@
     },
     {
       "id": 6,
+      "createdBy": "Fox",
       "name": "Zur stimmigen Chemie",
       "photos": [
         {
@@ -189,6 +185,7 @@
     },
     {
       "id": 7,
+      "createdBy": "Fox",
       "name": "Schachtelwirt",
       "photos": [
         {
@@ -221,6 +218,7 @@
     },
     {
       "id": 8,
+      "createdBy": "Fox",
       "name": "Zur goldenen Möwe",
       "photos": [
         {
@@ -253,6 +251,7 @@
     },
     {
       "id": 9,
+      "createdBy": "Fox",
       "name": "Zur stimmigen Chemie",
       "photos": [
         {

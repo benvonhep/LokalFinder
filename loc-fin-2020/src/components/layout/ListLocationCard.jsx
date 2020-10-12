@@ -1,21 +1,44 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { latLng } from 'leaflet';
 import Card from 'react-bootstrap/Card';
+import { useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import { MdKeyboardArrowUp } from 'react-icons/md';
+import { useAuth0 } from "@auth0/auth0-react";
+
 import './ListLocationCard.scss';
 
 export default function ListLocationCard(props) {
+  const users = useSelector(state => state.users);
   const [distanceValue, setDistanceValue] = useState()
   const [open, setOpen] = useState(false)
   const [index, setIndex] = useState(0);
+  const { isAuthenticated, user } = useAuth0();
+  const [loadingData, setLoadingData] = useState(true)
+
+  const [userProfile, setUserProfile] = useState()
+
+
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
 
-  const getDistance = useCallback((location) => {
+
+  useEffect(() => {
+    if (isAuthenticated && loadingData) {
+      const findUserProfile = users.users.find((userProfile) => user.email === userProfile.email)
+      setUserProfile(findUserProfile)
+      // console.log(findUserProfile, 'listUSER');
+      setLoadingData(false)
+    } else {
+      return
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated, loadingData])
+
+  const getDistance = useCallback(() => {
     if (props.location && props.latitude) {
       const latlngCurrentUserPosition = latLng(props.latitude, props.longitude)
       const latlngLocationPosition = latLng(props.location.latitude, props.location.longitude)
@@ -97,11 +120,12 @@ export default function ListLocationCard(props) {
                 <span>{props.location.phone}</span>
                 <span>{props.location.street}, {props.location.city}</span>
               </div>
-
-              <div className="location-card-buttonGroup">
-                <Button size="sm" onClick={props.onEdit} variant="outline-warning">Edit</Button>
-                <Button size="sm" onClick={props.onDelete} variant="outline-danger ml-2">Delete</Button>
-              </div>
+              {!loadingData && isAuthenticated && userProfile.username === props.location.createdBy &&
+                <div className="location-card-buttonGroup">
+                  <Button size="sm" onClick={props.onEdit} variant="outline-warning">Edit</Button>
+                  <Button size="sm" onClick={props.onDelete} variant="outline-danger ml-2">Delete</Button>
+                </div>
+              }
             </Card.Footer>
           </div>
         </div>

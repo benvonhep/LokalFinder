@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { addLocation, resetLocation } from '../../store/actions/locationsAction';
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch, useSelector } from 'react-redux';
 import './AddLocationModal.scss';
-import { useDispatch } from 'react-redux';
 
 const initialFormData = {
   id: '',
+  createdBy: '',
   name: '',
-  photo: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
+  photos: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
   description: '',
   occasion: '',
   phone: '',
@@ -22,8 +24,25 @@ const initialFormData = {
 }
 
 function AddLocationModal(props) {
+  const users = useSelector(state => state.users);
+  const { user } = useAuth0();
+  const [userProfile, setUserProfile] = useState()
+
   const [validated, setValidated] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
+  const [loadingData, setLoadingData] = useState(true)
+
+
+  // useEffect(() => {
+  //   if (loadingData) {
+  //     const findUserProfile = users.users.find((foundUser) => user.email === foundUser.email)
+  //     setUserProfile(findUserProfile)
+  //     setLoadingData(false)
+  //   } else {
+  //     return
+  //   }
+  // }, [user, loadingData])
+
 
   const onChange = (e) => {
     return setFormData({
@@ -42,8 +61,11 @@ function AddLocationModal(props) {
     }
 
     setValidated(true);
+    console.log();
+    console.log('break');
     const newLocation = {
-      ...formData
+      ...formData,
+      createdBy: props.username
     }
     if (form.checkValidity() === true) {
       dispatch(addLocation(newLocation))
@@ -76,6 +98,7 @@ function AddLocationModal(props) {
 
       </Modal.Header>
       <Form noValidate validated={validated} onSubmit={onSubmit}>
+        <p>created by {props.username}</p>
         <Modal.Body>
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
@@ -91,18 +114,18 @@ function AddLocationModal(props) {
               Please enter a name
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group controlId="photo">
+          <Form.Group controlId="photos">
             <Form.Label>Photo Url</Form.Label>
             <Form.Control
               required
               size="sm"
               type="text"
-              name="photo"
-              value={formData.photo}
+              name="photos"
+              value={formData.photos || ''}
               onChange={onChange}
-              placeholder="Enter the photo url" />
+              placeholder="Enter the photos url" />
             <Form.Control.Feedback type="invalid">
-              Please enter the photo url
+              Please enter the photos url
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="description">
@@ -251,7 +274,7 @@ function AddLocationModal(props) {
 
         </Modal.Body>
         <Modal.Footer className="modalFooter">
-          <Button variant="outline-success" disabled={!validated} type="submit">
+          <Button variant="outline-success" type="submit">
             Submit
           </Button>
           <Button variant="outline-secondary" onClick={onCancel} className="ml-2">

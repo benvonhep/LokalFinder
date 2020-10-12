@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import { FiPlus } from 'react-icons/fi'
@@ -11,30 +11,30 @@ import './NavbarComp.scss';
 import UserMenu from './UserMenu';
 
 
-export default function NavbarComp() {
-  const [modalShow, setModalShow] = useState(false);
-  // const [enabledToAdd, setEnabledToAdd] = useState(false);
-  // const { isAuthenticated, user, isLoading } = useAuth0();
-  const { isAuthenticated, isLoading } = useAuth0();
-  // const [userProfile, setUserProfile] = useState()
-  // const users = useSelector(state => state.users)
 
-  //   useEffect(() => {
-  //     const userProf = users.users.find((item) => user.email === item.email)
-  //     setUserProfile(userProf)
-  //
-  //
-  //   }, [users])
-  //
-  //   useEffect(() => {
-  //     if (userProfile.username) {
-  //       setEnabledToAdd(true)
-  //
-  //     } else {
-  //       setEnabledToAdd(false)
-  //
-  //     }
-  //   }, [userProfile])
+
+export default function NavbarComp() {
+  const users = useSelector(state => state.users);
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
+  const [modalShow, setModalShow] = useState(false);
+  const [loadingData, setLoadingData] = useState(true)
+  const [userProfile, setUserProfile] = useState()
+
+
+
+  useEffect(() => {
+    if (user && users) {
+      const findUserProfile = users.users.find((foundUser) => user.email === foundUser.email)
+      setUserProfile(findUserProfile)
+      setLoadingData(false)
+      console.log(findUserProfile, 'USER');
+    } else {
+      return
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [users, loadingData])
+
 
   return (
     <>
@@ -60,7 +60,6 @@ export default function NavbarComp() {
               className="add-button ml-1"
               size="sm"
               onClick={() => setModalShow(true)}
-            // disabled={!enabledToAdd}
             >
               <FiPlus />
             </Button>
@@ -70,6 +69,7 @@ export default function NavbarComp() {
 
       <AddLocationModal
         show={modalShow}
+        username={username => userProfile.username}
         onHide={() => setModalShow(false)}
       />
 
@@ -91,3 +91,27 @@ export default function NavbarComp() {
     </>
   )
 }
+
+// disabled={!enabledToAdd}
+
+// const [enabledToAdd, setEnabledToAdd] = useState(false);
+// const { isAuthenticated, user, isLoading } = useAuth0();
+  // const [userProfile, setUserProfile] = useState()
+  // const users = useSelector(state => state.users)
+
+  //   useEffect(() => {
+  //     const userProf = users.users.find((item) => user.email === item.email)
+  //     setUserProfile(userProf)
+  //
+  //
+  //   }, [users])
+  //
+  //   useEffect(() => {
+  //     if (userProfile.username) {
+  //       setEnabledToAdd(true)
+  //
+  //     } else {
+  //       setEnabledToAdd(false)
+  //
+  //     }
+  //   }, [userProfile])

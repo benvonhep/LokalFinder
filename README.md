@@ -7,10 +7,10 @@ The project is still under construction, some functionality like filter, alert, 
 
 ###
 
-To start the project locally: 
-	 git clone |
-	 npm i |
-	 npm run dev |
+To start the project locally "git clone *projectUrl*"
+Cd into projects root folder and run the following two commmands: 
+	 "npm i" +  
+	 "npm run dev" 
 
 To enable auth0 authentication add env. file in the projects root folder and configure the auth0 according to the docs:
 https://auth0.com/blog/complete-guide-to-react-user-authentication/

@@ -61,14 +61,11 @@ export default function ListLocationCard(props) {
   return (
     <>
       <Card className="location-card shadow-lg rounded">
-        <Carousel activeIndex={index} onSelect={handleSelect} interval={10000000} wrap={false}>
+        <Carousel className="location-card-carousel" activeIndex={index} onSelect={handleSelect} interval={10000000} wrap={false}>
           {props.location.photos.map(photo => (
             <Carousel.Item key={photo.id}>
               <Card.Img
-                className={`${open ?
-                  'location-card-image location-image-hide' :
-                  'location-card-image d-block w-100'
-                  }`}
+                className="location-card-image"
                 variant="top"
                 src={photo.url}
                 alt="sorry - there should be a picture here" />
@@ -83,7 +80,7 @@ export default function ListLocationCard(props) {
           }
         </p>
 
-        <div className={`${open ? 'location-card-slider-open' : 'location-card-slider-closed'}`} >
+        <div className={`${open ? 'location-card-slider-open' : 'location-card-slider-close'}`} >
           {props.latitude &&
             <span className={`${open ? 'location-card-gps-distance-open' : 'location-card-gps-distance-closed'}`}>{distanceValue}km</span>
           }
@@ -91,7 +88,6 @@ export default function ListLocationCard(props) {
             className="location-card-title"
             onClick={() => { setOpen(!open) }}
           >
-
             <div className="location-card-location-name">{props.location.name}</div>
             <div className="location-card-details">
               {props.location.casual && !props.location.fancy &&
@@ -106,29 +102,26 @@ export default function ListLocationCard(props) {
                       </>
               } | {props.location.food} | {props.location.occasion}
             </div>
-            <MdKeyboardArrowUp className={`${open ? 'location-card-arrow-open' : 'location-card-arrow-closed'}`} />
+            <MdKeyboardArrowUp className={`${open ? 'location-card-arrow-open' : 'location-card-arrow-close'}`} />
           </Card.Title>
 
-          <div className={`${open ? 'location-card-info-collapse-open' : 'location-card-info-collapse-closed'}`}>
-            <div className="location-card-body">
-              <p className="location-card-location-text">{props.location.description}</p>
-            </div>
-
-            <Card.Footer className="location-card-footer">
-              <div className="location-card-contactGroup">
-                <span>{props.location.phone}</span>
-                <span>{props.location.street}, {props.location.city}</span>
-              </div>
-              {!loadingData && isAuthenticated && userProfile.username === props.location.createdBy &&
-                <div className="location-card-buttonGroup">
-                  <Button size="sm" onClick={props.onEdit} variant="outline-warning">Edit</Button>
-                  <Button size="sm" onClick={props.onDelete} variant="outline-danger ml-2">Delete</Button>
-                </div>
-              }
-            </Card.Footer>
+          <div className="location-card-body">
+            <p className="location-card-location-text">{props.location.description}</p>
           </div>
-        </div>
 
+          <Card.Footer className="location-card-footer">
+            <div className="location-card-contactGroup">
+              <span>{props.location.phone}</span>
+              <span>{props.location.street}, {props.location.city}</span>
+            </div>
+            {!loadingData && isAuthenticated && userProfile.username === props.location.createdBy &&
+              <div className="location-card-buttonGroup">
+                <Button size="sm" onClick={props.onEdit} variant="outline-warning">Edit</Button>
+                <Button size="sm" onClick={props.onDelete} variant="outline-danger ml-2">Delete</Button>
+              </div>
+            }
+          </Card.Footer>
+        </div>
       </Card>
     </>
   )

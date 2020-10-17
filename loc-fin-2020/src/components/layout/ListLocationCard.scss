@@ -3,25 +3,15 @@ margin: 0 !important;
 max-width: 342px !important;
 min-width: 342px !important;
 max-height: 335px;
-display: inline-block;
-position: relative;
 overflow: hidden;
 box-sizing: unset !important;
-
   .location-card-image {
     min-height: 274px;
     max-height: 274px;
     max-width: 342px !important;
     min-width: 342px !important;
     object-fit: cover;
-
-    z-index: -10
   }
-  .location-image-hide {
-    opacity: 0;
-    transition-delay: 0.2s;
-  }
-
   .location-card-no-gps-position {
     position: absolute;
     top: 255px;
@@ -30,7 +20,6 @@ box-sizing: unset !important;
     font-size: 12px !important;
     font-weight: bold !important;
   }
-
   .location-card-gps-distance-closed {
     position: relative;
     left: 5px;
@@ -39,7 +28,7 @@ box-sizing: unset !important;
     color: #ffc107 !important;
     font-size: 12px !important;
     font-weight: bold !important;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
     z-index: 10;
   }
   .location-card-gps-distance-open {
@@ -50,12 +39,10 @@ box-sizing: unset !important;
     color: #ffc107 !important;
     font-size: 11px !important;
     font-weight: bold !important;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
     z-index: 10;
   }
-
   .location-card-title {
-    position: relative;
     margin-bottom: 0;
     text-align: center;
     height: 61px;
@@ -63,76 +50,50 @@ box-sizing: unset !important;
     background-color: #172a28;
     color: #ffc107;
     cursor: pointer;
-    z-index: 1;
   }
-
-  .location-card-slider-closed {
+  .location-card-slider-close {
     position: relative;
-    overflow:hidden;
     bottom: 0px;
-    transition: all 0.2s ease-out;
+    transition: all 0.3s ease-out;
+    z-index: 10;
+    height: 100%;
   }
   .location-card-slider-open {
     position: relative;
     bottom: 274px;
-    min-height: 335px;
-    transition: all 0.2s ease-in;
-    z-index: 1;
-    overflow:hidden;
-
+    transition: all 0.3s ease-out;
+    z-index: 10;
+    height: 100%
   }
-  .location-card-info-collapse-closed {
-    position: relative;
-    bottom: 0px;
-    transition: all 0.2s ease-out;
-    overflow:hidden;
-  }
-  .location-card-info-collapse-open {
-    position: absolute;
-    bottom: 0px;
-    height: 274px;
-    transition: all 0.3s ease-in;
-    z-index: 1;
-    overflow:hidden;
-    background-color: white;
-
-  }
-
-  .location-card-arrow-closed {
+  .location-card-arrow-close {
     position: relative;
     bottom: 44px;
     left: 160px;
     transform: rotate(0deg);
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
   .location-card-arrow-open {
     position: relative;
     bottom: 2px;
     left: 160px;
     transform: rotate(180deg);
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
-
   .location-card-body {
-    position: relative;
     min-height: 219px;
     min-width: 342px !important;
     max-width: 342px !important;
     background-color: white;
     z-index: 1;
-    // opacity: 0.9;
   }
-
   .location-card-location-name {
     padding: 0 44px;
   }
-
   .location-card-location-text {
     font-size: 13px;
     overflow-wrap: break-word;
     margin: 0 5px;
   }
-
   .location-card-details {
     display: flex;
     align-items: center;
@@ -140,13 +101,11 @@ box-sizing: unset !important;
     height: 8px;
     text-transform:capitalize;
     font-size: 10.5px !important;
-    // color: #ffc107;
     color: white !important;
     background-color: #172a28;
     padding-top: 5px;
     padding-bottom: 5px;
   }
-
   .location-card-footer {
     background-color: #172a28;
     color: white;

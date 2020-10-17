@@ -3,8 +3,6 @@
   max-width: 342px !important;
   min-width: 342px !important;
   max-height: 335px;
-  // display: inline-block;
-  position: relative;
   overflow: hidden;
   box-sizing: unset !important;
 
@@ -15,15 +13,9 @@
     max-width: 342px !important;
     min-width: 342px !important;
     object-fit: cover;
-    // z-index: -10
-  }
-  .user-image-hide {
-    opacity: 0;
-    transition-delay: 0.2s;
   }
 
   .user-card-title {
-    position: relative;
     margin-bottom: 0;
     text-align: center;
     height: 61px;
@@ -35,7 +27,6 @@
   }
 
   .user-card-body {
-    position: relative;
     min-height: 219px;
     min-width: 342px !important;
     max-width: 342px !important;
@@ -56,7 +47,6 @@
     display: flex;
     min-width: 342px !important;
     justify-content: center;
-    // flex-direction: row;
     padding: 6px, 9px;
     font-size: 11.5px;
   }
@@ -64,54 +54,37 @@
   .user-card-details {
     font-size: large;
     height: 44px;
-
   }
 
-  .user-card-slider-closed {
+  .user-card-slider-close {
     position: relative;
-    overflow:hidden;
     bottom: 0px;
-    transition: all 0.2s ease-out;
+    transition: all 0.3s ease-out;
+    z-index: 10;
+    height: 100%;
   }
 
   .user-card-slider-open {
     position: relative;
     bottom: 274px;
-    min-height: 335px;
-    transition: all 0.2s ease-in;
-    z-index: 1;
-    overflow:hidden;
+    transition: all 0.3s ease-out;
+    z-index: 10;
+    height: 100%;
   }
 
-  .user-card-info-collapse-closed {
+  .user-card-arrow-close {
     position: relative;
-    bottom: 0px;
-    transition: all 0.2s ease-out;
-    overflow:hidden;
-  }
-  .user-card-info-collapse-open {
-    position: absolute;
-    bottom: 0px;
-    height: 274px;
-    transition: all 0.3s ease-in;
-    z-index: 1;
-    overflow:hidden;
-    background-color: white;
-  }
-
-  .user-card-arrow-closed {
-    position: absolute;
-    bottom: 41px;
-    left: 322px;
+    bottom: 44px;
+    left: 160px;
     transform: rotate(0deg);
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
   .user-card-arrow-open {
-    position: absolute;
-    bottom: 0px;
-    left: 322px;
+    position: relative;
+    bottom: 2px;
+    left: 160px;
     transform: rotate(180deg);
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 
   .user-card-user-name {

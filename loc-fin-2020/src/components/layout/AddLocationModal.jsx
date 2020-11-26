@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
-import { Button, Form, Modal } from 'react-bootstrap';
+import React, { useRef, useState, useEffect, Fragment } from 'react'
+import { Button, Form, Modal, Dropdown } from 'react-bootstrap';
+import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { addLocation, resetLocation } from '../../store/actions/locationsAction';
 import { useDispatch } from 'react-redux';
 import './AddLocationModal.scss';
+import * as Nominatim from "nominatim-browser";
+import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 
 const initialFormData = {
   id: '',
@@ -20,19 +23,53 @@ const initialFormData = {
   description: '',
   occasion: '',
   phone: '',
+  address: "",
   street: '',
   city: '',
   food: '',
   casual: true,
   fancy: false,
   // coordinates need to be generated from the adress
-  latitude: 48.23,
-  longitude: 16.35
+
+  latitude: "",
+  longitude: ""
 }
+const defaultCenter = [0, 0];
+const defaultZoom = 4;
 
 const AddLocationModal = (props) => {
   const [validated, setValidated] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
+  const [options, setOptions] = useState();
+  const [geoValue, setGeoValue] = useState("");
+  const [singleSelections, setSingleSelections] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+
+
+  const handleSearch = async (query) => {
+    setIsLoading(true);
+    console.log(query, 'QUERY');
+
+    const search = await Nominatim.geocode({
+      countrycodes: "AT",
+      q: query
+
+    })
+    setOptions(search)
+    setIsLoading(false)
+    console.log(search, 'search')
+    return search
+  }
+
+
+  const setCoordState = (selected) => {
+    console.log(selected, 'selected');
+    // return setFormData({
+    //   ...formData,
+    //   [latitude]: e.target.value
+    // });
+  }
 
   const onChange = (e) => {
     return setFormData({
@@ -42,6 +79,11 @@ const AddLocationModal = (props) => {
   }
 
   const dispatch = useDispatch();
+
+  // const onAdressChange = async (e) => {
+  //   const results = await provider.search({ query: e.target.value });
+  //   console.log(results, 'results');
+  // }
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -68,6 +110,18 @@ const AddLocationModal = (props) => {
     setFormData(initialFormData)
     dispatch(resetLocation())
   }
+
+  const addCoordinates = (option) => {
+    console.log(option.display_name, 'selected');
+    setFormData({
+      ...formData,
+      latitude: option.lat,
+      longitude: option.lon
+    });
+    return
+  }
+
+  const filterBy = () => true;
 
 
   return (
@@ -179,6 +233,26 @@ const AddLocationModal = (props) => {
               Please enter the phone number
             </Form.Control.Feedback>
           </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Single Selection</Form.Label>
+            <AsyncTypeahead
+              filterBy={filterBy}
+              id="async-example"
+              isLoading={isLoading}
+              labelKey={option => `${option.display_name}`}
+              minLength={3}
+              onSearch={handleSearch}
+              options={options}
+              placeholder="Search for a Github user..."
+              renderMenuItemChildren={(option, index) => (
+                <Fragment key={index}>
+                  <span onClick={() => addCoordinates(option)}>{option.display_name}</span>
+                </Fragment>
+              )}
+            />
+          </Form.Group>
+          <br></br>
           <Form.Group controlId="street">
             <Form.Label>Street</Form.Label>
             <Form.Control
@@ -187,6 +261,7 @@ const AddLocationModal = (props) => {
               type="text"
               name="street"
               value={formData.street}
+              // onChange={onAdressChange}
               onChange={onChange}
               placeholder="Enter the street" />
             <Form.Control.Feedback type="invalid">

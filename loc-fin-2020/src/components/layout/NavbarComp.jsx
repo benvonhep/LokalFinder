@@ -67,7 +67,7 @@ const NavbarComp = () => {
       {userProfile &&
         <AddLocationModal
           show={modalShow}
-          username={userProfile}
+          user_id={userProfile.id}
           onHide={() => setModalShow(false)}
         />
       }

@@ -112,9 +112,9 @@ export default function ListLocationCard(props) {
           <Card.Footer className="location-card-footer">
             <div className="location-card-contactGroup">
               <span>{props.location.phone}</span>
-              <span>{props.location.street}, {props.location.city}</span>
+              <span>{props.location.street} {props.location.house_number}, {props.location.city}</span>
             </div>
-            {!loadingData && isAuthenticated && userProfile.username === props.location.createdBy &&
+            {!loadingData && isAuthenticated && userProfile.id === props.location.createdBy &&
               <div className="location-card-buttonGroup">
                 <Button size="sm" onClick={props.onEdit} variant="outline-warning">Edit</Button>
                 <Button size="sm" onClick={props.onDelete} variant="outline-danger ml-2">Delete</Button>

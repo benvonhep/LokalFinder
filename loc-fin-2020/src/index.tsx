@@ -10,6 +10,7 @@ import { getLocations } from './store/actions/locationsAction';
 import { getUsers } from './store/actions/usersAction';
 import ErrorBoundary from './components/layout/ErrorBoundary';
 import Auth0ProviderWithHistory from './auth0-provider-with-history';
+import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 store.dispatch(getLocations());
 store.dispatch(getUsers());

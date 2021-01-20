@@ -40,16 +40,20 @@
           "url": "https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
         }
       ],
-      "description": "Umami tousled 3 wolf moon succulents, truffaut listicle pork belly meggings post-ironic yr. Craft beer dreamcatcher coloring book adaptogen fingerstache, hoodie man braid scenester drinking vinegar mustache. Kombucha chambray whatever direct trade, lo-fi prism beard organic food truck hot chicken chicharrones synth meditation.",
-      "occasion": "Breakfast | Lunch",
-      "phone": "01589384",
-      "street": "Schwedenplatz 2",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
-      "food": "Asian",
-      "casual": false,
-      "fancy": true,
-      "latitude": 48.22,
-      "longitude": 16.33
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
+      "food": "European",
+      "casual": true,
+      "fancy": true
     },
     {
       "id": 3,
@@ -73,16 +77,20 @@
           "url": "https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
         }
       ],
-      "description": "Shaman bushwick street art snackwave photo booth venmo activated charcoal aesthetic migas, copper mug williamsburg. Succulents fam fashion axe, tumeric bitters iceland ethical. Swag man braid master cleanse vice. Edison bulb retro tattooed kale chips letterpress fanny pack vexillologist marfa listicle heirloom enamel pin gastropub.",
-      "occasion": "Lunch | Dinner | Night",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
-      "food": "American",
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
+      "food": "European",
       "casual": true,
-      "fancy": true,
-      "latitude": 48.24,
-      "longitude": 16.32
+      "fancy": true
     },
     {
       "id": 4,
@@ -106,16 +114,20 @@
           "url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
         }
       ],
-      "description": "Brunch ugh beard fam tbh man bun. Sriracha etsy everyday carry quinoa authentic pug shoreditch prism polaroid pour-over lyft scenester squid blog. Portland freegan chia, microdosing tumblr 90's ennui mlkshk migas pop-up pabst etsy. Gluten-free artisan air plant hot chicken bushwick vice cronut health goth yr occupy affogato offal master cleanse.",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
       "occasion": "Breakfast | Lunch | Dinner | Night",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
-      "food": "American",
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
+      "food": "European",
       "casual": true,
-      "fancy": false,
-      "latitude": 48.42,
-      "longitude": 16.24
+      "fancy": true
     },
     {
       "id": 5,
@@ -139,16 +151,20 @@
           "url": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
         }
       ],
-      "description": "Umami tousled 3 wolf moon succulents, truffaut listicle pork belly meggings post-ironic yr. Craft beer dreamcatcher coloring book adaptogen fingerstache, hoodie man braid scenester drinking vinegar mustache. Kombucha chambray whatever direct trade, lo-fi prism beard organic food truck hot chicken chicharrones synth meditation.",
-      "occasion": "Breakfast | Lunch",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
-      "food": "Asian",
-      "casual": false,
-      "fancy": true,
-      "latitude": 48.33,
-      "longitude": 16.33
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
+      "food": "European",
+      "casual": true,
+      "fancy": true
     },
     {
       "id": 6,
@@ -172,16 +188,20 @@
           "url": "https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
         }
       ],
-      "description": "Shaman bushwick street art snackwave photo booth venmo activated charcoal aesthetic migas, copper mug williamsburg. Succulents fam fashion axe, tumeric bitters iceland ethical. Swag man braid master cleanse vice. Edison bulb retro tattooed kale chips letterpress fanny pack vexillologist marfa listicle heirloom enamel pin gastropub.",
-      "occasion": "Lunch | Dinner | Night",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
-      "food": "American",
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
+      "food": "European",
       "casual": true,
-      "fancy": true,
-      "latitude": 48.25,
-      "longitude": 16.37
+      "fancy": true
     },
     {
       "id": 7,
@@ -205,16 +225,20 @@
           "url": "https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
         }
       ],
-      "description": "Brunch ugh beard fam tbh man bun. Sriracha etsy everyday carry quinoa authentic pug shoreditch prism polaroid pour-over lyft scenester squid blog. Portland freegan chia, microdosing tumblr 90's ennui mlkshk migas pop-up pabst etsy. Gluten-free artisan air plant hot chicken bushwick vice cronut health goth yr occupy affogato offal master cleanse.",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
       "occasion": "Breakfast | Lunch | Dinner | Night",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
-      "food": "American",
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
+      "food": "Oriental",
       "casual": true,
-      "fancy": false,
-      "latitude": 48.2134,
-      "longitude": 16.3578
+      "fancy": true
     },
     {
       "id": 8,
@@ -238,16 +262,20 @@
           "url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
         }
       ],
-      "description": "Umami tousled 3 wolf moon succulents, truffaut listicle pork belly meggings post-ironic yr. Craft beer dreamcatcher coloring book adaptogen fingerstache, hoodie man braid scenester drinking vinegar mustache. Kombucha chambray whatever direct trade, lo-fi prism beard organic food truck hot chicken chicharrones synth meditation.",
-      "occasion": "Breakfast | Lunch",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
       "food": "Asian",
-      "casual": false,
-      "fancy": true,
-      "latitude": 48.31111,
-      "longitude": 16.32111
+      "casual": true,
+      "fancy": true
     },
     {
       "id": 9,
@@ -271,16 +299,20 @@
           "url": "https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
         }
       ],
-      "description": "Shaman bushwick street art snackwave photo booth venmo activated charcoal aesthetic migas, copper mug williamsburg. Succulents fam fashion axe, tumeric bitters iceland ethical. Swag man braid master cleanse vice. Edison bulb retro tattooed kale chips letterpress fanny pack vexillologist marfa listicle heirloom enamel pin gastropub.",
-      "occasion": "Lunch | Dinner | Night",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
       "food": "American",
       "casual": true,
-      "fancy": true,
-      "latitude": 48.254444,
-      "longitude": 16.315555
+      "fancy": true
     }
   ]
 }

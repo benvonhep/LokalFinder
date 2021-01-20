@@ -50,13 +50,21 @@ function MapLocationModal(props) {
       {...props}
       aria-labelledby="example-modal-sizes-title-sm"
       centered
+      animation={false}
     >
       {loading &&
         <h1>loading ....</h1>
       }
       {props.location &&
         <Card className="map-location-card shadow-lg rounded">
-          <Carousel activeIndex={index} onSelect={handleSelect} interval={10000000} wrap={false}>
+          <Carousel
+            activeIndex={index}
+            onSelect={handleSelect}
+            interval={10000000}
+            wrap={false}
+            slide={false}
+            fade={false}
+            >
             {props.location.photos.map(photo => (
               <Carousel.Item key={photo.id}>
                 <Card.Img

@@ -40,16 +40,20 @@
           "url": "https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
         }
       ],
-      "description": "Umami tousled 3 wolf moon succulents, truffaut listicle pork belly meggings post-ironic yr. Craft beer dreamcatcher coloring book adaptogen fingerstache, hoodie man braid scenester drinking vinegar mustache. Kombucha chambray whatever direct trade, lo-fi prism beard organic food truck hot chicken chicharrones synth meditation.",
-      "occasion": "Breakfast | Lunch",
-      "phone": "01589384",
-      "street": "Schwedenplatz 2",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
-      "food": "Asian",
-      "casual": false,
-      "fancy": true,
-      "latitude": 48.22,
-      "longitude": 16.33
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
+      "food": "European",
+      "casual": true,
+      "fancy": true
     },
     {
       "id": 3,
@@ -73,16 +77,20 @@
           "url": "https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
         }
       ],
-      "description": "Shaman bushwick street art snackwave photo booth venmo activated charcoal aesthetic migas, copper mug williamsburg. Succulents fam fashion axe, tumeric bitters iceland ethical. Swag man braid master cleanse vice. Edison bulb retro tattooed kale chips letterpress fanny pack vexillologist marfa listicle heirloom enamel pin gastropub.",
-      "occasion": "Lunch | Dinner | Night",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
-      "food": "American",
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
+      "food": "European",
       "casual": true,
-      "fancy": true,
-      "latitude": 48.24,
-      "longitude": 16.32
+      "fancy": true
     },
     {
       "id": 4,
@@ -106,16 +114,20 @@
           "url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
         }
       ],
-      "description": "Brunch ugh beard fam tbh man bun. Sriracha etsy everyday carry quinoa authentic pug shoreditch prism polaroid pour-over lyft scenester squid blog. Portland freegan chia, microdosing tumblr 90's ennui mlkshk migas pop-up pabst etsy. Gluten-free artisan air plant hot chicken bushwick vice cronut health goth yr occupy affogato offal master cleanse.",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
       "occasion": "Breakfast | Lunch | Dinner | Night",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
-      "food": "American",
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
+      "food": "European",
       "casual": true,
-      "fancy": false,
-      "latitude": 48.42,
-      "longitude": 16.24
+      "fancy": true
     },
     {
       "id": 5,
@@ -139,16 +151,20 @@
           "url": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
         }
       ],
-      "description": "Umami tousled 3 wolf moon succulents, truffaut listicle pork belly meggings post-ironic yr. Craft beer dreamcatcher coloring book adaptogen fingerstache, hoodie man braid scenester drinking vinegar mustache. Kombucha chambray whatever direct trade, lo-fi prism beard organic food truck hot chicken chicharrones synth meditation.",
-      "occasion": "Breakfast | Lunch",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
-      "food": "Asian",
-      "casual": false,
-      "fancy": true,
-      "latitude": 48.33,
-      "longitude": 16.33
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
+      "food": "European",
+      "casual": true,
+      "fancy": true
     },
     {
       "id": 6,
@@ -172,16 +188,20 @@
           "url": "https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
         }
       ],
-      "description": "Shaman bushwick street art snackwave photo booth venmo activated charcoal aesthetic migas, copper mug williamsburg. Succulents fam fashion axe, tumeric bitters iceland ethical. Swag man braid master cleanse vice. Edison bulb retro tattooed kale chips letterpress fanny pack vexillologist marfa listicle heirloom enamel pin gastropub.",
-      "occasion": "Lunch | Dinner | Night",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
-      "food": "American",
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
+      "food": "European",
       "casual": true,
-      "fancy": true,
-      "latitude": 48.25,
-      "longitude": 16.37
+      "fancy": true
     },
     {
       "id": 7,
@@ -205,16 +225,20 @@
           "url": "https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
         }
       ],
-      "description": "Brunch ugh beard fam tbh man bun. Sriracha etsy everyday carry quinoa authentic pug shoreditch prism polaroid pour-over lyft scenester squid blog. Portland freegan chia, microdosing tumblr 90's ennui mlkshk migas pop-up pabst etsy. Gluten-free artisan air plant hot chicken bushwick vice cronut health goth yr occupy affogato offal master cleanse.",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
       "occasion": "Breakfast | Lunch | Dinner | Night",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
-      "food": "American",
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
+      "food": "Oriental",
       "casual": true,
-      "fancy": false,
-      "latitude": 48.2134,
-      "longitude": 16.3578
+      "fancy": true
     },
     {
       "id": 8,
@@ -238,16 +262,20 @@
           "url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
         }
       ],
-      "description": "Umami tousled 3 wolf moon succulents, truffaut listicle pork belly meggings post-ironic yr. Craft beer dreamcatcher coloring book adaptogen fingerstache, hoodie man braid scenester drinking vinegar mustache. Kombucha chambray whatever direct trade, lo-fi prism beard organic food truck hot chicken chicharrones synth meditation.",
-      "occasion": "Breakfast | Lunch",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
       "city": "Vienna",
+      "country": "at",
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
       "food": "Asian",
-      "casual": false,
-      "fancy": true,
-      "latitude": 48.31111,
-      "longitude": 16.32111
+      "casual": true,
+      "fancy": true
     },
     {
       "id": 9,
@@ -271,535 +299,20 @@
           "url": "https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
         }
       ],
-      "description": "Shaman bushwick street art snackwave photo booth venmo activated charcoal aesthetic migas, copper mug williamsburg. Succulents fam fashion axe, tumeric bitters iceland ethical. Swag man braid master cleanse vice. Edison bulb retro tattooed kale chips letterpress fanny pack vexillologist marfa listicle heirloom enamel pin gastropub.",
-      "occasion": "Lunch | Dinner | Night",
-      "phone": "01589384",
-      "street": "Schwedenplatz 1",
-      "city": "Vienna",
-      "food": "American",
-      "casual": true,
-      "fancy": true,
-      "latitude": 48.254444,
-      "longitude": 16.315555
-    },
-    {
-      "id": 10,
-      "createdBy": {
-        "id": 1,
-        "username": "Benno",
-        "email": "benvonhep@gmail.com",
-        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
-        "description": "Hi I am Benno and want to save locations I like",
-        "city": "Vienna"
-      },
-      "name": "sdfsdf",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "sdfsdfsdfsd",
-      "occasion": "Dinner",
-      "phone": "ssdf",
-      "address": "",
-      "street": "sdfsdf",
-      "city": "sdfsdfsdf",
-      "food": "American",
-      "casual": true,
-      "fancy": false,
-      "latitude": "48.2311",
-      "longitude": "16.353"
-    },
-    {
-      "id": 11,
-      "createdBy": {
-        "id": 1,
-        "username": "Benno",
-        "email": "benvonhep@gmail.com",
-        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
-        "description": "Hi I am Benno and want to save locations I like",
-        "city": "Vienna"
-      },
-      "name": "sdfsd",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "hkhj",
-      "occasion": "Dinner",
-      "phone": "234234",
-      "address": "",
-      "street": "sdfsdf",
-      "city": "sdfsdfsdf",
-      "food": "American",
-      "casual": true,
-      "fancy": false,
-      "latitude": "48.233",
-      "longitude": "16.359"
-    },
-    {
-      "id": 12,
-      "createdBy": {
-        "id": 1,
-        "username": "Benno",
-        "email": "benvonhep@gmail.com",
-        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
-        "description": "Hi I am Benno and want to save locations I like",
-        "city": "Vienna"
-      },
-      "name": "sdfsdf",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "sdfsdf",
-      "occasion": "Dinner",
-      "phone": "2323",
-      "address": "",
-      "street": "sdfsdf",
-      "city": "sdfsdf",
-      "food": "American",
-      "casual": true,
-      "fancy": false,
-      "latitude": "48.235",
-      "longitude": "16.333"
-    },
-    {
-      "id": 13,
-      "createdBy": {
-        "id": 1,
-        "username": "Benno",
-        "email": "benvonhep@gmail.com",
-        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
-        "description": "Hi I am Benno and want to save locations I like",
-        "city": "Vienna"
-      },
-      "name": "hjkhjk",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "hjkhjk",
-      "occasion": "Dinner",
-      "phone": "78789789",
-      "address": "",
-      "street": "asdasd",
-      "city": "asdasd",
-      "food": "American",
-      "casual": true,
-      "fancy": false,
-      "latitude": "48.2254663",
-      "longitude": "16.3603362"
-    },
-    {
-      "id": 14,
-      "createdBy": {
-        "id": 1,
-        "username": "Benno",
-        "email": "benvonhep@gmail.com",
-        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
-        "description": "Hi I am Benno and want to save locations I like",
-        "city": "Vienna"
-      },
-      "name": "bensloft",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "asdasd",
-      "occasion": "Lunch",
-      "phone": "234234",
-      "address": "",
-      "street": "sdfsdf",
-      "city": "sdfsdf",
-      "food": "Asian",
-      "casual": true,
-      "fancy": false,
-      "latitude": "48.2182521",
-      "longitude": "16.3504663"
-    },
-    {
-      "id": 15,
-      "createdBy": {
-        "id": 1,
-        "username": "Benno",
-        "email": "benvonhep@gmail.com",
-        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
-        "description": "Hi I am Benno and want to save locations I like",
-        "city": "Vienna"
-      },
-      "name": "sdfsfd",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "sdfsdf",
-      "occasion": "Dinner",
-      "phone": "444444",
-      "address": "",
-      "street": "",
-      "city": "",
-      "food": "American",
-      "casual": true,
-      "fancy": false,
-      "latitude": 48.2155859,
-      "longitude": 16.351025
-    },
-    {
-      "id": 16,
-      "createdBy": {
-        "id": 1,
-        "username": "Benno",
-        "email": "benvonhep@gmail.com",
-        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
-        "description": "Hi I am Benno and want to save locations I like",
-        "city": "Vienna"
-      },
-      "name": "sdfsfd",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "sdfsdf",
-      "occasion": "Dinner",
-      "phone": "444444",
-      "address": "",
-      "street": "",
-      "city": "",
-      "food": "American",
-      "casual": true,
-      "fancy": false,
-      "latitude": 48.2138135,
-      "longitude": 16.3619913
-    },
-    {
-      "id": 17,
-      "createdBy": {
-        "id": 1,
-        "username": "Benno",
-        "email": "benvonhep@gmail.com",
-        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
-        "description": "Hi I am Benno and want to save locations I like",
-        "city": "Vienna"
-      },
-      "name": "sdfsdfsd sdfsdfsdfsdf",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "sdfsdf",
-      "occasion": "Dinner",
-      "phone": "343443",
-      "address": "",
-      "street": "",
-      "city": "",
-      "food": "Asian",
-      "casual": true,
-      "fancy": false,
-      "latitude": 48.0107712,
-      "longitude": 16.2050638
-    },
-    {
-      "id": 18,
-      "createdBy": {
-        "id": 1,
-        "username": "Benno",
-        "email": "benvonhep@gmail.com",
-        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
-        "description": "Hi I am Benno and want to save locations I like",
-        "city": "Vienna"
-      },
-      "name": "eeeeeee",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "sdfsdf",
-      "occasion": "Lunch",
-      "phone": "3434343",
-      "address": "",
-      "street": "Maria-Theresien-Straße",
-      "city": "Vienna",
-      "food": "American",
-      "casual": true,
-      "fancy": false,
-      "latitude": 48.2150481,
-      "longitude": 16.3629278,
-      "postcode": "1090",
-      "country": "at"
-    },
-    {
-      "id": 19,
-      "createdBy": {
-        "id": 1,
-        "username": "Benno",
-        "email": "benvonhep@gmail.com",
-        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
-        "description": "Hi I am Benno and want to save locations I like",
-        "city": "Vienna"
-      },
-      "name": "display_name",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "nominatim_data": "",
-      "description": "hjghkjh",
-      "occasion": "Breakfast",
-      "phone": "456465",
-      "house_number": "",
-      "street": "",
-      "postcode": "",
-      "city": "",
-      "country": "",
-      "latitude": "",
-      "longitude": "",
-      "food": "American",
-      "casual": true,
-      "fancy": false
-    },
-    {
-      "id": 20,
-      "createdBy": {
-        "id": 1,
-        "username": "Benno",
-        "email": "benvonhep@gmail.com",
-        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
-        "description": "Hi I am Benno and want to save locations I like",
-        "city": "Vienna"
-      },
-      "name": "dfgdfgdfg",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "nominatim_data": "Schottentor, Maria-Theresien-Straße, Rossau, KG Alsergrund, Alsergrund, Vienna, 1090, Austria",
-      "description": "ghjgjhg",
-      "occasion": "Lunch",
-      "phone": "56565",
-      "street": "Maria-Theresien-Straße",
-      "postcode": "1090",
-      "city": "Vienna",
-      "country": "at",
-      "latitude": 48.2150481,
-      "longitude": 16.3629278,
-      "food": "Asian",
-      "casual": true,
-      "fancy": false
-    },
-    {
-      "id": 21,
-      "createdBy": {
-        "id": 1,
-        "username": "Benno",
-        "email": "benvonhep@gmail.com",
-        "photo": "https://media-exp1.licdn.com/dms/image/C5603AQE6K1HTULM4Ng/profile-displayphoto-shrink_200_200/0?e=1608163200&v=beta&t=4VLNHLUCsPBrn6PKA5WqsrYX6DNNmrjQoY0Sudrd0xk",
-        "description": "Hi I am Benno and want to save locations I like",
-        "city": "Vienna"
-      },
-      "name": "sdfsdf",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "nominatim_data": "Arizona Bike, 3, Nussdorfer Straße, Himmelpfortgrund, KG Alsergrund, Alsergrund, Vienna, 1090, Austria",
-      "description": "hjkjhkjh",
-      "occasion": "Breakfast",
-      "phone": "45565",
-      "house_number": "3",
-      "street": "Nussdorfer Straße",
-      "postcode": "1090",
-      "city": "Vienna",
-      "country": "at",
-      "latitude": 48.2229663,
-      "longitude": 16.3532409,
-      "food": "Asian",
-      "casual": true,
-      "fancy": false
-    },
-    {
-      "id": 22,
-      "createdBy": 1,
-      "name": "dfgdfgdfg",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "nominatim_data": "1-5, Alser Straße, Buchfeld, Josefstadt, Vienna, 1080, Austria",
-      "description": "dfgdfgdfg",
-      "occasion": "Dinner",
-      "phone": "4545",
-      "house_number": "1-5",
-      "street": "Alser Straße",
-      "postcode": "1080",
-      "city": "Vienna",
-      "country": "at",
-      "latitude": 48.214614,
-      "longitude": 16.3546083,
-      "food": "Asian",
-      "casual": true,
-      "fancy": false
-    },
-    {
-      "id": 23,
-      "createdBy": 1,
-      "name": "sdfsdf",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "nominatim_data": "Schottentor, Schottenviertel, Innere Stadt, Vienna, 1010, Austria",
-      "description": "sdfsdf",
-      "occasion": "Lunch",
-      "phone": "3434343",
-      "street": "Schottentor",
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
       "postcode": "1010",
       "city": "Vienna",
       "country": "at",
-      "latitude": 48.2134751,
-      "longitude": 16.36268075128026,
-      "food": "Asian",
-      "casual": true,
-      "fancy": false
-    },
-    {
-      "id": 24,
-      "createdBy": 1,
-      "name": "sdfsdf",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "nominatim_data": "Spitalgasse, Korneuburg, Gemeinde Korneuburg, Bezirk Korneuburg, Lower Austria, 2100, Austria",
-      "description": "sdf",
-      "occasion": "Dinner",
-      "phone": "06605277180",
-      "street": "Spitalgasse",
-      "postcode": "2100",
-      "city": "Gemeinde Korneuburg",
-      "country": "at",
-      "latitude": 48.3437541,
-      "longitude": 16.3391131,
+      "latitude": 48.2084923,
+      "longitude": 16.37312685415674,
       "food": "American",
       "casual": true,
-      "fancy": false
-    },
-    {
-      "id": 25,
-      "createdBy": 1,
-      "name": "sdfsdf",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "nominatim_data": "Schottentor, Jonasreindl, Schottenviertel, Innere Stadt, Vienna, 1010, Austria",
-      "description": "sdfsdf",
-      "occasion": "Dinner",
-      "phone": "343434",
-      "street": "Jonasreindl",
-      "postcode": "1010",
-      "city": "Vienna",
-      "country": "at",
-      "latitude": 48.2139362,
-      "longitude": 16.361897,
-      "food": "Asian",
-      "casual": true,
-      "fancy": false
+      "fancy": true
     }
   ]
 }

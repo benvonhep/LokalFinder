@@ -34,20 +34,13 @@ const initialFormData = {
   casual: true,
   fancy: false
 }
-// const defaultCenter = [0, 0];
-// const defaultZoom = 4;
 
 const AddLocationModal = (props) => {
   const [validated, setValidated] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
   const [options, setOptions] = useState();
-  // const [geoValue, setGeoValue] = useState("");
-  // const [singleSelections, setSingleSelections] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [addressIsValid, setAddressIsValid] = useState(false);
-
-
-
 
   const handleSearch = async (query) => {
     setIsLoading(true);
@@ -57,7 +50,6 @@ const AddLocationModal = (props) => {
       q: query,
       addressdetails: 1,
       format: JSON,
-
     })
     setOptions(search)
     setIsLoading(false)
@@ -76,8 +68,9 @@ const AddLocationModal = (props) => {
   const onSubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
-    if (form.checkValidity() === false) {
+    if (form.checkValidity() === false || !addressIsValid) {
       event.stopPropagation();
+      return;
     }
 
     setValidated(true);
@@ -111,18 +104,16 @@ const AddLocationModal = (props) => {
       longitude: parseFloat(option.lon),
       city: option.address.city,
       street: option.address.road,
-      house_number: option.address.house_number,
+      house_number: parseFloat(option.address.house_number),
       postcode: option.address.postcode,
       country: option.address.country_code,
       nominatim_data: option.display_name
-
     });
     setAddressIsValid(true)
     return
   }
 
   const filterBy = () => true;
-
 
   return (
     <Modal
@@ -132,6 +123,8 @@ const AddLocationModal = (props) => {
       centered
       onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
       animation={false}
+      backdrop="static"
+        keyboard={false}
     >
       <Modal.Header className="modalHeader">
         <Modal.Title id="contained-modal-title-vcenter">
@@ -256,39 +249,28 @@ const AddLocationModal = (props) => {
                 </Fragment>
               )}
             />
+            {formData.city &&
+              <>
+                <Form.Label style={{marginTop: '15px'}}>Selected Address</Form.Label>
+                  <Form.Control
+                  required
+                    disabled
+                    size="sm"
+                    type="text"
+                    name="currentAddress"
+                    value={
+                      formData.street + ' ' +
+                      formData.house_number + ', ' +
+                      formData.postcode  + ', ' +
+                      formData.city
+                    }
+                  />
+              </>
+            }
             <Form.Control.Feedback type="invalid">
               Please enter an address
             </Form.Control.Feedback>
           </Form.Group>
-
-          {/* <Form.Group controlId="street">
-            <Form.Label>Street</Form.Label>
-            <Form.Control
-              required
-              size="sm"
-              type="text"
-              name="street"
-              value={formData.street}
-              onChange={onChange}
-              placeholder="Enter the street" />
-            <Form.Control.Feedback type="invalid">
-              Please enter the street
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group controlId="city">
-            <Form.Label>City</Form.Label>
-            <Form.Control
-              required
-              size="sm"
-              type="text"
-              name="city"
-              value={formData.city}
-              onChange={onChange}
-              placeholder="Enter the city" />
-            <Form.Control.Feedback type="invalid">
-              Please enter the city
-            </Form.Control.Feedback>
-          </Form.Group> */}
           <Form.Group controlId="food">
             <Form.Label>Choose Cuisine</Form.Label>
             <Form.Control as="select" size="sm" required name="food" value={formData.food}
@@ -305,8 +287,6 @@ const AddLocationModal = (props) => {
               Please enter the kind of food served
             </Form.Control.Feedback>
           </Form.Group>
-
-          {/* <Fragment style={{display: 'inline'}}> */}
             <Form.Group controlId="casual">
               <Form.Label>Casual</Form.Label>
               <Form.Check
@@ -315,7 +295,7 @@ const AddLocationModal = (props) => {
                 name="casual"
                 checked={formData.casual}
                 onChange={() => setFormData({ ...formData, casual: !formData.casual })}
-                placeholder="Enter the fancyness">
+                >
               </Form.Check>
             </Form.Group>
             <Form.Group controlId="fancy">
@@ -326,43 +306,13 @@ const AddLocationModal = (props) => {
                 name="fancy"
                 checked={formData.fancy}
                 onChange={() => setFormData({ ...formData, fancy: !formData.fancy })}
-                placeholder="Enter the fancyness">
+                >
               </Form.Check>
             </Form.Group>
-          {/* </Fragment> */}
-          {/* <Form.Group controlId="latitude">
-            <Form.Label>Locations Latitude</Form.Label>
-            <Form.Control
-              required
-              size="sm"
-              type="text"
-              name="latitude"
-              value={formData.latitude}
-              onChange={onChange}
-              placeholder="Enter the locations latitude" />
-            <Form.Control.Feedback type="invalid">
-              Please enter the latitude
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group controlId="longitude">
-            <Form.Label>Longitude</Form.Label>
-            <Form.Control
-              required
-              size="sm"
-              type="text"
-              name="longitude"
-              value={formData.longitude}
-              onChange={onChange}
-              placeholder="Enter the locations longitude" />
-            <Form.Control.Feedback type="invalid">
-              Please enter the longitude
-            </Form.Control.Feedback>
-          </Form.Group> */}
-
         </Modal.Body>
         <Modal.Footer className="modalFooter">
           <Button variant="outline-success" type="submit">
-            Submit
+            Save
           </Button>
           <Button variant="outline-secondary" onClick={onCancel} className="ml-2">
             Cancel

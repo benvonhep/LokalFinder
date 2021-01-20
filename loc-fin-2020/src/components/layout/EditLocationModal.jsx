@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import * as Nominatim from "nominatim-browser";
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 
-
 const initialFormData = {
   id: '',
   name: '',
@@ -25,14 +24,12 @@ const initialFormData = {
   nominatim_data: ''
 }
 
-
 function EditLocationModal(props) {
   const [validated, setValidated] = useState(false);
   const [formData, setFormData] = useState(initialFormData);
   const [options, setOptions] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [addressIsValid, setAddressIsValid] = useState(false);
-
+  const [addressIsValid, setAddressIsValid] = useState(true);
 
   useEffect(() => {
     setFormData(props.location)
@@ -53,7 +50,6 @@ function EditLocationModal(props) {
       q: query,
       addressdetails: 1,
       format: JSON,
-
     })
     setOptions(search)
     setIsLoading(false)
@@ -72,12 +68,10 @@ function EditLocationModal(props) {
     setValidated(true);
     const newLocation = {
       ...formData,
-      createdBy: props.location.createdBy
     }
     if (form.checkValidity() === true) {
       dispatch(editLocation(newLocation, newLocation.id))
       setFormData(initialFormData)
-
       props.onHide();
       setValidated(false);
       setAddressIsValid(false)
@@ -102,7 +96,7 @@ function EditLocationModal(props) {
       house_number: option.address.house_number,
       postcode: option.address.postcode,
       country: option.address.country_code,
-
+      nominatim_data: option.display_name
     });
     setAddressIsValid(true)
     return
@@ -225,8 +219,9 @@ function EditLocationModal(props) {
               isLoading={isLoading}
               labelKey={option => `${option.display_name}`}
               minLength={2}
-              defaultValue={formData.nominatim_data || ''}
+              value={formData.nominatim_data || ''}
               onSearch={handleSearch}
+              onInputChange={() => setAddressIsValid(false)}
               options={options}
               placeholder="Search for the address..."
               renderMenuItemChildren={(option, index) => (
@@ -235,38 +230,26 @@ function EditLocationModal(props) {
                 </Fragment>
               )}
             />
+
+
+            <Form.Label>Current Address</Form.Label>
+            <Form.Control
+              required
+              disabled
+              size="sm"
+              type="text"
+              name="currentAddress"
+              value={
+                formData.street + ' ' +
+                formData.house_number + ', ' +
+                formData.postcode  + ', ' +
+                formData.city
+              }
+            />
             <Form.Control.Feedback type="invalid">
               Please enter an address
             </Form.Control.Feedback>
           </Form.Group>
-          {/* <Form.Group controlId="street">
-            <Form.Label>Street</Form.Label>
-            <Form.Control
-              required
-              size="sm"
-              type="text"
-              name="street"
-              defaultValue={formData.street || ''}
-              onChange={onChange}
-              placeholder="Enter street" />
-            <Form.Control.Feedback type="invalid">
-              Please enter the street
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group controlId="city">
-            <Form.Label>City</Form.Label>
-            <Form.Control
-              required
-              size="sm"
-              type="text"
-              name="city"
-              defaultValue={formData.city || ''}
-              onChange={onChange}
-              placeholder="Enter city" />
-            <Form.Control.Feedback type="invalid">
-              Please enter the city
-            </Form.Control.Feedback>
-          </Form.Group> */}
           <Form.Group controlId="food">
             <Form.Label>Choose Cuisine</Form.Label>
             <Form.Control as="select" size="sm" required name="food"
@@ -290,9 +273,7 @@ function EditLocationModal(props) {
               type="checkbox"
               name="casual"
               checked={formData.casual}
-              // checked={formData.casual}
               onChange={() => setFormData({ ...formData, casual: !formData.casual })}
-
               placeholder="Enter the fancyness">
             </Form.Check>
           </Form.Group>
@@ -303,44 +284,14 @@ function EditLocationModal(props) {
               type="checkbox"
               name="fancy"
               checked={formData.fancy}
-
-              // checked={formData.fancy}
               onChange={() => setFormData({ ...formData, fancy: !formData.fancy })}
               placeholder="Enter the fancyness">
             </Form.Check>
           </Form.Group>
-          {/* <Form.Group controlId="latitude">
-            <Form.Label>Locations Latitude</Form.Label>
-            <Form.Control
-              required
-              size="sm"
-              type="text"
-              name="latitude"
-              defaultValue={formData.latitude || ''}
-              onChange={onChange}
-              placeholder="Enter locations latitude" />
-            <Form.Control.Feedback type="invalid">
-              Please enter the latitude
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group controlId="longitude">
-            <Form.Label>Longitude</Form.Label>
-            <Form.Control
-              required
-              size="sm"
-              type="text"
-              name="longitude"
-              defaultValue={formData.longitude || ''}
-              onChange={onChange}
-              placeholder="Enter the locations longitude" />
-            <Form.Control.Feedback type="invalid">
-              Please enter the longitude
-            </Form.Control.Feedback>
-          </Form.Group> */}
         </Modal.Body>
         <Modal.Footer className="modalFooter">
           <Button variant="outline-success" type="submit">
-            Submit
+            Save Changes
             </Button>
           <Button variant="outline-secondary" onClick={onCancel} className="ml-2">
             Cancel

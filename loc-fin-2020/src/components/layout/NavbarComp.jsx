@@ -9,6 +9,8 @@ import AddLocationModal from './AddLocationModal';
 import LoginButton from './LoginButton';
 import './NavbarComp.scss';
 import UserMenu from './UserMenu';
+import AlertSnack from './AlertSnack';
+
 
 
 
@@ -63,6 +65,8 @@ const NavbarComp = () => {
             </Button>
             : ''}
         </>
+      <div style={{position: 'absolute', top: '56px', width: '100vw'}}><AlertSnack /></div>
+
       </Navbar>
       {userProfile &&
         <AddLocationModal
@@ -87,6 +91,7 @@ const NavbarComp = () => {
 
         </>
       </Navbar>
+
     </>
   )
 }

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import './AddLocationModal.scss';
 import * as Nominatim from "nominatim-browser";
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
+import { setAlert } from '../../store/actions/alertActions';
 
 const initialFormData = {
   id: '',
@@ -78,9 +79,9 @@ const AddLocationModal = (props) => {
       ...formData,
       createdBy: props.user_id
     }
-    console.log('username', props.user_id)
     if (form.checkValidity() === true) {
       dispatch(addLocation(newLocation))
+      dispatch(setAlert('Added successfully the new awesomeness', 'danger'))
       setFormData(initialFormData)
       props.onHide();
       setValidated(false);

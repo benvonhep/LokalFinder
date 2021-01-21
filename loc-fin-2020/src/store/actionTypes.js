@@ -21,3 +21,5 @@ export const EDIT_USER = 'EDIT_USER';
 export const EDIT_USER_ERROR = 'EDIT_USER_ERROR';
 export const RESET_USER = 'EDIT_USER';
 export const RESET_USER_ERROR = 'EDIT_USER_ERROR';
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';

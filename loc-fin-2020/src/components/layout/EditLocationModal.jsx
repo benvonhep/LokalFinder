@@ -5,6 +5,8 @@ import './EditLocationModal.scss';
 import { useDispatch } from 'react-redux';
 import * as Nominatim from "nominatim-browser";
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
+import { setAlert } from '../../store/actions/alertActions';
+
 
 const initialFormData = {
   id: '',
@@ -70,11 +72,19 @@ function EditLocationModal(props) {
       ...formData,
     }
     if (form.checkValidity() === true) {
-      dispatch(editLocation(newLocation, newLocation.id))
-      setFormData(initialFormData)
-      props.onHide();
-      setValidated(false);
-      setAddressIsValid(false)
+     try {
+       dispatch(editLocation(newLocation, newLocation.id))
+       setFormData(initialFormData)
+       props.onHide();
+       setValidated(false);
+       setAddressIsValid(false)
+       dispatch(setAlert('Successfully edited the post', 'success'))
+     } catch {
+      dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
+     }
+    } else {
+      dispatch(setAlert('Please check all fields', 'warning'))
+
     }
   }
 

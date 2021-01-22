@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteLocation } from '../../store/actions/locationsAction';
 import { usePosition } from '../hooks/usePosition';
-import { ListLocationCard, EditLocationModal } from '../layout';
+import { ListLocationCard, EditLocationModal, Spinner } from '../layout';
 import './List.scss';
 
 function List() {
@@ -27,7 +27,7 @@ function List() {
     <div className="container listcontainer">
 
       {loading &&
-        <h1>loading ....</h1>
+        <Spinner/>
       }
       {!loading &&
         <div className="location-card-grid">

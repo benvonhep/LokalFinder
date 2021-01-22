@@ -5,6 +5,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { editUser, addUser } from '../../store/actions/usersAction';
 import { useHistory } from "react-router-dom";
 import './EditProfile.scss'
+import { setAlert } from '../../store/actions/alertActions';
+
 
 const initialFormData = {
   id: '',
@@ -65,9 +67,18 @@ const EditProfile = () => {
     }
 
     if (form.checkValidity() === true) {
-      dispatch(addUser(newUserProfile, newUserProfile.id))
-      push('/user')
+      try {
+        dispatch(addUser(newUserProfile, newUserProfile.id))
+        dispatch(setAlert('Successfully added your profile', 'success'))
+        push('/user')
+      } catch {
+        dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
+      }
+    } else {
+      dispatch(setAlert('Please check all fields', 'danger'))
+
     }
+
   }
 
   const onEditSubmit = async (event) => {
@@ -75,6 +86,7 @@ const EditProfile = () => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.stopPropagation();
+      dispatch(setAlert('Please check all fields', 'danger'))
     }
 
     setValidated(true);
@@ -82,10 +94,18 @@ const EditProfile = () => {
       ...formData
     }
     if (form.checkValidity() === true) {
-      dispatch(editUser(newUser, newUser.id))
-      push('/user')
-      setFormData(initialFormData)
-      setValidated(false);
+      try {
+        dispatch(editUser(newUser, newUser.id))
+        push('/user')
+        setFormData(initialFormData)
+        setValidated(false);
+        dispatch(setAlert('Successfully edited your profile', 'success'))
+      } catch {
+      dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
+      }
+    } else {
+      dispatch(setAlert('Please check all fields', 'danger'))
+
     }
   }
 

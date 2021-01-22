@@ -80,13 +80,19 @@ const AddLocationModal = (props) => {
       createdBy: props.user_id
     }
     if (form.checkValidity() === true) {
-      dispatch(addLocation(newLocation))
-      dispatch(setAlert('Added successfully the new awesomeness', 'danger'))
-      setFormData(initialFormData)
-      props.onHide();
-      setValidated(false);
-      setAddressIsValid(false)
+      try {
+        dispatch(addLocation(newLocation))
+        setFormData(initialFormData)
+        props.onHide();
+        setValidated(false);
+        setAddressIsValid(false)
+        dispatch(setAlert('Added successfully a new blogpost to the map', 'success'))
+      } catch {
+        dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
+      }
 
+    } else {
+      dispatch(setAlert('Please check all fields', 'danger'))
     }
   }
 

@@ -11,7 +11,7 @@ const AlertSnack = () => {
     <>
       {
         alerts.length > 0 ?  alerts.map(alert => (
-            <Alert key={alert.id} variant={alert.alertType}>
+            <Alert key={alert.id} variant={alert.alertType} style={{textAlign: 'center'}}>
               {alert.msg}
             </Alert>
           )) : ''

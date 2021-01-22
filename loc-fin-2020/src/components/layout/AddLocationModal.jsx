@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import './AddLocationModal.scss';
 import * as Nominatim from "nominatim-browser";
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
+import { setAlert } from '../../store/actions/alertActions';
 
 const initialFormData = {
   id: '',
@@ -78,14 +79,20 @@ const AddLocationModal = (props) => {
       ...formData,
       createdBy: props.user_id
     }
-    console.log('username', props.user_id)
     if (form.checkValidity() === true) {
-      dispatch(addLocation(newLocation))
-      setFormData(initialFormData)
-      props.onHide();
-      setValidated(false);
-      setAddressIsValid(false)
+      try {
+        dispatch(addLocation(newLocation))
+        setFormData(initialFormData)
+        props.onHide();
+        setValidated(false);
+        setAddressIsValid(false)
+        dispatch(setAlert('Added successfully a new blogpost to the map', 'success'))
+      } catch {
+        dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
+      }
 
+    } else {
+      dispatch(setAlert('Please check all fields', 'danger'))
     }
   }
 

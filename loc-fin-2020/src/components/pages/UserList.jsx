@@ -3,6 +3,7 @@ import UserCard from '../layout/UserCard'
 import { useSelector } from 'react-redux';
 
 import './UserList.scss'
+import { Spinner } from '../layout';
 
 export default function UserList() {
   const loading = useSelector(state => state.loading)
@@ -13,7 +14,7 @@ export default function UserList() {
     <div className="card-grid-container">
 
       {loading &&
-        <h1>loading ....</h1>
+        <Spinner />
       }
       {!loading &&
         <div className="user-card-grid">

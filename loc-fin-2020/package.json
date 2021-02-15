@@ -25,6 +25,7 @@
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "esri-leaflet-geocoder": "^2.3.3",
+    "formik": "^2.2.6",
     "leaflet": "^1.7.1",
     "leaflet-geosearch": "^3.0.6",
     "node-sass": "^4.14.1",
@@ -44,7 +45,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "typescript": "^3.7.5",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "yup": "^0.32.8"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -6,11 +6,11 @@ import './AddLocationModal.scss';
 import * as Nominatim from "nominatim-browser";
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import { setAlert } from '../../store/actions/alertActions';
-import { Formik, useFormikContext } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 
 const reqdFieldMsg = 'This is a required field';
-const schema = yup.object({
+const schema = yup.object().shape({
   name: yup.string().required(reqdFieldMsg),
   // min max limit einfügen
   description: yup.string().required(reqdFieldMsg),
@@ -19,40 +19,15 @@ const schema = yup.object({
   address: yup.boolean().oneOf([true], "An address must be chosen."),
   food: yup.string().required(reqdFieldMsg),
   house_number: yup.number().required('Please choose an adress providing a house number'),
-  casual: yup.boolean(),
-  fancy: yup.boolean().when("casual", (casual) => {
-    if(!casual) return yup.string().required("Choose at least one of the two options")
+  casual: yup.boolean().when("fancy",{
+    is: false,
+    then: yup.boolean().oneOf([true], "Choose at least one of the two options"),
+    otherwise: yup.boolean().required()
   }),
-})
-
-// const initialvalues = {
-//   id: '',
-//   createdBy: '',
-//   name: '',
-//   photos: [
-//     {
-//       id: 1,
-//       url: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-//     },
-//     {
-//       id: 2,
-//       url: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-//     }],
-//   nominatim_data: '',
-//   description: '',
-//   occasion: '',
-//   phone: '',
-//   house_number: '',
-//   street: '',
-//   postcode: '',
-//   city: '',
-//   country: '',
-//   latitude: '',
-//   longitude: '',
-//   food: '',
-//   casual: true,
-//   fancy: false
-// }
+  fancy: yup.boolean()
+},
+[['name', 'description', 'occasion', 'phone', 'address', 'food', 'house_number', 'casual', 'fancy']]
+)
 
 const AddLocationModal = (props) => {
   // const [validated, setValidated] = useState(false);
@@ -92,6 +67,7 @@ const AddLocationModal = (props) => {
       setAddressIsValid(false)
       return;
     }
+
     // const form = event.currentTarget;
       // dispatch(setAlert('Please check the fields are correctly filled in', 'danger'))
 
@@ -149,7 +125,7 @@ const AddLocationModal = (props) => {
       onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
       animation={false}
       backdrop="static"
-        keyboard={false}
+      keyboard={false}
     >
       <Modal.Header className="modalHeader">
         <Modal.Title id="contained-modal-title-vcenter">
@@ -159,6 +135,8 @@ const AddLocationModal = (props) => {
       </Modal.Header>
       <Formik
         validationSchema={schema}
+        // validateOnChange={false}
+        validateOnBlur={true}
         onSubmit={onSubmit}
         innerRef={formRef}
         initialValues={{
@@ -186,8 +164,8 @@ const AddLocationModal = (props) => {
           latitude: '',
           longitude: '',
           food: '',
-          casual: true,
-          fancy: false,
+          casual: false,
+          fancy: true,
           address: false
         }}
         >{({
@@ -195,12 +173,14 @@ const AddLocationModal = (props) => {
           handleChange,
           setFieldValue,
           setValues,
+          validateField,
           touched,
           values,
           errors
         }) => {
 
-        return (<Form noValidate onSubmit={handleSubmit}>
+        return (
+        <Form noValidate onSubmit={handleSubmit}>
           <Modal.Body>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
@@ -211,7 +191,7 @@ const AddLocationModal = (props) => {
                 name="name"
                 value={values.name}
                 onChange={handleChange}
-                isInvalid={errors.name}
+                isInvalid={!!errors.name && touched.name}
 
                 placeholder="Enter the name" />
               <Form.Control.Feedback type="invalid">
@@ -227,7 +207,7 @@ const AddLocationModal = (props) => {
                 name="photo1"
                 value={values.photos[0].url}
                 onChange={handleChange}
-                isInvalid={errors.photo1}
+                isInvalid={!!errors.photo1 && touched.photo1}
                 placeholder="Enter the photos url" />
               <Form.Control.Feedback type="invalid">
                 Please enter the photos url
@@ -242,7 +222,7 @@ const AddLocationModal = (props) => {
                 name="photo2"
                 value={values.photos[1].url}
                 onChange={handleChange}
-                isInvalid={errors.photo2}
+                isInvalid={!!errors.photo2 && touched.photo2}
                 placeholder="Enter the photos url" />
               <Form.Control.Feedback type="invalid">
                 Please enter the photos url
@@ -257,7 +237,7 @@ const AddLocationModal = (props) => {
                 name="description"
                 value={values.description}
                 onChange={handleChange}
-                isInvalid={errors.description}
+                isInvalid={!!errors.description && touched.description}
                 placeholder="Enter the description" />
               <Form.Control.Feedback type="invalid">
                 Please enter a description
@@ -272,9 +252,9 @@ const AddLocationModal = (props) => {
                 name="occasion"
                 value={values.occasion}
                 onChange={handleChange}
-                isInvalid={errors.occasion}
+                isInvalid={!!errors.occasion && touched.occasion}
                 >
-                <option></option>
+                <option hidden value="">Choose an occasion</option>
                 <option>Breakfast</option>
                 <option>Lunch</option>
                 <option>Dinner</option>
@@ -297,7 +277,7 @@ const AddLocationModal = (props) => {
                 name="phone"
                 value={values.phone}
                 onChange={handleChange}
-                isInvalid={errors.phone}
+                isInvalid={!!errors.phone && touched.phone}
 
                 placeholder="Enter the phone number" />
               <Form.Control.Feedback type="invalid">
@@ -309,15 +289,18 @@ const AddLocationModal = (props) => {
               <Form.Label>Location Address</Form.Label>
               <AsyncTypeahead
                 required
-                isInvalid={!!errors.address}
+                isInvalid={!!errors.address && touched.address}
                 filterBy={filterBy}
-                id="async-example"
+                id="adress_typeahead"
                 isLoading={isLoading}
                 labelKey={option => `${option.display_name}`}
                 minLength={2}
                 name="address"
                 onSearch={handleSearch}
-                // onInputChange={() => setAddressIsValid(false)}
+                onInputChange={() => {
+                  setAddressIsValid(false)
+                  setFieldValue('address', false)
+                }}
                 options={options}
                 placeholder="Search for the address..."
                 renderMenuItemChildren={(option, index) => (
@@ -362,8 +345,10 @@ const AddLocationModal = (props) => {
                 name="food"
                 value={values.food}
                 onChange={handleChange}
+                isInvalid={!!errors.food && touched.food}
+
                 >
-                <option></option>
+                <option hidden value="">Choose the cuisine</option>
                 <option>African</option>
                 <option>American</option>
                 <option>Asian</option>
@@ -379,31 +364,41 @@ const AddLocationModal = (props) => {
                 <Form.Label>Casual</Form.Label>
                 <Form.Check
                   inline
+                  required
                   type="checkbox"
                   name="casual"
-                  onChange={handleChange}
+                  // onChange={handleChange}
+                isInvalid={!!errors.casual && touched.casual}
+                // feedbackTooltip
+                feedback='Choose at least one'
+
                   checked={values.casual}
-                  // onChange={() => setValues({ ...values, casual: !values.casual })}
+                  onChange={() => setValues({ ...values, casual: !values.casual })}
                   >
                 </Form.Check>
-                <Form.Control.Feedback type="invalid">
-                Please choose casualness
-              </Form.Control.Feedback>
+
               </Form.Group>
               <Form.Group controlId="fancy">
                 <Form.Label>Fancy</Form.Label>
                 <Form.Check
                   inline
+                  required
+                  style={{marginLeft: '8px'}}
                   type="checkbox"
                   name="fancy"
-                  onChange={handleChange}
+                  feedback='Choose at least one'
+                  // onChange={handleChange}
+                isInvalid={!!errors.fancy && touched.fancy}
+                // isInvalid={true}
+                // feedbackTooltip
+
                   checked={values.fancy}
-                  // onChange={() => setValues({ ...values, fancy: !values.fancy })}
+                  onChange={() => setValues({ ...values, fancy: !values.fancy })}
                   >
                 </Form.Check>
-                <Form.Control.Feedback type="invalid">
-                Please choose fancyness
-              </Form.Control.Feedback>
+                {/* <Form.Control.Feedback type="invalid">
+                Choose at least one
+              </Form.Control.Feedback> */}
               </Form.Group>
           </Modal.Body>
           <Modal.Footer className="modalFooter">

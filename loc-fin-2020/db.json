@@ -342,6 +342,36 @@
       "casual": false,
       "fancy": true,
       "address": true
+    },
+    {
+      "id": 11,
+      "createdBy": 1,
+      "name": "",
+      "photos": [
+        {
+          "id": 1,
+          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        },
+        {
+          "id": 2,
+          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        }
+      ],
+      "nominatim_data": "",
+      "description": "",
+      "occasion": "",
+      "phone": "",
+      "house_number": "",
+      "street": "",
+      "postcode": "",
+      "city": "",
+      "country": "",
+      "latitude": "",
+      "longitude": "",
+      "food": "",
+      "casual": false,
+      "fancy": true,
+      "address": false
     }
   ]
 }

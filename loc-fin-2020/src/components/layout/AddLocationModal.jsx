@@ -6,7 +6,7 @@ import './AddLocationModal.scss';
 import * as Nominatim from "nominatim-browser";
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import { setAlert } from '../../store/actions/alertActions';
-import { Formik } from 'formik';
+import { useFormikContext, Formik, Form as Formikform, Field } from 'formik';
 import * as yup from 'yup';
 
 const reqdFieldMsg = 'This is a required field';
@@ -30,11 +30,11 @@ const schema = yup.object().shape({
 )
 
 const AddLocationModal = (props) => {
-  // const [validated, setValidated] = useState(false);
+  const [validated, setValidated] = useState(false);
   // const [formData, setFormData] = useState(initialFormData);
   const [options, setOptions] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [addressIsValid, setAddressIsValid] = useState();
+  const [addressIsValid, setAddressIsValid] = useState(null);
   // const { values, submitForm } = useFormikContext();
   const formRef = useRef();
 
@@ -61,17 +61,23 @@ const AddLocationModal = (props) => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = async (values) => {
-    // event.preventDefault();
-    if(addressIsValid === null || false){
-      setAddressIsValid(false)
-      return;
-    }
+  const test = (event, values) => {
+    event.preventDefault();
+    console.log(event, 'event');
+    console.log(values, 'values');
 
-    // const form = event.currentTarget;
-      // dispatch(setAlert('Please check the fields are correctly filled in', 'danger'))
+  }
 
-    // setValidated(true);
+  const onSubmit =  (event, values) => {
+    event.preventDefault();
+    console.log(formRef.current, 'FORMREF');
+    console.log(values, 'values')
+
+    // if(addressIsValid === null || false){
+    //   setAddressIsValid(false)
+    //   return;
+    // }
+    setValidated(true);
       try {
         const newLocation = {
           values,
@@ -80,9 +86,9 @@ const AddLocationModal = (props) => {
         dispatch(addLocation(newLocation))
         // setFormData(initialFormData)
         props.onHide();
-        // setValidated(false);
-        // setAddressIsValid(false)
-        // dispatch(setAlert('Added successfully a new blogpost to the map', 'success'))
+        setValidated(false);
+        setAddressIsValid(false)
+        dispatch(setAlert('Added successfully a new blogpost to the map', 'success'))
       } catch {
         dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
       }
@@ -93,26 +99,10 @@ const AddLocationModal = (props) => {
     props.onHide()
     // setFormData(initialFormData)
     // setAddressIsValid(false)
-    // dispatch(resetLocation())
+    dispatch(resetLocation())
   }
 
-  const addGeodata = (option) => {
-    console.log(option, 'option');
-    console.log('addgetodata', formRef);
-    // setValues({
-    //   ...formRef,
-    //   latitude: parseFloat(option.lat),
-    //   longitude: parseFloat(option.lon),
-    //   city: option.address.city,
-    //   street: option.address.road,
-    //   house_number: parseFloat(option.address.house_number),
-    //   postcode: option.address.postcode,
-    //   country: option.address.country_code,
-    //   nominatim_data: option.display_name
-    // });
-    // setAddressIsValid(true)
-    return
-  }
+
 
   const filterBy = () => true;
 
@@ -137,7 +127,6 @@ const AddLocationModal = (props) => {
         validationSchema={schema}
         // validateOnChange={false}
         validateOnBlur={true}
-        onSubmit={onSubmit}
         innerRef={formRef}
         initialValues={{
           id: '',
@@ -180,7 +169,27 @@ const AddLocationModal = (props) => {
         }) => {
 
         return (
-        <Form noValidate onSubmit={handleSubmit}>
+        <Form noValidate
+          onSubmit={(e) => {
+            e.preventDefault()
+            console.log(values, 'VAL');
+            try {
+              const newLocation = {
+                ...values,
+                createdBy: props.user_id
+              }
+              console.log(newLocation, 'NEWLOCC');
+              dispatch(addLocation(newLocation))
+              props.onHide();
+              setValidated(false);
+              setAddressIsValid(false)
+              dispatch(setAlert('Added successfully a new blogpost to the map', 'success'))
+            } catch {
+              dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
+            }
+
+        }}
+        >
           <Modal.Body>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
@@ -289,7 +298,7 @@ const AddLocationModal = (props) => {
               <Form.Label>Location Address</Form.Label>
               <AsyncTypeahead
                 required
-                isInvalid={!!errors.address && touched.address}
+                isInvalid={!!addressIsValid && !!null}
                 filterBy={filterBy}
                 id="adress_typeahead"
                 isLoading={isLoading}
@@ -299,7 +308,6 @@ const AddLocationModal = (props) => {
                 onSearch={handleSearch}
                 onInputChange={() => {
                   setAddressIsValid(false)
-                  setFieldValue('address', false)
                 }}
                 options={options}
                 placeholder="Search for the address..."
@@ -307,9 +315,28 @@ const AddLocationModal = (props) => {
                   <Fragment key={index}>
                     <span
                       onClick={() => {
-                        addGeodata(option)
-                        setAddressIsValid(true)
-                        setFieldValue('address', true)
+                        if(
+                          option.lat &&
+                          option.lon &&
+                          option.address.city &&
+                          option.address.road &&
+                          option.address.house_number &&
+                          option.address.postcode &&
+                          option.address.country_code)
+                            {setAddressIsValid(true)}
+                          else
+                          {
+                            setAddressIsValid(false)
+                            setFieldValue('address', true)}
+                            setFieldValue('latitude', parseFloat(option.lat))
+                            setFieldValue('longitude', parseFloat(option.lon))
+                            setFieldValue('city', option.address.city)
+                            setFieldValue('street', option.address.road)
+                            setFieldValue('house_number', parseFloat(option.address.house_number))
+                            setFieldValue('postcode', option.address.postcode)
+                            setFieldValue('country', option.address.country_code)
+                            setFieldValue('nominatim_data', option.address.display_name)
+                            setFieldValue('address', true)
                         }}>{option.display_name}</span>
                   </Fragment>
                 )}
@@ -323,6 +350,7 @@ const AddLocationModal = (props) => {
                       size="sm"
                       type="text"
                       name="currentAddress"
+                      isInvalid={!!errors.address && touched.address}
                       value={
                         values.street + ' ' +
                         values.house_number + ', ' +
@@ -405,9 +433,10 @@ const AddLocationModal = (props) => {
             <Button variant="outline-success" type="submit">
               Save
             </Button>
-            <Button variant="outline-secondary" onClick={onCancel} className="ml-2">
+            <Button variant="outline-secondary" type="button" onClick={onCancel} className="ml-2">
               Cancel
             </Button>
+
           </Modal.Footer>
         </Form >)
         }}

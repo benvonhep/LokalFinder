@@ -6,7 +6,7 @@ import './AddLocationModal.scss';
 import * as Nominatim from "nominatim-browser";
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import { setAlert } from '../../store/actions/alertActions';
-import { useFormikContext, Formik, Form as Formikform, Field } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 
 const reqdFieldMsg = 'This is a required field';
@@ -24,18 +24,18 @@ const schema = yup.object().shape({
     then: yup.boolean().oneOf([true], "Choose at least one of the two options"),
     otherwise: yup.boolean().required()
   }),
-  fancy: yup.boolean()
+  fancy: yup.boolean(),
+  currentAddress: yup.string().required()
+  // addressdisabled: yup.string().required(reqdFieldMsg)
 },
-[['name', 'description', 'occasion', 'phone', 'address', 'food', 'house_number', 'casual', 'fancy']]
+[['name', 'description', 'occasion', 'phone', 'address', 'food', 'house_number', 'casual', 'fancy', 'currentAddress']]
 )
 
 const AddLocationModal = (props) => {
   const [validated, setValidated] = useState(false);
-  // const [formData, setFormData] = useState(initialFormData);
   const [options, setOptions] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [addressIsValid, setAddressIsValid] = useState(null);
-  // const { values, submitForm } = useFormikContext();
+  const [addressIsValid, setAddressIsValid] = useState('null');
   const formRef = useRef();
 
   const handleSearch = async (query) => {
@@ -52,13 +52,6 @@ const AddLocationModal = (props) => {
     return search
   }
 
-  // const onChange = (e) => {
-  //   return setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value
-  //   });
-  // }
-
   const dispatch = useDispatch();
 
   const test = (event, values) => {
@@ -68,41 +61,10 @@ const AddLocationModal = (props) => {
 
   }
 
-  const onSubmit =  (event, values) => {
-    event.preventDefault();
-    console.log(formRef.current, 'FORMREF');
-    console.log(values, 'values')
-
-    // if(addressIsValid === null || false){
-    //   setAddressIsValid(false)
-    //   return;
-    // }
-    setValidated(true);
-      try {
-        const newLocation = {
-          values,
-          createdBy: props.user_id
-        }
-        dispatch(addLocation(newLocation))
-        // setFormData(initialFormData)
-        props.onHide();
-        setValidated(false);
-        setAddressIsValid(false)
-        dispatch(setAlert('Added successfully a new blogpost to the map', 'success'))
-      } catch {
-        dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
-      }
-
-  }
-
   const onCancel = async () => {
     props.onHide()
-    // setFormData(initialFormData)
-    // setAddressIsValid(false)
     dispatch(resetLocation())
   }
-
-
 
   const filterBy = () => true;
 
@@ -125,25 +87,21 @@ const AddLocationModal = (props) => {
       </Modal.Header>
       <Formik
         validationSchema={schema}
-        // validateOnChange={false}
-        onSubmit={(e) => {
-          e.preventDefault()
-          console.log('submitted');
-          // try {
-          //   const newLocation = {
-          //     ...values,
-          //     createdBy: props.user_id
-          //   }
-          //   console.log(newLocation, 'NEWLOCC');
-          //   dispatch(addLocation(newLocation))
-          //   props.onHide();
-          //   setValidated(false);
-          //   setAddressIsValid(false)
-          //   dispatch(setAlert('Added successfully a new blogpost to the map', 'success'))
-          // } catch {
-          //   dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
-          // }
-
+        onSubmit={(values) => {
+          try {
+            const newLocation = {
+              ...values,
+              createdBy: props.user_id
+            }
+            console.log(newLocation, 'NEWLOCC');
+            dispatch(addLocation(newLocation))
+            props.onHide();
+            setValidated(false);
+            setAddressIsValid(false)
+            dispatch(setAlert('Added successfully a new blogpost to the map', 'success'))
+          } catch {
+            dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
+          }
       }}
         validateOnBlur={true}
         innerRef={formRef}
@@ -174,12 +132,14 @@ const AddLocationModal = (props) => {
           food: '',
           casual: false,
           fancy: true,
-          address: false
+          address: false,
+          addressdisabled: ''
         }}
         >{({
           handleSubmit,
           handleChange,
           setFieldValue,
+          setFieldError,
           setValues,
           validateField,
           touched,
@@ -194,7 +154,7 @@ const AddLocationModal = (props) => {
         >
           <Modal.Body>
             <div>
-              {errors.name}
+             <div>{errors.name}</div>
             </div>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
@@ -299,28 +259,9 @@ const AddLocationModal = (props) => {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group controlId="address">
+            <Form.Group controlId="addressdisabled">
+
               <Form.Label>Location Address</Form.Label>
-                <>
-                    <Form.Control
-                      required
-                      disabled
-                      size="sm"
-                      placeholder=""
-                      type="text"
-                      name="currentAddress"
-                      isInvalid={!!errors.address && touched.address}
-                      value={
-                        values.street + ' ' +
-                        values.house_number + ', ' +
-                        values.postcode  + ', ' +
-                        values.city
-                      }
-                    />
-                </>
-              <Form.Control.Feedback type="invalid">
-                Please enter an address
-              </Form.Control.Feedback>
               <AsyncTypeahead
                 required
                 isInvalid={!!addressIsValid && !!null}
@@ -340,6 +281,18 @@ const AddLocationModal = (props) => {
                   <Fragment key={index}>
                     <span
                       onClick={() => {
+                        if(isNaN(option.address.house_number)){
+                          console.log('housenumber fail');
+                          setAddressIsValid(false)
+                          setFieldValue('address', false)
+                          // setFieldError('addressdisabled', 'Enter a valid house number')
+                          setAddressIsValid(false)
+                          validateField('address')
+                          return
+                        }
+                        setFieldValue('address', true)
+                        validateField('address')
+                        setAddressIsValid(true)
                         if(
                           option.lat &&
                           option.lon &&
@@ -364,8 +317,28 @@ const AddLocationModal = (props) => {
                             setFieldValue('address', true)
                         }}>{option.display_name}</span>
                   </Fragment>
+
                 )}
               />
+              <Form.Control
+                required
+                disabled
+                size="sm"
+                placeholder=""
+                type="text"
+                isInvalid={!addressIsValid}
+                name="currentAddress"
+                value={values.street ?
+                  values.street + ' ' +
+                  values.house_number + ', ' +
+                  values.postcode  + ', ' +
+                  values.city : ''
+                }
+                // !!errors.address && !!errors.addressdisabled &&
+              />
+          <Form.Control.Feedback type="invalid">
+            Please verify the address including the house number
+          </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="food">
               <Form.Label>Choose Cuisine</Form.Label>
@@ -398,16 +371,12 @@ const AddLocationModal = (props) => {
                   required
                   type="checkbox"
                   name="casual"
-                  // onChange={handleChange}
                   isInvalid={!!errors.casual && touched.casual}
-                  // feedbackTooltip
                   feedback='Choose at least one'
-
                   checked={values.casual}
                   onChange={() => setValues({ ...values, casual: !values.casual })}
                   >
                 </Form.Check>
-
               </Form.Group>
               <Form.Group controlId="fancy">
                 <Form.Label>Fancy</Form.Label>
@@ -418,28 +387,20 @@ const AddLocationModal = (props) => {
                   type="checkbox"
                   name="fancy"
                   feedback='Choose at least one'
-                  // onChange={handleChange}
                 isInvalid={!!errors.fancy && touched.fancy}
-                // isInvalid={true}
-                // feedbackTooltip
-
                   checked={values.fancy}
                   onChange={() => setValues({ ...values, fancy: !values.fancy })}
                   >
                 </Form.Check>
-                {/* <Form.Control.Feedback type="invalid">
-                Choose at least one
-              </Form.Control.Feedback> */}
               </Form.Group>
           </Modal.Body>
           <Modal.Footer className="modalFooter">
-            <Button variant="outline-success" type="submit" >
+            <Button variant="outline-success" type="submit">
               Save
             </Button>
             <Button variant="outline-secondary" type="button" onClick={onCancel} className="ml-2">
               Cancel
             </Button>
-
           </Modal.Footer>
         </Form >)
         }}

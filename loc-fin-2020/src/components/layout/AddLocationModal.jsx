@@ -11,17 +11,17 @@ import * as yup from 'yup';
 
 const reqdFieldMsg = 'This is a required field';
 const schema = yup.object().shape({
-  name: yup.string().required(reqdFieldMsg),
+  name: yup.string().required('LoL :)'),
   // min max limit einfügen
-  description: yup.string().required(reqdFieldMsg),
-  occasion: yup.string().required(reqdFieldMsg),
-  phone: yup.string().required(reqdFieldMsg),
-  address: yup.boolean().oneOf([true], "An address must be chosen."),
+  description: yup.string().required('Why should you go there?'),
+  occasion: yup.string().required('When could you go?'),
+  phone: yup.string().required('A phonenumber would be awesome :)'),
+  address: yup.boolean().oneOf([true], "Impossible to find :)"),
   food: yup.string().required(reqdFieldMsg),
-  house_number: yup.number().required('Please choose an adress providing a house number'),
+  house_number: yup.number().required('A house number would be pretty awesome :)'),
   casual: yup.boolean().when("fancy",{
     is: false,
-    then: yup.boolean().oneOf([true], "Choose at least one of the two options"),
+    then: yup.boolean().oneOf([true], "Are you sure it´s neither of the two? ;)"),
     otherwise: yup.boolean().required()
   }),
   fancy: yup.boolean(),
@@ -88,6 +88,7 @@ const AddLocationModal = (props) => {
       <Formik
         validationSchema={schema}
         onSubmit={(values) => {
+
           try {
             const newLocation = {
               ...values,
@@ -153,9 +154,6 @@ const AddLocationModal = (props) => {
         onSubmit={handleSubmit}
         >
           <Modal.Body>
-            <div>
-             <div>{errors.name}</div>
-            </div>
             <Form.Group controlId="name">
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -169,7 +167,7 @@ const AddLocationModal = (props) => {
 
                 placeholder="Enter the name" />
               <Form.Control.Feedback type="invalid">
-                Please enter a name
+                {errors.name}
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="photo1">
@@ -214,7 +212,7 @@ const AddLocationModal = (props) => {
                 isInvalid={!!errors.description && touched.description}
                 placeholder="Enter the description" />
               <Form.Control.Feedback type="invalid">
-                Please enter a description
+                {errors.description}
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="occasion">
@@ -239,7 +237,7 @@ const AddLocationModal = (props) => {
                 <option>Breakfast | Lunch | Dinner | Night</option>
               </Form.Control>
               <Form.Control.Feedback type="invalid">
-                Please enter the occasion
+                {errors.occasion}
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="phone">
@@ -255,7 +253,7 @@ const AddLocationModal = (props) => {
 
                 placeholder="Enter the phone number" />
               <Form.Control.Feedback type="invalid">
-                Please enter the phone number
+                {errors.phone}
               </Form.Control.Feedback>
             </Form.Group>
 
@@ -337,7 +335,7 @@ const AddLocationModal = (props) => {
                 // !!errors.address && !!errors.addressdisabled &&
               />
           <Form.Control.Feedback type="invalid">
-            Please verify the address including the house number
+            {errors.house_number}
           </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="food">
@@ -361,7 +359,7 @@ const AddLocationModal = (props) => {
                 <option>Other</option>
               </Form.Control>
               <Form.Control.Feedback type="invalid">
-                Please enter the kind of food served
+                {errors.food}
               </Form.Control.Feedback>
             </Form.Group>
               <Form.Group controlId="casual">
@@ -395,7 +393,11 @@ const AddLocationModal = (props) => {
               </Form.Group>
           </Modal.Body>
           <Modal.Footer className="modalFooter">
-            <Button variant="outline-success" type="submit">
+            <Button variant="outline-success" type="submit" onClick={() => {
+              if(addressIsValid === 'null'){
+                setAddressIsValid(false)
+              }
+            }}>
               Save
             </Button>
             <Button variant="outline-secondary" type="button" onClick={onCancel} className="ml-2">

@@ -24,9 +24,8 @@ const schema = yup.object().shape({
     otherwise: yup.boolean().required()
   }),
   fancy: yup.boolean(),
-  currentAddress: yup.string().required()
 },
-[['name', 'description', 'occasion', 'phone', 'address', 'food', 'house_number', 'casual', 'fancy', 'currentAddress']]
+[['name', 'description', 'occasion', 'phone', 'address', 'food', 'house_number', 'casual', 'fancy']]
 )
 
 const AddLocationModal = (props) => {
@@ -86,7 +85,6 @@ const AddLocationModal = (props) => {
       <Formik
         validationSchema={schema}
         onSubmit={(values) => {
-
           try {
             const newLocation = {
               ...values,
@@ -359,7 +357,7 @@ const AddLocationModal = (props) => {
                 {errors.food}
               </Form.Control.Feedback>
             </Form.Group>
-              <div style={{'display': 'flex', 'justify-content': 'center', 'flex-direction': 'row'}}>
+              <div style={{'display': 'flex', 'justifyContent': 'center', 'flexDirection': 'row'}}>
                 <Form.Group controlId="casual" style={{'width': '265px'}}>
                   <Form.Label>Casual</Form.Label>
                   <Form.Check

@@ -9,7 +9,6 @@ import { setAlert } from '../../store/actions/alertActions';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-const reqdFieldMsg = 'This is a required field';
 const schema = yup.object().shape({
   name: yup.string().required('LoL :)'),
   // min max limit einfügen
@@ -17,7 +16,7 @@ const schema = yup.object().shape({
   occasion: yup.string().required('When could you go?'),
   phone: yup.string().required('A phonenumber would be awesome :)'),
   address: yup.boolean().oneOf([true], "Impossible to find :)"),
-  food: yup.string().required(reqdFieldMsg),
+  food: yup.string().required('What food do they offer?'),
   house_number: yup.number().required('A house number would be pretty awesome :)'),
   casual: yup.boolean().when("fancy",{
     is: false,
@@ -26,7 +25,6 @@ const schema = yup.object().shape({
   }),
   fancy: yup.boolean(),
   currentAddress: yup.string().required()
-  // addressdisabled: yup.string().required(reqdFieldMsg)
 },
 [['name', 'description', 'occasion', 'phone', 'address', 'food', 'house_number', 'casual', 'fancy', 'currentAddress']]
 )
@@ -332,7 +330,6 @@ const AddLocationModal = (props) => {
                   values.postcode  + ', ' +
                   values.city : ''
                 }
-                // !!errors.address && !!errors.addressdisabled &&
               />
           <Form.Control.Feedback type="invalid">
             {errors.house_number}
@@ -362,35 +359,41 @@ const AddLocationModal = (props) => {
                 {errors.food}
               </Form.Control.Feedback>
             </Form.Group>
-              <Form.Group controlId="casual">
-                <Form.Label>Casual</Form.Label>
-                <Form.Check
-                  inline
-                  required
-                  type="checkbox"
-                  name="casual"
-                  isInvalid={!!errors.casual && touched.casual}
-                  feedback='Choose at least one'
-                  checked={values.casual}
-                  onChange={() => setValues({ ...values, casual: !values.casual })}
-                  >
-                </Form.Check>
-              </Form.Group>
-              <Form.Group controlId="fancy">
-                <Form.Label>Fancy</Form.Label>
-                <Form.Check
-                  inline
-                  required
-                  style={{marginLeft: '8px'}}
-                  type="checkbox"
-                  name="fancy"
-                  feedback='Choose at least one'
-                isInvalid={!!errors.fancy && touched.fancy}
-                  checked={values.fancy}
-                  onChange={() => setValues({ ...values, fancy: !values.fancy })}
-                  >
-                </Form.Check>
-              </Form.Group>
+              <div style={{'display': 'flex', 'justify-content': 'center', 'flex-direction': 'row'}}>
+                <Form.Group controlId="casual" style={{'width': '265px'}}>
+                  <Form.Label>Casual</Form.Label>
+                  <Form.Check
+                    inline
+                    required
+                    type="checkbox"
+                    feedback="Choose at least one :)"
+                    name="casual"
+                    isInvalid={!!errors.casual && touched.casual}
+                    checked={values.casual}
+                    onChange={() => setValues({ ...values, casual: !values.casual })}
+                    >
+                  </Form.Check>
+                <Form.Control.Feedback type="invalid" style={{'width': '300px'}}>
+                {errors.casual}
+              </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group controlId="fancy" style={{'width': '100px', 'height': '30px'}}>
+                  <Form.Label>Fancy</Form.Label>
+                  <Form.Check
+                    inline
+                    required
+                    style={{marginLeft: '1px'}}
+
+                    type="checkbox"
+                    name="fancy"
+                  isInvalid={!!errors.fancy && touched.fancy}
+                    checked={values.fancy}
+                    onChange={() => setValues({ ...values, fancy: !values.fancy })}
+                    >
+                  </Form.Check>
+
+                </Form.Group>
+              </div>
           </Modal.Body>
           <Modal.Footer className="modalFooter">
             <Button variant="outline-success" type="submit" onClick={() => {

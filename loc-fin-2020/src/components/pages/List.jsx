@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteLocation } from '../../store/actions/locationsAction';
 import { usePosition } from '../hooks/usePosition';
 import { ListLocationCard, EditLocationModal, Spinner } from '../layout';
-import AddLocationModal from '../layout/AddLocationModal';
+import LocationModal from '../layout/LocationModal';
 
 import './List.scss';
 
@@ -48,7 +48,7 @@ function List() {
         </div>
       }
       {location &&
-        <AddLocationModal
+        <LocationModal
           show={modalShow}
           location={location}
           type="editLocation"

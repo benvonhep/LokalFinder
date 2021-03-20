@@ -2,7 +2,7 @@ import React, { useState, Fragment, useRef, useEffect } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { addLocation, resetLocation, editLocation } from '../../store/actions/locationsAction';
 import { useDispatch } from 'react-redux';
-import './AddLocationModal.scss';
+import './LocationModal.scss';
 import * as Nominatim from "nominatim-browser";
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import { setAlert } from '../../store/actions/alertActions';
@@ -11,7 +11,6 @@ import * as yup from 'yup';
 
 const schema = yup.object().shape({
   name: yup.string("").min(1, 'thats probably too short ;)').max(35, 'Namelength exceeded').required('LoL :)'),
-  // min max limit einfügen
   description: yup.string().min(10,'almost enough ;)').max(440, 'oh no, thats too much').required('Why should you go there?'),
   occasion: yup.string().required('When could you go?'),
   phone: yup.string().required('A phonenumber would be awesome :)'),
@@ -28,7 +27,7 @@ const schema = yup.object().shape({
 [['name', 'description', 'occasion', 'phone', 'address', 'food', 'house_number', 'casual', 'fancy']]
 )
 
-const AddLocationModal = (props) => {
+const LocationModal = (props) => {
   const [options, setOptions] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [addressIsValid, setAddressIsValid] = useState('null');
@@ -420,4 +419,4 @@ const AddLocationModal = (props) => {
   );
 }
 
-export default AddLocationModal;
+export default LocationModal;

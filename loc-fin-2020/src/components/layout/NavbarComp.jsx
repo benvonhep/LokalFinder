@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import { FiPlus } from 'react-icons/fi'
-import AddLocationModal from './AddLocationModal';
+import LocationModal from './LocationModal';
 import LoginButton from './LoginButton';
 import './NavbarComp.scss';
 import UserMenu from './UserMenu';
@@ -69,7 +69,7 @@ const NavbarComp = () => {
 
       </Navbar>
       {userProfile &&
-        <AddLocationModal
+        <LocationModal
           show={modalShow}
           user_id={userProfile.id}
           onHide={() => setModalShow(false)}

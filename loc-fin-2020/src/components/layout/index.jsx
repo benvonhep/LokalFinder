@@ -1,4 +1,4 @@
-import AddLocationModal from "./AddLocationModal";
+import LocationModal from "./LocationModal";
 import EditLocationModal from "./EditLocationModal";
 import ListLocationCard from "./ListLocationCard";
 import LoginButton from "./LoginButton";
@@ -9,4 +9,4 @@ import SignupButton from "./SignupButton";
 import Spinner from "./Spinner";
 import PrivateRoute from "./private-route";
 
-export { AddLocationModal, PrivateRoute, EditLocationModal, ListLocationCard, LoginButton, LogoutButton, MapLocationModal, NavbarComp, SignupButton, Spinner };
+export { LocationModal, PrivateRoute, EditLocationModal, ListLocationCard, LoginButton, LogoutButton, MapLocationModal, NavbarComp, SignupButton, Spinner };

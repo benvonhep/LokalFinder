@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteLocation } from '../../store/actions/locationsAction';
 import  {UsePosition}  from '../hooks/UsePosition';
-import { ListLocationCard, EditLocationModal, Spinner } from '../layout';
+import { ListLocationCard, Spinner } from '../layout';
 import LocationModal from '../layout/LocationModal';
 
 import './List.scss';

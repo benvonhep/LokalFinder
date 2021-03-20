@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useRef, useEffect } from 'react'
+import React, { useState, Fragment, useRef } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { addLocation, resetLocation, editLocation } from '../../store/actions/locationsAction';
 import { useDispatch } from 'react-redux';

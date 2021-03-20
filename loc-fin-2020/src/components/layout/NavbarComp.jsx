@@ -25,6 +25,7 @@ const NavbarComp = () => {
 
 
   useEffect(() => {
+    console.log('navbar initial');
     if (!isLoading && users && user) {
       const findUserProfile = users.users.find((foundUser) => user.email === foundUser.email)
       setUserProfile(findUserProfile)

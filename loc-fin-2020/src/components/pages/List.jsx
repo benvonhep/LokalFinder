@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteLocation } from '../../store/actions/locationsAction';
-import { usePosition } from '../hooks/usePosition';
+import  {UsePosition}  from '../hooks/UsePosition';
 import { ListLocationCard, EditLocationModal, Spinner } from '../layout';
 import LocationModal from '../layout/LocationModal';
 
@@ -12,7 +12,7 @@ function List() {
   const [modalShow, setModalShow] = useState(false);
   const loading = useSelector(state => state.loading)
   const [location, setLocation] = useState(null)
-  const { latitude, longitude } = usePosition();
+  const { latitude, longitude } = UsePosition();
   const dispatch = useDispatch();
 
   const onItemEditClicked = (id) => {
@@ -50,6 +50,8 @@ function List() {
       {location &&
         <LocationModal
           show={modalShow}
+          // userName={userProfile.username}
+          // id={userProfile.id}
           location={location}
           type="editLocation"
           onHide={() => setModalShow(false)} />}

@@ -163,7 +163,7 @@ const LocationModal = (props) => {
                 size="sm"
                 type="text"
                 name="name"
-                value={values.name}
+                value={values.name || ''}
                 onChange={handleChange}
                 isInvalid={errors.name && touched.name}
 
@@ -210,7 +210,7 @@ const LocationModal = (props) => {
                 size="sm"
                 type="text"
                 name="description"
-                value={values.description}
+                value={values.description || ''}
                 onChange={handleChange}
                 isInvalid={!!errors.description && touched.description}
                 placeholder="Enter the description" />
@@ -225,7 +225,7 @@ const LocationModal = (props) => {
                 size="sm"
                 required
                 name="occasion"
-                value={values.occasion}
+                value={values.occasion || ''}
                 onChange={handleChange}
                 isInvalid={!!errors.occasion && touched.occasion}
                 >
@@ -250,7 +250,7 @@ const LocationModal = (props) => {
                 size="sm"
                 type="text"
                 name="phone"
-                value={values.phone}
+                value={values.phone || ''}
                 onChange={handleChange}
                 isInvalid={!!errors.phone && touched.phone}
 
@@ -347,7 +347,7 @@ const LocationModal = (props) => {
                 size="sm"
                 required
                 name="food"
-                value={values.food}
+                value={values.food || ''}
                 onChange={handleChange}
                 isInvalid={!!errors.food && touched.food}
 
@@ -374,7 +374,7 @@ const LocationModal = (props) => {
                     feedback="Choose at least one :)"
                     name="casual"
                     isInvalid={!!errors.casual && touched.casual}
-                    checked={values.casual}
+                    checked={values.casual || ''}
                     onChange={() => setValues({ ...values, casual: !values.casual })}
                     >
                   </Form.Check>
@@ -392,7 +392,7 @@ const LocationModal = (props) => {
                     type="checkbox"
                     name="fancy"
                   isInvalid={!!errors.fancy && touched.fancy}
-                    checked={values.fancy}
+                    checked={values.fancy || ''}
                     onChange={() => setValues({ ...values, fancy: !values.fancy })}
                     >
                   </Form.Check>

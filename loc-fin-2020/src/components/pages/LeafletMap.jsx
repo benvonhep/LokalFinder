@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Map, TileLayer, Marker, CircleMarker, ZoomControl } from 'react-leaflet';
-import { usePosition } from '../hooks/usePosition';
+import { UsePosition } from '../hooks/UsePosition';
 import './LeafletMap.scss'
 import { MapLocationModal } from '../layout';
 
@@ -13,7 +13,7 @@ function LeafletMap() {
   const [cardModalShow, setCardModalShow] = useState(false);
   const loading = useSelector(state => state.loading);
   const [location, setLocation] = useState(null)
-  const { latitude, longitude } = usePosition();
+  const { latitude, longitude } = UsePosition();
 
   const markerClick = (id) => {
     setCardModalShow(true)

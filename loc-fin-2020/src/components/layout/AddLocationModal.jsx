@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useRef } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
-import { addLocation, resetLocation } from '../../store/actions/locationsAction';
+import { addLocation, resetLocation, editLocation } from '../../store/actions/locationsAction';
 import { useDispatch } from 'react-redux';
 import './AddLocationModal.scss';
 import * as Nominatim from "nominatim-browser";
@@ -29,7 +29,6 @@ const schema = yup.object().shape({
 )
 
 const AddLocationModal = (props) => {
-  const [validated, setValidated] = useState(false);
   const [options, setOptions] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [addressIsValid, setAddressIsValid] = useState('null');
@@ -49,14 +48,9 @@ const AddLocationModal = (props) => {
     return search
   }
 
+
+
   const dispatch = useDispatch();
-
-  const test = (event, values) => {
-    event.preventDefault();
-    console.log(event, 'event');
-    console.log(values, 'values');
-
-  }
 
   const onCancel = async () => {
     props.onHide()
@@ -91,11 +85,16 @@ const AddLocationModal = (props) => {
               createdBy: props.user_id
             }
             console.log(newLocation, 'NEWLOCC');
-            dispatch(addLocation(newLocation))
+            if(props.type === 'addNewLocation'){
+              dispatch(addLocation(newLocation))
+              dispatch(setAlert('Added successfully a new blogpost to the map', 'success'))
+            }
+            if(props.type === 'editLocation'){
+              dispatch(editLocation(newLocation))
+              dispatch(setAlert('Edited successfully the blogpost', 'success'))
+            }
             props.onHide();
-            setValidated(false);
             setAddressIsValid(false)
-            dispatch(setAlert('Added successfully a new blogpost to the map', 'success'))
           } catch {
             dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
           }

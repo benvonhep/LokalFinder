@@ -73,6 +73,7 @@ const NavbarComp = () => {
           show={modalShow}
           user_id={userProfile.id}
           onHide={() => setModalShow(false)}
+          type="addNewLocation"
         />
       }
 

@@ -10,9 +10,9 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-  name: yup.string().required('LoL :)'),
+  name: yup.string("").min(1, 'thats probably too short ;)').max(35, 'Namelength exceeded').required('LoL :)'),
   // min max limit einfügen
-  description: yup.string().required('Why should you go there?'),
+  description: yup.string().min(10,'almost enough ;)').max(440, 'oh no, thats too much').required('Why should you go there?'),
   occasion: yup.string().required('When could you go?'),
   phone: yup.string().required('A phonenumber would be awesome :)'),
   address: yup.boolean().oneOf([true], "Impossible to find :)"),
@@ -200,6 +200,7 @@ const AddLocationModal = (props) => {
               <Form.Label>Description</Form.Label>
               <Form.Control
                 required
+                as="textarea"
                 size="sm"
                 type="text"
                 name="description"

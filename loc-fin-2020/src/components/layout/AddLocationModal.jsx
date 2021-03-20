@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useRef } from 'react'
+import React, { useState, Fragment, useRef, useEffect } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import { addLocation, resetLocation, editLocation } from '../../store/actions/locationsAction';
 import { useDispatch } from 'react-redux';
@@ -33,6 +33,7 @@ const AddLocationModal = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [addressIsValid, setAddressIsValid] = useState('null');
   const formRef = useRef();
+  const [locationToEdit] = useState(props.location ? props.location : '')
 
   const handleSearch = async (query) => {
     setIsLoading(true);
@@ -47,8 +48,6 @@ const AddLocationModal = (props) => {
     setIsLoading(false)
     return search
   }
-
-
 
   const dispatch = useDispatch();
 
@@ -72,7 +71,8 @@ const AddLocationModal = (props) => {
     >
       <Modal.Header className="modalHeader">
         <Modal.Title id="contained-modal-title-vcenter">
-          Add a new Restaurant
+          {props.type === 'addNewLocation' && <p>Add a new post</p>}
+          {props.type === 'editLocation' && <p>Edit the post</p>}
         </Modal.Title>
         <Button size="sm" variant="outline-secondary" onClick={onCancel}>Close</Button>
       </Modal.Header>
@@ -86,12 +86,20 @@ const AddLocationModal = (props) => {
             }
             console.log(newLocation, 'NEWLOCC');
             if(props.type === 'addNewLocation'){
-              dispatch(addLocation(newLocation))
-              dispatch(setAlert('Added successfully a new blogpost to the map', 'success'))
+              try {
+                dispatch(addLocation(newLocation))
+                dispatch(setAlert('Added successfully a new blogpost to the map', 'success'))
+              } catch (error) {
+                dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
+              }
             }
             if(props.type === 'editLocation'){
-              dispatch(editLocation(newLocation))
-              dispatch(setAlert('Edited successfully the blogpost', 'success'))
+              try {
+                dispatch(editLocation(newLocation, newLocation.id))
+                dispatch(setAlert('Edited successfully the blogpost', 'success'))
+              } catch (error) {
+                dispatch(setAlert('Oooops, something weired happened during saving', 'danger'))
+              }
             }
             props.onHide();
             setAddressIsValid(false)
@@ -102,9 +110,9 @@ const AddLocationModal = (props) => {
         validateOnBlur={true}
         innerRef={formRef}
         initialValues={{
-          id: '',
-          createdBy: '',
-          name: '',
+          id: locationToEdit.id,
+          createdBy: locationToEdit.createdBy,
+          name: locationToEdit.name,
           photos: [
             {
               id: 1,
@@ -114,21 +122,21 @@ const AddLocationModal = (props) => {
               id: 2,
               url: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
             }],
-          nominatim_data: '',
-          description: '',
-          occasion: '',
-          phone: '',
-          house_number: '',
-          street: '',
-          postcode: '',
-          city: '',
-          country: '',
-          latitude: '',
-          longitude: '',
-          food: '',
-          casual: false,
-          fancy: true,
-          address: false,
+          nominatim_data: locationToEdit.nominatim_data,
+          description: locationToEdit.description,
+          occasion: locationToEdit.occasion,
+          phone: locationToEdit.phone,
+          house_number: locationToEdit.house_number,
+          street: locationToEdit.street,
+          postcode: locationToEdit.postcode,
+          city: locationToEdit.city,
+          country: locationToEdit.country,
+          latitude: locationToEdit.latitude,
+          longitude: locationToEdit.longitude,
+          food: locationToEdit.food,
+          casual: locationToEdit.casual,
+          fancy: locationToEdit.fancy,
+          address: locationToEdit.address,
           addressdisabled: ''
         }}
         >{({

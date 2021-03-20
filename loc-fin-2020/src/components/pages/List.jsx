@@ -3,18 +3,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteLocation } from '../../store/actions/locationsAction';
 import { usePosition } from '../hooks/usePosition';
 import { ListLocationCard, EditLocationModal, Spinner } from '../layout';
+import AddLocationModal from '../layout/AddLocationModal';
+
 import './List.scss';
 
 function List() {
   const locations = useSelector(state => state.locations)
-  const [editmodalShow, setEditModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
   const loading = useSelector(state => state.loading)
   const [location, setLocation] = useState(null)
   const { latitude, longitude } = usePosition();
   const dispatch = useDispatch();
 
   const onItemEditClicked = (id) => {
-    setEditModalShow(true)
+    setModalShow(true)
     const location = locations.locations.find((location) => location.id === id)
     setLocation(location)
   }
@@ -46,10 +48,11 @@ function List() {
         </div>
       }
       {location &&
-        <EditLocationModal
-          show={editmodalShow}
+        <AddLocationModal
+          show={modalShow}
           location={location}
-          onHide={() => setEditModalShow(false)} />}
+          type="editLocation"
+          onHide={() => setModalShow(false)} />}
     </div>
   )
 }

@@ -11,9 +11,9 @@ import * as yup from 'yup';
 
 const schema = yup.object().shape({
   name: yup.string("").min(1, 'thats probably too short ;)').max(35, 'Namelength exceeded').required('LoL :)'),
-  description: yup.string().min(10,'almost enough ;)').max(440, 'oh no, thats too much').required('Why should you go there?'),
+  description: yup.string().min(10,'almost enough ;)').max(440, 'oh no, thats more than 440 characters :(').required('Why should you go there?'),
   occasion: yup.string().required('When could you go?'),
-  phone: yup.string().required('A phonenumber would be awesome :)'),
+  phone: yup.string().min(5, 'is it enough? ;)').max(20, 'tssss ;)').required('A phone number would be awesome :)'),
   address: yup.boolean().oneOf([true], "Impossible to find :)"),
   food: yup.string().required('What food do they offer?'),
   house_number: yup.number().required('A house number would be pretty awesome :)'),

@@ -25,6 +25,7 @@ function List() {
     dispatch(deleteLocation(id))
   }
 
+
   return (
     <div className="container listcontainer">
 

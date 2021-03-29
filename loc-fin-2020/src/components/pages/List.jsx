@@ -7,7 +7,7 @@ import LocationModal from '../layout/LocationModal';
 
 import './List.scss';
 
-function List() {
+function List(props) {
   const locations = useSelector(state => state.locations)
   const [modalShow, setModalShow] = useState(false);
   const loading = useSelector(state => state.loading)
@@ -21,6 +21,8 @@ function List() {
     setLocation(location)
   }
 
+  const { activeFilter } = props;
+
   const deleteItem = (id) => {
     dispatch(deleteLocation(id))
   }
@@ -28,7 +30,11 @@ function List() {
 
   return (
     <div className="container listcontainer">
-
+      <div style={{color: 'red'}}>
+      {activeFilter ? <div>FILTERPROP - {activeFilter.sort().map((text)=> (
+        <div key={text}>{text}</div>
+      ))} - TEST</div> : <div>loading....</div>}
+      {props.activeFilter}</div>
       {loading &&
         <Spinner/>
       }

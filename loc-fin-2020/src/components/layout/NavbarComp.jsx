@@ -20,7 +20,8 @@ const NavbarComp = (props) => {
   const users = useSelector(state => state.users);
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [locationModalShow, setLocationModalShow] = useState(false);
-  const [filterModalShow, setFilterModalShow] = useState(false);
+  const [filterModalShow, setFilterModalShow] = useState(true);
+  const { activeFilter, setActiveFilter } = props;
   const [loadingData, setLoadingData] = useState(true);
   const [userProfile, setUserProfile] = useState();
 
@@ -99,9 +100,9 @@ const NavbarComp = (props) => {
         show={filterModalShow}
         testlog="test!1"
         onHide={() => setFilterModalShow(false)}
-        {...props}
-        activefilter2filtermodal={props.activeFilter}
-        setactivefilter={props.setActiveFilter}
+        // {...props}
+        activeFilter={activeFilter}
+        setActiveFilter={setActiveFilter}
       />
 
     </>

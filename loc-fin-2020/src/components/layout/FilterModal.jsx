@@ -5,34 +5,50 @@ import './FilterModal.scss'
 
 const  FilterModal = (props)=> {
 
-  // const { activefilter, setactivefilter, testlog} = filterValues
-
+  const { setActiveFilter, activeFilter, testlog, onHide, ...rest} = props
 
   const onCancel = () => {
-    props.onHide()
+    onHide()
     // dispatch(resetLocation())
   }
-  useEffect(() => {
-    console.log(props.activefilter, 'ACTIVE');
-
-  }, [props.activefilter])
+//   useEffect(() => {
+//     console.log(props.activeFilter, 'ACTIVE');
+//
+//   }, [props.activeFilter])
 
   const tets = () => {
     console.log('filtermodal change tets');
   }
 
-  const onChange = () => {
-    console.log('sth changed');
-    props.setactivefilter('asdasd')
+  const onChange = (text) => (event) => {
+    console.log(text, 'sth changed');
+    setActiveFilter((prev) => ({
+      ...prev,
+      [text]: event.target.checked
+    }) )
   }
+
+  const allCategories =
+  [
+    'breakfast',
+    'lunch',
+    'dinner',
+    'brunch',
+    'african',
+    'american',
+    'asian',
+    'arabic',
+    'european',
+    'other',
+    'casual',
+    'fancy'
+  ]
 
 
   return (
 
       <Modal
-        {...props}
-        // activefilter={activefilter}
-        // setactivefilter={setactivefilter}
+        {...rest}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -43,11 +59,26 @@ const  FilterModal = (props)=> {
       >
         <Modal.Header className="modalHeader">
           <Modal.Title id="contained-modal-title-vcenter">
-            {props.activefilter ? <> Filter {props.testlog}{props.activefilter}</> : <div>loading...</div>}
-            <Button onClick={() => {console.log(props.activefilter, 'bkabka'); tets()}}>Tets</Button>
+            {activeFilter ? <> Filter {testlog}{activeFilter}</> : <div>loading...</div>}
+            <Button onClick={() => {console.log(activeFilter, 'bkabka'); tets()}}>Tets</Button>
           </Modal.Title>
           <Button size="sm" variant="outline-secondary" onClick={onCancel}>Close</Button>
         </Modal.Header>
+        <Modal.Body>
+
+          {allCategories.sort().map((text) => (
+            <Form.Check
+            key={text}
+          type='checkbox'
+          id={text}
+
+          label={text}
+          onClick={onChange(text)}
+        />
+
+              ))}
+
+        </Modal.Body>
       </Modal>
 
   )

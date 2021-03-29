@@ -18,10 +18,10 @@ function App() {
 
   return (
     <div className="App">
-      <NavbarComp activefilter={activeFilter} setactivefilter={setActiveFilter}/>
+      <NavbarComp activeFilter={activeFilter} setActiveFilter={setActiveFilter}/>
       <div className="pageMain">
         <Switch>
-          <Route exact path="/list" component={List} />
+          <Route exact path="/list" component={() => <List activeFilter={activeFilter}/>} />
           <Route exact path="/map" component={LeafletMap} />
           <Route exact path="/user" component={UserList} />
           <PrivateRoute path="/profile" component={EditProfile} />

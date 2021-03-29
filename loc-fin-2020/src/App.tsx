@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.scss';
 import Home from './components/pages/Home';
@@ -12,12 +12,13 @@ import { PrivateRoute } from './components/layout';
 import UserList from './components/pages/UserList';
 
 function App() {
+  const [activeFilter, setActiveFilter] = useState(['testfilter']);
 
 
 
   return (
     <div className="App">
-      <NavbarComp />
+      <NavbarComp activefilter={activeFilter} setactivefilter={setActiveFilter}/>
       <div className="pageMain">
         <Switch>
           <Route exact path="/list" component={List} />

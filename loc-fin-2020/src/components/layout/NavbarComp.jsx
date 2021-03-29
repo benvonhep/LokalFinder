@@ -10,22 +10,25 @@ import LoginButton from './LoginButton';
 import './NavbarComp.scss';
 import UserMenu from './UserMenu';
 import AlertSnack from './AlertSnack';
+import FilterModal from './FilterModal';
 
 
 
 
 
-const NavbarComp = () => {
+const NavbarComp = (props) => {
   const users = useSelector(state => state.users);
   const { user, isAuthenticated, isLoading } = useAuth0();
-  const [modalShow, setModalShow] = useState(false);
-  const [loadingData, setLoadingData] = useState(true)
-  const [userProfile, setUserProfile] = useState()
+  const [locationModalShow, setLocationModalShow] = useState(false);
+  const [filterModalShow, setFilterModalShow] = useState(false);
+  const [loadingData, setLoadingData] = useState(true);
+  const [userProfile, setUserProfile] = useState();
 
 
 
   useEffect(() => {
     console.log('navbar initial');
+    console.log(props.activefilter, 'FILTER');
     if (!isLoading && users && user) {
       const findUserProfile = users.users.find((foundUser) => user.email === foundUser.email)
       setUserProfile(findUserProfile)
@@ -48,7 +51,6 @@ const NavbarComp = () => {
               <>
                 {isAuthenticated ? <UserMenu /> : <LoginButton />}
               </>
-
             }
           </Nav>
 
@@ -60,7 +62,7 @@ const NavbarComp = () => {
               variant="outline-warning"
               className="add-button ml-1"
               size="sm"
-              onClick={() => setModalShow(true)}
+              onClick={() => setLocationModalShow(true)}
             >
               <FiPlus />
             </Button>
@@ -71,9 +73,9 @@ const NavbarComp = () => {
       </Navbar>
       {userProfile &&
         <LocationModal
-          show={modalShow}
+          show={locationModalShow}
           user_id={userProfile.id}
-          onHide={() => setModalShow(false)}
+          onHide={() => setLocationModalShow(false)}
           type="addNewLocation"
         />
       }
@@ -86,13 +88,21 @@ const NavbarComp = () => {
 
           <Nav className="footer-nav-buttons">
             <LinkContainer to="/list"><Nav.Link >List</Nav.Link></LinkContainer>
-            <LinkContainer to="/profile"><Nav.Link >Filter</Nav.Link></LinkContainer>
+            <div onClick={() => setFilterModalShow(!locationModalShow)}><Nav.Link >Filter</Nav.Link></div>
             <LinkContainer to="/map"><Nav.Link >Map</Nav.Link></LinkContainer>
             <LinkContainer to="/user"><Nav.Link >User</Nav.Link></LinkContainer>
           </Nav>
 
         </>
       </Navbar>
+      <FilterModal
+        show={filterModalShow}
+        testlog="test!1"
+        onHide={() => setFilterModalShow(false)}
+        {...props}
+        activefilter2filtermodal={props.activeFilter}
+        setactivefilter={props.setActiveFilter}
+      />
 
     </>
   )

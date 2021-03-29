@@ -275,6 +275,7 @@ const LocationModal = (props) => {
                 onSearch={handleSearch}
                 onInputChange={() => {
                   setAddressIsValid(false)
+                  setFieldValue('currentAddress', '')
                 }}
                 options={options}
                 placeholder="Search for the address..."

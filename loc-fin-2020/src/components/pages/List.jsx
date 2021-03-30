@@ -4,6 +4,8 @@ import { deleteLocation } from '../../store/actions/locationsAction';
 import  {UsePosition}  from '../hooks/UsePosition';
 import { ListLocationCard, Spinner } from '../layout';
 import LocationModal from '../layout/LocationModal';
+import { Button } from 'react-bootstrap';
+
 
 import './List.scss';
 
@@ -23,6 +25,7 @@ function List(props) {
 
   const { activeFilter } = props;
 
+
   const deleteItem = (id) => {
     dispatch(deleteLocation(id))
   }
@@ -31,10 +34,13 @@ function List(props) {
   return (
     <div className="container listcontainer">
       <div style={{color: 'red'}}>
-      {activeFilter ? <div>FILTERPROP - {activeFilter.sort().map((text)=> (
+        {activeFilter ? <div>{activeFilter[0]}</div> : <div>loading...</div>}
+        <Button onClick={() => {console.log(activeFilter, 'bkabka')}}>Tets</Button>
+
+      {/* {activeFilter ? <div>FILTERPROP - {activeFilter.map((text)=> (
         <div key={text}>{text}</div>
-      ))} - TEST</div> : <div>loading....</div>}
-      {props.activeFilter}</div>
+      ))} - TEST</div> : <div>loading....</div>} */}
+      </div>
       {loading &&
         <Spinner/>
       }

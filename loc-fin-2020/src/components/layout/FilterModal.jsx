@@ -20,30 +20,51 @@ const  FilterModal = (props)=> {
     console.log('filtermodal change tets');
   }
 
-  const onChange = (text) => (event) => {
-    console.log(text, 'sth changed');
+  const onChange = (filteritem) => (event) => {
+    console.log(filteritem, 'sth changed');
+    // console.log(filteritem.id, 'sth changed');
     setActiveFilter((prev) => ({
       ...prev,
-      [text]: event.target.checked
+      [filteritem]: event.target.checked
     }) )
   }
 
-  const allCategories =
-  [
-    'breakfast',
-    'lunch',
-    'dinner',
-    'brunch',
-    'african',
-    'american',
-    'asian',
-    'arabic',
-    'european',
-    'other',
-    'casual',
-    'fancy'
-  ]
+//   const allCategories =[
+//
+//     { name: 'breakfast', id: 0 },
+//     { name: 'lunch', id: 1 },
+//     { name: 'dinner', id: 2 },
+//
+//
+//     // 'brunch',
+//     // 'african',
+//     // 'american',
+//     // 'asian',
+//     // 'arabic',
+//     // 'european',
+//     // 'other',
+//     // 'casual',
+//     // 'fancy'
+//
+// ]
 
+const allCategories =
+[
+  'breakfast',
+  'lunch',
+  'dinner',
+  'brunch',
+  'african',
+  'american',
+  'asian',
+  'arabic',
+  'european',
+  'other',
+  'casual',
+  'fancy'
+]
+// console.log(allCategories, 'ALLLL')
+// console.log(typeof allCategories, 'TYPE');
 
   return (
 
@@ -59,21 +80,22 @@ const  FilterModal = (props)=> {
       >
         <Modal.Header className="modalHeader">
           <Modal.Title id="contained-modal-title-vcenter">
-            {activeFilter ? <> Filter {testlog}{activeFilter}</> : <div>loading...</div>}
+            {activeFilter ? <> Filter {testlog}</> : <div>loading...</div>}
             <Button onClick={() => {console.log(activeFilter, 'bkabka'); tets()}}>Tets</Button>
           </Modal.Title>
           <Button size="sm" variant="outline-secondary" onClick={onCancel}>Close</Button>
         </Modal.Header>
         <Modal.Body>
 
-          {allCategories.sort().map((text) => (
+          {allCategories && Array.from(allCategories).map((i) => (
             <Form.Check
-            key={text}
-          type='checkbox'
-          id={text}
+            key={i}
+            type='checkbox'
+            // id={id}
 
-          label={text}
-          onClick={onChange(text)}
+          label={i}
+          // onClick={onChange}
+          onClick={onChange(i)}
         />
 
               ))}

@@ -12,7 +12,7 @@ import { PrivateRoute } from './components/layout';
 import UserList from './components/pages/UserList';
 
 function App() {
-  const [activeFilter, setActiveFilter] = useState(['testfilter']);
+  const [activeFilter, setActiveFilter] = useState([]);
 
 
 

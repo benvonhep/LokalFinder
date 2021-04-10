@@ -264,7 +264,7 @@
       ],
       "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
       "description": "rtzrtz",
-      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "occasion": "Breakfast | Lunch | Night",
       "phone": "456456456",
       "house_number": 3,
       "street": "Stephansplatz",
@@ -301,7 +301,7 @@
       ],
       "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
       "description": "rtzrtz",
-      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "occasion": "Breakfast | Lunch | Night",
       "phone": "456456456",
       "house_number": 3,
       "street": "Stephansplatz",
@@ -328,7 +328,7 @@
         }
       ],
       "description": "jkljkljlkjljlkj",
-      "occasion": "Breakfast | Dinner",
+      "occasion": "Breakfast",
       "phone": "345345",
       "house_number": 21,
       "street": "Spitalgasse",
@@ -344,7 +344,7 @@
       "id": 10
     },
     {
-      "createdBy": 1,
+      "id": 11,
       "name": "obergeil",
       "photos": [
         {
@@ -368,9 +368,9 @@
       "longitude": 16.3512755,
       "food": "American",
       "casual": true,
+      "fancy": true,
       "address": true,
-      "addressdisabled": "",
-      "id": 11
+      "addressdisabled": ""
     }
   ]
 }

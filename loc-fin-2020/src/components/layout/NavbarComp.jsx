@@ -21,15 +21,14 @@ const NavbarComp = (props) => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [locationModalShow, setLocationModalShow] = useState(false);
   const [filterModalShow, setFilterModalShow] = useState(true);
-  const { activeFilter, setActiveFilter } = props;
+  const { activeFilter, setActiveFilter, filterCategories } = props;
   const [loadingData, setLoadingData] = useState(true);
   const [userProfile, setUserProfile] = useState();
 
 
 
   useEffect(() => {
-    console.log('navbar initial');
-    console.log(props.activefilter, 'FILTER');
+    // console.log(props.activeFilter, 'FILTER');
     if (!isLoading && users && user) {
       const findUserProfile = users.users.find((foundUser) => user.email === foundUser.email)
       setUserProfile(findUserProfile)
@@ -103,6 +102,7 @@ const NavbarComp = (props) => {
         // {...props}
         activeFilter={activeFilter}
         setActiveFilter={setActiveFilter}
+        filterCategories={filterCategories}
       />
 
     </>

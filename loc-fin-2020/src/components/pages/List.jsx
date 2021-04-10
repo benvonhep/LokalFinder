@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteLocation } from '../../store/actions/locationsAction';
 import  {UsePosition}  from '../hooks/UsePosition';
@@ -10,7 +10,7 @@ import { Button } from 'react-bootstrap';
 import './List.scss';
 
 function List(props) {
-  const locations = useSelector(state => state.locations)
+  // const locations = useSelector(state => state.locations)
   const [modalShow, setModalShow] = useState(false);
   const loading = useSelector(state => state.loading)
   const [location, setLocation] = useState(null)
@@ -19,12 +19,16 @@ function List(props) {
 
   const onItemEditClicked = (id) => {
     setModalShow(true)
-    const location = locations.locations.find((location) => location.id === id)
+    const location = locations.find((location) => location.id === id)
     setLocation(location)
   }
 
-  const { activeFilter } = props;
+  const { locations, activeFilter } = props;
 
+  useEffect(() => {
+    console.log(locations, 'LOCATIONS')
+
+  }, [locations])
 
   const deleteItem = (id) => {
     dispatch(deleteLocation(id))
@@ -34,7 +38,7 @@ function List(props) {
   return (
     <div className="container listcontainer">
       <div style={{color: 'red'}}>
-        {activeFilter ? <div>{activeFilter[0]}</div> : <div>loading...</div>}
+        {/* {activeFilter ? <div>{activeFilter[0]}</div> : <div>loading...</div>} */}
         <Button onClick={() => {console.log(activeFilter, 'bkabka')}}>Tets</Button>
 
       {/* {activeFilter ? <div>FILTERPROP - {activeFilter.map((text)=> (
@@ -46,7 +50,7 @@ function List(props) {
       }
       {!loading &&
         <div className="location-card-grid">
-          {locations.locations.map((location) => (
+          {locations && locations.length && locations.map((location) => (
             <div className="card-Grid-Item" key={location.id}>
 
               <ListLocationCard

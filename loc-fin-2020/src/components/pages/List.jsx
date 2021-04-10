@@ -40,10 +40,6 @@ function List(props) {
       <div style={{color: 'red'}}>
         {/* {activeFilter ? <div>{activeFilter[0]}</div> : <div>loading...</div>} */}
         <Button onClick={() => {console.log(activeFilter, 'bkabka')}}>Tets</Button>
-
-      {/* {activeFilter ? <div>FILTERPROP - {activeFilter.map((text)=> (
-        <div key={text}>{text}</div>
-      ))} - TEST</div> : <div>loading....</div>} */}
       </div>
       {loading &&
         <Spinner/>

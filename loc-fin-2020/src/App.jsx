@@ -60,6 +60,7 @@ function App() {
           })
         })
         console.log(filterList, 'Filterlist');
+        console.log(filterList, 'Filterlist2');
         setFilteredList(filterList)
       }
     } else {

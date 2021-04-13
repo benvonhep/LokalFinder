@@ -42,7 +42,7 @@
       ],
       "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
       "description": "rtzrtz",
-      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "occasion": "Breakfast | Lunch ",
       "phone": "456456456",
       "house_number": 3,
       "street": "Stephansplatz",
@@ -79,7 +79,7 @@
       ],
       "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
       "description": "rtzrtz",
-      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "occasion": "Breakfast | Lunch ",
       "phone": "456456456",
       "house_number": 3,
       "street": "Stephansplatz",
@@ -116,7 +116,7 @@
       ],
       "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
       "description": "rtzrtz",
-      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "occasion": "Breakfast",
       "phone": "456456456",
       "house_number": 3,
       "street": "Stephansplatz",
@@ -153,7 +153,7 @@
       ],
       "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
       "description": "rtzrtz",
-      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "occasion": "Breakfast | Lunch",
       "phone": "456456456",
       "house_number": 3,
       "street": "Stephansplatz",
@@ -190,7 +190,7 @@
       ],
       "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
       "description": "rtzrtz",
-      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "occasion": "Breakfast",
       "phone": "456456456",
       "house_number": 3,
       "street": "Stephansplatz",
@@ -227,7 +227,7 @@
       ],
       "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
       "description": "rtzrtz",
-      "occasion": "Breakfast | Lunch | Dinner | Night",
+      "occasion": "Breakfast | Lunch",
       "phone": "456456456",
       "house_number": 3,
       "street": "Stephansplatz",
@@ -371,6 +371,66 @@
       "fancy": true,
       "address": true,
       "addressdisabled": ""
+    },
+    {
+      "name": "Lets see",
+      "photos": [
+        {
+          "id": 1,
+          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        },
+        {
+          "id": 2,
+          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        }
+      ],
+      "description": "sdfsdfsdfsdfsdfsdf",
+      "occasion": "Night",
+      "phone": "456456465",
+      "house_number": 5,
+      "street": "Nussdorfer Straße",
+      "postcode": "1090",
+      "city": "Vienna",
+      "country": "at",
+      "latitude": 48.2231498,
+      "longitude": 16.3532603,
+      "food": "Asian",
+      "casual": false,
+      "fancy": true,
+      "address": true,
+      "addressdisabled": "",
+      "currentAddress": "",
+      "id": 12
+    },
+    {
+      "createdBy": 1,
+      "name": "lets see 2",
+      "photos": [
+        {
+          "id": 1,
+          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        },
+        {
+          "id": 2,
+          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        }
+      ],
+      "description": "sdfsdfsdfsdfsdfsdfsdfs",
+      "occasion": "Breakfast | Lunch",
+      "phone": "34345",
+      "house_number": 12,
+      "street": "Währinger Straße",
+      "postcode": "1090",
+      "city": "Vienna",
+      "country": "at",
+      "latitude": 48.216813,
+      "longitude": 16.3599356,
+      "food": "Asian",
+      "casual": true,
+      "address": true,
+      "addressdisabled": "",
+      "currentAddress": "",
+      "id": 13
     }
   ]
 }

@@ -233,8 +233,10 @@ const LocationModal = (props) => {
                 <option>Breakfast</option>
                 <option>Lunch</option>
                 <option>Dinner</option>
+                <option>Night</option>
                 <option>Breakfast | Lunch</option>
                 <option>Breakfast | Dinner</option>
+                <option>Breakfast | Night</option>
                 <option>Lunch | Dinner</option>
                 <option>Lunch | Dinner | Night</option>
                 <option>Breakfast | Lunch | Dinner | Night</option>

@@ -34,9 +34,9 @@ const  FilterModal = (props)=> {
   }
 
   const onFilterChange = (filter) => {
-    if(activeFilter){ console.log(Object.entries(activeFilter).length, 'AF') }
-    if(activeFilter){console.log(Object.keys(activeFilter), 'AFK')}
-    if(activeFilter){console.log(Object.values(activeFilter), 'AFV')}
+    // if(activeFilter){ console.log(Object.entries(activeFilter).length, 'AF') }
+    // if(activeFilter){console.log(Object.keys(activeFilter), 'AFK')}
+    // if(activeFilter){console.log(Object.values(activeFilter), 'AFV')}
     // console.log(filterCategories.length, 'FCL');
     // console.log(filter, 'Filter');
     let filterCatMAP = Object.entries(filterCategories);
@@ -57,7 +57,7 @@ const  FilterModal = (props)=> {
       let activeEntries = activeFilter ? Object.values(activeFilter).find(obj => {
         // console.log(obj.value, 'objval')
         // console.log(filter.value, 'filterval')
-        console.log(obj === filter, '===');
+        // console.log(obj === filter, '===');
         if (obj === filter) return true;
       }) : [];
       if (activeEntries) {
@@ -73,17 +73,6 @@ const  FilterModal = (props)=> {
       }
     }
   }
-
-  // useEffect(() => {
-  //   let filteredList;
-  //   if (
-  //     activeFilter.length === 0 || 
-  //     activeFilter.length === filterCategories.length
-  //   ) {
-  //     filteredList =
-  //   }
-  //
-  // }, [input])
 
   return (
 

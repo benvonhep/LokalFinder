@@ -176,7 +176,7 @@ function App() {
             if(food && occasion){
               const filterList = locations.locations.filter((location) => {
                 let res = activeFilter.every(key => {
-                  let result = !!~String(location.occasion).indexOf(key) && !!~String(location.occasion).indexOf(key)
+                  let result = !!~String(location.occasion).indexOf(key) || !!~String(location.food).indexOf(key)
                   return result;
                 })
                 console.log(res, '#RES');

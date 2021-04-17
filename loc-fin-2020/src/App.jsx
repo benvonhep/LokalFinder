@@ -64,7 +64,19 @@ const filterCategoriesInitialState = [
     id: 10,
     name: 'Other',
     value: 'Other'
-  }
+  },
+  ,
+  {
+    id: 11,
+    name: 'Casual',
+    value: 'Casual'
+  },
+  ,
+  {
+    id: 12,
+    name: 'Fancy',
+    value: 'Fancy'
+  },
 ]
 
 
@@ -135,6 +147,9 @@ function App() {
       } else {
         let filterList;
             let result = locations.locations
+            let fancyness = activeFilter.indexOf('Fancy')
+            let casualness = activeFilter.indexOf('Casual')
+            let selectedBlogger;
             let food =
               activeFilter.indexOf('African') >= 0 ||
               activeFilter.indexOf('American') >= 0 ||
@@ -149,10 +164,19 @@ function App() {
               activeFilter.indexOf('Night') >= 0;
               console.log(occasion, 'YESOccasion');
             console.log(food, 'YESfoot');
+
+            if(fancyness || casualness) {
+              const filterList = locations.locations.filter((location) => {
+                let result =  !!~String(location.fancy).indexOf('Fancy') || !!~String(location.casual).indexOf('Casual')
+                console.log(result, '#RES');
+                return result;
+              })
+            setFilteredList(filterList)
+            }
             if(occasion && !food){
               const filterList = locations.locations.filter((location) => {
                 let res = activeFilter.every(key => {
-                  let result = !!~String(location.occasion).indexOf(key)
+                  let result = !!~String(location.occasion).indexOf(key) || fancyness ? !!~String(location.fancy).indexOf(key) : '' || casualness ? !!~String(location.casual).indexOf(key) : '';
                   return result;
                 })
                 console.log(res, '#RES');
@@ -165,7 +189,7 @@ function App() {
             if(food && !occasion){
               const filterList = locations.locations.filter((location) => {
                 let res = activeFilter.every(key => {
-                  let result = !!~String(location.food).indexOf(key)
+                  let result = !!~String(location.food).indexOf(key) || fancyness ? !!~String(location.fancy).indexOf(key) : '' || casualness ? !!~String(location.casual).indexOf(key) : '';
                   return result;
                 })
                 console.log(res, '#RES');
@@ -176,7 +200,7 @@ function App() {
             if(food && occasion){
               const filterList = locations.locations.filter((location) => {
                 let res = activeFilter.every(key => {
-                  let result = !!~String(location.occasion).indexOf(key) || !!~String(location.food).indexOf(key)
+                  let result = !!~String(location.occasion).indexOf(key) || !!~String(location.food).indexOf(key) || fancyness ? !!~String(location.fancy).indexOf(key) : '' || casualness ? !!~String(location.casual).indexOf(key) : '';
                   return result;
                 })
                 console.log(res, '#RES');

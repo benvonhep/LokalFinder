@@ -100,7 +100,11 @@ export default function ListLocationCard(props) {
                 <>
                   fancy | casual
                       </>
-              } | {props.location.food} | {props.location.occasion}
+              } | {props.location.food}
+              {props.location.breakfast ? ' | breakfast': ''}
+              {props.location.brunch ? ' | brunch': ''}
+              {props.location.dinner ? ' | dinner': ''}
+              {props.location.lunch ? ' | lunch': ''}
             </div>
             <MdKeyboardArrowUp className={`${open ? 'location-card-arrow-open' : 'location-card-arrow-close'}`} />
           </Card.Title>

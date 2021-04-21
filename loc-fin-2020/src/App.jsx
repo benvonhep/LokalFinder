@@ -18,62 +18,62 @@ const filterCategoriesInitialState = [
   {
     id: 0,
     name: 'Breakfast',
-    value: true
+    value: false
   },
   {
     id: 1,
     name: 'Lunch',
-    value: true
+    value: false
   },
   {
     id: 2,
     name: 'Dinner',
-    value: true
+    value: false
   },
   {
     id: 3,
     name: 'Night',
-    value: true
+    value: false
   },
   {
     id: 4,
     name: 'African',
-    value: true
+    value: false
   },
   {
     id: 5,
     name: 'American',
-    value: true
+    value: false
   },
   {
     id: 6,
     name: 'Arabic',
-    value: true
+    value: false
   },
   {
     id: 7,
     name: 'Asian',
-    value: true
+    value: false
   },
   {
     id: 8,
     name: 'European',
-    value: true
+    value: false
   },
   {
     id: 9,
     name: 'Other',
-    value: true
+    value: false
   },
   {
     id: 10,
     name: 'Casual',
-    value: true
+    value: false
   },
   {
     id: 11,
     name: 'Fancy',
-    value: true
+    value: false
   }
 ]
 // const filterCategoriesInitialState = [
@@ -155,6 +155,7 @@ function App() {
 //   }
 
   const selectByFilter = () => {
+
     if (activeFilter) {
       if(!Object.entries(activeFilter).length || 
           Object.entries(activeFilter).length === filterCategories.length)

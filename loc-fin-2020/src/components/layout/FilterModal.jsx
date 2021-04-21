@@ -11,6 +11,7 @@ const  FilterModal = (props)=> {
 
   const { activeFilter, setActiveFilter, filterCategories, setFilterCategories, testlog, onHide, ...rest} = props;
   const [ filterMap, setFilterMap] = useState();
+  const [ filterBooleans, setFilterBooleans ] = useState()
   const onCancel = () => {
     onHide()
     // dispatch(resetLocation())
@@ -30,17 +31,36 @@ const  FilterModal = (props)=> {
     //   )
   }, [])
 
-  const onFilterChange = (filterItem, e) => {
+  useEffect(() => {
+    let filterCategoriesBooleans = Object.keys(filterCategories).map(key => filterCategories[key].value);
+    console.log(filterCategoriesBooleans, 'BBOOOLLLL')
+    setFilterBooleans(filterCategoriesBooleans)
+  }, [filterCategories])
+
+  const onFilterChange = (filterItem) => {
+    // console.log(e, 'Event')
+    // e.preventDefault();
     // let filterCatMAP = Object.entries(filterCategories);
     if (filterItem === 'ALL') {
       console.log(filterItem, 'FILTERITEM')
       console.log(filterCategories, 'FILTERCAT');
       console.log(Object.entries(filterCategories), 'FILTERCATOBJENtries');
-      if ( filterCategories && Object.entries(filterCategories).indexOf(false) <= 0){
+      if ( filterCategories && filterBooleans.indexOf(true)){
+        console.log(filterBooleans.indexOf(true), 'INDEXOFBOOL');
+        console.log(Object.keys(filterCategories).map(key => filterCategories[key].value === true))
+        console.log('ALL no true');
         return;
       } else {
-        filterCategories.map(filter =>
-          console.log(filter, 'Filter ALL With False')
+
+
+
+        Object.keys(filterCategories).map(key =>
+
+          setFilterCategories((prevState) => ({
+            ...prevState,
+            [key]: {...prevState[key], value: false}
+          }))
+          // console.log(filter, 'Filter selected')
 //           setFilterCategories((prevState) => ({
 //
 //           ...prevState,
@@ -54,10 +74,7 @@ const  FilterModal = (props)=> {
       setFilterCategories((prevState) => ({
         ...prevState,
         [filterItem.id]: {...prevState[filterItem.id], value: !filterCategories[filterItem.id].value}  })
-      // ({
-      //   ...prevState,
-      //   [filterItem.id]: filterItem.value: !filterItem.value
-      // })
+
       )
     }
   }
@@ -128,7 +145,7 @@ const  FilterModal = (props)=> {
                   type="checkbox"
                   name={filterCategories[key].name}
                   id={filterCategories[key].id}
-                  onChange={() => onFilterChange(filterCategories[key])}
+                  onChange={(event) => onFilterChange(filterCategories[key])}
                   // value="true"
                   checked={filterCategories[key].value === true ? true : false}
                   />

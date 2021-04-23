@@ -9,9 +9,9 @@ import './FilterModal.scss'
 
 const  FilterModal = (props)=> {
 
-  const { activeFilter, setActiveFilter, filterCategories, setFilterCategories, testlog, onHide, ...rest} = props;
+  const { activeFilter, setActiveFilter, filterCategories, setFilterCategories,filterBooleans, testlog, onHide, ...rest} = props;
   const [ filterMap, setFilterMap] = useState();
-  const [ filterBooleans, setFilterBooleans ] = useState()
+  // const [ filterBooleans, setFilterBooleans ] = useState()
   const onCancel = () => {
     onHide()
     // dispatch(resetLocation())
@@ -20,8 +20,8 @@ const  FilterModal = (props)=> {
   useEffect(() => {
     let filterCatMapped = new Map(Object.entries(filterCategories));
     setFilterMap(filterCatMapped);
-    let map = filterCatMapped.forEach(({name, value}, index) => console.log(`${name}:${value}, ${index}`))
-    console.log(map, 'FILTERCATMAPPED**')
+    // let map = filterCatMapped.forEach(({name, value}, index) => console.log(`${name}:${value}, ${index}`))
+    // console.log(map, 'FILTERCATMAPPED**')
 
     // Object.keys(filterCategories).map(key =>
     //   {
@@ -31,42 +31,19 @@ const  FilterModal = (props)=> {
     //   )
   }, [])
 
-  useEffect(() => {
-    let filterCategoriesBooleans = Object.keys(filterCategories).map(key => filterCategories[key].value);
-    console.log(filterCategoriesBooleans, 'BBOOOLLLL')
-    setFilterBooleans(filterCategoriesBooleans)
-  }, [filterCategories])
+
 
   const onFilterChange = (filterItem) => {
-    // console.log(e, 'Event')
-    // e.preventDefault();
-    // let filterCatMAP = Object.entries(filterCategories);
+
     if (filterItem === 'ALL') {
-      console.log(filterItem, 'FILTERITEM')
-      console.log(filterCategories, 'FILTERCAT');
-      console.log(Object.entries(filterCategories), 'FILTERCATOBJENtries');
-      if ( filterCategories && filterBooleans.indexOf(true)){
-        console.log(filterBooleans.indexOf(true), 'INDEXOFBOOL');
-        console.log(Object.keys(filterCategories).map(key => filterCategories[key].value === true))
-        console.log('ALL no true');
+      if ( filterCategories && filterBooleans.indexOf(true) <= 0){
         return;
       } else {
-
-
-
         Object.keys(filterCategories).map(key =>
-
           setFilterCategories((prevState) => ({
             ...prevState,
             [key]: {...prevState[key], value: false}
           }))
-          // console.log(filter, 'Filter selected')
-//           setFilterCategories((prevState) => ({
-//
-//           ...prevState,
-//           [filter.value]: true
-//         }))
-
         )
       }
     } else {
@@ -74,35 +51,9 @@ const  FilterModal = (props)=> {
       setFilterCategories((prevState) => ({
         ...prevState,
         [filterItem.id]: {...prevState[filterItem.id], value: !filterCategories[filterItem.id].value}  })
-
       )
     }
   }
-//   const onFilterChange = (filter) => {
-//     let filterCatMAP = Object.entries(filterCategories);
-//     if (filter === 'ALL') {
-//       if ( activeFilter && Object.entries(activeFilter).length === filterCategories.length){
-//         setActiveFilter([])
-//       } else {
-//         let newFilter = filterCatMAP.map(item => item[1].value)
-//         setActiveFilter(newFilter)
-//       }
-//     } else {
-//
-//       let activeEntries = activeFilter ? Object.values(activeFilter).find(obj => {
-//         if (obj === filter) return true;
-//       }) : [];
-//
-//       if (activeEntries) {
-//         const filterIndex = activeFilter ? activeFilter.indexOf(filter) : undefined || null;
-//         const newFilter = [...activeFilter];
-//         newFilter.splice(filterIndex, 1);
-//         setActiveFilter(newFilter);
-//       } else {
-//         if(activeFilter){setActiveFilter([...activeFilter, filter])}
-//       }
-//     }
-//   }
 
   return (
 
@@ -118,8 +69,7 @@ const  FilterModal = (props)=> {
     >
       <Modal.Header className="modalHeader">
         <Modal.Title id="contained-modal-title-vcenter">
-          {testlog ? <> Filter {testlog}</> : <div>loading...</div>}
-          <Button onClick={() => {console.log(filterCategories, 'bkabka')}}>Tets</Button>
+          Filter
         </Modal.Title>
         <Button size="sm" variant="outline-secondary" onClick={onCancel}>Close</Button>
       </Modal.Header>

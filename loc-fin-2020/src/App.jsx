@@ -129,15 +129,23 @@ const filterCategoriesInitialState = [
 
 
 
+// cities
+//     .filter(city => city.population < 3000000)
+//     .sort((c1, c2) => c1.population - c2.population)
+//     .map(city => console.log(city.name + ':' + city.population));
+
 
 
 
 
 function App() {
-  const locations = useSelector((state) => {return state.locations})
+  const locations = useSelector((state) => {return state.locations.locations})
   const [activeFilter, setActiveFilter] = useState(activeFilterinitialState);
   const [ filterCategories, setFilterCategories ] = useState(filterCategoriesInitialState);
   const [ filteredList, setFilteredList ] = useState();
+  const [ filterBooleans, setFilterBooleans ] = useState()
+  const [ selectedFilter, setSelectedFilter ] = useState()
+
 
 
 //   function filterLocation(location) {
@@ -154,77 +162,176 @@ function App() {
 //       })
 //   }
 
-  const selectByFilter = () => {
+  useEffect(() => {
+    let res = Object.keys(filterCategories).map(key => filterCategories[key].value);
+    setFilterBooleans(res)
 
-    if (activeFilter) {
-      if(!Object.entries(activeFilter).length || 
-          Object.entries(activeFilter).length === filterCategories.length)
-      {
-            setFilteredList(locations.locations);
-      } else {
-        let filterList;
-            let result = locations.locations
-            let fancyness = activeFilter.indexOf('Fancy')
-            let casualness = activeFilter.indexOf('Casual')
-            let selectedBlogger;
-            let food =
-              activeFilter.indexOf('African') >= 0 ||
-              activeFilter.indexOf('American') >= 0 ||
-              activeFilter.indexOf('Arabic') >= 0 || 
-              activeFilter.indexOf('Asian') >= 0 ||
-              activeFilter.indexOf('European') >= 0 ||
-              activeFilter.indexOf('Other') >= 0;
-            let occasion =
-              activeFilter.indexOf('Breakfast') >= 0 ||
-              activeFilter.indexOf('Lunch') >= 0 ||
-              activeFilter.indexOf('Dinner') >= 0 || 
-              activeFilter.indexOf('Night') >= 0;
-              console.log(occasion, 'YESOccasion');
-            console.log(food, 'YESfoot');
+    // let resSelected = Object.entries(filterCategories).filter((key) => console.log(filterCategories[key], 'LOG'));
+    // // console.log(resSelected, 'ResSelected');
+    // setSelectedFilter(resSelected)
 
-            if(fancyness || casualness) {
-              const filterList = locations.locations.filter((location) => {
-                let result =  !!~String(location.fancy).indexOf('Fancy') || !!~String(location.casual).indexOf('Casual')
-                console.log(result, '#RES');
-                return result;
-              })
-            setFilteredList(filterList)
-            }
-            if(occasion && !food){
-              const filterList = locations.locations.filter((location) => {
-                let res = activeFilter.every(key => {
-                  let result = !!~String(location.occasion).indexOf(key) || fancyness ? !!~String(location.fancy).indexOf(key) : '' || casualness ? !!~String(location.casual).indexOf(key) : '';
-                  return result;
-                })
-                console.log(res, '#RES');
-                return res;
-              })
-            setFilteredList(filterList)
+  }, [filterCategories])
 
 
-            };
-            if(food && !occasion){
-              const filterList = locations.locations.filter((location) => {
-                let res = activeFilter.every(key => {
-                  let result = !!~String(location.food).indexOf(key) || fancyness ? !!~String(location.fancy).indexOf(key) : '' || casualness ? !!~String(location.casual).indexOf(key) : '';
-                  return result;
-                })
-                console.log(res, '#RES');
-                return res;
-              })
-            setFilteredList(filterList)
-            };
-            if(food && occasion){
-              const filterList = locations.locations.filter((location) => {
-                let res = activeFilter.every(key => {
-                  let result = !!~String(location.occasion).indexOf(key) || !!~String(location.food).indexOf(key) || fancyness ? !!~String(location.fancy).indexOf(key) : '' || casualness ? !!~String(location.casual).indexOf(key) : '';
-                  return result;
-                })
-                console.log(res, '#RES');
-                return res;
-              })
-            setFilteredList(filterList)
-            }
+  // function filterLocations(locations, )
+  const filterObserver = () => {
+    let selectedFilter = Object.keys(filterCategories).filter((key) => filterCategories[key].value === true);
+    console.log('filterthisshit')
+
+    let filtered = locations.filter((location) => {
+      return Object.entries(filterCategories).some((f) => {
+        let fname = f[1].name.toLowerCase();
+        // console.log(fname, 'FNAME');
+        let idx = Object.entries(location)
+        let idxNr = idx.map(x => x[0]);
+        let idxNumber = idxNr.indexOf(fname)
+        //  console.log(idxNumber, 'idx')
+          if(locations && idxNumber > 0 && f[1].value === true){
+            let res = location[fname] === f[1].value
+          //  console.log(res, 'LOC');
+            return res
+
+        }
+        // console.log(idxNumber ,'location')
+        // console.log('Filtervalue' + fname + " : " + f[1].value)
+      })
+    })
+    console.log(filtered, 'filtered');
+    setFilteredList(filtered)
+    return filtered;
+
+
+//     for(var loc in locations){
+//       for(var filter in filterCategories){
+//         let filtername = filter.name
+//         let locObj = locations[loc]
+//         for(var locItem in locObj){
+//           if(filterCategories[filter].value === locations[loc][locItem]){
+//             console.log('läuft be idir')
+//           }
+//           console.log(locItem, 'ITEM')
+//           console.log(locObj, 'LOCOBJ')
+//           console.log(locations[loc].name + " : " + locObj)
+//           if(filterCategories[filter].value === locations[loc][filtername])
+//           console.log(filterCategories[filter].value, 'FIL : ' + filterCategories[filter].name)
+//           if(locations[loc].breakfast == filterCategories[filter].value &&
+//             locations[loc].lunch == filterCategories[filter].value){
+//               setFilteredList({
+//                 ...filteredList
+//               })
+//             }
+//
+//         }
+//
+//       }
+//     }
+
+
+
+    // let result = Object.keys(locations).map(key => {
+    //   return locations[key].includes(() => {
+    //     return selectedFilter.map((selFilter) => selFilter )
+    //   })
+    // })
+    // console.log(result, 'resultFO')
+    // return result
+    // for (let key in filterCategories.name) {
+    //   console.log(key, 'KEY')
+    //   let res = locations.locations.filter((location) => location.key)
+    // }
+//     let selectedFilter = Object.keys(filterCategories).filter((key) => filterCategories[key].value === true);
+//     console.log(selectedFilter, 'SELECTED')
+//     if(filterCategories) {
+//       const result = locations.locations.filter((location) => {
+//         return selectedFilter.map((filter) => {
+//           let filterObj = filterCategories[filter].name
+//           console.log(!!~String(location).indexOf({filterObj}), 'INDEXOFfilterObj')
+//           console.log(, 'filterObj');
+//           return location.filterObj === true
+//         })
+//         // console.log(location, 'LOCation')
+//         return
+//       })
+//       console.log(result, 'result');
+//       // const filterlist2 = locations.locations.filter((location) => Object.entries(filterCategories).map((entry) => location{entry} === filterCategories[entry])
+//       const filterList = locations.locations.filter((location) => {
+//                 let result =
+//                   location.breakfast === true || 
+//                   location.lunch === true || 
+//                   location.dinner === true || 
+//                   location.night === true || 
+//                   location.african === true || 
+//                   location.american === true || 
+//                   location.arabic === true || 
+//                   location.asian === true || 
+//                   location.european === true || 
+//                   location.other === true || 
+//                   location.casual === true || 
+//                   location.fancy === true  
+//                 console.log(result, '#RES');
+//                 return result;
+//               })
+//             setFilteredList(filterList)
+//
+//     } else {
+//       return
+//     }
+  }
+// #####################################
+    // if (activeFilter) {
+    //   if(!Object.entries(activeFilter).length || 
+    //       Object.entries(activeFilter).length === filterCategories.length)
+    //   {
+    //         setFilteredList(locations.locations);
+    //   } else {
+    //     let filterList;
+    //         let result = locations.locations
+
+
+
+//             if(fancyness || casualness) {
+//               const filterList = locations.locations.filter((location) => {
+//                 let result =  !!~String(location.fancy).indexOf('Fancy') || !!~String(location.casual).indexOf('Casual')
+//                 console.log(result, '#RES');
+//                 return result;
+//               })
+//             setFilteredList(filterList)
+//             }
+//             if(occasion && !food){
+//               const filterList = locations.locations.filter((location) => {
+//                 let res = activeFilter.every(key => {
+//                   let result = !!~String(location.occasion).indexOf(key) || fancyness ? !!~String(location.fancy).indexOf(key) : '' || casualness ? !!~String(location.casual).indexOf(key) : '';
+//                   return result;
+//                 })
+//                 console.log(res, '#RES');
+//                 return res;
+//               })
+//             setFilteredList(filterList)
+//
+//
+//             };
+//             if(food && !occasion){
+//               const filterList = locations.locations.filter((location) => {
+//                 let res = activeFilter.every(key => {
+//                   let result = !!~String(location.food).indexOf(key) || fancyness ? !!~String(location.fancy).indexOf(key) : '' || casualness ? !!~String(location.casual).indexOf(key) : '';
+//                   return result;
+//                 })
+//                 console.log(res, '#RES');
+//                 return res;
+//               })
+//             setFilteredList(filterList)
+//             };
+//             if(food && occasion){
+//               const filterList = locations.locations.filter((location) => {
+//                 let res = activeFilter.every(key => {
+//                   let result = !!~String(location.occasion).indexOf(key) || !!~String(location.food).indexOf(key) || fancyness ? !!~String(location.fancy).indexOf(key) : '' || casualness ? !!~String(location.casual).indexOf(key) : '';
+//                   return result;
+//                 })
+//                 console.log(res, '#RES');
+//                 return res;
+//               })
+//             setFilteredList(filterList)
+//             }
             // if (activeFilter.indexOf('Breakfast') >= 0 || activeFilter.indexOf('Lunch') >= 0 || activeFilter.indexOf('Dinner') >= 0 || activeFilter.indexOf('Night') >= 0){
             //   result = locations.locations.filter(l => l.occasion === 'Breakfast' || 'Lunch' || 'Dinner' || 'Night')
             //   console.log(result, 'OCCres');
@@ -251,24 +358,24 @@ function App() {
 //           return res;
 //         })
 
-        console.log(filterList, 'Filterlist');
-      }
-    } else {
-      return;
-    }
-
-  }
+//         console.log(filterList, 'Filterlist');
+//       }
+//     } else {
+//       return;
+//     }
+//
+//   }
 
 
   useEffect(() => {
-    console.log(activeFilter, 'activefilter');
-    selectByFilter()
+    console.log(filterCategories, 'filterCategories');
+    filterObserver()
 
-  }, [activeFilter, locations])
+  }, [filterCategories, locations])
 
   return (
     <div className="App">
-      <NavbarComp activeFilter={activeFilter} setActiveFilter={setActiveFilter} filterCategories={filterCategories} setFilterCategories={setFilterCategories}/>
+      <NavbarComp activeFilter={activeFilter} setActiveFilter={setActiveFilter} filterCategories={filterCategories} setFilterCategories={setFilterCategories} filterBooleans={filterBooleans}/>
       <div className="pageMain">
         <Switch>
           <Route exact path="/list" component={() => <List activeFilter={activeFilter} locations={filteredList}/>} />

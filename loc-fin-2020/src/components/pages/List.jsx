@@ -25,10 +25,10 @@ function List(props) {
 
   const { locations, activeFilter } = props;
 
-  useEffect(() => {
-    console.log(locations, 'LOCATIONS')
-
-  }, [locations])
+//   useEffect(() => {
+//     console.log(locations, 'LOCATIONS')
+//
+//   }, [locations])
 
   const deleteItem = (id) => {
     dispatch(deleteLocation(id))

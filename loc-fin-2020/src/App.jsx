@@ -175,25 +175,48 @@ function App() {
 
   // function filterLocations(locations, )
   const filterObserver = () => {
-    let selectedFilter = Object.keys(filterCategories).filter((key) => filterCategories[key].value === true);
-    console.log('filterthisshit')
+    let selectedFilterKeys = Object.keys(filterCategories).filter((key) => filterCategories[key].value === true);
+
+    console.log(selectedFilterKeys, 'filterthisshit')
+
+    let selectedFilter = Object.entries(filterCategories).filter((filter) => filter[1].value === true)
+    console.log(selectedFilter, 'TEEEEEST')
+
 
     let filtered = locations.filter((location) => {
-      return Object.entries(filterCategories).some((f) => {
-        let fname = f[1].name.toLowerCase();
-        // console.log(fname, 'FNAME');
-        let idx = Object.entries(location)
-        let idxNr = idx.map(x => x[0]);
-        let idxNumber = idxNr.indexOf(fname)
-        //  console.log(idxNumber, 'idx')
-          if(locations && idxNumber > 0 && f[1].value === true){
-            let res = location[fname] === f[1].value
-          //  console.log(res, 'LOC');
-            return res
+      return Object.entries(selectedFilter).some((f) => {
+        console.log(f[1][1].name, 'FFFF');
+        let fObj = f[1][1]
+        console.log(fObj.id, 'FOBJ')
+        let fname = fObj.name.toLowerCase();
+        let locationProps = Object.entries(location)
+        let locPropArr = locationProps.map(locprop => locprop[0]);
+        let locPropIndex = locPropArr.indexOf(fname)
 
+        // console.log(locationProps, 'locationprops')
+        // console.log(locPropArr, 'locPropArr')
+        // console.log(locPropIndex, 'locPropIndex')
+
+        if(locations && locPropIndex > 0 && fObj.value === true){
+          if (fObj.id === 0 || fObj.id === 1 || fObj.id === 2 || fObj.id === 3){
+            console.log('you choose occasion: ' + fObj.name)
+          }
+          if (fObj.id === 5 || fObj.id === 6 || fObj.id === 7 || fObj.id === 8 || fObj.id === 9){
+            console.log('you choose food: ' + fObj.name)
+          }
+          if (fObj.id === 10 ||fObj.id ===  11) {
+            console.log('you choose fancyness: ' + fObj.name)
+          }
+          let res = location[fname] === fObj.value
+          // console.log(fname + ' is TRUE')
+        //  console.log(res, 'LOC');
+          return res
+
+        } else {
+          // console.log(fname + ' is FALSE')
         }
         // console.log(idxNumber ,'location')
-        // console.log('Filtervalue' + fname + " : " + f[1].value)
+        // console.log('Filtervalue' + fname + " : " + fObj.value)
       })
     })
     console.log(filtered, 'filtered');

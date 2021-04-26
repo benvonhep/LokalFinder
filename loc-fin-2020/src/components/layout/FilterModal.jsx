@@ -47,7 +47,7 @@ const  FilterModal = (props)=> {
         )
       }
     } else {
-      console.log(filterItem, '#FILTER#ITEM#')
+      // console.log(filterItem, '#FILTER#ITEM#')
       setFilterCategories((prevState) => ({
         ...prevState,
         [filterItem.id]: {...prevState[filterItem.id], value: !filterCategories[filterItem.id].value}  })

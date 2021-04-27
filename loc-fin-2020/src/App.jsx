@@ -76,64 +76,6 @@ const filterCategoriesInitialState = [
     value: false
   }
 ]
-// const filterCategoriesInitialState = [
-//   {
-//     name: 'Breakfast',
-//     value: true
-//   },
-//   {
-//     name: 'Lunch',
-//     value: true
-//   },
-//   {
-//     name: 'Dinner',
-//     value: true
-//   },
-//   {
-//     name: 'Night',
-//     value: true
-//   },
-//   {
-//     name: 'African',
-//     value: true
-//   },
-//   {
-//     name: 'American',
-//     value: true
-//   },
-//   {
-//     name: 'Arabic',
-//     value: true
-//   },
-//   {
-//     name: 'Asian',
-//     value: true
-//   },
-//   {
-//     name: 'European',
-//     value: true
-//   },
-//   {
-//     name: 'Other',
-//     value: true
-//   },
-//   {
-//     name: 'Casual',
-//     value: true
-//   },
-//   {
-//     name: 'Fancy',
-//     value: true
-//   }
-// ]
-
-
-
-// cities
-//     .filter(city => city.population < 3000000)
-//     .sort((c1, c2) => c1.population - c2.population)
-//     .map(city => console.log(city.name + ':' + city.population));
-
 
 
 
@@ -144,51 +86,16 @@ function App() {
   const [ filterCategories, setFilterCategories ] = useState(filterCategoriesInitialState);
   const [ filteredList, setFilteredList ] = useState();
   const [ filterBooleans, setFilterBooleans ] = useState()
-  const [ selectedFilter, setSelectedFilter ] = useState()
 
-  const [ occasionFilterActive, setOccasionFilterActive] = useState(false)
-  const [ occasionFilterRes, setOccasionFilterRes] = useState(false)
-  const [ foodFilterActive, setFoodFilterActive] = useState(false)
-  const [ foodFilterRes, setFoodFilterRes] = useState(false)
-  const [ fancyFilterActive, setFancyFilterActive] = useState(false)
-  const [ fancyFilterRes, setFancyFilterRes] = useState(false)
-
-
-
-//   function filterLocation(location) {
-//       return activeFilter.find(filter => {
-//         if(location.occasion.indexOf(filter) >= 0){
-//
-//           let res = location.occasion.indexOf(filter) >= 0
-//           return res
-//         } else if (location.food.indexOf(filter) >= 0){
-//
-//           let res = location.food.indexOf(filter) >= 0;
-//           return res
-//         }
-//       })
-//   }
 
   useEffect(() => {
     let res = Object.keys(filterCategories).map(key => filterCategories[key].value);
     setFilterBooleans(res)
-
-    // let resSelected = Object.entries(filterCategories).filter((key) => console.log(filterCategories[key], 'LOG'));
-    // // console.log(resSelected, 'ResSelected');
-    // setSelectedFilter(resSelected)
-
   }, [filterCategories])
 
-
-  // function filterLocations(locations, )
   const filterObserver = () => {
-    // let selectedFilterKeys = Object.keys(filterCategories).filter((key) => filterCategories[key].value === true);
-    // let occasionFilterActive = 0;
-
-    // console.log(selectedFilterKeys, 'filterthisshit')
 
     let selectedFilter = Object.entries(filterCategories).filter((filter) => filter[1].value === true)
-    // console.log(selectedFilter, 'TEEEEEST')
 
     if(selectedFilter.length > 0) {
       let filterByOccasion = locations.filter((location) => {
@@ -206,7 +113,6 @@ function App() {
                     fObj.id === 1 ? location.lunch === true : '' ||
                     fObj.id === 2 ? location.dinner === true : '' ||
                     fObj.id === 3 ? location.night === true : ''
-                  setOccasionFilterActive(true)
                   return res
             } else {
               return false
@@ -217,16 +123,11 @@ function App() {
         })
         return occasionRes
       })
-      // setOccasionFilterRes(filterByOccasion)
-      // setOccasionFilterActive(false)
-      // console.log(filterByOccasion, 'filterByOccasion');
-      // console.log(occasionFilterRes, 'occasionFilterRes');
 
       if(filterByOccasion.length === 0) {
-        // setOccasionFilterRes(locations)
         filterByOccasion = locations;
-        // console.log('OCCASIONNN []')
       }
+
       let filterByFood = filterByOccasion.filter((location) => {
         let foodRes = Object.entries(selectedFilter).some((f) => {
           let fObj = f[1][1]
@@ -240,15 +141,7 @@ function App() {
           if(location && locPropIndex > 0 && fObj.value === true){
             console.log(fObj.id)
             if (fObj.id === 4 || fObj.id === 5 || fObj.id === 6 || fObj.id === 7 || fObj.id === 8 || fObj.id === 9){
-                  // let res =  fObj.id === 4 ? location.african === true : '' ||
-                  //   fObj.id === 5 ? location.american === true : '' ||
-                  //   fObj.id === 6 ? location.arabic === true : '' ||
-                  //   fObj.id === 7 ? location.asian === true : '' ||
-                  //   fObj.id === 8 ? location.european === true : '' ||
-                  //   fObj.id === 9 ? location.other === true : ''
-
                   let res =  location.food === fObj.name
-
                   return res
             } else {
               return false
@@ -257,30 +150,47 @@ function App() {
             return false
           }
         })
-
         return foodRes
       })
-      // setFoodFilterRes(filterByFood)
-      // setFoodFilterActive(false)
-      console.log(filterByFood, 'FOODRES')
-      // console.log(foodFilterRes, 'foodFilterRes')
 
       if(filterByFood.length === 0){
         if(filterByOccasion.length === 0){
-          setFilteredList(locations)
+          filterByFood = locations;
         } else {
-          setFilteredList(filterByOccasion)
+          filterByFood = filterByOccasion;
         }
-      } else {
-        setFilteredList(filterByFood)
       }
 
+      let filterByFancy = filterByFood.filter((location) => {
 
+        let fancyRes = Object.entries(selectedFilter).some((f) => {
+          let fObj = f[1][1]
+          let fname = fObj.name.toLowerCase();
+          let locationProps = Object.entries(location)
+          let locPropArr = locationProps.map(locprop => locprop[0]);
+          let locPropIndex = locPropArr.indexOf(fname)
 
+          if(locations && locPropIndex > 0 && fObj.value === true){
+            if (fObj.id === 10 || fObj.id === 11 ){
+                  let res =  fObj.id === 10 ? location.casual === true : '' ||
+                    fObj.id === 11 ? location.fancy === true : ''
+                  return res
+            } else {
+              return false
+            }
+          } else {
+            return false
+          }
+        })
+        return fancyRes
+      })
 
+      if(filterByFancy.length === 0) {
+        filterByFancy = filterByFood;
+      }
 
-//       console.log(occasionFilterRes, 'filtered by occasion');
-//       console.log(foodFilterRes, 'filtered by food');
+      setFilteredList(filterByFancy)
+
     } else {
       setFilteredList(locations);
     }
@@ -290,7 +200,6 @@ function App() {
 
 
   useEffect(() => {
-    // console.log(filterCategories, 'filterCategories');
     filterObserver()
 
   }, [filterCategories, locations])

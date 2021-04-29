@@ -1,0 +1,22 @@
+.filter-option {
+  display: flex;
+  &__all {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__categories {
+    width: 50%;
+  }
+
+  &__blogger {
+    width: 50%;
+  }
+}

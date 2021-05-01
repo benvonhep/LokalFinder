@@ -20,6 +20,8 @@ const NavbarComp = (props) => {
     setActiveFilter,
     filterCategories,
     setFilterCategories,
+    userFilterList,
+    setUserFilterList,
     filterBooleans,
     users,
   } = props;
@@ -111,6 +113,8 @@ const NavbarComp = (props) => {
         setActiveFilter={setActiveFilter}
         filterCategories={filterCategories}
         setFilterCategories={setFilterCategories}
+        userFilterList={userFilterList}
+        setUserFilterList={setUserFilterList}
         users={users}
       />
     </>

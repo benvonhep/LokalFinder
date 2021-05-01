@@ -14,6 +14,8 @@ import UserList from './components/pages/UserList';
 
 const activeFilterinitialState = [];
 
+const userFilterListInitialState = [];
+
 const filterCategoriesInitialState = [
   {
     id: 0,
@@ -85,6 +87,9 @@ function App() {
   const [activeFilter, setActiveFilter] = useState(activeFilterinitialState);
   const [filterCategories, setFilterCategories] = useState(
     filterCategoriesInitialState,
+  );
+  const [userFilterList, setUserFilterList] = useState(
+    userFilterListInitialState,
   );
   const [filteredList, setFilteredList] = useState();
   const [filterBooleans, setFilterBooleans] = useState();
@@ -227,6 +232,8 @@ function App() {
         setActiveFilter={setActiveFilter}
         filterCategories={filterCategories}
         setFilterCategories={setFilterCategories}
+        userFilterList={userFilterList}
+        setUserFilterList={setUserFilterList}
         filterBooleans={filterBooleans}
         users={users}
       />

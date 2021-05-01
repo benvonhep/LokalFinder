@@ -13,6 +13,8 @@ const FilterModal = (props) => {
     setActiveFilter,
     filterCategories,
     setFilterCategories,
+    userFilterList,
+    setUserFilterList,
     filterBooleans,
     testlog,
     onHide,
@@ -27,19 +29,33 @@ const FilterModal = (props) => {
     // dispatch(resetLocation())
   };
 
+  // useEffect(() => {
+  //   let res = users.users.map((user) => {
+  //     setUserFilterList((prevState) => ({
+  //       ...prevState,
+  //       [user.username]: { ...prevState[user.username], value: false },
+  //     }));
+  //     console.log('fliterinit fireeeeeeeeed');
+  //   });
+  // }, []);
+
   useEffect(() => {
     let reskey = Object.keys(users.users);
     // console.log(res, 'res');
-    console.log(reskey, 'reskey');
+    // console.log(reskey, 'reskey');
     if (users) {
       // let res = Object.entries(users.users).map((x) => console.log(x, 'usa'));
-      console.log(users.users[0], 'USER');
+      // console.log(users.users[0], 'USER');
       // console.log(res[0], 'USERRES');
     }
-    // console.log(users[0].username, 'USERname');
-  }, [users]);
 
-  const onFilterChange = (filterItem) => {
+    console.log(userFilterList, 'userfilterlist');
+
+    // console.log(users[0].username, 'USERname');
+  }, [users, userFilterList]);
+
+  const onFilterChange = (filterItem, type) => {
+    console.log(filterItem, type, 'FILTERITEM');
     if (filterItem === 'ALL') {
       if (filterCategories && filterBooleans.indexOf(true) <= 0) {
         return;
@@ -51,8 +67,43 @@ const FilterModal = (props) => {
           })),
         );
       }
+      // if (userFilterList) {
+      //   userFilterList.map((item) =>
+      //     setUserFilterList((prevState) => ({
+      //       ...prevState,
+      //       [item]: { ...prevState[item], value: false },
+      //     })),
+      //   );
+      // }
+    }
+    if (type === 'user') {
+      if (userFilterList[filterItem.username] !== undefined) {
+        console.log(
+          userFilterList[filterItem.username].value,
+          'is username true?',
+        );
+      }
+
+      if (userFilterList[filterItem.username] !== undefined) {
+        setUserFilterList((prevState) => ({
+          ...prevState,
+          [filterItem.username]: {
+            ...prevState[filterItem.username],
+            value: !userFilterList[filterItem.username].value,
+          },
+        }));
+        console.log('now false');
+      } else {
+        setUserFilterList((prevState) => ({
+          ...prevState,
+          [filterItem.username]: {
+            ...prevState[filterItem.username],
+            value: true,
+          },
+        }));
+        console.log('now new true');
+      }
     } else {
-      // console.log(filterItem, '#FILTER#ITEM#')
       setFilterCategories((prevState) => ({
         ...prevState,
         [filterItem.id]: {
@@ -134,10 +185,14 @@ const FilterModal = (props) => {
                     <div className="mb-1" key={user.id}>
                       <input
                         type="checkbox"
-                        // label={user.username}
-                        // name={users ? users.users[key].username : ''}
-                        // id={users.users[key].id}
-                        // onChange={(event) => onFilterChange(users.users[key])}
+                        name={user ? user.username : ''}
+                        id={user.id}
+                        checked={
+                          userFilterList[user.username] !== undefined
+                            ? userFilterList[user.username].value === true
+                            : false
+                        }
+                        onChange={(event) => onFilterChange(user, 'user')}
                         // // value="true"
                         // checked={users.users[key].value === true ? true : false}
                       />
@@ -147,6 +202,11 @@ const FilterModal = (props) => {
                       </label>
                     </div>
                   ))}
+                <Button
+                  onClick={() => console.log(userFilterList, 'userfilterlist')}
+                >
+                  Userfilter
+                </Button>
               </div>
             </div>
           </form>

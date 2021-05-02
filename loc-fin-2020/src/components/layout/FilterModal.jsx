@@ -55,11 +55,14 @@ const FilterModal = (props) => {
   }, [users, userFilterList]);
 
   const onFilterChange = (filterItem, type) => {
-    console.log(filterItem, type, 'FILTERITEM');
+    // console.log(filterItem, type, 'FILTERITEM');
     if (filterItem === 'ALL') {
       if (filterCategories && filterBooleans.indexOf(true) <= 0) {
-        return;
+        Object.entries(userFilterList).map((x) =>
+          console.log('ALL - no filter selected'),
+        );
       } else {
+        console.log('ALL - filter selected ');
         Object.keys(filterCategories).map((key) =>
           setFilterCategories((prevState) => ({
             ...prevState,
@@ -67,22 +70,32 @@ const FilterModal = (props) => {
           })),
         );
       }
-      // if (userFilterList) {
-      //   userFilterList.map((item) =>
-      //     setUserFilterList((prevState) => ({
-      //       ...prevState,
-      //       [item]: { ...prevState[item], value: false },
-      //     })),
-      //   );
-      // }
+      console.log('ALL DONE');
+      console.log(userFilterList, 'userFilterList');
+      console.log(filterItem, 'filteritem');
+      Object.entries(userFilterList).map((x) => {
+        return x[1].value === true;
+      });
+
+      if (Object.entries(userFilterList).map((x) => x[1].value === true)) {
+        console.log('arrived at userfilterlist IF ALL');
+        Object.entries(userFilterList).map((item) => {
+          console.log(item, 'ITEMUF');
+          setUserFilterList((prevState) => ({
+            ...prevState,
+            [item[0]]: { ...prevState[item], value: false },
+          }));
+        });
+      }
     }
     if (type === 'user') {
-      if (userFilterList[filterItem.username] !== undefined) {
-        console.log(
-          userFilterList[filterItem.username].value,
-          'is username true?',
-        );
-      }
+      console.log(' type user start');
+      // if (userFilterList[filterItem.username] !== undefined) {
+      //   console.log(
+      //     userFilterList[filterItem.username].value,
+      //     'is username true?',
+      //   );
+      // }
 
       if (userFilterList[filterItem.username] !== undefined) {
         setUserFilterList((prevState) => ({
@@ -104,13 +117,14 @@ const FilterModal = (props) => {
         console.log('now new true');
       }
     } else {
-      setFilterCategories((prevState) => ({
-        ...prevState,
-        [filterItem.id]: {
-          ...prevState[filterItem.id],
-          value: !filterCategories[filterItem.id].value,
-        },
-      }));
+      if (filterCategories[filterItem.id] !== undefined)
+        setFilterCategories((prevState) => ({
+          ...prevState,
+          [filterItem.id]: {
+            ...prevState[filterItem.id],
+            value: !filterCategories[filterItem.id].value,
+          },
+        }));
     }
   };
 

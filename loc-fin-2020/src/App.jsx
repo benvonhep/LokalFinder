@@ -102,11 +102,20 @@ function App() {
   }, [filterCategories]);
 
   const filterObserver = () => {
+    let filterByOccasion;
+    let filterByFood;
+    let filterByFancy;
+    let filterByUser;
     let selectedFilter = Object.entries(filterCategories).filter(
       (filter) => filter[1].value === true,
     );
 
-    if (selectedFilter.length > 0) {
+    let selectedUserFilter = Object.entries(userFilterList).filter(
+      (filter) => filter[1].value === true,
+    );
+    console.log(selectedUserFilter);
+
+    if (selectedFilter.length > 0 || selectedUserFilter.length > 0) {
       let filterByOccasion = locations.filter((location) => {
         let occasionRes = Object.entries(selectedFilter).some((f) => {
           let fObj = f[1][1];
@@ -213,9 +222,30 @@ function App() {
 
       if (filterByFancy.length === 0) {
         filterByFancy = filterByFood;
+        console.log('filterbyfancy is filterbyfood');
       }
 
-      setFilteredList(filterByFancy);
+      if (selectedUserFilter.length > 0 && filterByFancy) {
+        let filterByUser = filterByFancy.filter((locations) => {
+          let userRes = Object.entries(selectedUserFilter).some((f) => {
+            let fId = f[1][1].userId;
+            console.log(f, 'FFF');
+            console.log(f[1][1].userId, 'userid');
+            console.log(locations.createdBy === fId, 'createdby ID');
+            let fObj = f[1][1];
+            return locations.createdBy === fId;
+          });
+          return userRes;
+        });
+        console.log(filterByUser, 'FILTERBYUSER');
+
+        if (filterByUser.length === 0) {
+          filterByUser = filterByFancy;
+        }
+        setFilteredList(filterByUser);
+      } else {
+        setFilteredList(filterByFancy);
+      }
     } else {
       setFilteredList(locations);
     }
@@ -223,7 +253,7 @@ function App() {
 
   useEffect(() => {
     filterObserver();
-  }, [filterCategories, locations]);
+  }, [filterCategories, locations, userFilterList]);
 
   return (
     <div className="App">

@@ -54,7 +54,7 @@ const FilterModal = (props) => {
     // console.log(users[0].username, 'USERname');
   }, [users, userFilterList]);
 
-  const onFilterChange = (filterItem, type) => {
+  const onFilterChange = (filterItem, type, userid) => {
     // console.log(filterItem, type, 'FILTERITEM');
     if (filterItem === 'ALL') {
       if (filterCategories && filterBooleans.indexOf(true) <= 0) {
@@ -112,6 +112,7 @@ const FilterModal = (props) => {
           [filterItem.username]: {
             ...prevState[filterItem.username],
             value: true,
+            userId: userid,
           },
         }));
         console.log('now new true');
@@ -206,7 +207,9 @@ const FilterModal = (props) => {
                             ? userFilterList[user.username].value === true
                             : false
                         }
-                        onChange={(event) => onFilterChange(user, 'user')}
+                        onChange={(event) =>
+                          onFilterChange(user, 'user', user.id)
+                        }
                         // // value="true"
                         // checked={users.users[key].value === true ? true : false}
                       />

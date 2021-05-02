@@ -20,7 +20,7 @@
   "locations": [
     {
       "id": 2,
-      "createdBy": "Benno",
+      "createdBy": 1,
       "name": "Zur goldenen Möwe",
       "photos": [
         {
@@ -60,7 +60,7 @@
     },
     {
       "id": 3,
-      "createdBy": "Benno",
+      "createdBy": 1,
       "name": "Zur stimmigen Chemie",
       "photos": [
         {
@@ -100,7 +100,7 @@
     },
     {
       "id": 4,
-      "createdBy": "Benno",
+      "createdBy": 1,
       "name": "Schachtelwirt",
       "photos": [
         {
@@ -140,7 +140,7 @@
     },
     {
       "id": 5,
-      "createdBy": "Benno",
+      "createdBy": 1,
       "name": "Zur goldenen Möwe",
       "photos": [
         {
@@ -180,7 +180,7 @@
     },
     {
       "id": 6,
-      "createdBy": "Fox",
+      "createdBy": 2,
       "name": "Zur stimmigen Chemie",
       "photos": [
         {
@@ -220,7 +220,7 @@
     },
     {
       "id": 7,
-      "createdBy": "Fox",
+      "createdBy": 2,
       "name": "Schachtelwirt",
       "photos": [
         {
@@ -260,7 +260,7 @@
     },
     {
       "id": 8,
-      "createdBy": "Fox",
+      "createdBy": 2,
       "name": "Zur goldenen Möwe",
       "photos": [
         {
@@ -300,7 +300,7 @@
     },
     {
       "id": 9,
-      "createdBy": "Fox",
+      "createdBy": 2,
       "name": "Zur stimmigen Chemie",
       "photos": [
         {
@@ -337,166 +337,6 @@
       "food": "American",
       "casual": true,
       "fancy": true
-    },
-    {
-      "createdBy": 1,
-      "name": "hugo",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "jkljkljlkjljlkj",
-      "breakfast": true,
-      "brunch": true,
-      "dinner": false,
-      "lunch": true,
-      "phone": "345345",
-      "house_number": 21,
-      "street": "Spitalgasse",
-      "postcode": "1090",
-      "city": "Vienna",
-      "country": "at",
-      "latitude": 48.2181621,
-      "longitude": 16.3512755,
-      "food": "Asian",
-      "casual": true,
-      "address": true,
-      "addressdisabled": "",
-      "id": 10
-    },
-    {
-      "id": 11,
-      "name": "obergeil",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "ljlkjlkjlkjljlkjlkjlkjlk",
-      "breakfast": true,
-      "brunch": true,
-      "dinner": false,
-      "lunch": true,
-      "phone": "12312",
-      "house_number": 21,
-      "street": "Spitalgasse",
-      "postcode": "1090",
-      "city": "Vienna",
-      "country": "at",
-      "latitude": 48.2181621,
-      "longitude": 16.3512755,
-      "food": "American",
-      "casual": true,
-      "fancy": true,
-      "address": true,
-      "addressdisabled": ""
-    },
-    {
-      "name": "Lets see",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "sdfsdfsdfsdfsdfsdf",
-      "breakfast": true,
-      "brunch": true,
-      "dinner": false,
-      "lunch": true,
-      "phone": "456456465",
-      "house_number": 5,
-      "street": "Nussdorfer Straße",
-      "postcode": "1090",
-      "city": "Vienna",
-      "country": "at",
-      "latitude": 48.2231498,
-      "longitude": 16.3532603,
-      "food": "Asian",
-      "casual": false,
-      "fancy": true,
-      "address": true,
-      "addressdisabled": "",
-      "currentAddress": "",
-      "id": 12
-    },
-    {
-      "createdBy": 1,
-      "name": "lets see 2",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "sdfsdfsdfsdfsdfsdfsdfs",
-      "breakfast": true,
-      "brunch": true,
-      "dinner": false,
-      "lunch": true,
-      "phone": "34345",
-      "house_number": 12,
-      "street": "Währinger Straße",
-      "postcode": "1090",
-      "city": "Vienna",
-      "country": "at",
-      "latitude": 48.216813,
-      "longitude": 16.3599356,
-      "food": "Asian",
-      "casual": true,
-      "address": true,
-      "addressdisabled": "",
-      "currentAddress": "",
-      "id": 13
-    },
-    {
-      "createdBy": 1,
-      "name": "Sepplmayer",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "description": "sepp sepp sepp",
-      "dinner": true,
-      "phone": "234234234",
-      "house_number": 21,
-      "street": "Spitalgasse",
-      "postcode": "1090",
-      "city": "Vienna",
-      "country": "at",
-      "latitude": 48.2181621,
-      "longitude": 16.3512755,
-      "food": "Other",
-      "casual": true,
-      "address": true,
-      "addressdisabled": "",
-      "currentAddress": "",
-      "id": 14
     }
   ]
 }

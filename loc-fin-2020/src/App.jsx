@@ -11,8 +11,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import EditProfile from './components/pages/EditProfile';
 import { PrivateRoute } from './components/layout';
 import UserList from './components/pages/UserList';
+import { UsePosition } from './components/hooks/UsePosition';
 
-const activeFilterinitialState = [];
+// const activeFilterinitialState = [];
 
 const userFilterListInitialState = [];
 
@@ -84,7 +85,7 @@ function App() {
     return state.locations.locations;
   });
   const users = useSelector((state) => state.users);
-  const [activeFilter, setActiveFilter] = useState(activeFilterinitialState);
+  // const [activeFilter, setActiveFilter] = useState(activeFilterinitialState);
   const [filterCategories, setFilterCategories] = useState(
     filterCategoriesInitialState,
   );
@@ -93,6 +94,8 @@ function App() {
   );
   const [filteredList, setFilteredList] = useState();
   const [filterBooleans, setFilterBooleans] = useState();
+
+  // const { latitude, longitude } = UsePosition();
 
   useEffect(() => {
     let res = Object.keys(filterCategories).map(
@@ -113,7 +116,6 @@ function App() {
     let selectedUserFilter = Object.entries(userFilterList).filter(
       (filter) => filter[1].value === true,
     );
-    console.log(selectedUserFilter);
 
     if (selectedFilter.length > 0 || selectedUserFilter.length > 0) {
       let filterByOccasion = locations.filter((location) => {
@@ -222,22 +224,16 @@ function App() {
 
       if (filterByFancy.length === 0) {
         filterByFancy = filterByFood;
-        console.log('filterbyfancy is filterbyfood');
       }
 
       if (selectedUserFilter.length > 0 && filterByFancy) {
         let filterByUser = filterByFancy.filter((locations) => {
           let userRes = Object.entries(selectedUserFilter).some((f) => {
             let fId = f[1][1].userId;
-            console.log(f, 'FFF');
-            console.log(f[1][1].userId, 'userid');
-            console.log(locations.createdBy === fId, 'createdby ID');
-            let fObj = f[1][1];
             return locations.createdBy === fId;
           });
           return userRes;
         });
-        console.log(filterByUser, 'FILTERBYUSER');
 
         if (filterByUser.length === 0) {
           filterByUser = filterByFancy;
@@ -258,8 +254,8 @@ function App() {
   return (
     <div className="App">
       <NavbarComp
-        activeFilter={activeFilter}
-        setActiveFilter={setActiveFilter}
+        // activeFilter={activeFilter}
+        // setActiveFilter={setActiveFilter}
         filterCategories={filterCategories}
         setFilterCategories={setFilterCategories}
         userFilterList={userFilterList}
@@ -273,7 +269,8 @@ function App() {
             exact
             path="/list"
             component={() => (
-              <List activeFilter={activeFilter} locations={filteredList} />
+              <List locations={filteredList ? filteredList : []} />
+              // <div>hasdl</div>
             )}
           />
           <Route exact path="/map" component={LeafletMap} />

@@ -31,13 +31,16 @@ export const UsePosition = (watch = true, settings = defaultSettings) => {
 
     let watcher = null;
     if (watch) {
-      watcher =
-        navigator.geolocation.watchPosition(onChange, onError, settings);
+      watcher = navigator.geolocation.watchPosition(
+        onChange,
+        onError,
+        settings,
+      );
     } else {
       navigator.geolocation.getCurrentPosition(onChange, onError, settings);
     }
     return () => watcher && navigator.geolocation.clearWatch(watcher);
   }, [settings, watch]);
-
+  //
   return { ...position, error };
 };

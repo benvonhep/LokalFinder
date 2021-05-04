@@ -9,8 +9,6 @@ import './FilterModal.scss';
 
 const FilterModal = (props) => {
   const {
-    activeFilter,
-    setActiveFilter,
     filterCategories,
     setFilterCategories,
     userFilterList,
@@ -39,20 +37,20 @@ const FilterModal = (props) => {
   //   });
   // }, []);
 
-  useEffect(() => {
-    let reskey = Object.keys(users.users);
-    // console.log(res, 'res');
-    // console.log(reskey, 'reskey');
-    if (users) {
-      // let res = Object.entries(users.users).map((x) => console.log(x, 'usa'));
-      // console.log(users.users[0], 'USER');
-      // console.log(res[0], 'USERRES');
-    }
-
-    console.log(userFilterList, 'userfilterlist');
-
-    // console.log(users[0].username, 'USERname');
-  }, [users, userFilterList]);
+  //   useEffect(() => {
+  //     let reskey = Object.keys(users.users);
+  //     // console.log(res, 'res');
+  //     // console.log(reskey, 'reskey');
+  //     // if (users) {
+  //     // let res = Object.entries(users.users).map((x) => console.log(x, 'usa'));
+  //     // console.log(users.users[0], 'USER');
+  //     // console.log(res[0], 'USERRES');
+  //     // }
+  //
+  //     console.log(userFilterList, 'userfilterlist');
+  //
+  //     // console.log(users[0].username, 'USERname');
+  //   }, [users, userFilterList]);
 
   const onFilterChange = (filterItem, type, userid) => {
     // console.log(filterItem, type, 'FILTERITEM');

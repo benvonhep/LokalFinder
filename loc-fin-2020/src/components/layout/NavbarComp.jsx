@@ -14,10 +14,8 @@ import FilterModal from './FilterModal';
 const NavbarComp = (props) => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [locationModalShow, setLocationModalShow] = useState(false);
-  const [filterModalShow, setFilterModalShow] = useState(true);
+  const [filterModalShow, setFilterModalShow] = useState(false);
   const {
-    activeFilter,
-    setActiveFilter,
     filterCategories,
     setFilterCategories,
     userFilterList,
@@ -29,7 +27,6 @@ const NavbarComp = (props) => {
   const [userProfile, setUserProfile] = useState();
 
   useEffect(() => {
-    // console.log(props.activeFilter, 'FILTER');
     if (!isLoading && users && user) {
       const findUserProfile = users.users.find(
         (foundUser) => user.email === foundUser.email,
@@ -109,8 +106,6 @@ const NavbarComp = (props) => {
         onHide={() => setFilterModalShow(false)}
         // {...props}
         filterBooleans={filterBooleans}
-        activeFilter={activeFilter}
-        setActiveFilter={setActiveFilter}
         filterCategories={filterCategories}
         setFilterCategories={setFilterCategories}
         userFilterList={userFilterList}

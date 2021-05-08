@@ -46,7 +46,6 @@ export default function ListLocationCard(props) {
         }
       });
       setDistance(res);
-      console.log(res, 'DISTANCEEE');
     }
   }, [distanceArray, location.id]);
 

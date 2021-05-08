@@ -47,13 +47,13 @@ const FilterModal = (props) => {
       });
 
       if (Object.entries(userFilterList).map((x) => x[1].value === true)) {
-        Object.entries(userFilterList).map((item) => {
+        Object.entries(userFilterList).forEach((item) => {
           setUserFilterList((prevState) => ({
             ...prevState,
             [item[0]]: { ...prevState[item], value: false },
           }));
+          return;
         });
-        return;
       }
     }
     if (type === 'user') {

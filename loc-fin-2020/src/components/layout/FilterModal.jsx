@@ -1,7 +1,7 @@
 // https://codesandbox.io/s/upbeat-ramanujan-b2jui?file=/src/Search.js:0-3336
 
-import React, { useEffect, useState } from 'react';
-import { Button, Form, Modal } from 'react-bootstrap';
+import React from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Spinner } from '../layout';
 
@@ -19,7 +19,6 @@ const FilterModal = (props) => {
     users,
     ...rest
   } = props;
-  // const users = useSelector((state) => state.users.users);
   const loading = useSelector((state) => state.loading);
 
   const onCancel = () => {
@@ -27,33 +26,7 @@ const FilterModal = (props) => {
     // dispatch(resetLocation())
   };
 
-  // useEffect(() => {
-  //   let res = users.users.map((user) => {
-  //     setUserFilterList((prevState) => ({
-  //       ...prevState,
-  //       [user.username]: { ...prevState[user.username], value: false },
-  //     }));
-  //     console.log('fliterinit fireeeeeeeeed');
-  //   });
-  // }, []);
-
-  //   useEffect(() => {
-  //     let reskey = Object.keys(users.users);
-  //     // console.log(res, 'res');
-  //     // console.log(reskey, 'reskey');
-  //     // if (users) {
-  //     // let res = Object.entries(users.users).map((x) => console.log(x, 'usa'));
-  //     // console.log(users.users[0], 'USER');
-  //     // console.log(res[0], 'USERRES');
-  //     // }
-  //
-  //     console.log(userFilterList, 'userfilterlist');
-  //
-  //     // console.log(users[0].username, 'USERname');
-  //   }, [users, userFilterList]);
-
   const onFilterChange = (filterItem, type, userid) => {
-    // console.log(filterItem, type, 'FILTERITEM');
     if (filterItem === 'ALL') {
       if (filterCategories && filterBooleans.indexOf(true) <= 0) {
         Object.entries(userFilterList).map((x) =>
@@ -68,33 +41,22 @@ const FilterModal = (props) => {
           })),
         );
       }
-      console.log('ALL DONE');
-      console.log(userFilterList, 'userFilterList');
-      console.log(filterItem, 'filteritem');
+
       Object.entries(userFilterList).map((x) => {
         return x[1].value === true;
       });
 
       if (Object.entries(userFilterList).map((x) => x[1].value === true)) {
-        console.log('arrived at userfilterlist IF ALL');
         Object.entries(userFilterList).map((item) => {
-          console.log(item, 'ITEMUF');
           setUserFilterList((prevState) => ({
             ...prevState,
             [item[0]]: { ...prevState[item], value: false },
           }));
         });
+        return;
       }
     }
     if (type === 'user') {
-      console.log(' type user start');
-      // if (userFilterList[filterItem.username] !== undefined) {
-      //   console.log(
-      //     userFilterList[filterItem.username].value,
-      //     'is username true?',
-      //   );
-      // }
-
       if (userFilterList[filterItem.username] !== undefined) {
         setUserFilterList((prevState) => ({
           ...prevState,
@@ -177,7 +139,6 @@ const FilterModal = (props) => {
                         onChange={(event) =>
                           onFilterChange(filterCategories[key])
                         }
-                        // value="true"
                         checked={
                           filterCategories[key].value === true ? true : false
                         }
@@ -208,8 +169,6 @@ const FilterModal = (props) => {
                         onChange={(event) =>
                           onFilterChange(user, 'user', user.id)
                         }
-                        // // value="true"
-                        // checked={users.users[key].value === true ? true : false}
                       />
                       <span></span>
                       <label htmlFor={user.username} className="ml-1">

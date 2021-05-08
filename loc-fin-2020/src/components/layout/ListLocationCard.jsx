@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { latLng } from 'leaflet';
+import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import { useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
@@ -11,13 +10,14 @@ import './ListLocationCard.scss';
 
 export default function ListLocationCard(props) {
   const users = useSelector((state) => state.users);
-  const [distanceValue, setDistanceValue] = useState();
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const { isAuthenticated, user } = useAuth0();
   const [loadingData, setLoadingData] = useState(true);
+  const [distance, setDistance] = useState(null);
 
   const [userProfile, setUserProfile] = useState();
+  const { location, distanceArray, onDelete, onEdit } = props;
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -36,47 +36,32 @@ export default function ListLocationCard(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, loadingData]);
 
-  const getDistance = useCallback(() => {
-    if (props.location && props.latitude) {
-      const latlngCurrentUserPosition = latLng(props.latitude, props.longitude);
-      const latlngLocationPosition = latLng(
-        props.location.latitude,
-        props.location.longitude,
-      );
-      const userLocationDistanceMeter = latlngCurrentUserPosition.distanceTo(
-        latlngLocationPosition,
-      );
-      const userLocationDistanceKm = (userLocationDistanceMeter / 1000).toFixed(
-        1,
-      );
-      setDistanceValue(userLocationDistanceKm);
-    } else {
-      return;
-    }
-  }, [props.longitude, props.latitude, props.location]);
-
-  const distance = useCallback(
-    (location) => {
-      getDistance(location);
-    },
-    [getDistance],
-  );
-
   useEffect(() => {
-    distance(props.location);
-  }, [distance, props.location]);
+    if (distanceArray) {
+      const res = Object.entries(distanceArray).map((dist) => {
+        if (dist[1].locationId === location.id) {
+          return dist[1].distance;
+        } else {
+          return null;
+        }
+      });
+      setDistance(res);
+      console.log(res, 'DISTANCEEE');
+    }
+  }, [distanceArray, location.id]);
 
   return (
     <>
       <Card className="location-card shadow-lg rounded">
         <Carousel
+          key={index}
           className="location-card-carousel"
           activeIndex={index}
           onSelect={handleSelect}
           interval={10000000}
           wrap={false}
         >
-          {props.location.photos.map((photo) => (
+          {location.photos.map((photo) => (
             <Carousel.Item key={photo.id}>
               <Card.Img
                 className="location-card-image"
@@ -88,11 +73,12 @@ export default function ListLocationCard(props) {
           ))}
         </Carousel>
         <p className="location-card-no-gps-position">
-          {!props.latitude && (
-            <>
-              <span>no gps position</span>
-            </>
-          )}
+          {distance === null ||
+            (!distance && (
+              <>
+                <span>no gps position</span>
+              </>
+            ))}
         </p>
 
         <div
@@ -100,7 +86,7 @@ export default function ListLocationCard(props) {
             open ? 'location-card-slider-open' : 'location-card-slider-close'
           }`}
         >
-          {props.latitude && (
+          {distance !== null && (
             <span
               className={`${
                 open
@@ -108,29 +94,26 @@ export default function ListLocationCard(props) {
                   : 'location-card-gps-distance-closed'
               }`}
             >
-              {distanceValue}km
+              {distance}km
             </span>
           )}
+
           <Card.Title
             className="location-card-title"
             onClick={() => {
               setOpen(!open);
             }}
           >
-            <div className="location-card-location-name">
-              {props.location.name}
-            </div>
+            <div className="location-card-location-name">{location.name}</div>
             <div className="location-card-details">
-              {props.location.casual && !props.location.fancy && <>casual</>}
-              {props.location.fancy && !props.location.casual && <>fancy</>}
-              {props.location.fancy && props.location.casual && (
-                <>fancy | casual</>
-              )}{' '}
-              | {props.location.food}
-              {props.location.breakfast ? ' | breakfast' : ''}
-              {props.location.brunch ? ' | brunch' : ''}
-              {props.location.dinner ? ' | dinner' : ''}
-              {props.location.lunch ? ' | lunch' : ''}
+              {location.casual && !location.fancy && <>casual</>}
+              {location.fancy && !location.casual && <>fancy</>}
+              {location.fancy && location.casual && <>fancy | casual</>} |{' '}
+              {location.food}
+              {location.breakfast ? ' | breakfast' : ''}
+              {location.brunch ? ' | brunch' : ''}
+              {location.dinner ? ' | dinner' : ''}
+              {location.lunch ? ' | lunch' : ''}
             </div>
             <MdKeyboardArrowUp
               className={`${
@@ -141,32 +124,27 @@ export default function ListLocationCard(props) {
 
           <div className="location-card-body">
             <p className="location-card-location-text">
-              {props.location.description}
+              {location.description}
             </p>
           </div>
 
           <Card.Footer className="location-card-footer">
             <div className="location-card-contactGroup">
-              <span>{props.location.phone}</span>
+              <span>{location.phone}</span>
               <span>
-                {props.location.street} {props.location.house_number},{' '}
-                {props.location.city}
+                {location.street} {location.house_number}, {location.city}
               </span>
             </div>
             {!loadingData &&
               isAuthenticated &&
-              userProfile.id === props.location.createdBy && (
+              userProfile.id === location.createdBy && (
                 <div className="location-card-buttonGroup">
-                  <Button
-                    size="sm"
-                    onClick={props.onEdit}
-                    variant="outline-warning"
-                  >
+                  <Button size="sm" onClick={onEdit} variant="outline-warning">
                     Edit
                   </Button>
                   <Button
                     size="sm"
-                    onClick={props.onDelete}
+                    onClick={onDelete}
                     variant="outline-danger ml-2"
                   >
                     Delete

@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteLocation } from '../../store/actions/locationsAction';
-import { UsePosition } from '../hooks/UsePosition';
 import { ListLocationCard, Spinner } from '../layout';
 import LocationModal from '../layout/LocationModal';
-import { Button } from 'react-bootstrap';
 
 import './List.scss';
 
 function List(props) {
   const [modalShow, setModalShow] = useState(false);
-  // const loading = true;
   const loading = useSelector((state) => state.loading);
   const [location, setLocation] = useState(null);
-  const { locations } = props;
-  const { latitude, longitude } = UsePosition();
-
+  const { locations, distanceArray } = props;
   const dispatch = useDispatch();
 
   const onItemEditClicked = (id) => {
@@ -39,11 +34,10 @@ function List(props) {
             locations.map((location) => (
               <div className="card-Grid-Item" key={location.id}>
                 <ListLocationCard
+                  distanceArray={distanceArray}
                   location={location}
                   onDelete={() => deleteItem(location.id)}
                   onEdit={() => onItemEditClicked(location.id)}
-                  latitude={latitude}
-                  longitude={longitude}
                 />
               </div>
             ))}
@@ -52,8 +46,6 @@ function List(props) {
       {location && (
         <LocationModal
           show={modalShow}
-          // userName={userProfile.username}
-          // id={userProfile.id}
           location={location}
           type="editLocation"
           onHide={() => setModalShow(false)}

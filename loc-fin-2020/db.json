@@ -52,7 +52,7 @@
       "postcode": "1010",
       "city": "Vienna",
       "country": "at",
-      "latitude": 48.2084923,
+      "latitude": 48.2024923,
       "longitude": 16.37312685415674,
       "food": "European",
       "casual": true,
@@ -93,7 +93,7 @@
       "city": "Vienna",
       "country": "at",
       "latitude": 48.2084923,
-      "longitude": 16.37312685415674,
+      "longitude": 16.3112685415674,
       "food": "European",
       "casual": false,
       "fancy": true

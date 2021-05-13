@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import EditProfile from './components/pages/EditProfile';
 import { PrivateRoute } from './components/layout';
 import UserList from './components/pages/UserList';
-import { UsePosition } from './components/hooks/UsePosition';
+import { UsePosition } from './components/hooks/usePosition';
 import { latLng } from 'leaflet';
 
 const userFilterListInitialState = [];
@@ -253,9 +253,8 @@ export default function AppW2E() {
               location.latitude,
               location.longitude,
             );
-            const userLocationDistanceMeter = latlngCurrentUserPosition.distanceTo(
-              latlngLocationPosition,
-            );
+            const userLocationDistanceMeter =
+              latlngCurrentUserPosition.distanceTo(latlngLocationPosition);
             const userLocationDistanceKm = (
               userLocationDistanceMeter / 1000
             ).toFixed(1);

@@ -1,11 +1,10 @@
-import React, { useEffect, useState, memo } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import { useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import { MdKeyboardArrowUp } from 'react-icons/md';
 import { useAuth0 } from '@auth0/auth0-react';
-import DisplayDistance from './DisplayDistance';
 
 import './ListLocationCard.scss';
 
@@ -17,7 +16,7 @@ export default function ListLocationCard(props) {
   const [loadingData, setLoadingData] = useState(true);
 
   const [userProfile, setUserProfile] = useState();
-  const { location, distanceArray, onDelete, onEdit } = props;
+  const { location, onDelete, onEdit } = props;
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -71,8 +70,11 @@ export default function ListLocationCard(props) {
                 : 'location-card-gps-distance-closed'
             }`}
           >
-            <DisplayDistance id={location.id} distanceArray={distanceArray} />
-            <div>{location.distance}distance</div>
+            {location.distance !== null && location.distance ? (
+              <div>{location.distance} km</div>
+            ) : (
+              <span>no gps</span>
+            )}
           </div>
 
           <Card.Title

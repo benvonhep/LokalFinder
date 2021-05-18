@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 import EditProfile from './components/pages/EditProfile';
 import { PrivateRoute } from './components/layout';
 import UserList from './components/pages/UserList';
-import { UsePosition } from './components/hooks/usePosition';
 import { latLng } from 'leaflet';
 
 const userFilterListInitialState = [];
@@ -89,15 +88,44 @@ export default function AppW2E() {
   );
   const [filteredList, setFilteredList] = useState();
   const [filterBooleans, setFilterBooleans] = useState();
-  const [distanceArray, setDistanceArray] = useState();
   const [sortedByDist, setSortedByDist] = useState();
   const [locationsGps, setLocationsGps] = useState();
-  const [positionInit, setPositionInit] = useState(false);
 
-  const { latitude, longitude, error, timestamp } = UsePosition();
   const [lat, setLat] = useState();
   const [lon, setLon] = useState();
-  // const [distanceIndex, setDistanceIndex] = useState();
+  const [loadingLocation, setLoadingLocation] = useState(false);
+
+  const getLocation = () => {
+    setLoadingLocation(true);
+    const geolocation = navigator.geolocation;
+
+    new Promise((resolve, reject) => {
+      if (!geolocation) {
+        setLoadingLocation(false);
+        return;
+      }
+
+      geolocation.getCurrentPosition(
+        (position) => {
+          setLon(position.coords.longitude);
+          setLat(position.coords.latitude);
+          setLoadingLocation(false);
+          resolve(position);
+        },
+        () => {
+          setLon(null);
+          setLat(null);
+          setLoadingLocation(false);
+          reject(() => console.log('gps error'));
+        },
+      );
+      return;
+    });
+  };
+
+  useEffect(() => {
+    getLocation();
+  }, []);
 
   useEffect(() => {
     let res = Object.keys(filterCategories).map(
@@ -107,19 +135,7 @@ export default function AppW2E() {
   }, [filterCategories]);
 
   useEffect(() => {
-    if (!positionInit && latitude && longitude) {
-      setLat(latitude);
-      setLon(longitude);
-      setPositionInit(true);
-      setLocationsGps(locations);
-    } else {
-      return;
-    }
-  }, [latitude, longitude, positionInit]);
-
-  useEffect(() => {
-    if (lat && lon && !error) {
-      console.log('selocationgps1');
+    if (lat && lon !== null) {
       if (filteredList) {
         const getDistance = () => {
           if (locations) {
@@ -136,30 +152,24 @@ export default function AppW2E() {
                   userLocationDistanceMeter / 1000
                 ).toFixed(1);
 
-                if (!error) {
+                if (userLocationDistanceKm > 0 && userLocationDistanceKm) {
                   return {
                     ...location,
                     distance: userLocationDistanceKm,
                   };
-                  console.log(locationsGps, 'GPSARR');
                 } else {
-                  console.log('no gps');
-                  return;
+                  console.log('no distance available');
+                  return {
+                    ...location,
+                    distance: 'oops',
+                  };
                 }
               });
               setLocationsGps(res);
-              // setDistanceArray(res);
-              console.log(timestamp, 'distanceeeee');
-              var date = new Date(timestamp);
-              console.log(date, latitude, longitude);
             } catch {
-              // setDistanceArray(null);
+              setLocationsGps(locations);
               console.log('no gps no distance');
             }
-          }
-          if (error) {
-            console.log(error, 'distance error');
-            // setDistanceArray(null);
           }
         };
 
@@ -168,10 +178,10 @@ export default function AppW2E() {
         setLocationsGps(locations);
       }
     } else {
-      console.log('selocationgps2');
       setLocationsGps(locations);
     }
-  }, [lat, lon, error, filterCategories, userFilterList, locations]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lat, lon, filterCategories, userFilterList, locations]);
 
   useEffect(() => {
     const filterObserver = () => {
@@ -317,50 +327,7 @@ export default function AppW2E() {
     };
 
     filterObserver();
-  }, [filterCategories, locationsGps, userFilterList]);
-
-  //   useEffect(() => {
-  //     console.log(lat, lon, 'yolo');
-  //     if (filteredList) {
-  //       const getDistance = () => {
-  //         if (locations && latitude && !error) {
-  //           try {
-  //             const res = locations.map((location) => {
-  //               const latlngCurrentUserPosition = latLng(lat, lon);
-  //               const latlngLocationPosition = latLng(
-  //                 location.latitude,
-  //                 location.longitude,
-  //               );
-  //               const userLocationDistanceMeter =
-  //                 latlngCurrentUserPosition.distanceTo(latlngLocationPosition);
-  //               const userLocationDistanceKm = (
-  //                 userLocationDistanceMeter / 1000
-  //               ).toFixed(1);
-  //
-  //               return {
-  //                 locationId: location.id,
-  //                 distance: userLocationDistanceKm,
-  //               };
-  //             });
-  //             setDistanceArray(res);
-  //             console.log(timestamp, res, 'distanceeeee');
-  //             var date = new Date(timestamp);
-  //             console.log(date, latitude, longitude);
-  //           } catch {
-  //             setDistanceArray(null);
-  //             console.log('no gps no distance');
-  //           }
-  //         }
-  //         if (error) {
-  //           console.log(error, 'distance error');
-  //           setDistanceArray(null);
-  //         }
-  //       };
-  //
-  //       getDistance();
-  //     } else {
-  //     }
-  //   }, [lat, lon, locations, filteredList, error]);
+  }, [filterCategories, locationsGps, userFilterList, locations]);
 
   return (
     <div>
@@ -371,6 +338,8 @@ export default function AppW2E() {
         setUserFilterList={setUserFilterList}
         filterBooleans={filterBooleans}
         users={users}
+        getLocation={getLocation}
+        loadingLocation={loadingLocation}
       />
       <div className="pageMain">
         <Switch>
@@ -378,13 +347,21 @@ export default function AppW2E() {
             exact
             path="/list"
             component={() => (
-              <List
-                locations={filteredList ? filteredList : []}
-                distanceArray={distanceArray}
+              <List locations={filteredList ? filteredList : []} />
+            )}
+          />
+          <Route
+            exact
+            path="/map"
+            component={() => (
+              <LeafletMap
+                latitude={lat}
+                longitude={lon}
+                locations={filteredList}
+                loadingLocation={loadingLocation}
               />
             )}
           />
-          <Route exact path="/map" component={LeafletMap} />
           <Route exact path="/user" component={UserList} />
           <PrivateRoute path="/profile" component={EditProfile} />
           <Route exact path="/" component={Home} />

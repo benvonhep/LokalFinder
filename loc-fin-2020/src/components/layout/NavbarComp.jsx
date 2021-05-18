@@ -22,6 +22,8 @@ const NavbarComp = (props) => {
     setUserFilterList,
     filterBooleans,
     users,
+    getLocation,
+    loadingLocation,
   } = props;
   const [loadingData, setLoadingData] = useState(true);
   const [userProfile, setUserProfile] = useState();
@@ -104,13 +106,14 @@ const NavbarComp = (props) => {
         show={filterModalShow}
         testlog="test!1"
         onHide={() => setFilterModalShow(false)}
-        // {...props}
         filterBooleans={filterBooleans}
         filterCategories={filterCategories}
         setFilterCategories={setFilterCategories}
         userFilterList={userFilterList}
         setUserFilterList={setUserFilterList}
         users={users}
+        getLocation={getLocation}
+        loadingLocation={loadingLocation}
       />
     </>
   );

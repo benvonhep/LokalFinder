@@ -17,6 +17,8 @@ const FilterModal = (props) => {
     testlog,
     onHide,
     users,
+    getLocation,
+    loadingLocation,
     ...rest
   } = props;
   const loading = useSelector((state) => state.loading);
@@ -24,6 +26,10 @@ const FilterModal = (props) => {
   const onCancel = () => {
     onHide();
     // dispatch(resetLocation())
+  };
+
+  const refreshPosition = () => {
+    getLocation();
   };
 
   const onFilterChange = (filterItem, type, userid) => {
@@ -176,10 +182,13 @@ const FilterModal = (props) => {
                       </label>
                     </div>
                   ))}
+
                 <Button
-                  onClick={() => console.log(userFilterList, 'userfilterlist')}
+                  style={{ marginTop: '10px' }}
+                  disabled={loadingLocation}
+                  onClick={() => refreshPosition()}
                 >
-                  Userfilter
+                  gps refresh
                 </Button>
               </div>
             </div>

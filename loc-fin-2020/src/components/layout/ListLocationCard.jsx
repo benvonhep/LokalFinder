@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import Card from 'react-bootstrap/Card';
 import { useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import { MdKeyboardArrowUp } from 'react-icons/md';
 import { useAuth0 } from '@auth0/auth0-react';
+import DisplayDistance from './DisplayDistance';
 
 import './ListLocationCard.scss';
 
@@ -14,7 +15,6 @@ export default function ListLocationCard(props) {
   const [index, setIndex] = useState(0);
   const { isAuthenticated, user } = useAuth0();
   const [loadingData, setLoadingData] = useState(true);
-  const [distance, setDistance] = useState(null);
 
   const [userProfile, setUserProfile] = useState();
   const { location, distanceArray, onDelete, onEdit } = props;
@@ -35,19 +35,6 @@ export default function ListLocationCard(props) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, loadingData]);
-
-  useEffect(() => {
-    if (distanceArray) {
-      const res = Object.entries(distanceArray).map((dist) => {
-        if (dist[1].locationId === location.id) {
-          return dist[1].distance;
-        } else {
-          return null;
-        }
-      });
-      setDistance(res);
-    }
-  }, [distanceArray, location.id]);
 
   return (
     <>
@@ -71,31 +58,22 @@ export default function ListLocationCard(props) {
             </Carousel.Item>
           ))}
         </Carousel>
-        <p className="location-card-no-gps-position">
-          {distance === null ||
-            (!distance && (
-              <>
-                <span>no gps position</span>
-              </>
-            ))}
-        </p>
 
         <div
           className={`${
             open ? 'location-card-slider-open' : 'location-card-slider-close'
           }`}
         >
-          {distance !== null && (
-            <span
-              className={`${
-                open
-                  ? 'location-card-gps-distance-open'
-                  : 'location-card-gps-distance-closed'
-              }`}
-            >
-              {distance}km
-            </span>
-          )}
+          <div
+            className={`${
+              open
+                ? 'location-card-gps-distance-open'
+                : 'location-card-gps-distance-closed'
+            }`}
+          >
+            <DisplayDistance id={location.id} distanceArray={distanceArray} />
+            <div>{location.distance}distance</div>
+          </div>
 
           <Card.Title
             className="location-card-title"

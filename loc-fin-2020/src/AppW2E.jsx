@@ -90,8 +90,14 @@ export default function AppW2E() {
   const [filteredList, setFilteredList] = useState();
   const [filterBooleans, setFilterBooleans] = useState();
   const [distanceArray, setDistanceArray] = useState();
+  const [sortedByDist, setSortedByDist] = useState();
+  const [locationsGps, setLocationsGps] = useState();
+  const [positionInit, setPositionInit] = useState(false);
 
-  const { latitude, longitude } = UsePosition();
+  const { latitude, longitude, error, timestamp } = UsePosition();
+  const [lat, setLat] = useState();
+  const [lon, setLon] = useState();
+  // const [distanceIndex, setDistanceIndex] = useState();
 
   useEffect(() => {
     let res = Object.keys(filterCategories).map(
@@ -99,6 +105,73 @@ export default function AppW2E() {
     );
     setFilterBooleans(res);
   }, [filterCategories]);
+
+  useEffect(() => {
+    if (!positionInit && latitude && longitude) {
+      setLat(latitude);
+      setLon(longitude);
+      setPositionInit(true);
+      setLocationsGps(locations);
+    } else {
+      return;
+    }
+  }, [latitude, longitude, positionInit]);
+
+  useEffect(() => {
+    if (lat && lon && !error) {
+      console.log('selocationgps1');
+      if (filteredList) {
+        const getDistance = () => {
+          if (locations) {
+            try {
+              let res = locations.map((location) => {
+                const latlngCurrentUserPosition = latLng(lat, lon);
+                const latlngLocationPosition = latLng(
+                  location.latitude,
+                  location.longitude,
+                );
+                const userLocationDistanceMeter =
+                  latlngCurrentUserPosition.distanceTo(latlngLocationPosition);
+                const userLocationDistanceKm = (
+                  userLocationDistanceMeter / 1000
+                ).toFixed(1);
+
+                if (!error) {
+                  return {
+                    ...location,
+                    distance: userLocationDistanceKm,
+                  };
+                  console.log(locationsGps, 'GPSARR');
+                } else {
+                  console.log('no gps');
+                  return;
+                }
+              });
+              setLocationsGps(res);
+              // setDistanceArray(res);
+              console.log(timestamp, 'distanceeeee');
+              var date = new Date(timestamp);
+              console.log(date, latitude, longitude);
+            } catch {
+              // setDistanceArray(null);
+              console.log('no gps no distance');
+            }
+          }
+          if (error) {
+            console.log(error, 'distance error');
+            // setDistanceArray(null);
+          }
+        };
+
+        getDistance();
+      } else {
+        setLocationsGps(locations);
+      }
+    } else {
+      console.log('selocationgps2');
+      setLocationsGps(locations);
+    }
+  }, [lat, lon, error, filterCategories, userFilterList, locations]);
 
   useEffect(() => {
     const filterObserver = () => {
@@ -110,8 +183,11 @@ export default function AppW2E() {
         (filter) => filter[1].value === true,
       );
 
-      if (selectedFilter.length > 0 || selectedUserFilter.length > 0) {
-        let filterByOccasion = locations.filter((location) => {
+      if (
+        (selectedFilter.length > 0 && locationsGps) ||
+        (selectedUserFilter.length > 0 && locationsGps)
+      ) {
+        let filterByOccasion = locationsGps.filter((location) => {
           let occasionRes = Object.entries(selectedFilter).some((f) => {
             let fObj = f[1][1];
             let fname = fObj.name.toLowerCase();
@@ -119,7 +195,7 @@ export default function AppW2E() {
             let locPropArr = locationProps.map((locprop) => locprop[0]);
             let locPropIndex = locPropArr.indexOf(fname);
 
-            if (locations && locPropIndex > 0 && fObj.value === true) {
+            if (locationsGps && locPropIndex > 0 && fObj.value === true) {
               if (
                 fObj.id === 0 ||
                 fObj.id === 1 ||
@@ -148,7 +224,7 @@ export default function AppW2E() {
         });
 
         if (filterByOccasion.length === 0) {
-          filterByOccasion = locations;
+          filterByOccasion = locationsGps;
         }
 
         let filterByFood = filterByOccasion.filter((location) => {
@@ -182,7 +258,7 @@ export default function AppW2E() {
 
         if (filterByFood.length === 0) {
           if (filterByOccasion.length === 0) {
-            filterByFood = locations;
+            filterByFood = locationsGps;
           } else {
             filterByFood = filterByOccasion;
           }
@@ -220,10 +296,10 @@ export default function AppW2E() {
         }
 
         if (selectedUserFilter.length > 0 && filterByFancy) {
-          let filterByUser = filterByFancy.filter((locations) => {
+          let filterByUser = filterByFancy.filter((location) => {
             let userRes = Object.entries(selectedUserFilter).some((f) => {
               let fId = f[1][1].userId;
-              return locations.createdBy === fId;
+              return location.createdBy === fId;
             });
             return userRes;
           });
@@ -236,41 +312,55 @@ export default function AppW2E() {
           setFilteredList(filterByFancy);
         }
       } else {
-        setFilteredList(locations);
+        setFilteredList(locationsGps);
       }
     };
 
     filterObserver();
-  }, [filterCategories, locations, userFilterList]);
+  }, [filterCategories, locationsGps, userFilterList]);
 
-  useEffect(() => {
-    if (filteredList) {
-      const getDistance = () => {
-        if (locations && latitude) {
-          const res = locations.map((location) => {
-            const latlngCurrentUserPosition = latLng(latitude, longitude);
-            const latlngLocationPosition = latLng(
-              location.latitude,
-              location.longitude,
-            );
-            const userLocationDistanceMeter =
-              latlngCurrentUserPosition.distanceTo(latlngLocationPosition);
-            const userLocationDistanceKm = (
-              userLocationDistanceMeter / 1000
-            ).toFixed(1);
-            return {
-              locationId: location.id,
-              distance: userLocationDistanceKm,
-            };
-          });
-          setDistanceArray(res);
-          console.log(res, 'distanceeeee');
-        }
-      };
-
-      getDistance();
-    }
-  }, [latitude, longitude, locations, filteredList]);
+  //   useEffect(() => {
+  //     console.log(lat, lon, 'yolo');
+  //     if (filteredList) {
+  //       const getDistance = () => {
+  //         if (locations && latitude && !error) {
+  //           try {
+  //             const res = locations.map((location) => {
+  //               const latlngCurrentUserPosition = latLng(lat, lon);
+  //               const latlngLocationPosition = latLng(
+  //                 location.latitude,
+  //                 location.longitude,
+  //               );
+  //               const userLocationDistanceMeter =
+  //                 latlngCurrentUserPosition.distanceTo(latlngLocationPosition);
+  //               const userLocationDistanceKm = (
+  //                 userLocationDistanceMeter / 1000
+  //               ).toFixed(1);
+  //
+  //               return {
+  //                 locationId: location.id,
+  //                 distance: userLocationDistanceKm,
+  //               };
+  //             });
+  //             setDistanceArray(res);
+  //             console.log(timestamp, res, 'distanceeeee');
+  //             var date = new Date(timestamp);
+  //             console.log(date, latitude, longitude);
+  //           } catch {
+  //             setDistanceArray(null);
+  //             console.log('no gps no distance');
+  //           }
+  //         }
+  //         if (error) {
+  //           console.log(error, 'distance error');
+  //           setDistanceArray(null);
+  //         }
+  //       };
+  //
+  //       getDistance();
+  //     } else {
+  //     }
+  //   }, [lat, lon, locations, filteredList, error]);
 
   return (
     <div>

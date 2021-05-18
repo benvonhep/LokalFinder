@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const defaultSettings = {
   enableHighAccuracy: false,
-  timeout: Infinity,
+  timeout: 1000 * 60 * 1,
   maximumAge: 0,
 };
 
@@ -21,11 +21,13 @@ export const UsePosition = (watch = true, settings = defaultSettings) => {
 
   const onError = (error) => {
     setError(error.message);
+    console.log('fehler im geo');
   };
 
   useEffect(() => {
     if (!navigator || !navigator.geolocation) {
       setError('Geolocation is not supported');
+      console.log('fehler im geo2');
       return;
     }
 
@@ -41,6 +43,5 @@ export const UsePosition = (watch = true, settings = defaultSettings) => {
     }
     return () => watcher && navigator.geolocation.clearWatch(watcher);
   }, [settings, watch]);
-  //
   return { ...position, error };
 };

@@ -1,6 +1,6 @@
 // https://codesandbox.io/s/upbeat-ramanujan-b2jui?file=/src/Search.js:0-3336
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Spinner } from '../layout';
@@ -17,11 +17,14 @@ const FilterModal = (props) => {
     testlog,
     onHide,
     users,
-    getLocation,
+    getGpsLocation,
     loadingLocation,
+    sortDistDateToggle,
+    setSortDistDateToggle,
     ...rest
   } = props;
   const loading = useSelector((state) => state.loading);
+  const [filterToggle, setFilterToggle] = useState(false);
 
   const onCancel = () => {
     onHide();
@@ -29,12 +32,24 @@ const FilterModal = (props) => {
   };
 
   const refreshPosition = () => {
-    getLocation();
+    getGpsLocation();
+  };
+
+  const handleToggle = (e) => {
+    e.preventDefault();
+    // e.stopPropagation();
+
+    setSortDistDateToggle(!sortDistDateToggle);
   };
 
   const onFilterChange = (filterItem, type, userid) => {
     if (filterItem === 'ALL') {
-      if (filterCategories && filterBooleans.indexOf(true) <= 0) {
+      console.log(filterCategories, filterBooleans, 'RTEST');
+      console.log(filterBooleans.indexOf(true), 'retst2');
+      console.log(
+        Object.entries(filterCategories).map((x) => x[1].value === true),
+      );
+      if (filterCategories && filterBooleans.indexOf(true) < 0) {
         Object.entries(userFilterList).map((x) =>
           console.log('ALL - no filter selected'),
         );
@@ -116,22 +131,46 @@ const FilterModal = (props) => {
       </Modal.Header>
       <Modal.Body>
         <>
+          <div className="modal-sort">
+            <span style={{ width: '150px' }}>Sort by:</span>
+            <div className="modal-sortbutton">
+              <span>Distance</span>
+              <div className="toggle-switch-container">
+                <div className="toggle-switch toggle-switch__rounded">
+                  <div className="toggle-switch__wrapper">
+                    <div
+                      type="button"
+                      className={`toggle-switch__slider ${
+                        !sortDistDateToggle && 'isChecked'
+                      }`}
+                      onClick={(e) => {
+                        // e.preventDefault();
+                        handleToggle(e);
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <span>Newest</span>
+            </div>
+          </div>
           <form>
-            <div className="filter-option__all">
-              <input
+            <div className="filter-option__buttons">
+              <Button
                 id="selectAll"
-                type="checkbox"
-                label="All"
-                onChange={() => onFilterChange('ALL')}
-                checked={
-                  filterCategories
-                    ? Object.entries(filterCategories).indexOf(false) <= 0
-                    : false
-                }
-              />
-              <label htmlFor="selectAll" className="ml-1">
+                type="button"
+                onClick={() => onFilterChange('ALL')}
+                className="modal-filterall"
+              >
                 All
-              </label>
+              </Button>
+              <Button
+                className="modal-gpsrefresh"
+                disabled={loadingLocation}
+                onClick={() => refreshPosition()}
+              >
+                gps refresh
+              </Button>
             </div>
             <div className="filter-option__container">
               <div className="filter-option__categories">
@@ -182,14 +221,6 @@ const FilterModal = (props) => {
                       </label>
                     </div>
                   ))}
-
-                <Button
-                  style={{ marginTop: '10px' }}
-                  disabled={loadingLocation}
-                  onClick={() => refreshPosition()}
-                >
-                  gps refresh
-                </Button>
               </div>
             </div>
           </form>

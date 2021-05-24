@@ -22,8 +22,10 @@ const NavbarComp = (props) => {
     setUserFilterList,
     filterBooleans,
     users,
-    getLocation,
+    getGpsLocation,
     loadingLocation,
+    sortDistDateToggle,
+    setSortDistDateToggle,
   } = props;
   const [loadingData, setLoadingData] = useState(true);
   const [userProfile, setUserProfile] = useState();
@@ -112,8 +114,10 @@ const NavbarComp = (props) => {
         userFilterList={userFilterList}
         setUserFilterList={setUserFilterList}
         users={users}
-        getLocation={getLocation}
+        getGpsLocation={getGpsLocation}
         loadingLocation={loadingLocation}
+        sortDistDateToggle={sortDistDateToggle}
+        setSortDistDateToggle={setSortDistDateToggle}
       />
     </>
   );

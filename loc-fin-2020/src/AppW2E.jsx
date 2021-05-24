@@ -88,14 +88,17 @@ export default function AppW2E() {
   );
   const [filteredList, setFilteredList] = useState();
   const [filterBooleans, setFilterBooleans] = useState();
-  const [sortedByDist, setSortedByDist] = useState();
   const [locationsGps, setLocationsGps] = useState();
+  const [sortedByDist, setSortedByDist] = useState();
+  const [sortByDateBool, setSortByDateBool] = useState(false);
+  const [sortByDistanceBool, setSortByDistanceBool] = useState(false);
+  const [sortDistDateToggle, setSortDistDateToggle] = useState(false); // true is distance false is date
 
   const [lat, setLat] = useState();
   const [lon, setLon] = useState();
   const [loadingLocation, setLoadingLocation] = useState(false);
 
-  const getLocation = () => {
+  const getGpsLocation = () => {
     setLoadingLocation(true);
     const geolocation = navigator.geolocation;
 
@@ -112,20 +115,45 @@ export default function AppW2E() {
           setLoadingLocation(false);
           resolve(position);
         },
-        () => {
+        (error) => {
           setLon(null);
           setLat(null);
           setLoadingLocation(false);
-          reject(() => console.log('gps error'));
+          console.log(error.message);
+          // reject(error.message);
         },
       );
       return;
     });
   };
 
+  // #################################################################################################
+  const sortByDistance = (locations, event) => {
+    console.log('sorted by distance');
+  };
+
+  const sortByDate = (locations, event) => {
+    console.log('sorted by date');
+  };
+
   useEffect(() => {
-    getLocation();
+    if (sortDistDateToggle) {
+      sortByDistance();
+    } else {
+      sortByDate();
+    }
+  }, [sortDistDateToggle]);
+
+  // #################################################################################################
+
+  useEffect(() => {
+    getGpsLocation();
   }, []);
+
+  useEffect(() => {
+    console.log(lat, 'LAT');
+    console.log(lon, 'Lon');
+  }, [lat, lon]);
 
   useEffect(() => {
     let res = Object.keys(filterCategories).map(
@@ -172,7 +200,6 @@ export default function AppW2E() {
             }
           }
         };
-
         getDistance();
       } else {
         setLocationsGps(locations);
@@ -245,7 +272,6 @@ export default function AppW2E() {
             let locPropIndex = locPropArr.indexOf('food');
 
             if (location && locPropIndex > 0 && fObj.value === true) {
-              console.log(fObj.id);
               if (
                 fObj.id === 4 ||
                 fObj.id === 5 ||
@@ -329,6 +355,15 @@ export default function AppW2E() {
     filterObserver();
   }, [filterCategories, locationsGps, userFilterList, locations]);
 
+  // useEffect(() => {
+  //   console.log(sortDistDateToggle, 'sortdistancetoggle');
+  // }, [sortDistDateToggle]);
+
+  // useEffect(() => {
+  //   const sortedList = filteredList;
+  //   console.log('sortedby');
+  // }, [filteredList]);
+
   return (
     <div>
       <NavbarComp
@@ -338,8 +373,10 @@ export default function AppW2E() {
         setUserFilterList={setUserFilterList}
         filterBooleans={filterBooleans}
         users={users}
-        getLocation={getLocation}
+        getGpsLocation={getGpsLocation}
         loadingLocation={loadingLocation}
+        sortDistDateToggle={sortDistDateToggle}
+        setSortDistDateToggle={setSortDistDateToggle}
       />
       <div className="pageMain">
         <Switch>

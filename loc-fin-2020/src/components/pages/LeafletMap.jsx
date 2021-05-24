@@ -25,47 +25,51 @@ function LeafletMap(props) {
     setLocation(location);
   };
 
+  useEffect(() => {
+    console.log(latitude, longitude, 'KOORDSMAP');
+  }, [latitude]);
+
   return (
     <>
-      {!loadingLocation ? (
-        <Map center={defaultLatLng} id="mapId" zoom={zoom} zoomControl={false}>
-          <ZoomControl />
-          <TileLayer
-            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          {!latitude ||
-            (latitude === null && !longitude && (
-              <h3 className="nogps-h3">
-                No Gps ... still thinking of where you are...
-              </h3>
-            ))}
-          {latitude && longitude && (
-            <CircleMarker
-              radius="10"
-              fillColor="blue"
-              center={[latitude, longitude]}
-            ></CircleMarker>
-          )}
-          {!loading && (
-            <>
-              {locations &&
-                locations.map((location) => (
-                  <Marker
-                    key={location.id}
-                    onClick={() => markerClick(location.id)}
-                    position={[location.latitude, location.longitude]}
-                  ></Marker>
-                ))}
-            </>
-          )}
-        </Map>
-      ) : (
-        <>
+      {/* {!loadingLocation ? ( */}
+      <Map center={defaultLatLng} id="mapId" zoom={zoom} zoomControl={false}>
+        <ZoomControl />
+        <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {!latitude ||
+          (latitude === null && !longitude && (
+            <h3 className="nogps-h3">
+              No Gps ... still thinking of where you are...
+            </h3>
+          ))}
+        {latitude && longitude && (
+          <CircleMarker
+            radius="10"
+            fillColor="blue"
+            center={[latitude, longitude]}
+          ></CircleMarker>
+        )}
+        {!loading && (
+          <>
+            {locations &&
+              locations.map((location) => (
+                <Marker
+                  key={location.id}
+                  onClick={() => markerClick(location.id)}
+                  position={[location.latitude, location.longitude]}
+                ></Marker>
+              ))}
+          </>
+        )}
+      </Map>
+      {/* ) : ( */}
+      {/* <>
           <Spinner></Spinner>
           <span>... thinking of where you are ...</span>
         </>
-      )}
+      )} */}
 
       {cardModalShow && location && (
         <MapLocationModal

@@ -2,25 +2,20 @@ import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import { useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
-import Carousel from 'react-bootstrap/Carousel';
 import { MdKeyboardArrowUp } from 'react-icons/md';
 import { useAuth0 } from '@auth0/auth0-react';
+import CarouselMemo from './CarouselMemo';
 
 import './ListLocationCard.scss';
 
-export default function ListLocationCard(props) {
+const ListLocationCard = (props) => {
   const users = useSelector((state) => state.users);
   const [open, setOpen] = useState(false);
-  const [index, setIndex] = useState(0);
   const { isAuthenticated, user } = useAuth0();
   const [loadingData, setLoadingData] = useState(true);
 
   const [userProfile, setUserProfile] = useState();
   const { location, onDelete, onEdit } = props;
-
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
 
   useEffect(() => {
     if (isAuthenticated && loadingData) {
@@ -38,25 +33,7 @@ export default function ListLocationCard(props) {
   return (
     <>
       <Card className="location-card shadow-lg rounded">
-        <Carousel
-          key={index}
-          className="location-card-carousel"
-          activeIndex={index}
-          onSelect={handleSelect}
-          interval={10000000}
-          wrap={false}
-        >
-          {location.photos.map((photo) => (
-            <Carousel.Item key={photo.id}>
-              <Card.Img
-                className="location-card-image"
-                variant="top"
-                src={photo.url}
-                alt="sorry - there should be a picture here"
-              />
-            </Carousel.Item>
-          ))}
-        </Carousel>
+        <CarouselMemo location={location} />
 
         <div
           className={`${
@@ -135,4 +112,6 @@ export default function ListLocationCard(props) {
       </Card>
     </>
   );
-}
+};
+
+export default React.memo(ListLocationCard);

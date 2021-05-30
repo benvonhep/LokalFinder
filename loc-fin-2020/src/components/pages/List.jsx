@@ -30,7 +30,7 @@ function List(props) {
       {!loading && (
         <div className="location-card-grid">
           {locations &&
-            locations.length &&
+            locations.length > 0 &&
             locations.map((location) => (
               <div className="card-Grid-Item" key={location.id}>
                 <ListLocationCard

@@ -10,16 +10,17 @@ export default React.memo(function CarouselMemo({ location }) {
       interval={10000000}
       wrap={false}
     >
-      {location.photos.map((photo) => (
-        <Carousel.Item key={photo.id}>
-          <Card.Img
-            className="location-card-image"
-            variant="top"
-            src={photo.url}
-            alt="sorry - there should be a picture here"
-          />
-        </Carousel.Item>
-      ))}
+      {location &&
+        location.photos.map((photo) => (
+          <Carousel.Item>
+            <img
+              className="location-card-image"
+              variant="top"
+              src={photo.url}
+              alt="sorry - there should be a picture here"
+            />
+          </Carousel.Item>
+        ))}
     </Carousel>
   );
 });

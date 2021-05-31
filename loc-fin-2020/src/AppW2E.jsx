@@ -87,11 +87,13 @@ export default function AppW2E() {
     userFilterListInitialState,
   );
   const [filteredList, setFilteredList] = useState();
+  const [filterSortList, setFilterSortList] = useState();
+
   const [filterBooleans, setFilterBooleans] = useState();
   const [locationsGps, setLocationsGps] = useState();
   const [sortedByDist, setSortedByDist] = useState();
-  const [sortByDateBool, setSortByDateBool] = useState(false);
-  const [sortByDistanceBool, setSortByDistanceBool] = useState(false);
+  // const [sortByDateBool, setSortByDateBool] = useState(false);
+  // const [sortByDistanceBool, setSortByDistanceBool] = useState(false);
   const [sortDistDateToggle, setSortDistDateToggle] = useState(false); // true is distance false is date
 
   const [lat, setLat] = useState();
@@ -126,25 +128,6 @@ export default function AppW2E() {
       return;
     });
   };
-
-  // #################################################################################################
-  const sortByDistance = (locations, event) => {
-    console.log('sorted by distance');
-  };
-
-  const sortByDate = (locations, event) => {
-    console.log('sorted by date');
-  };
-
-  useEffect(() => {
-    if (sortDistDateToggle) {
-      sortByDistance();
-    } else {
-      sortByDate();
-    }
-  }, [sortDistDateToggle]);
-
-  // #################################################################################################
 
   useEffect(() => {
     getGpsLocation();
@@ -355,14 +338,31 @@ export default function AppW2E() {
     filterObserver();
   }, [filterCategories, locationsGps, userFilterList, locations]);
 
-  // useEffect(() => {
-  //   console.log(sortDistDateToggle, 'sortdistancetoggle');
-  // }, [sortDistDateToggle]);
+  // #################################################################################################
+  const sortByDistance = () => {
+    if (filteredList) {
+      const sortByDist = filteredList.sort((a, b) => a.distance - b.distance);
+      setFilterSortList([...sortByDist]);
+    }
+  };
 
-  // useEffect(() => {
-  //   const sortedList = filteredList;
-  //   console.log('sortedby');
-  // }, [filteredList]);
+  const sortByDate = () => {
+    if (filteredList) {
+      const sortById = filteredList.sort((a, b) => a.id - b.id);
+      setFilterSortList([...sortById]);
+    }
+  };
+
+  useEffect(() => {
+    if (sortDistDateToggle && lat && lon) {
+      sortByDistance();
+    } else {
+      sortByDate();
+    }
+    console.log(filterSortList, 'FSLI');
+  }, [sortDistDateToggle, filteredList]);
+
+  // #################################################################################################
 
   return (
     <div>
@@ -384,7 +384,7 @@ export default function AppW2E() {
             exact
             path="/list"
             component={() => (
-              <List locations={filteredList ? filteredList : []} />
+              <List locations={filterSortList ? filterSortList : []} />
             )}
           />
           <Route
@@ -394,7 +394,7 @@ export default function AppW2E() {
               <LeafletMap
                 latitude={lat}
                 longitude={lon}
-                locations={filteredList}
+                locations={filterSortList}
                 loadingLocation={loadingLocation}
               />
             )}

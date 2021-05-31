@@ -12,7 +12,7 @@ export default React.memo(function CarouselMemo({ location }) {
     >
       {location &&
         location.photos.map((photo) => (
-          <Carousel.Item>
+          <Carousel.Item key={photo.id}>
             <img
               className="location-card-image"
               variant="top"

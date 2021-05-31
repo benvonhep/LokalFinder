@@ -37,7 +37,6 @@ const FilterModal = (props) => {
 
   const handleToggle = (e) => {
     e.preventDefault();
-    // e.stopPropagation();
 
     setSortDistDateToggle(!sortDistDateToggle);
   };

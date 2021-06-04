@@ -124,7 +124,7 @@
       "description": "rtzrtz",
       "breakfast": true,
       "brunch": true,
-      "dinner": false,
+      "dinner": true,
       "lunch": false,
       "phone": "456456456",
       "house_number": 3,
@@ -134,7 +134,7 @@
       "country": "at",
       "latitude": 48.2084923,
       "longitude": 16.37312685415674,
-      "food": "European",
+      "food": "Asian",
       "casual": true,
       "fancy": false
     },

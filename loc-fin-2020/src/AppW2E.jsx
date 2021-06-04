@@ -91,7 +91,7 @@ export default function AppW2E() {
 
   const [filterBooleans, setFilterBooleans] = useState();
   const [locationsGps, setLocationsGps] = useState();
-  const [sortedByDist, setSortedByDist] = useState();
+  // const [sortedByDist, setSortedByDist] = useState();
   // const [sortByDateBool, setSortByDateBool] = useState(false);
   // const [sortByDistanceBool, setSortByDistanceBool] = useState(false);
   const [sortDistDateToggle, setSortDistDateToggle] = useState(false); // true is distance false is date
@@ -132,11 +132,6 @@ export default function AppW2E() {
   useEffect(() => {
     getGpsLocation();
   }, []);
-
-  useEffect(() => {
-    console.log(lat, 'LAT');
-    console.log(lon, 'Lon');
-  }, [lat, lon]);
 
   useEffect(() => {
     let res = Object.keys(filterCategories).map(
@@ -359,8 +354,8 @@ export default function AppW2E() {
     } else {
       sortByDate();
     }
-    console.log(filterSortList, 'FSLI');
-  }, [sortDistDateToggle, filteredList]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortDistDateToggle, filteredList, lat, lon]);
 
   // #################################################################################################
 

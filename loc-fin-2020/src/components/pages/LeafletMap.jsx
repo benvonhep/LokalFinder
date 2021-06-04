@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   Map,
@@ -8,7 +8,7 @@ import {
   ZoomControl,
 } from 'react-leaflet';
 import './LeafletMap.scss';
-import { MapLocationModal, Spinner } from '../layout';
+import { MapLocationModal } from '../layout';
 
 const defaultLatLng = [48.22034, 16.35157];
 const zoom = 13;
@@ -18,20 +18,19 @@ function LeafletMap(props) {
   const loading = useSelector((state) => state.loading);
   const [location, setLocation] = useState(null);
 
-  const { latitude, longitude, locations, loadingLocation } = props;
+  const { latitude, longitude, locations } = props;
   const markerClick = (id) => {
     setCardModalShow(true);
     const location = locations.find((location) => location.id === id);
     setLocation(location);
   };
 
-  useEffect(() => {
-    console.log(latitude, longitude, 'KOORDSMAP');
-  }, [latitude]);
+  // useEffect(() => {
+  //   console.log(latitude, longitude, 'KOORDSMAP');
+  // }, [latitude]);
 
   return (
     <>
-      {/* {!loadingLocation ? ( */}
       <Map center={defaultLatLng} id="mapId" zoom={zoom} zoomControl={false}>
         <ZoomControl />
         <TileLayer

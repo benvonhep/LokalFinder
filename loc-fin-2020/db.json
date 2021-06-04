@@ -56,7 +56,8 @@
       "longitude": 16.37312685415674,
       "food": "European",
       "casual": true,
-      "fancy": false
+      "fancy": false,
+      "bloglink": "https://google.com"
     },
     {
       "id": 3,
@@ -96,7 +97,8 @@
       "longitude": 16.3112685415674,
       "food": "European",
       "casual": false,
-      "fancy": true
+      "fancy": true,
+      "bloglink": "https://google.com"
     },
     {
       "id": 4,
@@ -136,7 +138,8 @@
       "longitude": 16.37312685415674,
       "food": "Asian",
       "casual": true,
-      "fancy": false
+      "fancy": false,
+      "bloglink": "https://google.com"
     },
     {
       "id": 5,
@@ -176,7 +179,8 @@
       "longitude": 16.37312685415674,
       "food": "European",
       "casual": true,
-      "fancy": false
+      "fancy": false,
+      "bloglink": "https://google.com"
     },
     {
       "id": 6,
@@ -216,7 +220,8 @@
       "longitude": 16.37312685415674,
       "food": "European",
       "casual": true,
-      "fancy": false
+      "fancy": false,
+      "bloglink": "https://google.com"
     },
     {
       "id": 7,
@@ -256,7 +261,8 @@
       "longitude": 16.37312685415674,
       "food": "Oriental",
       "casual": true,
-      "fancy": true
+      "fancy": true,
+      "bloglink": "https://google.com"
     },
     {
       "id": 8,
@@ -296,7 +302,8 @@
       "longitude": 16.37312685415674,
       "food": "Asian",
       "casual": true,
-      "fancy": true
+      "fancy": true,
+      "bloglink": "https://google.com"
     },
     {
       "id": 9,
@@ -336,7 +343,8 @@
       "longitude": 16.372,
       "food": "American",
       "casual": true,
-      "fancy": true
+      "fancy": true,
+      "bloglink": "https://google.com"
     }
   ]
 }

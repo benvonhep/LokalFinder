@@ -1,0 +1,115 @@
+.filter-option {
+  display: flex;
+  &__buttons {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__categories {
+    width: 50%;
+  }
+
+  &__blogger {
+    width: 50%;
+  }
+}
+
+.modal-sort {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+
+.modal-sortbutton {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.toggle-switch-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2px;
+  display: inline-block;
+  // margin-top: 30px;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 23.5px;
+  display: inline-block;
+
+  &.toggle-switch__rounded {
+    .toggle-switch__slider {
+      border-radius: 150px;
+      background: #eceff1;
+      border: 1px solid #a0a0a0;
+
+      &:before {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .toggle-switch__wrapper {
+    position: relative;
+    width: 50px;
+    height: 23.5px;
+
+    .toggle-switch__slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: 0.4s ease;
+
+      &:before {
+        width: 24.5px;
+        height: 24.5px;
+        position: absolute;
+        background: #172a28;
+        content: '';
+        margin: 0;
+        padding: 0;
+        top: 50%;
+        left: 0.1rem;
+        transform: translateY(-50%);
+        transition: 0.4s;
+        cursor: pointer;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      }
+
+      &.isChecked {
+        background: #fff;
+
+        &:before {
+          left: calc(100% - 1px - 24.5px);
+          background: #ffc107;
+        }
+      }
+    }
+  }
+}
+
+.modal-gpsrefresh {
+  background-color: #172a28 !important;
+}
+
+.modal-filterall {
+  background-color: #172a28 !important;
+  margin-right: 10px;
+}

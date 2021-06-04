@@ -12,7 +12,7 @@ import * as yup from 'yup';
 const schema = yup.object().shape({
   name: yup.string("").min(1, 'thats probably too short ;)').max(35, 'Namelength exceeded').required('LoL :)'),
   description: yup.string().min(10,'almost enough ;)').max(440, 'oh no, thats more than 440 characters :(').required('Why should you go there?'),
-  occasion: yup.string().required('When could you go?'),
+  // occasion: yup.string().required('When could you go?'),
   phone: yup.string().min(5, 'is it enough? ;)').max(20, 'tssss ;)').required('A phone number would be awesome :)'),
   address: yup.boolean().oneOf([true], "Impossible to find :)"),
   food: yup.string().required('What food do they offer?'),
@@ -24,7 +24,7 @@ const schema = yup.object().shape({
   }),
   fancy: yup.boolean(),
 },
-[['name', 'description', 'occasion', 'phone', 'address', 'food', 'house_number', 'casual', 'fancy']]
+[['name', 'description', 'phone', 'address', 'food', 'house_number', 'casual', 'fancy']]
 )
 
 const LocationModal = (props) => {
@@ -123,7 +123,10 @@ const LocationModal = (props) => {
             }],
           nominatim_data: locationToEdit.nominatim_data,
           description: locationToEdit.description,
-          occasion: locationToEdit.occasion,
+          breakfast: locationToEdit.breakfast,
+          brunch: locationToEdit.brunch,
+          dinner: locationToEdit.dinner,
+          lunch: locationToEdit.lunch,
           phone: locationToEdit.phone,
           house_number: locationToEdit.house_number,
           street: locationToEdit.street,
@@ -218,7 +221,7 @@ const LocationModal = (props) => {
                 {errors.description}
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group controlId="occasion">
+            {/* <Form.Group controlId="occasion">
               <Form.Label>Occasion</Form.Label>
               <Form.Control
                 as="select"
@@ -233,8 +236,10 @@ const LocationModal = (props) => {
                 <option>Breakfast</option>
                 <option>Lunch</option>
                 <option>Dinner</option>
+                <option>Night</option>
                 <option>Breakfast | Lunch</option>
                 <option>Breakfast | Dinner</option>
+                <option>Breakfast | Night</option>
                 <option>Lunch | Dinner</option>
                 <option>Lunch | Dinner | Night</option>
                 <option>Breakfast | Lunch | Dinner | Night</option>
@@ -242,7 +247,81 @@ const LocationModal = (props) => {
               <Form.Control.Feedback type="invalid">
                 {errors.occasion}
               </Form.Control.Feedback>
-            </Form.Group>
+            </Form.Group> */}
+            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+              <div style={{}}>
+                <Form.Group controlId="breakfast" style={{width: '120px', textAlign: 'right'}}>
+                  <Form.Label>Breakfast</Form.Label>
+                  <Form.Check
+                    inline
+                    required
+                    type="checkbox"
+                    feedback="Choose at least one :)"
+                    name="breakfast"
+                    isInvalid={!!errors.breakfast && touched.breakfast}
+                    checked={values.breakfast || ''}
+                    onChange={() => setValues({ ...values, breakfast: !values.breakfast })}
+                    >
+                  </Form.Check>
+                  <Form.Control.Feedback type="invalid" style={{'width': ''}}>
+                    {errors.breakfast}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group controlId="brunch" style={{'width': '120px', textAlign: 'right'}}>
+                  <Form.Label>Brunch</Form.Label>
+                  <Form.Check
+                    inline
+                    required
+                    type="checkbox"
+                    feedback="Choose at least one :)"
+                    name="brunch"
+                    isInvalid={!!errors.brunch && touched.brunch}
+                    checked={values.brunch || ''}
+                    onChange={() => setValues({ ...values, brunch: !values.brunch })}
+                    >
+                  </Form.Check>
+                  <Form.Control.Feedback type="invalid" style={{'width': ''}}>
+                    {errors.brunch}
+                  </Form.Control.Feedback>
+                </Form.Group>
+              </div>
+              <div style={{}}>
+                <Form.Group controlId="dinner" style={{'width': '120px', textAlign: 'right'}}>
+                  <Form.Label>Dinner</Form.Label>
+                  <Form.Check
+                    inline
+                    required
+                    type="checkbox"
+                    feedback="Choose at least one :)"
+                    name="dinner"
+                    isInvalid={!!errors.dinner && touched.dinner}
+                    checked={values.dinner || ''}
+                    onChange={() => setValues({ ...values, dinner: !values.dinner })}
+                    >
+                  </Form.Check>
+                  <Form.Control.Feedback type="invalid" style={{'width': '300px'}}>
+                    {errors.dinner}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group controlId="lunch" style={{'width': '120px', textAlign: 'right'}}>
+                  <Form.Label>Lunch</Form.Label>
+                  <Form.Check
+                    inline
+                    required
+                    type="checkbox"
+                    feedback="Choose at least one :)"
+                    name="lunch"
+                    isInvalid={!!errors.lunch && touched.lunch}
+                    checked={values.lunch || ''}
+                    onChange={() => setValues({ ...values, lunch: !values.lunch })}
+                    >
+                  </Form.Check>
+                  <Form.Control.Feedback type="invalid" style={{'width': '300px'}}>
+                    {errors.lunch}
+                  </Form.Control.Feedback>
+                </Form.Group>
+              </div>
+            </div>
             <Form.Group controlId="phone">
               <Form.Label>Phone</Form.Label>
               <Form.Control
@@ -275,6 +354,7 @@ const LocationModal = (props) => {
                 onSearch={handleSearch}
                 onInputChange={() => {
                   setAddressIsValid(false)
+                  setFieldValue('currentAddress', '')
                 }}
                 options={options}
                 placeholder="Search for the address..."
@@ -365,7 +445,7 @@ const LocationModal = (props) => {
               </Form.Control.Feedback>
             </Form.Group>
               <div style={{'display': 'flex', 'justifyContent': 'center', 'flexDirection': 'row'}}>
-                <Form.Group controlId="casual" style={{'width': '265px'}}>
+                <Form.Group controlId="casual" style={{'width': '120px', textAlign: 'right'}}>
                   <Form.Label>Casual</Form.Label>
                   <Form.Check
                     inline
@@ -379,26 +459,25 @@ const LocationModal = (props) => {
                     >
                   </Form.Check>
                 <Form.Control.Feedback type="invalid" style={{'width': '300px'}}>
-                {errors.casual}
-              </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group controlId="fancy" style={{'width': '100px', 'height': '30px'}}>
-                  <Form.Label>Fancy</Form.Label>
-                  <Form.Check
-                    inline
-                    required
-                    style={{marginLeft: '1px'}}
+                  {errors.casual}
+                </Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group controlId="fancy" style={{'width': '120px', textAlign: 'right'}}>
+                <Form.Label>Fancy</Form.Label>
+                <Form.Check
+                  inline
+                  required
+                  style={{marginLeft: '1px'}}
 
-                    type="checkbox"
-                    name="fancy"
-                  isInvalid={!!errors.fancy && touched.fancy}
-                    checked={values.fancy || ''}
-                    onChange={() => setValues({ ...values, fancy: !values.fancy })}
-                    >
-                  </Form.Check>
-
-                </Form.Group>
-              </div>
+                  type="checkbox"
+                  name="fancy"
+                isInvalid={!!errors.fancy && touched.fancy}
+                  checked={values.fancy || ''}
+                  onChange={() => setValues({ ...values, fancy: !values.fancy })}
+                  >
+                </Form.Check>
+              </Form.Group>
+            </div>
           </Modal.Body>
           <Modal.Footer className="modalFooter">
             <Button variant="outline-success" type="submit" onClick={() => {

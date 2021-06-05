@@ -1,10 +1,10 @@
 .location-card {
-margin: 0 !important;
-max-width: 342px !important;
-min-width: 342px !important;
-max-height: 335px;
-overflow: hidden;
-box-sizing: unset !important;
+  margin: 0 !important;
+  max-width: 342px !important;
+  min-width: 342px !important;
+  max-height: 335px;
+  overflow: hidden;
+  box-sizing: unset !important;
   .location-card-image {
     min-height: 274px;
     max-height: 274px;
@@ -63,7 +63,7 @@ box-sizing: unset !important;
     bottom: 274px;
     transition: all 0.3s ease-out;
     z-index: 10;
-    height: 100%
+    height: 100%;
   }
   .location-card-arrow-close {
     position: relative;
@@ -99,7 +99,7 @@ box-sizing: unset !important;
     align-items: center;
     flex-direction: column;
     height: 8px;
-    text-transform:capitalize;
+    text-transform: capitalize;
     font-size: 10.5px !important;
     color: white !important;
     background-color: #172a28;
@@ -113,22 +113,33 @@ box-sizing: unset !important;
     display: flex;
     min-width: 342px !important;
     flex-direction: row;
-    padding: 6px, 9px;
+    padding: 6px 9px;
     font-size: 11.5px;
 
     .location-card-contactGroup {
       display: flex;
       flex-direction: column;
+      align-items: baseline;
+      justify-content: flex-end;
       height: 44px;
+      padding-bottom: 4px;
     }
 
     .location-card-buttonGroup {
-      display: inline;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
       margin-left: auto;
+      // padding-top: 1em;
+      align-items: center;
     }
 
     .button .btn {
       height: 20px;
     }
   }
+}
+
+.location-card-bloglink {
+  margin-left: auto;
 }

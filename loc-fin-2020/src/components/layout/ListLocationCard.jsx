@@ -91,22 +91,36 @@ const ListLocationCard = (props) => {
                 {location.street} {location.house_number}, {location.city}
               </span>
             </div>
-            {!loadingData &&
-              isAuthenticated &&
-              userProfile.id === location.createdBy && (
-                <div className="location-card-buttonGroup">
-                  <Button size="sm" onClick={onEdit} variant="outline-warning">
-                    Edit
-                  </Button>
-                  <Button
-                    size="sm"
-                    onClick={onDelete}
-                    variant="outline-danger ml-2"
-                  >
-                    Delete
-                  </Button>
-                </div>
-              )}
+            <div className="location-card-buttonGroup">
+              {!loadingData &&
+                isAuthenticated &&
+                userProfile.id === location.createdBy && (
+                  <>
+                    <Button
+                      size="sm"
+                      onClick={onEdit}
+                      variant="outline-warning ml-1"
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      size="sm"
+                      onClick={onDelete}
+                      variant="outline-danger ml-1"
+                    >
+                      Delete
+                    </Button>
+                  </>
+                )}
+              <Button
+                size="sm"
+                onClick={() => console.log('bloglink')}
+                variant="outline-info"
+                className="location-card-bloglink"
+              >
+                Blogpost
+              </Button>
+            </div>
           </Card.Footer>
         </div>
       </Card>

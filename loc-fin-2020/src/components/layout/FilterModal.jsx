@@ -84,7 +84,6 @@ const FilterModal = (props) => {
             value: !userFilterList[filterItem.username].value,
           },
         }));
-        console.log('now false');
       } else {
         setUserFilterList((prevState) => ({
           ...prevState,
@@ -94,7 +93,6 @@ const FilterModal = (props) => {
             userId: userid,
           },
         }));
-        console.log('now new true');
       }
     } else {
       if (filterCategories[filterItem.id] !== undefined)

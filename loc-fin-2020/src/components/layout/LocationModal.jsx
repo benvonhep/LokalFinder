@@ -199,7 +199,7 @@ const LocationModal = (props) => {
           fancy: locationToEdit.fancy,
           address: locationToEdit.address,
           addressdisabled: '',
-          bloglink: '',
+          bloglink: locationToEdit.bloglink,
         }}
       >
         {({
@@ -272,7 +272,7 @@ const LocationModal = (props) => {
                     size="sm"
                     type="text"
                     name="bloglink"
-                    value={values.bloglink}
+                    value={values.bloglink ? values.bloglink : ''}
                     onChange={handleChange}
                     isInvalid={!!errors.bloglink && touched.bloglink}
                     placeholder="Enter the blog post url"

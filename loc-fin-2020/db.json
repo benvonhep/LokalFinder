@@ -345,6 +345,38 @@
       "casual": true,
       "fancy": true,
       "bloglink": "https://google.com"
+    },
+    {
+      "createdBy": 1,
+      "name": "sepp",
+      "photos": [
+        {
+          "id": 1,
+          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        },
+        {
+          "id": 2,
+          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        }
+      ],
+      "description": "sdfsdfsdfsdfsdf",
+      "breakfast": true,
+      "phone": "234234234",
+      "house_number": 3,
+      "street": "Lange Gasse",
+      "postcode": "1080",
+      "city": "Vienna",
+      "country": "at",
+      "latitude": 48.20674095,
+      "longitude": 16.35280176239025,
+      "food": "Asian",
+      "casual": false,
+      "fancy": true,
+      "address": true,
+      "addressdisabled": "",
+      "bloglink": "www.sepp.com",
+      "currentAddress": "",
+      "id": 10
     }
   ]
 }

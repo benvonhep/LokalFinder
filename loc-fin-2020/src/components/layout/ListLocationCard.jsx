@@ -115,7 +115,7 @@ const ListLocationCard = (props) => {
               <Button
                 size="sm"
                 onClick={() => console.log('bloglink')}
-                variant="outline-info"
+                variant="outline-warning"
                 className="location-card-bloglink"
               >
                 Blogpost

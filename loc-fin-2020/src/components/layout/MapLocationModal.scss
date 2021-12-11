@@ -1,4 +1,4 @@
-.modal-content {
+.map-location-card.modal-content {
   max-width: 362px;
   min-width: 362px;
   border: 0 !important;
@@ -8,9 +8,9 @@
 }
 
 .map-location-card {
-  margin: 7px;
-  max-width: 342px;
-  min-width: 342px;
+  // margin: 7px;
+  // max-width: 342px;
+  min-width: 100%;
   display: inline-block;
   border: none !important;
 
@@ -23,9 +23,7 @@
 
   .map-location-card-image {
     max-height: 275px;
-    min-height: 274px;
-    max-width: 342px;
-    min-width: 342px;
+    height: 275px;
     object-fit: cover;
   }
 

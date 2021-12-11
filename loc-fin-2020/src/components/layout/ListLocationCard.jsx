@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { MdKeyboardArrowUp } from 'react-icons/md';
 import { useAuth0 } from '@auth0/auth0-react';
 import CarouselMemo from './CarouselMemo';
+import LinkWrapper from './LinkWrapper';
 
 import './ListLocationCard.scss';
 
@@ -112,14 +113,8 @@ const ListLocationCard = (props) => {
                     </Button>
                   </>
                 )}
-              <Button
-                size="sm"
-                onClick={() => console.log('bloglink')}
-                variant="outline-warning"
-                className="location-card-bloglink"
-              >
-                Blogpost
-              </Button>
+
+              <LinkWrapper link={location.bloglink}></LinkWrapper>
             </div>
           </Card.Footer>
         </div>

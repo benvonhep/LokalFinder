@@ -140,6 +140,7 @@ export default function AppW2E() {
     setFilterBooleans(res);
   }, [filterCategories]);
 
+  // setlocationsgps
   useEffect(() => {
     if (lat && lon !== null) {
       if (filteredList) {
@@ -187,7 +188,7 @@ export default function AppW2E() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lat, lon, filterCategories, userFilterList, locations]);
-
+  // Filter locationsgps
   useEffect(() => {
     const filterObserver = () => {
       let selectedFilter = Object.entries(filterCategories).filter(
@@ -333,7 +334,6 @@ export default function AppW2E() {
     filterObserver();
   }, [filterCategories, locationsGps, userFilterList, locations]);
 
-  // #################################################################################################
   const sortByDistance = () => {
     if (filteredList) {
       const sortByDist = filteredList.sort((a, b) => a.distance - b.distance);
@@ -356,8 +356,6 @@ export default function AppW2E() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortDistDateToggle, filteredList, lat, lon]);
-
-  // #################################################################################################
 
   return (
     <div>

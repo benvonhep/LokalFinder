@@ -15,9 +15,9 @@
   border: none !important;
 
   .map-location-card-body {
-      white-space: normal;
-      height: 219px;
-      padding: 0;
+    white-space: normal;
+    height: 219px;
+    padding: 0;
     min-width: 342px !important;
   }
 
@@ -27,7 +27,6 @@
     max-width: 342px;
     min-width: 342px;
     object-fit: cover;
-
   }
 
   .map-location-card-no-gps-position {
@@ -56,7 +55,6 @@
     font-weight: bold;
   }
 
-
   .map-location-card-text {
     overflow-wrap: break-word;
     font-size: 13px;
@@ -68,7 +66,7 @@
     align-items: center;
     flex-direction: column;
     height: 10px;
-    text-transform:capitalize;
+    text-transform: capitalize;
     font-size: 10.5px !important;
     // color: #ffc107;
     color: white !important;
@@ -100,6 +98,5 @@
         height: 20px !important;
       }
     }
-
   }
 }

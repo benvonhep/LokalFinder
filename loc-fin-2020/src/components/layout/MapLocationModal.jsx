@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetLocation } from '../../store/actions/locationsAction';
 import { latLng } from 'leaflet';
+import LinkWrapper from './LinkWrapper';
 
 import { Modal } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
@@ -126,14 +127,8 @@ function MapLocationModal(props) {
               </span>
             </div>
             <div className="map-location-button-group">
-              <Button
-                size="sm"
-                onClick={() => console.log('bloglink')}
-                variant="outline-warning"
-                className="location-card-bloglink"
-              >
-                Blogpost
-              </Button>
+              <LinkWrapper link={props.location.bloglink}></LinkWrapper>
+
               <Button
                 size="sm"
                 variant="outline-info ml-2"

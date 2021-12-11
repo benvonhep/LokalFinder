@@ -57,7 +57,7 @@
       "food": "European",
       "casual": true,
       "fancy": false,
-      "bloglink": "https://google.com"
+      "bloglink": "https://downtownvienna.com/1034266"
     },
     {
       "id": 3,
@@ -98,7 +98,7 @@
       "food": "European",
       "casual": false,
       "fancy": true,
-      "bloglink": "https://google.com"
+      "bloglink": "https://downtownvienna.com/1034266"
     },
     {
       "id": 4,
@@ -139,7 +139,7 @@
       "food": "Asian",
       "casual": true,
       "fancy": false,
-      "bloglink": "https://google.com"
+      "bloglink": "https://downtownvienna.com/1034266"
     },
     {
       "id": 5,
@@ -180,7 +180,7 @@
       "food": "European",
       "casual": true,
       "fancy": false,
-      "bloglink": "https://google.com"
+      "bloglink": "https://downtownvienna.com/1034266"
     },
     {
       "id": 6,
@@ -221,7 +221,7 @@
       "food": "European",
       "casual": true,
       "fancy": false,
-      "bloglink": "https://google.com"
+      "bloglink": "https://downtownvienna.com/1034266"
     },
     {
       "id": 7,
@@ -262,7 +262,7 @@
       "food": "Oriental",
       "casual": true,
       "fancy": true,
-      "bloglink": "https://google.com"
+      "bloglink": "https://downtownvienna.com/1034266"
     },
     {
       "id": 8,
@@ -303,7 +303,7 @@
       "food": "Asian",
       "casual": true,
       "fancy": true,
-      "bloglink": "https://google.com"
+      "bloglink": "https://downtownvienna.com/1034266"
     },
     {
       "id": 9,
@@ -344,7 +344,7 @@
       "food": "American",
       "casual": true,
       "fancy": true,
-      "bloglink": "https://google.com"
+      "bloglink": "https://downtownvienna.com/1034266"
     },
     {
       "createdBy": 1,
@@ -374,7 +374,7 @@
       "fancy": true,
       "address": true,
       "addressdisabled": "",
-      "bloglink": "www.sepp.com",
+      "bloglink": "https://www.sepp.com",
       "currentAddress": "",
       "id": 10
     }

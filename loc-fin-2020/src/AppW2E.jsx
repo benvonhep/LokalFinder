@@ -91,7 +91,7 @@ export default function AppW2E() {
 
   const [filterBooleans, setFilterBooleans] = useState();
   const [locationsGps, setLocationsGps] = useState();
-  const [sortedByDist, setSortedByDist] = useState();
+  // const [sortedByDist, setSortedByDist] = useState();
   // const [sortByDateBool, setSortByDateBool] = useState(false);
   // const [sortByDistanceBool, setSortByDistanceBool] = useState(false);
   const [sortDistDateToggle, setSortDistDateToggle] = useState(false); // true is distance false is date
@@ -134,17 +134,13 @@ export default function AppW2E() {
   }, []);
 
   useEffect(() => {
-    console.log(lat, 'LAT');
-    console.log(lon, 'Lon');
-  }, [lat, lon]);
-
-  useEffect(() => {
     let res = Object.keys(filterCategories).map(
       (key) => filterCategories[key].value,
     );
     setFilterBooleans(res);
   }, [filterCategories]);
 
+  // setlocationsgps
   useEffect(() => {
     if (lat && lon !== null) {
       if (filteredList) {
@@ -192,7 +188,7 @@ export default function AppW2E() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lat, lon, filterCategories, userFilterList, locations]);
-
+  // Filter locationsgps
   useEffect(() => {
     const filterObserver = () => {
       let selectedFilter = Object.entries(filterCategories).filter(
@@ -338,7 +334,6 @@ export default function AppW2E() {
     filterObserver();
   }, [filterCategories, locationsGps, userFilterList, locations]);
 
-  // #################################################################################################
   const sortByDistance = () => {
     if (filteredList) {
       const sortByDist = filteredList.sort((a, b) => a.distance - b.distance);
@@ -359,10 +354,8 @@ export default function AppW2E() {
     } else {
       sortByDate();
     }
-    console.log(filterSortList, 'FSLI');
-  }, [sortDistDateToggle, filteredList]);
-
-  // #################################################################################################
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortDistDateToggle, filteredList, lat, lon]);
 
   return (
     <div>

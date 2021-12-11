@@ -1,6 +1,5 @@
-import React, { memo, useState } from 'react';
+import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import Card from 'react-bootstrap/Card';
 
 export default React.memo(function CarouselMemo({ location }) {
   return (
@@ -17,7 +16,7 @@ export default React.memo(function CarouselMemo({ location }) {
               className="location-card-image"
               variant="top"
               src={photo.url}
-              alt="sorry - there should be a picture here"
+              alt="here should be something"
             />
           </Carousel.Item>
         ))}

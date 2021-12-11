@@ -1,6 +1,6 @@
 // https://codesandbox.io/s/upbeat-ramanujan-b2jui?file=/src/Search.js:0-3336
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Spinner } from '../layout';
@@ -24,7 +24,6 @@ const FilterModal = (props) => {
     ...rest
   } = props;
   const loading = useSelector((state) => state.loading);
-  const [filterToggle, setFilterToggle] = useState(false);
 
   const onCancel = () => {
     onHide();
@@ -85,7 +84,6 @@ const FilterModal = (props) => {
             value: !userFilterList[filterItem.username].value,
           },
         }));
-        console.log('now false');
       } else {
         setUserFilterList((prevState) => ({
           ...prevState,
@@ -95,7 +93,6 @@ const FilterModal = (props) => {
             userId: userid,
           },
         }));
-        console.log('now new true');
       }
     } else {
       if (filterCategories[filterItem.id] !== undefined)

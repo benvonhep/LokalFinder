@@ -77,7 +77,7 @@ const NavbarComp = (props) => {
           <AlertSnack />
         </div>
       </Navbar>
-      {userProfile && (
+      {userProfile !== undefined && (
         <LocationModal
           show={locationModalShow}
           user_id={userProfile.id}

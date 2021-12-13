@@ -42,17 +42,9 @@ const FilterModal = (props) => {
 
   const onFilterChange = (filterItem, type, userid) => {
     if (filterItem === 'ALL') {
-      console.log(filterCategories, filterBooleans, 'RTEST');
-      console.log(filterBooleans.indexOf(true), 'retst2');
-      console.log(
-        Object.entries(filterCategories).map((x) => x[1].value === true),
-      );
       if (filterCategories && filterBooleans.indexOf(true) < 0) {
-        Object.entries(userFilterList).map((x) =>
-          console.log('ALL - no filter selected'),
-        );
+        return;
       } else {
-        console.log('ALL - filter selected ');
         Object.keys(filterCategories).map((key) =>
           setFilterCategories((prevState) => ({
             ...prevState,

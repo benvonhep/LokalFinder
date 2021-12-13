@@ -19,6 +19,47 @@
   ],
   "locations": [
     {
+      "id": 1,
+      "createdBy": 1,
+      "name": "Zur goldenen Möwe",
+      "photos": [
+        {
+          "id": "2",
+          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        },
+        {
+          "id": "1",
+          "url": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        },
+        {
+          "id": "3",
+          "url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+        },
+        {
+          "id": "4",
+          "url": "https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
+        }
+      ],
+      "nominatim_data": "Saint Stephen's Cathedral, 3, Stephansplatz, Stubenviertel, Innere Stadt, Vienna, 1010, Austria",
+      "description": "rtzrtz",
+      "breakfast": false,
+      "brunch": true,
+      "dinner": true,
+      "lunch": false,
+      "phone": "456456456",
+      "house_number": 3,
+      "street": "Stephansplatz",
+      "postcode": "1010",
+      "city": "Vienna",
+      "country": "at",
+      "latitude": 48.2024923,
+      "longitude": 16.37312685415674,
+      "food": "European",
+      "casual": true,
+      "fancy": false,
+      "bloglink": "https://downtownvienna.com/1034266"
+    },
+    {
       "id": 2,
       "createdBy": 1,
       "name": "Zur goldenen Möwe",

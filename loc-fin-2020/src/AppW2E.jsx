@@ -353,6 +353,7 @@ export default function AppW2E() {
       const sortById = filteredList.sort((a, b) => a.id - b.id);
       setFilterSortList([...sortById]);
     }
+    console.log(filterSortList, 'FILTERSORT');
   };
 
   useEffect(() => {
@@ -384,7 +385,10 @@ export default function AppW2E() {
             exact
             path="/list"
             component={() => (
-              <List locations={filterSortList ? filterSortList : []} />
+              <List
+                users={users}
+                locations={filterSortList ? filterSortList : []}
+              />
             )}
           />
           <Route

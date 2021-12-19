@@ -8,7 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import './List.scss';
 
 const List = (props) => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isLoading } = useAuth0();
   const [modalShow, setModalShow] = useState(false);
   const [loadingData, setLoadingData] = useState(true);
   const [userProfile, setUserProfile] = useState();

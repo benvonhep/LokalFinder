@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useRef } from 'react';
+import React, { useState, Fragment, useRef, useEffect } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import {
   addLocation,
@@ -13,19 +13,33 @@ import { setAlert } from '../../store/actions/alertActions';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-const schema = yup.object().shape(
+let schema = yup.object().shape(
   {
     name: yup
       .string('')
       .min(1, 'thats probably too short ;)')
       .max(35, 'Namelength exceeded')
       .required('LoL :)'),
+    bloglink: yup
+      .string('')
+      .min(1, 'thats probably too short ;)')
+      // .max(140, 'Namelength exceeded')
+      .required('LoL :)'),
     description: yup
-      .string()
+      .string('')
       .min(10, 'almost enough ;)')
       .max(440, 'oh no, thats more than 440 characters :(')
       .required('Why should you go there?'),
     // occasion: yup.string().required('When could you go?'),
+    breakfast: yup.boolean(false).when(['lunch', 'dinner', 'brunch'], {
+      is: false,
+      then: yup.boolean().oneOf([true], 'Im sure you know the answer ;)'),
+
+      otherwise: yup.boolean().required('i think we need an answer here :)'),
+    }),
+    brunch: yup.boolean(false),
+    lunch: yup.boolean(false),
+    dinner: yup.boolean(false),
     phone: yup
       .string()
       .min(5, 'is it enough? ;)')
@@ -48,6 +62,7 @@ const schema = yup.object().shape(
   [
     [
       'name',
+      'bloglink',
       'description',
       'phone',
       'address',
@@ -59,12 +74,38 @@ const schema = yup.object().shape(
   ],
 );
 
+schema = schema.test('occasionCheckboxValidation', null, function (obj) {
+  if (obj.breakfast || obj.brunch || obj.lunch || obj.dinner) {
+    console.log('nothing selected for occasion YESSSS');
+    return true;
+  }
+  console.log('nothing selected for occasion');
+  // return this.createError({ message: 'YOYOYOLOMANNNN' });
+
+  // return new yup.ValidationError(
+  //   '! Check at least one checkbox',
+  //   'occasion',
+  //   null,
+  // );
+});
+
 const LocationModal = (props) => {
   const [options, setOptions] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [addressIsValid, setAddressIsValid] = useState('null');
   const formRef = useRef();
-  const [locationToEdit] = useState(props.location ? props.location : '');
+  const [locationToEdit] = useState(
+    props.location
+      ? props.location
+      : {
+          fancy: false,
+          casual: false,
+          breakfast: false,
+          brunch: false,
+          lunch: false,
+          dinner: false,
+        },
+  );
 
   const handleSearch = async (query) => {
     setIsLoading(true);
@@ -81,6 +122,10 @@ const LocationModal = (props) => {
   };
 
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   console.log(errors, 'Errors from useeffect');
+  // }, [errors]);
 
   const onCancel = async () => {
     props.onHide();
@@ -278,7 +323,7 @@ const LocationModal = (props) => {
                           name="bloglink"
                           value={values.bloglink ? values.bloglink : ''}
                           onChange={handleChange}
-                          isInvalid={!!errors.bloglink && touched.bloglink}
+                          isInvalid={errors.bloglink && touched.bloglink}
                           placeholder="Enter the blog post url"
                         />
                         <Form.Control.Feedback type="invalid">
@@ -295,64 +340,29 @@ const LocationModal = (props) => {
                           name="description"
                           value={values.description || ''}
                           onChange={handleChange}
-                          isInvalid={
-                            !!errors.description && touched.description
-                          }
+                          isInvalid={errors.description && touched.description}
                           placeholder="Enter the description"
                         />
                         <Form.Control.Feedback type="invalid">
                           {errors.description}
                         </Form.Control.Feedback>
                       </Form.Group>
-                      {/* <Form.Group controlId="occasion">
-                  <Form.Label>Occasion</Form.Label>
-                  <Form.Control
-                    as="select"
-                    size="sm"
-                    required
-                    name="occasion"
-                    value={values.occasion || ''}
-                    onChange={handleChange}
-                    isInvalid={!!errors.occasion && touched.occasion}
-                    >
-                    <option hidden value="">Choose an occasion</option>
-                    <option>Breakfast</option>
-                    <option>Lunch</option>
-                    <option>Dinner</option>
-                    <option>Night</option>
-                    <option>Breakfast | Lunch</option>
-                    <option>Breakfast | Dinner</option>
-                    <option>Breakfast | Night</option>
-                    <option>Lunch | Dinner</option>
-                    <option>Lunch | Dinner | Night</option>
-                    <option>Breakfast | Lunch | Dinner | Night</option>
-                  </Form.Control>
-                  <Form.Control.Feedback type="invalid">
-                    {errors.occasion}
-                  </Form.Control.Feedback>
-                </Form.Group> */}
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <div style={{}}>
+                      <div className="locationmodal-occasion">
+                        <>
                           <Form.Group
                             controlId="breakfast"
-                            style={{ width: '120px', textAlign: 'right' }}
+                            className="locationmodal-occasion-item"
                           >
                             <Form.Label>Breakfast</Form.Label>
                             <Form.Check
                               inline
                               required
                               type="checkbox"
-                              feedback="Choose at least one :)"
+                              // feedback="Choose at least one :)"
                               name="breakfast"
-                              isInvalid={
-                                !!errors.breakfast && touched.breakfast
-                              }
+                              // isInvalid={
+                              //   !!errors.breakfast && touched.breakfast
+                              // }
                               checked={values.breakfast || ''}
                               onChange={() =>
                                 setValues({
@@ -361,88 +371,72 @@ const LocationModal = (props) => {
                                 })
                               }
                             ></Form.Check>
-                            <Form.Control.Feedback
-                              type="invalid"
-                              style={{ width: '' }}
-                            >
-                              {errors.breakfast}
-                            </Form.Control.Feedback>
                           </Form.Group>
                           <Form.Group
                             controlId="brunch"
-                            style={{ width: '120px', textAlign: 'right' }}
+                            className="locationmodal-occasion-item"
                           >
                             <Form.Label>Brunch</Form.Label>
                             <Form.Check
                               inline
                               required
                               type="checkbox"
-                              feedback="Choose at least one :)"
+                              // feedback="Choose at least one :)"
                               name="brunch"
-                              isInvalid={!!errors.brunch && touched.brunch}
+                              // isInvalid={!!errors.brunch && touched.brunch}
                               checked={values.brunch || ''}
                               onChange={() =>
                                 setValues({ ...values, brunch: !values.brunch })
                               }
                             ></Form.Check>
-                            <Form.Control.Feedback
-                              type="invalid"
-                              style={{ width: '' }}
-                            >
-                              {errors.brunch}
-                            </Form.Control.Feedback>
                           </Form.Group>
-                        </div>
-                        <div style={{}}>
+                        </>
+                        <>
                           <Form.Group
                             controlId="dinner"
-                            style={{ width: '120px', textAlign: 'right' }}
+                            className="locationmodal-occasion-item"
                           >
                             <Form.Label>Dinner</Form.Label>
                             <Form.Check
                               inline
                               required
                               type="checkbox"
-                              feedback="Choose at least one :)"
+                              // feedback="Choose at least one :)"
                               name="dinner"
-                              isInvalid={!!errors.dinner && touched.dinner}
+                              // isInvalid={!!errors.dinner && touched.dinner}
                               checked={values.dinner || ''}
                               onChange={() =>
                                 setValues({ ...values, dinner: !values.dinner })
                               }
                             ></Form.Check>
-                            <Form.Control.Feedback
-                              type="invalid"
-                              style={{ width: '300px' }}
-                            >
-                              {errors.dinner}
-                            </Form.Control.Feedback>
                           </Form.Group>
                           <Form.Group
                             controlId="lunch"
-                            style={{ width: '120px', textAlign: 'right' }}
+                            className="locationmodal-occasion-item"
                           >
                             <Form.Label>Lunch</Form.Label>
                             <Form.Check
                               inline
                               required
                               type="checkbox"
-                              feedback="Choose at least one :)"
+                              // feedback="Choose at least one :)"
                               name="lunch"
-                              isInvalid={!!errors.lunch && touched.lunch}
+                              // isInvalid={!!errors.lunch && touched.lunch}
                               checked={values.lunch || ''}
                               onChange={() =>
                                 setValues({ ...values, lunch: !values.lunch })
                               }
                             ></Form.Check>
-                            <Form.Control.Feedback
-                              type="invalid"
-                              style={{ width: '300px' }}
-                            >
-                              {errors.lunch}
-                            </Form.Control.Feedback>
                           </Form.Group>
-                        </div>
+                        </>
+                        {errors.breakfast && (
+                          <div
+                            type="invalid"
+                            className="custom-validation-text"
+                          >
+                            {errors.breakfast}
+                          </div>
+                        )}
                       </div>
                       <Form.Group controlId="phone">
                         <Form.Label>Phone</Form.Label>
@@ -592,55 +586,53 @@ const LocationModal = (props) => {
                           {errors.food}
                         </Form.Control.Feedback>
                       </Form.Group>
-                      <div
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          flexDirection: 'row',
-                        }}
-                      >
-                        <Form.Group
-                          controlId="casual"
-                          style={{ width: '120px', textAlign: 'right' }}
-                        >
-                          <Form.Label>Casual</Form.Label>
-                          <Form.Check
-                            inline
-                            required
-                            type="checkbox"
-                            feedback="Choose at least one :)"
-                            name="casual"
-                            isInvalid={!!errors.casual && touched.casual}
-                            checked={values.casual || ''}
-                            onChange={() =>
-                              setValues({ ...values, casual: !values.casual })
-                            }
-                          ></Form.Check>
-                          <Form.Control.Feedback
+                      <div className="locationform-casual-fancy-container">
+                        <div className="casual-fancy-wrapper">
+                          <Form.Group
+                            controlId="casual"
+                            className="locationmodal-occasion-item"
+                          >
+                            <Form.Label>Casual</Form.Label>
+                            <Form.Check
+                              inline
+                              required
+                              type="checkbox"
+                              // feedback="Choose at least one :)"
+                              name="casual"
+                              isInvalid={!!errors.casual && touched.casual}
+                              checked={values.casual || ''}
+                              onChange={() =>
+                                setValues({ ...values, casual: !values.casual })
+                              }
+                            ></Form.Check>
+                          </Form.Group>
+                          <Form.Group
+                            controlId="fancy"
+                            style={{ width: '120px', textAlign: 'right' }}
+                          >
+                            <Form.Label>Fancy</Form.Label>
+                            <Form.Check
+                              inline
+                              required
+                              style={{ marginLeft: '1px' }}
+                              type="checkbox"
+                              name="fancy"
+                              isInvalid={errors.fancy && touched.fancy}
+                              checked={values.fancy || ''}
+                              onChange={() =>
+                                setValues({ ...values, fancy: !values.fancy })
+                              }
+                            ></Form.Check>
+                          </Form.Group>
+                        </div>
+                        {errors.casual && (
+                          <div
                             type="invalid"
-                            style={{ width: '300px' }}
+                            className="custom-validation-text"
                           >
                             {errors.casual}
-                          </Form.Control.Feedback>
-                        </Form.Group>
-                        <Form.Group
-                          controlId="fancy"
-                          style={{ width: '120px', textAlign: 'right' }}
-                        >
-                          <Form.Label>Fancy</Form.Label>
-                          <Form.Check
-                            inline
-                            required
-                            style={{ marginLeft: '1px' }}
-                            type="checkbox"
-                            name="fancy"
-                            isInvalid={!!errors.fancy && touched.fancy}
-                            checked={values.fancy || ''}
-                            onChange={() =>
-                              setValues({ ...values, fancy: !values.fancy })
-                            }
-                          ></Form.Check>
-                        </Form.Group>
+                          </div>
+                        )}
                       </div>
                     </Modal.Body>
                     <Modal.Footer className="modalFooter">

@@ -164,13 +164,13 @@ export default function AppW2E() {
                   userLocationDistanceMeter / 1000
                 ).toFixed(1);
 
-                if (userLocationDistanceKm > 0 && userLocationDistanceKm) {
+                if (userLocationDistanceKm) {
                   return {
                     ...location,
                     distance: userLocationDistanceKm,
                   };
                 } else {
-                  console.log('no distance available');
+                  console.log(userLocationDistanceKm, 'no distance available');
                   return {
                     ...location,
                     distance: 'oops',
@@ -353,7 +353,7 @@ export default function AppW2E() {
       const sortById = filteredList.sort((a, b) => a.id - b.id);
       setFilterSortList([...sortById]);
     }
-    console.log(filterSortList, 'FILTERSORT');
+    // console.log(filterSortList, 'FILTERSORT');
   };
 
   useEffect(() => {

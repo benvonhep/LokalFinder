@@ -13,43 +13,66 @@ import { setAlert } from '../../store/actions/alertActions';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
+const urlRegExp =
+  /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
+// /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
+
+export const isValidUrl = (url) => {
+  if (url !== undefined && url.length > 12) {
+    try {
+      new URL(url);
+      console.log('url läuft');
+      return true;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+
+    // return true;
+  }
+};
+
 let schema = yup.object().shape(
   {
     name: yup
-      .string('')
+      .string()
       .min(1, 'thats probably too short ;)')
       .max(35, 'Namelength exceeded')
       .required('LoL :)'),
     bloglink: yup
-      .string('')
-      .min(1, 'thats probably too short ;)')
-      // .max(140, 'Namelength exceeded')
-      .required('LoL :)'),
+      .string()
+      .min(15, 'LoL :)')
+      .test('is-url-valid', 'URL is not valid', (value) => {
+        // console.log(value, 'VALUE');
+        return isValidUrl(value);
+      })
+      .required('heast was id o los'),
     description: yup
       .string('')
       .min(10, 'almost enough ;)')
       .max(440, 'oh no, thats more than 440 characters :(')
       .required('Why should you go there?'),
     // occasion: yup.string().required('When could you go?'),
-    breakfast: yup.boolean(false).when(['lunch', 'dinner', 'brunch'], {
+    breakfast: yup.boolean().when(['lunch', 'dinner', 'brunch'], {
       is: false,
       then: yup.boolean().oneOf([true], 'Im sure you know the answer ;)'),
 
       otherwise: yup.boolean().required('i think we need an answer here :)'),
     }),
-    brunch: yup.boolean(false),
-    lunch: yup.boolean(false),
-    dinner: yup.boolean(false),
+    brunch: yup.boolean(),
+    lunch: yup.boolean(),
+    dinner: yup.boolean(),
     phone: yup
       .string()
       .min(5, 'is it enough? ;)')
       .max(20, 'tssss ;)')
+      .matches(phoneRegExp, 'Are you sure? ;)')
       .required('A phone number would be awesome :)'),
-    address: yup.boolean().oneOf([true], 'Impossible to find :)'),
     food: yup.string().required('What food do they offer?'),
-    house_number: yup
-      .number()
-      .required('A house number would be pretty awesome :)'),
+    house_number: yup.string().required('Is it a ghostkitchen? ;)2'),
     casual: yup.boolean().when('fancy', {
       is: false,
       then: yup
@@ -65,7 +88,6 @@ let schema = yup.object().shape(
       'bloglink',
       'description',
       'phone',
-      'address',
       'food',
       'house_number',
       'casual',
@@ -74,24 +96,10 @@ let schema = yup.object().shape(
   ],
 );
 
-schema = schema.test('occasionCheckboxValidation', null, function (obj) {
-  if (obj.breakfast || obj.brunch || obj.lunch || obj.dinner) {
-    console.log('nothing selected for occasion YESSSS');
-    return true;
-  }
-  console.log('nothing selected for occasion');
-  // return this.createError({ message: 'YOYOYOLOMANNNN' });
-
-  // return new yup.ValidationError(
-  //   '! Check at least one checkbox',
-  //   'occasion',
-  //   null,
-  // );
-});
-
 const LocationModal = (props) => {
   const [options, setOptions] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [urlIsValid, setUrlIsValid] = useState();
   const [addressIsValid, setAddressIsValid] = useState('null');
   const formRef = useRef();
   const [locationToEdit] = useState(
@@ -106,6 +114,21 @@ const LocationModal = (props) => {
           dinner: false,
         },
   );
+  const [addressValue, setAddressValue] = useState(
+    locationToEdit
+      ? locationToEdit.street +
+          ' ' +
+          locationToEdit.house_number +
+          ', ' +
+          locationToEdit.city +
+          ' ' +
+          locationToEdit.postcode
+      : '',
+  );
+
+  useEffect(() => {
+    console.log(formRef, 'formRef');
+  }, [formRef]);
 
   const handleSearch = async (query) => {
     setIsLoading(true);
@@ -116,20 +139,40 @@ const LocationModal = (props) => {
       addressdetails: 1,
       format: JSON,
     });
-    setOptions(search);
+    const validresult = search.find(
+      (res) => res.address.house_number && res.address.house_number !== '',
+    );
+    let res;
+    if (validresult === undefined) {
+      res = [];
+    } else {
+      res = [validresult];
+    }
+    setOptions(res);
     setIsLoading(false);
     return search;
   };
 
-  const dispatch = useDispatch();
+  const onEnterKeyDown = () => {
+    // console.log('enter and addvalue to field setvalueblabla');
+  };
 
-  // useEffect(() => {
-  //   console.log(errors, 'Errors from useeffect');
-  // }, [errors]);
+  const onUrlChangeValidation = (e) => {
+    const regex = new RegExp(urlRegExp);
+    if (regex.test(e.target.value)) {
+      setUrlIsValid(true);
+      console.log('check success');
+    } else {
+      console.log('check faiiiiiill');
+    }
+  };
+
+  const dispatch = useDispatch();
 
   const onCancel = async () => {
     props.onHide();
     dispatch(resetLocation());
+    setAddressValue('');
   };
 
   const filterBy = () => true;
@@ -258,13 +301,14 @@ const LocationModal = (props) => {
                 setFieldError,
                 setValues,
                 validateField,
+                setFieldTouched,
                 touched,
                 isValid,
                 values,
                 errors,
               }) => {
                 return (
-                  <Form noValidate onSubmit={handleSubmit}>
+                  <Form noValidate onSubmit={handleSubmit} autoComplete="off">
                     <Modal.Body>
                       <Form.Group controlId="name">
                         <Form.Label>Name</Form.Label>
@@ -321,13 +365,18 @@ const LocationModal = (props) => {
                           size="sm"
                           type="text"
                           name="bloglink"
-                          value={values.bloglink ? values.bloglink : ''}
-                          onChange={handleChange}
+                          value={
+                            values.bloglink ? values.bloglink : 'https://www.'
+                          }
+                          onChange={(e) => {
+                            handleChange(e);
+                            onUrlChangeValidation(e);
+                          }}
                           isInvalid={errors.bloglink && touched.bloglink}
                           placeholder="Enter the blog post url"
                         />
                         <Form.Control.Feedback type="invalid">
-                          Please enter the blog post url
+                          {errors.bloglink}
                         </Form.Control.Feedback>
                       </Form.Group>
                       <Form.Group controlId="description">
@@ -358,11 +407,7 @@ const LocationModal = (props) => {
                               inline
                               required
                               type="checkbox"
-                              // feedback="Choose at least one :)"
                               name="breakfast"
-                              // isInvalid={
-                              //   !!errors.breakfast && touched.breakfast
-                              // }
                               checked={values.breakfast || ''}
                               onChange={() =>
                                 setValues({
@@ -381,9 +426,7 @@ const LocationModal = (props) => {
                               inline
                               required
                               type="checkbox"
-                              // feedback="Choose at least one :)"
                               name="brunch"
-                              // isInvalid={!!errors.brunch && touched.brunch}
                               checked={values.brunch || ''}
                               onChange={() =>
                                 setValues({ ...values, brunch: !values.brunch })
@@ -401,9 +444,7 @@ const LocationModal = (props) => {
                               inline
                               required
                               type="checkbox"
-                              // feedback="Choose at least one :)"
                               name="dinner"
-                              // isInvalid={!!errors.dinner && touched.dinner}
                               checked={values.dinner || ''}
                               onChange={() =>
                                 setValues({ ...values, dinner: !values.dinner })
@@ -419,9 +460,7 @@ const LocationModal = (props) => {
                               inline
                               required
                               type="checkbox"
-                              // feedback="Choose at least one :)"
                               name="lunch"
-                              // isInvalid={!!errors.lunch && touched.lunch}
                               checked={values.lunch || ''}
                               onChange={() =>
                                 setValues({ ...values, lunch: !values.lunch })
@@ -429,7 +468,7 @@ const LocationModal = (props) => {
                             ></Form.Check>
                           </Form.Group>
                         </>
-                        {errors.breakfast && (
+                        {errors.breakfast && touched.breakfast && (
                           <div
                             type="invalid"
                             className="custom-validation-text"
@@ -455,111 +494,123 @@ const LocationModal = (props) => {
                         </Form.Control.Feedback>
                       </Form.Group>
 
-                      <Form.Group controlId="addressdisabled">
+                      <Form.Group controlId="address">
                         <Form.Label>Location Address</Form.Label>
+
                         <AsyncTypeahead
-                          required
-                          isInvalid={!!addressIsValid && !!null}
+                          onKeyDown={onEnterKeyDown}
                           filterBy={filterBy}
                           id="adress_typeahead"
                           isLoading={isLoading}
                           labelKey={(option) => `${option.display_name}`}
                           minLength={2}
-                          name="address"
+                          name="asynctypeahead"
                           onSearch={handleSearch}
-                          onInputChange={() => {
-                            setAddressIsValid(false);
-                            setFieldValue('currentAddress', '');
-                          }}
+                          onInputChange={() => {}}
                           options={options}
+                          inputProps={{ autoComplete: 'new-password' }}
                           placeholder="Search for the address..."
-                          renderMenuItemChildren={(option, index) => (
-                            <Fragment key={index}>
-                              <span
-                                onClick={() => {
-                                  if (isNaN(option.address.house_number)) {
-                                    console.log('housenumber fail');
-                                    setAddressIsValid(false);
-                                    setFieldValue('address', false);
-                                    // setFieldError('addressdisabled', 'Enter a valid house number')
-                                    setAddressIsValid(false);
-                                    validateField('address');
-                                    return;
-                                  }
-                                  setFieldValue('address', true);
-                                  validateField('address');
-                                  setAddressIsValid(true);
-                                  if (
-                                    option.lat &&
-                                    option.lon &&
-                                    option.address.city &&
-                                    option.address.road &&
-                                    option.address.house_number &&
-                                    option.address.postcode &&
-                                    option.address.country_code
-                                  ) {
-                                    setAddressIsValid(true);
-                                  } else {
-                                    setAddressIsValid(false);
-                                    setFieldValue('address', true);
-                                  }
-                                  setFieldValue(
-                                    'latitude',
-                                    parseFloat(option.lat),
-                                  );
-                                  setFieldValue(
-                                    'longitude',
-                                    parseFloat(option.lon),
-                                  );
-                                  setFieldValue('city', option.address.city);
-                                  setFieldValue('street', option.address.road);
-                                  setFieldValue(
-                                    'house_number',
-                                    parseFloat(option.address.house_number),
-                                  );
-                                  setFieldValue(
-                                    'postcode',
-                                    option.address.postcode,
-                                  );
-                                  setFieldValue(
-                                    'country',
-                                    option.address.country_code,
-                                  );
-                                  setFieldValue(
-                                    'nominatim_data',
-                                    option.address.display_name,
-                                  );
-                                  setFieldValue('address', true);
-                                }}
-                              >
-                                {option.display_name}
-                              </span>
-                            </Fragment>
-                          )}
+                          renderMenuItemChildren={(option, index) => {
+                            return (
+                              <Fragment key={index}>
+                                <span
+                                  onClick={() => {
+                                    if (
+                                      option.address.house_number.length < 1 &&
+                                      isNaN(option.address.house_number)
+                                    ) {
+                                      console.log('housenumber fail');
+
+                                      validateField('address');
+                                      return;
+                                    }
+
+                                    if (
+                                      option.lat &&
+                                      option.lon &&
+                                      option.address.state &&
+                                      option.address.road &&
+                                      option.address.house_number &&
+                                      option.address.postcode &&
+                                      option.address.country_code
+                                    ) {
+                                      // setAddressIsValid(true);
+                                      setFieldValue(
+                                        'latitude',
+                                        parseFloat(option.lat),
+                                      );
+                                      setFieldValue(
+                                        'longitude',
+                                        parseFloat(option.lon),
+                                      );
+                                      setFieldValue(
+                                        'city',
+                                        option.address.state,
+                                      );
+                                      setFieldValue(
+                                        'street',
+                                        option.address.road,
+                                      );
+                                      setFieldValue(
+                                        'house_number',
+                                        parseFloat(option.address.house_number),
+                                      );
+                                      setFieldValue(
+                                        'postcode',
+                                        option.address.postcode,
+                                      );
+                                      setFieldValue(
+                                        'country',
+                                        option.address.country_code,
+                                      );
+                                      setFieldValue(
+                                        'nominatim_data',
+                                        option.address.display_name,
+                                      );
+
+                                      setAddressValue(
+                                        option.address.road +
+                                          ' ' +
+                                          option.address.house_number +
+                                          ', ' +
+                                          option.address.state +
+                                          ' ' +
+                                          option.address.postcode,
+                                      );
+                                      setTimeout(() => {
+                                        validateField('house_number');
+                                      }, 1);
+                                    } else {
+                                      console.log('something went wrong');
+                                    }
+                                  }}
+                                >
+                                  {option.display_name}
+                                </span>
+                              </Fragment>
+                            );
+                          }}
                         />
+
                         <Form.Control
-                          required
-                          disabled
+                          style={{
+                            marginTop: '5px',
+                            pointerEvents: 'none',
+                            backgroundColor: 'lightgrey',
+                          }}
                           size="sm"
-                          placeholder=""
+                          placeholder="..."
                           type="text"
-                          isInvalid={!addressIsValid}
-                          name="currentAddress"
-                          value={
-                            values.street
-                              ? values.street +
-                                ' ' +
-                                values.house_number +
-                                ', ' +
-                                values.postcode +
-                                ', ' +
-                                values.city
-                              : ''
-                          }
+                          isInvalid={!!errors.house_number}
+                          name="house_number"
+                          value={addressValue || ''}
+                          onChange={handleChange}
                         />
-                        <Form.Control.Feedback type="invalid">
-                          {errors.house_number}
-                        </Form.Control.Feedback>
+                        {addressValue && addressValue.length > 0 && (
+                          <Form.Control.Feedback type="invalid">
+                            {errors.house_number}
+                          </Form.Control.Feedback>
+                        )}
                       </Form.Group>
                       <Form.Group controlId="food">
                         <Form.Label>Choose Cuisine</Form.Label>
@@ -625,7 +676,7 @@ const LocationModal = (props) => {
                             ></Form.Check>
                           </Form.Group>
                         </div>
-                        {errors.casual && (
+                        {errors.casual && touched.casual && (
                           <div
                             type="invalid"
                             className="custom-validation-text"

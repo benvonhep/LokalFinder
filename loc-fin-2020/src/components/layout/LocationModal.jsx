@@ -53,7 +53,7 @@ let schema = yup.object().shape(
     description: yup
       .string('')
       .min(10, 'almost enough ;)')
-      .max(440, 'oh no, thats more than 440 characters :(')
+      .max(372, 'oh no, thats more than 440 characters :(')
       .required('Why should you go there?'),
     // occasion: yup.string().required('When could you go?'),
     breakfast: yup.boolean().when(['lunch', 'dinner', 'brunch'], {
@@ -115,7 +115,7 @@ const LocationModal = (props) => {
         },
   );
   const [addressValue, setAddressValue] = useState(
-    locationToEdit
+    locationToEdit.street
       ? locationToEdit.street +
           ' ' +
           locationToEdit.house_number +
@@ -123,7 +123,7 @@ const LocationModal = (props) => {
           locationToEdit.city +
           ' ' +
           locationToEdit.postcode
-      : '',
+      : undefined,
   );
 
   useEffect(() => {
@@ -603,7 +603,7 @@ const LocationModal = (props) => {
                           type="text"
                           isInvalid={!!errors.house_number}
                           name="house_number"
-                          value={addressValue || ''}
+                          value={addressValue !== undefined ? addressValue : ''}
                           onChange={handleChange}
                         />
                         {addressValue && addressValue.length > 0 && (

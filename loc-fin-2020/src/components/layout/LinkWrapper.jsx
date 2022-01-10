@@ -34,7 +34,7 @@ export default function LinkWrapper({ link }) {
             <Modal.Title style={{ backgroundColor: '#172a28' }}>
               Blog Post
             </Modal.Title>
-            <Modal.Body dialogClassName="linkwrapper-modal-body">
+            <Modal.Body dialogclassname="linkwrapper-modal-body">
               <object
                 type="text/html"
                 data={link}

@@ -2,7 +2,7 @@
   background-color: #172a28 !important;
   color: white;
   display: flex;
-  justify-content: center!important;
+  justify-content: center !important;
 }
 .modalHeader {
   background-color: #172a28 !important;
@@ -10,11 +10,11 @@
 }
 
 button.close {
-    color: white !important;
+  color: white !important;
 }
 
 .modal-body {
-  background-color: white;;
+  background-color: white;
 }
 
 .modal-dialog {
@@ -27,6 +27,41 @@ button.close {
   color: #ffc107;
 }
 
+.locationform-occasion {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.locationmodal-occasion-item {
+  width: 120px;
+  text-align: right;
+}
+
+.locationform-casual-fancy-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.casual-fancy-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
 .form-label {
   margin-right: 12px;
+}
+
+.form-group .form-check {
+  // height: 16px !important;
+  margin-bottom: 0 !important;
+}
+
+.custom-validation-text {
+  text-align: center;
+  margin-top: -20px;
+  font-size: 80%;
+  color: #dc3545;
 }

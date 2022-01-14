@@ -6,6 +6,8 @@ import { MdKeyboardArrowUp } from 'react-icons/md';
 import { useAuth0 } from '@auth0/auth0-react';
 import CarouselMemo from './CarouselMemo';
 import LinkWrapper from './LinkWrapper';
+import { FcPhone } from 'react-icons/fc';
+import { SiGooglemaps } from 'react-icons/si';
 
 import './ListLocationCard.scss';
 
@@ -89,10 +91,21 @@ const ListLocationCard = (props) => {
 
           <Card.Footer className="location-card-footer">
             <div className="location-card-contactGroup">
-              <span>{location.phone}</span>
-              <span>
-                {location.street} {location.house_number}, {location.city}
-              </span>
+              <a
+                className="location-card-footer-icon"
+                href={`tel: + ${location.phone}`}
+              >
+                <FcPhone size={30} />
+              </a>
+              <a
+                className="location-card-footer-icon"
+                href={`http://www.google.com/maps/place/${location.latitude},${location.longitude}`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {/* {location.street} {location.house_number}, {location.city} */}
+                <SiGooglemaps size={28} />
+              </a>
             </div>
             <div className="location-card-buttonGroup">
               {!loadingData &&
@@ -111,7 +124,7 @@ const ListLocationCard = (props) => {
                       onClick={onDelete}
                       variant="outline-danger ml-1"
                     >
-                      Delete
+                      Delelet
                     </Button>
                   </>
                 )}

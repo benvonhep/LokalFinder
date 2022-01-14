@@ -51,6 +51,11 @@
     color: #ffc107;
     cursor: pointer;
   }
+  .hideCarouselControl {
+    .carousel-indicators {
+      display: none;
+    }
+  }
   .location-card-slider-close {
     position: relative;
     bottom: 0px;

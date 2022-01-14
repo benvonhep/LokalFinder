@@ -33,8 +33,10 @@ const ListLocationCard = (props) => {
 
   return (
     <>
-      <Card className="location-card shadow-lg rounded">
-        <CarouselMemo location={location} />
+      <Card className="location-card shadow-lg rounded ">
+        <div className={`${open ? 'hideCarouselControl' : ''}`}>
+          <CarouselMemo location={location} />
+        </div>
 
         <div
           className={`${

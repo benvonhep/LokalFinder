@@ -17,8 +17,8 @@ const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const urlRegExp =
+  // eslint-disable-next-line
   /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
-// /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
 
 const isValidUrl = (url) => {
   if (url !== undefined && url.length > 12 && url.includes('https://www.')) {
@@ -98,6 +98,7 @@ let schema = yup.object().shape(
 const LocationModal = (props) => {
   const [options, setOptions] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  // eslint-disable-next-line
   const [urlIsValid, setUrlIsValid] = useState();
   const [addressIsValid, setAddressIsValid] = useState('null');
   const formRef = useRef();

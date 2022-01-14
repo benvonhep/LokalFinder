@@ -103,9 +103,13 @@ const ListLocationCard = (props) => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                {/* {location.street} {location.house_number}, {location.city} */}
                 <SiGooglemaps size={28} />
               </a>
+              {!isAuthenticated && (
+                <span className="location-card-footer-icon">
+                  {location.street} {location.house_number}, {location.city}
+                </span>
+              )}
             </div>
             <div className="location-card-buttonGroup">
               {!loadingData &&

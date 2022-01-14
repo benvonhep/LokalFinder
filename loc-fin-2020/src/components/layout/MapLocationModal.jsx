@@ -3,11 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { resetLocation } from '../../store/actions/locationsAction';
 import { latLng } from 'leaflet';
 import LinkWrapper from './LinkWrapper';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import { Modal } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
+import { FcPhone } from 'react-icons/fc';
+import { SiGooglemaps } from 'react-icons/si';
 import './MapLocationModal.scss';
 
 function MapLocationModal(props) {
@@ -15,6 +18,7 @@ function MapLocationModal(props) {
   const [distanceValue, setDistanceValue] = useState();
   const dispatch = useDispatch();
   const [index, setIndex] = useState(0);
+  const { isAuthenticated } = useAuth0();
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -121,11 +125,33 @@ function MapLocationModal(props) {
           </div>
           <Card.Footer className="map-location-card-footer">
             <div className="map-location-contactGroup">
+              <a
+                className="map-location-footer-icon"
+                href={`tel: + ${props.location.phone}`}
+              >
+                <FcPhone size={30} />
+              </a>
+              <a
+                className="map-location-footer-icon"
+                href={`http://www.google.com/maps/place/${props.location.latitude},${props.location.longitude}`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <SiGooglemaps size={28} />
+              </a>
+            </div>
+            {!isAuthenticated && (
+              <span className="map-location-footer-icon">
+                {props.location.street} {props.location.house_number},{' '}
+                {props.location.city}
+              </span>
+            )}
+            {/* <div className="map-location-contactGroup">
               <span>{props.location.phone}</span>
               <span>
                 {props.location.street}, {props.location.city}
               </span>
-            </div>
+            </div> */}
             <div className="map-location-button-group">
               <LinkWrapper link={props.location.bloglink}></LinkWrapper>
 

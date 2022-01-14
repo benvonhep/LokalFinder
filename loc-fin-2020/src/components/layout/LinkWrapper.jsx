@@ -21,7 +21,12 @@ export default function LinkWrapper({ link }) {
     <>
       {link && (
         <>
-          <Button variant="outline-warning" size="sm" onClick={handleShow}>
+          <Button
+            className="linkwrapper-blogpost"
+            variant="outline-warning"
+            size="sm"
+            onClick={handleShow}
+          >
             Blog Post
           </Button>
 

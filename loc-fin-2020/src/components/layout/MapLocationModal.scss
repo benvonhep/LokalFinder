@@ -79,21 +79,34 @@
     height: 55px;
     display: flex;
     flex-direction: row;
-    padding: 6px, 9px;
+    padding: 6px 9px;
     font-size: 11.5px;
     min-width: 342px;
 
     .map-location-contactGroup {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+
       height: 44px;
+    }
+    .map-location-footer-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 5px;
+      // margin-right: 5px;
     }
 
     .map-location-button-group {
-      display: inline;
       margin-left: auto;
-      .button .btn {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .btn .btn-sm {
+        display: inline-block;
         height: 20px !important;
+        padding: 3px 5px !important;
       }
     }
   }

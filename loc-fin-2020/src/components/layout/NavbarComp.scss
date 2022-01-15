@@ -1,7 +1,7 @@
 .navbar {
   color: red;
   background-color: #172a28;
-  padding: 8px 8px 8px 2px !important;
+  padding: 8px 8px 8px 12px !important;
   width: 100%;
   height: 56px;
   display: flex;
@@ -16,6 +16,16 @@
 
 .navbar-nav {
   text-align: center;
+}
+
+.navbar-login-cover {
+  height: 100%;
+  width: 110px;
+  margin-left: -5px;
+  background-color: #172a28;
+  z-index: 5;
+  opacity: 1;
+  transition: all 1s ease;
 }
 
 .usermenulogin {
@@ -53,6 +63,7 @@
 .logo-center {
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   height: 44px;
+  margin-right: 88px;
 }

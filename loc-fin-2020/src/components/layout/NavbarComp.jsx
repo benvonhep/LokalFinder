@@ -29,6 +29,7 @@ const NavbarComp = (props) => {
   } = props;
   const [loadingData, setLoadingData] = useState(true);
   const [userProfile, setUserProfile] = useState();
+  const [showLoginButton, setShowLogingButton] = useState(false);
 
   useEffect(() => {
     if (!isLoading && users && user) {
@@ -43,15 +44,33 @@ const NavbarComp = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [users, loadingData, user, isLoading]);
 
+  const showLogin = (e) => {
+    setShowLogingButton(true);
+    e.target.style.opacity = 0;
+    e.target.style.zIndex = -1;
+  };
+
   return (
     <>
       <Navbar className="navbar navbar-dark shadow-lg" sticky="top">
         <>
+          {!isAuthenticated && (
+            <div
+              className="navbar-login-cover"
+              onClick={(e) => showLogin(e)}
+            ></div>
+          )}
           <Nav className="usermenulogin">
             {isLoading ? (
               ''
             ) : (
-              <>{isAuthenticated ? <UserMenu /> : <LoginButton />}</>
+              <>
+                {isAuthenticated ? (
+                  <UserMenu />
+                ) : (
+                  <>{showLoginButton && <LoginButton />}</>
+                )}
+              </>
             )}
           </Nav>
 

@@ -21,7 +21,7 @@ const urlRegExp =
   /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
 
 const isValidUrl = (url) => {
-  if (url !== undefined && url.length > 12 && url.includes('https://www.')) {
+  if (url !== undefined && url.length > 12 && url.includes('http')) {
     try {
       new URL(url);
       return true;

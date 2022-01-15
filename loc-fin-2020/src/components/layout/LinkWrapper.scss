@@ -7,7 +7,11 @@
   }
 
   .modal-title {
-    text-align: center;
+    justify-content: center;
+  }
+
+  .modal-footer {
+    padding: 0 10px 0 0;
   }
 }
 
@@ -25,4 +29,13 @@
   font-size: 12px;
   white-space: nowrap;
   height: 30px;
+}
+
+.linkwrapper-modal-title-footer {
+  background-color: #172a28;
+  height: 50px;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

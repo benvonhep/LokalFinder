@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { HOSTNAME } from '../../environment';
 
@@ -11,12 +11,17 @@ export default function LinkWrapper({ link }) {
 
   const url = new URL(link);
 
-  if (url.hostname === HOSTNAME)
+  // useEffect(() => {
+  //   console.log(link, url, 'LJLKJLKJLKJ');
+  // }, [url]);
+
+  if (url.hostname === HOSTNAME) {
     return (
       <a target="_blank" href={link} rel="noopener noreferrer">
         {link}
       </a>
     );
+  }
   return (
     <>
       {link && (
@@ -33,21 +38,22 @@ export default function LinkWrapper({ link }) {
           <Modal
             show={show}
             onHide={handleClose}
-            style={{ minWidth: '600px !important' }}
             dialogClassName="linkwrapper-modal"
           >
-            <Modal.Title style={{ backgroundColor: '#172a28' }}>
+            <Modal.Title className="linkwrapper-modal-title-footer">
               Blog Post
             </Modal.Title>
             <Modal.Body dialogclassname="linkwrapper-modal-body">
-              <object
-                type="text/html"
-                data={link}
+              <iframe
+                name="external-bloglink"
+                src={url.href}
                 aria-label="original blog"
                 className="linkwrapper-html-object"
+                style={{ border: 'none' }}
+                referrerpolicy="no-referrer"
               />
             </Modal.Body>
-            <Modal.Footer style={{ backgroundColor: '#172a28' }}>
+            <Modal.Footer className="linkwrapper-modal-title-footer">
               <Button variant="secondary" size="sm" onClick={handleClose}>
                 Close
               </Button>

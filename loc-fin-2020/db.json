@@ -50,7 +50,7 @@
       "casual": true,
       "fancy": false,
       "addressdisabled": "",
-      "bloglink": "https://downtownvienna.com/1034266"
+      "bloglink": "https://viennawurstelstand.com/guide/these-7-pizzerias-have-the-most-deliciously-creative-gourmet-neapolitan-pizza-in-vienna/"
     },
     {
       "id": 2,
@@ -84,7 +84,7 @@
       "casual": true,
       "fancy": false,
       "addressdisabled": "",
-      "bloglink": "https://downtownvienna.com/1034266"
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
       "id": 3,
@@ -125,7 +125,7 @@
       "food": "European",
       "casual": false,
       "fancy": true,
-      "bloglink": "https://downtownvienna.com/1034266"
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
       "id": 4,
@@ -166,7 +166,7 @@
       "food": "Asian",
       "casual": true,
       "fancy": false,
-      "bloglink": "https://downtownvienna.com/1034266"
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
       "id": 5,
@@ -207,7 +207,7 @@
       "food": "European",
       "casual": true,
       "fancy": false,
-      "bloglink": "https://downtownvienna.com/1034266"
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
       "id": 6,
@@ -248,7 +248,7 @@
       "food": "European",
       "casual": true,
       "fancy": false,
-      "bloglink": "https://downtownvienna.com/1034266"
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
       "id": 7,
@@ -289,7 +289,7 @@
       "food": "Oriental",
       "casual": true,
       "fancy": true,
-      "bloglink": "https://downtownvienna.com/1034266"
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
       "id": 8,
@@ -330,7 +330,7 @@
       "food": "Asian",
       "casual": true,
       "fancy": true,
-      "bloglink": "https://downtownvienna.com/1034266"
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
       "id": 9,
@@ -371,7 +371,7 @@
       "food": "American",
       "casual": true,
       "fancy": true,
-      "bloglink": "https://downtownvienna.com/1034266"
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
       "createdBy": 1,
@@ -402,7 +402,7 @@
       "fancy": true,
       "address": true,
       "addressdisabled": "",
-      "bloglink": "https://www.sepp.com",
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/",
       "currentAddress": "",
       "id": 10
     },
@@ -437,7 +437,7 @@
       "fancy": false,
       "address": true,
       "addressdisabled": "",
-      "bloglink": "https://www.google.com",
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/",
       "currentAddress": "",
       "id": 11
     },
@@ -472,7 +472,7 @@
       "fancy": false,
       "address": true,
       "addressdisabled": "",
-      "bloglink": "https://www.google.com",
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/",
       "currentAddress": "",
       "id": 12
     },
@@ -507,7 +507,7 @@
       "fancy": false,
       "address": true,
       "addressdisabled": "",
-      "bloglink": "https://www.as",
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/",
       "currentAddress": "",
       "id": 13
     },
@@ -541,7 +541,7 @@
       "casual": true,
       "fancy": false,
       "addressdisabled": "",
-      "bloglink": "https://wwwasdasd",
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/",
       "id": 14
     },
     {
@@ -575,42 +575,8 @@
       "casual": true,
       "fancy": false,
       "addressdisabled": "",
-      "bloglink": "https://www.google.com",
+      "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/",
       "id": 15
-    },
-    {
-      "createdBy": 1,
-      "name": "Zum goldenen Adler",
-      "photos": [
-        {
-          "id": 1,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        },
-        {
-          "id": 2,
-          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
-        }
-      ],
-      "nominatim_data": "Charlie P's Irish Pub, 3, Währinger Straße, Alservorstadt, KG Alsergrund, Alsergrund, Vienna, 1090, Austria",
-      "description": "sdlfkjsdlkfjsdlfkjsdlkfjsdlfkjsdlkfjsdlfkjsdlkfjsdlfkjsdlkfjsdlfkjsdlkfjsdlfkjsdlkfjsdlfkjsdlkfjsdlfkjsdlkfjsdlfkjsdlkfjsdlfkjsdlkfjsdlfkjsdlkfj",
-      "breakfast": false,
-      "brunch": false,
-      "dinner": true,
-      "lunch": false,
-      "phone": "23423423423",
-      "house_number": 3,
-      "street": "Währinger Straße",
-      "postcode": "1090",
-      "city": "Vienna",
-      "country": "at",
-      "latitude": 48.2166113,
-      "longitude": 16.3596067,
-      "food": "American",
-      "casual": true,
-      "fancy": false,
-      "addressdisabled": "",
-      "bloglink": "https://www.mcdonalds.at",
-      "id": 16
     }
   ]
 }

@@ -55,7 +55,7 @@ let schema = yup.object().shape(
       .max(372, 'oh no, thats more than 440 characters :(')
       .required('Why should you go there?'),
     // occasion: yup.string().required('When could you go?'),
-    breakfast: yup.boolean().when(['lunch', 'dinner', 'brunch'], {
+    breakfast: yup.boolean().when(['lunch', 'dinner', 'brunch', 'night'], {
       is: false,
       then: yup.boolean().oneOf([true], 'Im sure you know the answer ;)'),
 
@@ -64,6 +64,7 @@ let schema = yup.object().shape(
     brunch: yup.boolean(),
     lunch: yup.boolean(),
     dinner: yup.boolean(),
+    night: yup.boolean(),
     phone: yup
       .string()
       .min(5, 'is it enough? ;)')
@@ -71,7 +72,7 @@ let schema = yup.object().shape(
       .matches(phoneRegExp, 'Are you sure? ;)')
       .required('A phone number would be awesome :)'),
     food: yup.string().required('What food do they offer?'),
-    house_number: yup.string().required('Is it a ghostkitchen? ;)2'),
+    house_number: yup.string().required('Is it a ghostkitchen? ;)'),
     casual: yup.boolean().when('fancy', {
       is: false,
       then: yup
@@ -112,6 +113,7 @@ const LocationModal = (props) => {
           brunch: false,
           lunch: false,
           dinner: false,
+          night: false,
         },
   );
   const [addressValue, setAddressValue] = useState(
@@ -167,6 +169,11 @@ const LocationModal = (props) => {
     ) {
       console.log('housenumber fail');
       validateField('address');
+      return;
+    }
+
+    if (option.lat === null || undefined) {
+      console.log('coordinates cannot be null, check gps connection');
       return;
     }
 
@@ -329,6 +336,7 @@ const LocationModal = (props) => {
                 brunch: locationToEdit.brunch,
                 dinner: locationToEdit.dinner,
                 lunch: locationToEdit.lunch,
+                night: locationToEdit.night,
                 phone: locationToEdit.phone,
                 house_number: locationToEdit.house_number,
                 street: locationToEdit.street,
@@ -518,6 +526,22 @@ const LocationModal = (props) => {
                               }
                             ></Form.Check>
                           </Form.Group>
+                          <Form.Group
+                            controlId="night"
+                            className="locationmodal-occasion-item"
+                          >
+                            <Form.Label>Night</Form.Label>
+                            <Form.Check
+                              inline
+                              required
+                              type="checkbox"
+                              name="night"
+                              checked={values.night || ''}
+                              onChange={() =>
+                                setValues({ ...values, night: !values.night })
+                              }
+                            ></Form.Check>
+                          </Form.Group>
                         </>
                         {errors.breakfast && touched.breakfast && (
                           <div
@@ -616,7 +640,9 @@ const LocationModal = (props) => {
                           size="sm"
                           placeholder="..."
                           type="text"
-                          isInvalid={!!errors.house_number}
+                          isInvalid={
+                            !!errors.house_number && touched.house_number
+                          }
                           name="house_number"
                           value={addressValue !== undefined ? addressValue : ''}
                           onChange={handleChange}

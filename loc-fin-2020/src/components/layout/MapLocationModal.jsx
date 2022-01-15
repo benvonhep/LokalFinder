@@ -116,6 +116,7 @@ function MapLocationModal(props) {
               {props.location.brunch ? ' | brunch' : ''}
               {props.location.dinner ? ' | dinner' : ''}
               {props.location.lunch ? ' | lunch' : ''}
+              {props.location.night ? ' | night' : ''}
             </div>
           </Card.Title>
           <div className="map-location-card-body">

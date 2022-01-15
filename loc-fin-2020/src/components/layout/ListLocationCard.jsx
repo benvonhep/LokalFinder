@@ -75,6 +75,7 @@ const ListLocationCard = (props) => {
               {location.brunch ? ' | brunch' : ''}
               {location.dinner ? ' | dinner' : ''}
               {location.lunch ? ' | lunch' : ''}
+              {location.night ? ' | night' : ''}
             </div>
             <MdKeyboardArrowUp
               className={`${
@@ -126,9 +127,9 @@ const ListLocationCard = (props) => {
                     <Button
                       size="sm"
                       onClick={onDelete}
-                      variant="outline-danger ml-1"
+                      variant="outline-danger ml-1 mr-1"
                     >
-                      Delelet
+                      Delete
                     </Button>
                   </>
                 )}

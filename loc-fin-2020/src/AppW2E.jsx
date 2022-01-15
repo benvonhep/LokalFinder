@@ -221,7 +221,8 @@ export default function AppW2E() {
                 fObj.id === 0 ||
                 fObj.id === 1 ||
                 fObj.id === 2 ||
-                fObj.id === 3
+                fObj.id === 3 ||
+                fObj.id === 4
               ) {
                 let res =
                   fObj.id === 0

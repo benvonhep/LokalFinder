@@ -150,7 +150,7 @@ const FilterModal = (props) => {
                 onClick={() => onFilterChange('ALL')}
                 className="modal-filterall"
               >
-                show all
+                reset filter
               </Button>
               <Button
                 className="modal-gpsrefresh"

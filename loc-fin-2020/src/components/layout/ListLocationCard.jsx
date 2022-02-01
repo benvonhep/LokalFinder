@@ -108,7 +108,8 @@ const ListLocationCard = (props) => {
               </a>
               {!isAuthenticated && (
                 <span className="location-card-footer-icon">
-                  {location.street} {location.house_number}, {location.city}
+                  {location.street} {location.house_number} <br></br>{' '}
+                  {location.city}, {location.postcode}
                 </span>
               )}
             </div>

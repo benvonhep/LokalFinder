@@ -143,16 +143,10 @@ function MapLocationModal(props) {
             </div>
             {!isAuthenticated && (
               <span className="map-location-footer-icon">
-                {props.location.street} {props.location.house_number},{' '}
-                {props.location.city}
+                {props.location.street} {props.location.house_number} <br></br>{' '}
+                {props.location.city}, {props.location.postcode}
               </span>
             )}
-            {/* <div className="map-location-contactGroup">
-              <span>{props.location.phone}</span>
-              <span>
-                {props.location.street}, {props.location.city}
-              </span>
-            </div> */}
             <div className="map-location-button-group">
               <LinkWrapper link={props.location.bloglink}></LinkWrapper>
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { HOSTNAME } from '../../environment';
 
@@ -51,6 +51,7 @@ export default function LinkWrapper({ link }) {
                 className="linkwrapper-html-object"
                 style={{ border: 'none' }}
                 referrerpolicy="no-referrer"
+                title="blogpost"
               />
             </Modal.Body>
             <Modal.Footer className="linkwrapper-modal-title-footer">

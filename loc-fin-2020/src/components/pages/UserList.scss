@@ -1,10 +1,17 @@
 .user-card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 342px);
-  grid-template-rows: 335px;
-  gap: 5px;
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, 342px);
+  // grid-template-rows: 335px;
+  // gap: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   margin-top: 6px;
+}
+
+.card-Grid-Item {
+  margin-right: 10px;
 }
 
 .card-grid-container {

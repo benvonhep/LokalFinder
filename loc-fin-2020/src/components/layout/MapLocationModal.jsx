@@ -57,6 +57,7 @@ function MapLocationModal(props) {
 
   useEffect(() => {
     distance(props);
+    console.log(props.location, 'Location');
   }, [distance, props]);
 
   return (
@@ -105,18 +106,33 @@ function MapLocationModal(props) {
           <Card.Title className="map-location-card-title">
             {props.location.name}
 
-            <div className="map-location-location-details">
-              {props.location.casual && !props.location.fancy && <>casual</>}
-              {props.location.fancy && !props.location.casual && <>fancy</>}
-              {props.location.fancy && props.location.casual && (
-                <>fancy | casual</>
-              )}{' '}
-              | {props.location.food}
-              {props.location.breakfast ? ' | breakfast' : ''}
-              {props.location.brunch ? ' | brunch' : ''}
-              {props.location.dinner ? ' | dinner' : ''}
-              {props.location.lunch ? ' | lunch' : ''}
-              {props.location.night ? ' | night' : ''}
+            <div className="map-location-card-details-wrapper">
+              <div className="map-location-location-details">
+                {props.location.casual && !props.location.fancy && <>casual</>}
+                {props.location.fancy && !props.location.casual && <>fancy</>}
+                {props.location.fancy && props.location.casual && (
+                  <>fancy | casual</>
+                )}{' '}
+                | {props.location.food}
+                {props.location.breakfast ? ' | breakfast' : ''}
+                {props.location.brunch ? ' | brunch' : ''}
+                {props.location.dinner ? ' | dinner' : ''}
+                {props.location.lunch ? ' | lunch' : ''}
+                {props.location.night ? ' | night' : ''}
+              </div>
+              <div className="map-location-card-details-veg">
+                {props.location.vegetarian && !props.location.vegan
+                  ? 'vegetarian'
+                  : ''}
+                {props.location.vegan && !props.location.vegetarian
+                  ? 'vegan'
+                  : ''}
+                {props.location.vegan && props.location.vegetarian ? (
+                  <span>vegetarian & vegan friendly</span>
+                ) : (
+                  ''
+                )}
+              </div>
             </div>
           </Card.Title>
           <div className="map-location-card-body">

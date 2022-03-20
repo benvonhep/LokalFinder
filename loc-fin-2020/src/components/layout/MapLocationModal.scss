@@ -59,18 +59,32 @@
     margin: 0 5px;
   }
 
+  .location-card-details-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
   .map-location-location-details {
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 10px;
+    justify-content: center;
+    flex-direction: row;
+    line-height: 1;
+    max-width: 342px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    // height: 10px;
     text-transform: capitalize;
     font-size: 10.5px !important;
     // color: #ffc107;
     color: white !important;
     background-color: #172a28;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 3px;
+    padding-bottom: 2px;
+  }
+
+  .map-location-card-details-veg {
+    font-size: 9.5px !important;
+    // color: white;
   }
 
   .map-location-card-footer {

@@ -50,6 +50,8 @@
       "food": "European",
       "casual": true,
       "fancy": false,
+      "vegan": true,
+      "vegetarian": true,
       "addressdisabled": "",
       "bloglink": "https://viennawurstelstand.com/guide/these-7-pizzerias-have-the-most-deliciously-creative-gourmet-neapolitan-pizza-in-vienna/"
     },
@@ -84,7 +86,9 @@
       "longitude": 16.37312685415674,
       "food": "European",
       "casual": true,
-      "fancy": false,
+      "fancy": true,
+      "vegan": true,
+      "vegetarian": true,
       "addressdisabled": "",
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
@@ -128,6 +132,8 @@
       "food": "European",
       "casual": false,
       "fancy": true,
+      "vegan": false,
+      "vegetarian": true,
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
@@ -170,6 +176,8 @@
       "food": "Asian",
       "casual": true,
       "fancy": false,
+      "vegan": false,
+      "vegetarian": true,
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
@@ -212,6 +220,8 @@
       "food": "European",
       "casual": true,
       "fancy": false,
+      "vegan": false,
+      "vegetarian": false,
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
@@ -254,6 +264,8 @@
       "food": "European",
       "casual": true,
       "fancy": false,
+      "vegan": false,
+      "vegetarian": false,
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
@@ -296,6 +308,8 @@
       "food": "Oriental",
       "casual": true,
       "fancy": true,
+      "vegan": false,
+      "vegetarian": false,
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
@@ -338,6 +352,8 @@
       "food": "Asian",
       "casual": true,
       "fancy": true,
+      "vegan": false,
+      "vegetarian": false,
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
@@ -380,6 +396,8 @@
       "food": "American",
       "casual": true,
       "fancy": true,
+      "vegan": false,
+      "vegetarian": false,
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/"
     },
     {
@@ -409,6 +427,8 @@
       "food": "Asian",
       "casual": false,
       "fancy": true,
+      "vegan": false,
+      "vegetarian": false,
       "address": true,
       "addressdisabled": "",
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/",
@@ -445,6 +465,8 @@
       "food": "American",
       "casual": true,
       "fancy": false,
+      "vegan": false,
+      "vegetarian": false,
       "address": true,
       "addressdisabled": "",
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/",
@@ -481,6 +503,8 @@
       "food": "American",
       "casual": true,
       "fancy": false,
+      "vegan": true,
+      "vegetarian": false,
       "address": true,
       "addressdisabled": "",
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/",
@@ -517,6 +541,8 @@
       "food": "Asian",
       "casual": true,
       "fancy": false,
+      "vegan": false,
+      "vegetarian": false,
       "address": true,
       "addressdisabled": "",
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/",
@@ -553,6 +579,8 @@
       "food": "Asian",
       "casual": true,
       "fancy": false,
+      "vegan": false,
+      "vegetarian": false,
       "addressdisabled": "",
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/",
       "id": 14
@@ -588,9 +616,48 @@
       "food": "Asian",
       "casual": true,
       "fancy": false,
+      "vegan": false,
+      "vegetarian": false,
       "addressdisabled": "",
       "bloglink": "https://viennawurstelstand.com/guide/restaurants-where-dining-out-is-a-social-experience/",
       "id": 15
+    },
+    {
+      "createdBy": 1,
+      "name": "Swing Kitchen",
+      "photos": [
+        {
+          "id": 1,
+          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        },
+        {
+          "id": 2,
+          "url": "https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+        }
+      ],
+      "nominatim_data": "Alsergrund District Museum, 43, Währinger Straße, Thurygrund, KG Alsergrund, Alsergrund, Vienna, 1090, Austria",
+      "description": "lorem vegan burger lorem vegan burger lorem vegan burger lorem vegan burger lorem vegan burger lorem vegan burger lorem vegan burger lorem vegan burger ",
+      "breakfast": true,
+      "brunch": false,
+      "dinner": true,
+      "lunch": true,
+      "night": false,
+      "phone": "345345345",
+      "house_number": 43,
+      "street": "Währinger Straße",
+      "postcode": "1090",
+      "city": "Vienna",
+      "country": "at",
+      "latitude": 48.22097785,
+      "longitude": 16.354838646748963,
+      "food": "American",
+      "casual": true,
+      "fancy": false,
+      "vegan": true,
+      "vegetarian": false,
+      "addressdisabled": "",
+      "bloglink": "https://www.vegpreneur.org/blog/karl-schillinger",
+      "id": 16
     }
   ]
 }

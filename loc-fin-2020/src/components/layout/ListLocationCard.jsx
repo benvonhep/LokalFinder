@@ -66,16 +66,29 @@ const ListLocationCard = (props) => {
             }}
           >
             <div className="location-card-location-name">{location.name}</div>
-            <div className="location-card-details">
-              {location.casual && !location.fancy && <>casual</>}
-              {location.fancy && !location.casual && <>fancy</>}
-              {location.fancy && location.casual && <>fancy | casual</>} |{' '}
-              {location.food}
-              {location.breakfast ? ' | breakfast' : ''}
-              {location.brunch ? ' | brunch' : ''}
-              {location.dinner ? ' | dinner' : ''}
-              {location.lunch ? ' | lunch' : ''}
-              {location.night ? ' | night' : ''}
+
+            <div className="location-card-details-wrapper">
+              <div className="location-card-details">
+                {location.casual && !location.fancy && <>casual</>}
+                {location.fancy && !location.casual && <>fancy</>}
+                {location.fancy && location.casual && (
+                  <>fancy | casual</>
+                )} | {location.food}
+                {location.breakfast ? ' | breakfast' : ''}
+                {location.brunch ? ' | brunch' : ''}
+                {location.dinner ? ' | dinner' : ''}
+                {location.lunch ? ' | lunch' : ''}
+                {location.night ? ' | night' : ''}
+              </div>
+              <div className="location-card-details-veg">
+                {location.vegetarian && !location.vegan ? 'vegetarian' : ''}
+                {location.vegan && !location.vegetarian ? 'vegan' : ''}
+                {location.vegetarian && location.vegan ? (
+                  <span>vegetarian & vegan friendly</span>
+                ) : (
+                  ''
+                )}
+              </div>
             </div>
             <MdKeyboardArrowUp
               className={`${

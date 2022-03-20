@@ -114,6 +114,8 @@ const LocationModal = (props) => {
           lunch: false,
           dinner: false,
           night: false,
+          vegan: false,
+          vegetarian: false,
         },
   );
   const [addressValue, setAddressValue] = useState(
@@ -351,6 +353,8 @@ const LocationModal = (props) => {
                 address: locationToEdit.address,
                 addressdisabled: '',
                 bloglink: locationToEdit.bloglink,
+                vegan: locationToEdit.vegan,
+                vegetarian: locationToEdit.vegetarian,
               }}
             >
               {({
@@ -539,6 +543,39 @@ const LocationModal = (props) => {
                               checked={values.night || ''}
                               onChange={() =>
                                 setValues({ ...values, night: !values.night })
+                              }
+                            ></Form.Check>
+                          </Form.Group>
+                          <Form.Group
+                            controlId="vegan"
+                            className="locationmodal-occasion-item"
+                          >
+                            <Form.Label>Vegan</Form.Label>
+                            <Form.Check
+                              inline
+                              type="checkbox"
+                              name="vegan"
+                              checked={values.vegan || ''}
+                              onChange={() =>
+                                setValues({ ...values, vegan: !values.vegan })
+                              }
+                            ></Form.Check>
+                          </Form.Group>
+                          <Form.Group
+                            controlId="vegetarian"
+                            className="locationmodal-occasion-item"
+                          >
+                            <Form.Label>Vegetarian</Form.Label>
+                            <Form.Check
+                              inline
+                              type="checkbox"
+                              name="vegetarian"
+                              checked={values.vegetarian || ''}
+                              onChange={() =>
+                                setValues({
+                                  ...values,
+                                  vegetarian: !values.vegetarian,
+                                })
                               }
                             ></Form.Check>
                           </Form.Group>

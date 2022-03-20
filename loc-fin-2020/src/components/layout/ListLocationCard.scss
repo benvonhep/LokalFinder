@@ -72,14 +72,14 @@
   }
   .location-card-arrow-close {
     position: relative;
-    bottom: 44px;
+    bottom: 57px;
     left: 160px;
     transform: rotate(0deg);
     transition: all 0.3s ease-in-out;
   }
   .location-card-arrow-open {
     position: relative;
-    bottom: 2px;
+    bottom: 9px;
     left: 160px;
     transform: rotate(180deg);
     transition: all 0.3s ease-in-out;
@@ -99,17 +99,30 @@
     overflow-wrap: break-word;
     margin: 0 5px;
   }
+  .location-card-details-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
   .location-card-details {
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 8px;
+    // align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    // height: 8px;
+    line-height: 1;
     text-transform: capitalize;
     font-size: 10.5px !important;
     color: white !important;
     background-color: #172a28;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    max-width: 342px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .location-card-details-veg {
+    font-size: 9.5px !important;
+    // color: white;
   }
   .location-card-footer {
     background-color: #172a28;

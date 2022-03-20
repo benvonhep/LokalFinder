@@ -78,6 +78,16 @@ const filterCategoriesInitialState = [
     name: 'Fancy',
     value: false,
   },
+  {
+    id: 13,
+    name: 'Vegan',
+    value: false,
+  },
+  {
+    id: 14,
+    name: 'Vegetarian',
+    value: false,
+  },
 ];
 
 export default function AppW2E() {
@@ -222,7 +232,9 @@ export default function AppW2E() {
                 fObj.id === 1 ||
                 fObj.id === 2 ||
                 fObj.id === 3 ||
-                fObj.id === 4
+                fObj.id === 4 ||
+                fObj.id === 13 ||
+                fObj.id === 14
               ) {
                 let res =
                   fObj.id === 0
@@ -318,8 +330,37 @@ export default function AppW2E() {
           filterByFancy = filterByFood;
         }
 
-        if (selectedUserFilter.length > 0 && filterByFancy) {
-          let filterByUser = filterByFancy.filter((location) => {
+        let filterByVeg = filterByFancy.filter((location) => {
+          let vegRes = Object.entries(selectedFilter).some((f) => {
+            let fObj = f[1][1];
+            let fname = fObj.name.toLowerCase();
+            let locationProps = Object.entries(location);
+            let locPropArr = locationProps.map((locprop) => locprop[0]);
+            let locPropIndex = locPropArr.indexOf(fname);
+
+            if (locations && locPropIndex > 0 && fObj.value === true) {
+              if (fObj.id === 13 || fObj.id === 14) {
+                let res =
+                  fObj.id === 13
+                    ? location.vegan === true
+                    : '' || fObj.id === 14
+                    ? location.vegetarian === true
+                    : '';
+                return res;
+              }
+            } else {
+              return false;
+            }
+          });
+          return vegRes;
+        });
+
+        if (filterByVeg.length === 0) {
+          filterByVeg = filterByFancy;
+        }
+
+        if (selectedUserFilter.length > 0 && filterByVeg) {
+          let filterByUser = filterByVeg.filter((location) => {
             let userRes = Object.entries(selectedUserFilter).some((f) => {
               let fId = f[1][1].userId;
               return location.createdBy === fId;
@@ -328,11 +369,11 @@ export default function AppW2E() {
           });
 
           if (filterByUser.length === 0) {
-            filterByUser = filterByFancy;
+            filterByUser = filterByVeg;
           }
           setFilteredList(filterByUser);
         } else {
-          setFilteredList(filterByFancy);
+          setFilteredList(filterByVeg);
         }
       } else {
         setFilteredList(locationsGps);

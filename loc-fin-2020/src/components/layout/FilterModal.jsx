@@ -110,6 +110,7 @@ const FilterModal = (props) => {
       animation={false}
       backdrop="static"
       keyboard={false}
+      // className="filter-modal"
     >
       <Modal.Header className="modalHeader">
         <Modal.Title id="contained-modal-title-vcenter">Filter</Modal.Title>
@@ -164,7 +165,7 @@ const FilterModal = (props) => {
               <div className="filter-option__categories">
                 {filterCategories &&
                   Object.keys(filterCategories).map((key) => (
-                    <div className="mb-1" key={key}>
+                    <div className="mb-1 categories__option" key={key}>
                       <input
                         type="checkbox"
                         name={filterCategories[key].name}

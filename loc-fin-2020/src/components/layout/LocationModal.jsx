@@ -114,6 +114,7 @@ const LocationModal = (props) => {
           lunch: false,
           dinner: false,
           night: false,
+          streetfood: false,
           vegan: false,
           vegetarian: false,
         },
@@ -355,6 +356,7 @@ const LocationModal = (props) => {
                 bloglink: locationToEdit.bloglink,
                 vegan: locationToEdit.vegan,
                 vegetarian: locationToEdit.vegetarian,
+                streetfood: locationToEdit.streetfood,
               }}
             >
               {({
@@ -543,6 +545,25 @@ const LocationModal = (props) => {
                               checked={values.night || ''}
                               onChange={() =>
                                 setValues({ ...values, night: !values.night })
+                              }
+                            ></Form.Check>
+                          </Form.Group>
+                          <Form.Group
+                            controlId="streetfood"
+                            className="locationmodal-occasion-item"
+                          >
+                            <Form.Label>Streetfood</Form.Label>
+                            <Form.Check
+                              inline
+                              required
+                              type="checkbox"
+                              name="streetfood"
+                              checked={values.streetfood || ''}
+                              onChange={() =>
+                                setValues({
+                                  ...values,
+                                  streetfood: !values.streetfood,
+                                })
                               }
                             ></Form.Check>
                           </Form.Group>

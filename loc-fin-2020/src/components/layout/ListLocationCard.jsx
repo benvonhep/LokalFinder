@@ -79,6 +79,7 @@ const ListLocationCard = (props) => {
                 {location.dinner ? ' | dinner' : ''}
                 {location.lunch ? ' | lunch' : ''}
                 {location.night ? ' | night' : ''}
+                {location.streetfood ? ' | streetfood' : ''}
               </div>
               <div className="location-card-details-veg">
                 {location.vegetarian && !location.vegan ? 'vegetarian' : ''}

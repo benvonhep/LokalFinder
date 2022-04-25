@@ -119,6 +119,7 @@ function MapLocationModal(props) {
                 {props.location.dinner ? ' | dinner' : ''}
                 {props.location.lunch ? ' | lunch' : ''}
                 {props.location.night ? ' | night' : ''}
+                {props.streetfood ? ' | streetfood' : ''}
               </div>
               <div className="map-location-card-details-veg">
                 {props.location.vegetarian && !props.location.vegan

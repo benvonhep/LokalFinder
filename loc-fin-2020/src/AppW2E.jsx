@@ -40,51 +40,56 @@ const filterCategoriesInitialState = [
   },
   {
     id: 5,
-    name: 'African',
+    name: 'Streetfood',
     value: false,
   },
   {
     id: 6,
-    name: 'American',
+    name: 'African',
     value: false,
   },
   {
     id: 7,
-    name: 'Arabic',
+    name: 'American',
     value: false,
   },
   {
     id: 8,
-    name: 'Asian',
+    name: 'Arabic',
     value: false,
   },
   {
     id: 9,
-    name: 'European',
+    name: 'Asian',
     value: false,
   },
   {
     id: 10,
-    name: 'Other',
+    name: 'European',
     value: false,
   },
   {
     id: 11,
-    name: 'Casual',
+    name: 'Other',
     value: false,
   },
   {
     id: 12,
-    name: 'Fancy',
+    name: 'Casual',
     value: false,
   },
   {
     id: 13,
-    name: 'Vegan',
+    name: 'Fancy',
     value: false,
   },
   {
     id: 14,
+    name: 'Vegan',
+    value: false,
+  },
+  {
+    id: 15,
     name: 'Vegetarian',
     value: false,
   },
@@ -233,6 +238,7 @@ export default function AppW2E() {
                 fObj.id === 2 ||
                 fObj.id === 3 ||
                 fObj.id === 4 ||
+                fObj.id === 5 ||
                 fObj.id === 13 ||
                 fObj.id === 14
               ) {
@@ -247,6 +253,8 @@ export default function AppW2E() {
                     ? location.brunch === true
                     : '' || fObj.id === 4
                     ? location.night === true
+                    : '' || fObj.id === 5
+                    ? location.streetfood === true
                     : '';
                 return res;
               } else {
@@ -272,12 +280,12 @@ export default function AppW2E() {
 
             if (location && locPropIndex > 0 && fObj.value === true) {
               if (
-                fObj.id === 5 ||
                 fObj.id === 6 ||
                 fObj.id === 7 ||
                 fObj.id === 8 ||
                 fObj.id === 9 ||
-                fObj.id === 10
+                fObj.id === 10 ||
+                fObj.id === 11
               ) {
                 let res = location.food === fObj.name;
                 return res;
@@ -308,11 +316,11 @@ export default function AppW2E() {
             let locPropIndex = locPropArr.indexOf(fname);
 
             if (locations && locPropIndex > 0 && fObj.value === true) {
-              if (fObj.id === 11 || fObj.id === 12) {
+              if (fObj.id === 12 || fObj.id === 13) {
                 let res =
-                  fObj.id === 11
+                  fObj.id === 12
                     ? location.casual === true
-                    : '' || fObj.id === 12
+                    : '' || fObj.id === 13
                     ? location.fancy === true
                     : '';
                 return res;
@@ -339,11 +347,11 @@ export default function AppW2E() {
             let locPropIndex = locPropArr.indexOf(fname);
 
             if (locations && locPropIndex > 0 && fObj.value === true) {
-              if (fObj.id === 13 || fObj.id === 14) {
+              if (fObj.id === 14 || fObj.id === 15) {
                 let res =
-                  fObj.id === 13
+                  fObj.id === 14
                     ? location.vegan === true
-                    : '' || fObj.id === 14
+                    : '' || fObj.id === 15
                     ? location.vegetarian === true
                     : '';
                 return res;

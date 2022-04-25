@@ -347,6 +347,8 @@ export default function AppW2E() {
                     ? location.vegetarian === true
                     : '';
                 return res;
+              } else {
+                return false;
               }
             } else {
               return false;

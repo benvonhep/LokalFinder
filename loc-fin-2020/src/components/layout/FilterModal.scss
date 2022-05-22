@@ -24,29 +24,6 @@
     height: 468px;
   }
 }
-@media only screen and (min-width: 405px) {
-  .categories__option {
-    width: 50%;
-    display: block;
-    max-height: 50px !important;
-  }
-
-  .filter-option {
-    &__categories {
-      width: 66%;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-    }
-    &__blogger {
-      width: 33%;
-    }
-  }
-}
-
-.modal-dialog {
-  max-width: 80vw !important;
-}
 
 .modal-sort {
   display: flex;
